@@ -1,4 +1,12 @@
-# My Portfolio Website
+## ✨ Special Features
+
+- **Dynamic Routing** - Individual pages for each project (`/projects/[slug]`)
+- **MDX Content** - Rich content with embedded components
+- **Custom Animations** - Hand-crafted micro-interactions
+- **Image Optimization** - Next.js Image component with WebP support
+- **API Integration** - Contact form with backend processing
+- **Responsive Design** - Mobile-first approach
+- **SEO Optimized** - Meta tags, sitemap, and robots.txt# My Portfolio Website
 
 Personal portfolio website showcasing my design projects, creative shots, and experience as a graphic designer.
 
@@ -14,11 +22,12 @@ Personal portfolio website showcasing my design projects, creative shots, and ex
 
 ## 🛠️ Tech Stack
 
-- **Framework:** Next.js 14
+- **Framework:** Next.js 14 (App Router)
 - **Language:** TypeScript
 - **Styling:** Tailwind CSS
 - **UI Components:** Shadcn/UI
-- **Icons:** Lucide React
+- **Content:** MDX for project descriptions
+- **Icons:** Custom SVG icons + Lucide React
 - **Deployment:** Vercel
 
 ## 📱 Sections
@@ -65,29 +74,63 @@ npm start
 
 ```
 my-portfolio/
-├── app/                    # Next.js app directory
-├── components/             # Reusable components
-│   └── ui/                # Shadcn UI components
-├── lib/                   # Utility functions
-├── public/                # Static assets
-│   └── icons/            # SVG icons
-├── styles/               # Global styles
-└── types/                # TypeScript type definitions
+├── .env.example                    # Environment variables template
+├── app/                           # Next.js app directory
+│   ├── (marketing)/               # Marketing pages group
+│   │   ├── about/                 # About page
+│   │   ├── contact/               # Contact page
+│   │   └── page.tsx              # Home page
+│   ├── api/                      # API routes
+│   │   └── contact/              # Contact form API
+│   ├── projects/                 # Projects pages
+│   │   └── [slug]/              # Dynamic project pages
+│   ├── shots/                   # Creative shots gallery
+│   └── layout.tsx               # Root layout
+├── components/                   # Reusable components
+│   ├── animated/                # Animation components
+│   │   └── reactbits/          # Custom animated components
+│   ├── cards/                  # Card components
+│   ├── filters/                # Filter components
+│   ├── galleries/              # Gallery components
+│   ├── motion/                 # Motion/transition components
+│   ├── skills/                 # Skills-related components
+│   └── ui/                     # Shadcn UI components
+├── content/                     # MDX content files
+│   ├── projects/               # Project descriptions
+│   └── shots/                  # Creative shots descriptions
+├── data/                       # Static data files
+│   └── skills.json            # Skills data
+├── lib/                        # Utility functions
+│   ├── mdx.ts                 # MDX processing
+│   ├── projects.ts            # Project data handling
+│   └── shots.ts               # Shots data handling
+├── public/                     # Static assets
+│   ├── cv/                    # CV/Resume files
+│   ├── icons/                 # SVG icons
+│   └── images/                # Project and shot images
+│       ├── coder-institute/   # Project images
+│       ├── gdgoc/            # Project images
+│       └── shots/            # Creative shots images
+└── styles/                    # Global styles
+    └── globals.css           # Main stylesheet
 ```
 
 ## 🎨 Key Components
 
-- **Hero Section** - Animated introduction and design showcase
-- **Project Cards** - Interactive design project showcases  
-- **Shot Gallery** - Masonry layout for creative pieces
-- **Contact Form** - Form with validation for client inquiries
+- **Hero Section** - Animated introduction with custom text animations
+- **Project Cards** - Interactive design project showcases with filtering
+- **Shot Gallery** - Masonry layout for creative design pieces
+- **Contact Form** - Functional contact form with API integration
+- **Animated Components** - Custom animations (ShinyText, SplitText, LightRays)
+- **Project Filters** - Category-based project filtering system
+- **CV Download** - Direct resume download functionality
 
 ## 📧 Contact
 
 Feel free to reach out for design collaborations or project inquiries!
 
-- **Email:** ikrargempurtrn@gmail.com
-- **LinkedIn:** [Your LinkedIn](https://www.linkedin.com/in/ikrar-gempur-tirani-867537283/)
+- **Email:** your.email@example.com
+- **LinkedIn:** [Your LinkedIn](https://linkedin.com/in/yourprofile)
 - **GitHub:** [Your GitHub](https://github.com/Ikrar06)
 
 ## 📄 License
