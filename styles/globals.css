@@ -1,0 +1,280 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =====================================
+   COLOR PALETTE & BASE
+===================================== */
+:root {
+  --primary-blue: #3a86ff;
+  --secondary-blue: #4f94ff;
+  --accent-blue: #6ba3ff;
+  --dark-bg: #0a0e14;
+  --card-bg: rgba(16, 24, 39, 0.4);
+  --card-bg-hover: rgba(16, 24, 39, 0.6);
+  --text-light: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+
+  /* Grid spotlight dengan gradasi lebih halus */
+  --grid-color-dim: rgba(255, 255, 255, 0.02);
+  --grid-color-bright: rgba(59, 130, 246, 0.15);
+  --grid-size: 32px;
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+}
+
+/* Reset dan base styles */
+* { 
+  box-sizing: border-box; 
+}
+
+html { 
+  scroll-behavior: smooth; 
+}
+
+html, body { 
+  height: 100%; 
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background: linear-gradient(135deg, var(--dark-bg) 0%, #0f172a 100%);
+  color: var(--text-light);
+  overflow-x: hidden;
+  position: relative;
+  line-height: 1.6;
+
+  /* LAPIS BAWAH: Grid background yang lebih halus */
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size);
+}
+
+/* Pastikan konten berada di atas grid spotlight */
+header, main, footer, section { 
+  position: relative; 
+  z-index: 1; 
+}
+
+/* Aksesibilitas fokus yang lebih baik */
+:focus-visible { 
+  outline: 2px solid var(--primary-blue); 
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Hormati prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  * { transition: none !important; animation: none !important; }
+}
+
+/* =====================================
+   GLASSMORPHISM DENGAN WARNA SOLID
+   - Background solid tanpa gradient
+   - Border solid
+   - Shadow yang lebih realistis
+   - Blur konsisten
+===================================== */
+
+/* Kelas utama untuk glassmorphism */
+.glass-surface {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  
+  /* Shadow yang lebih realistis dengan multiple layers */
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 4px 16px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+  
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover effect untuk interaktivitas */
+.glass-surface:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.4),
+    0 8px 20px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Pseudo-elements dihapus untuk border yang bersih */
+.glass-surface::before,
+.glass-surface::after {
+  display: none;
+}
+
+/* Varian untuk kartu dengan ukuran tetap */
+.glass-card {
+  width: 280px;
+  height: 400px;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.25),
+    0 5px 20px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.035);
+  border-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-4px);
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.3),
+    0 10px 25px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+/* Varian dengan tingkat transparansi berbeda */
+.glass-subtle {
+  background: rgba(255, 255, 255, 0.015);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.glass-medium {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(32px) saturate(200%);
+  -webkit-backdrop-filter: blur(32px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Varian untuk navbar */
+.glass-navbar {
+  background: rgba(10, 14, 20, 0.8);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.15),
+    0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Varian untuk modal/popup */
+.glass-modal {
+  background: rgba(16, 24, 39, 0.85);
+  backdrop-filter: blur(30px) saturate(120%);
+  -webkit-backdrop-filter: blur(30px) saturate(120%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.5),
+    0 12px 25px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Varian dengan warna biru */
+.glass-blue {
+  background: rgba(58, 134, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(58, 134, 255, 0.2);
+}
+
+.glass-blue:hover {
+  background: rgba(58, 134, 255, 0.12);
+  border-color: rgba(58, 134, 255, 0.3);
+}
+
+/* Varian dengan warna gelap */
+.glass-dark {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-dark:hover {
+  background: rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* =====================================
+   UTILITY CLASSES
+===================================== */
+.text-muted { color: var(--text-muted); }
+.text-dim { color: var(--text-dim); }
+.text-primary { color: var(--primary-blue); }
+.text-secondary { color: var(--secondary-blue); }
+.text-accent { color: var(--accent-blue); }
+
+.bg-primary { background-color: var(--primary-blue); }
+.bg-secondary { background-color: var(--secondary-blue); }
+.bg-accent { background-color: var(--accent-blue); }
+
+.border-primary { border-color: var(--primary-blue); }
+.border-glass { border-color: rgba(255, 255, 255, 0.08); }
+
+/* Animasi untuk loading states */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.0) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Responsiveness untuk blur pada device yang kurang powerful */
+@media (max-width: 768px) {
+  .glass-surface {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+  
+  .glass-card {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+}
+
+/* Support untuk browser yang tidak mendukung backdrop-filter */
+@supports not (backdrop-filter: blur(1px)) {
+  .glass-surface,
+  .glass-card {
+    background: rgba(16, 24, 39, 0.8);
+  }
+}

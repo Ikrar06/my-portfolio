@@ -1,0 +1,8 @@
+[
+  { "name": "Adobe Illustrator", "level": 90, "label": "Expert", "years": 5, "usage": "daily" },
+  { "name": "Adobe Photoshop",   "level": 90, "label": "Expert", "years": 5, "usage": "weekly" },
+  { "name": "Figma",             "level": 90, "label": "Expert", "years": 2, "usage": "daily" },
+  { "name": "Canva",             "level": 80, "label": "Advanced", "years": 3, "usage": "weekly" },
+  { "name": "Adobe After Effects",     "level": 65, "label": "Intermediate", "years": 3, "usage": "weekly" },
+  { "name": "Adobe Premiere Pro",     "level": 65, "label": "Intermediate", "years": 3, "usage": "weekly" }
+]
