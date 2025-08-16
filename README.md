@@ -130,8 +130,8 @@ my-portfolio/
 Feel free to reach out for design collaborations or project inquiries!
 
 - **Email:** ikrargempurtrn@gmail.com
-- **LinkedIn:** [Your LinkedIn](https://www.linkedin.com/in/ikrar-gempur-tirani-867537283/)
-- **GitHub:** [Your GitHub](https://github.com/Ikrar06)
+- **LinkedIn:** [LinkedIn](https://www.linkedin.com/in/ikrar-gempur-tirani-867537283/)
+- **GitHub:** [GitHub](https://github.com/Ikrar06)
 
 ## 📄 License
 
