@@ -12,10 +12,16 @@ const nextConfig: NextConfig = {
     // Tambahkan domain eksternal jika nanti pakai gambar remote
     // remotePatterns: [{ protocol: 'https', hostname: 'images.example.com' }],
   },
+  
+  // Ganti experimental.serverComponentsExternalPackages dengan serverExternalPackages
+  serverExternalPackages: [],
+  
+  // Hapus experimental.serverComponentsExternalPackages
   experimental: {
-    serverComponentsExternalPackages: [],
+    // experimental configs lainnya bisa ditambahkan di sini jika diperlukan
   },
-  // Disable trace untuk menghindari build error
+  
+  // Output standalone untuk Vercel
   output: 'standalone',
 }
 
