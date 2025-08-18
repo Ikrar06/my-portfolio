@@ -28,7 +28,7 @@ export default function AboutPage() {
       dates: 'Aug 2025 – Present',
       duration: '1 mo',
       location: 'Makassar, South Sulawesi, Indonesia · On-site',
-      desc: `Leading creative media strategies for campus developer community growth. Managing design team for videos, graphics, and educational content. Collaborating with stakeholders to optimize social platforms and amplify tech events.`,
+      desc: `Leading creative media strategies that actually get people excited about tech. I manage a team of designers creating everything from event visuals to educational content, and honestly, seeing our community grow through great design is pretty rewarding. My focus is on making tech events feel approachable and fun, not intimidating.`,
       extras: [
         { label: 'Instagram', value: '@gdgocunhas', href: 'https://instagram.com/gdgocunhas' }
       ],
@@ -46,7 +46,7 @@ export default function AboutPage() {
       dates: 'Feb 2025 – Present',
       duration: '7 mos',
       location: 'Gowa, South Sulawesi, Indonesia · On-site',
-      desc: `Managing creation, publication, and organization of educational content. Designing promotional materials using Adobe Creative Suite and Figma for events and workshops. Overseeing development of coding tutorials and educational resources while organizing program documentation.`,
+      desc: `I handle the creative side of educational content here, from designing workshop materials to organizing all our documentation. Using Adobe Creative Suite and Figma, I make sure everything looks cohesive and actually helps people learn. There's something satisfying about turning complex coding concepts into visuals that just click.`,
       extras: [
         { label: 'Instagram', value: '@coderinstitute', href: 'https://instagram.com/coderinstitute' }
       ],
@@ -63,7 +63,7 @@ export default function AboutPage() {
       dates: 'Sep 2024 – Apr 2025',
       duration: '8 mos',
       location: 'Makassar, South Sulawesi, Indonesia · On-site',
-      desc: `Oversaw end-to-end content pipeline from planning to publishing. Developed content calendar, visual guidelines, and coordinated production of social media content, event materials, and merchandise. Managed photo/video archive and delivered recap articles while monitoring analytics for content optimization.`,
+      desc: `This was where I really learned what it means to manage a complete content pipeline. From brainstorming sessions to final posts, I coordinated everything while keeping our visual identity tight across all platforms. The analytics told a great story too, seeing engagement grow month by month was incredibly motivating.`,
       extras: [
         { label: 'Instagram', value: '@recursion.uh', href: 'https://instagram.com/recursion.uh' }
       ],
@@ -80,8 +80,8 @@ export default function AboutPage() {
       type: 'Event',
       dates: 'Aug 2024 – Sep 2024',
       duration: '2 mos',
-      location: '—',
-      desc: `Created comprehensive visual elements for NEXUS 2024 tech seminar including logo, mascot, merchandise, certificates, and presentation materials. Documented event with live report designs to enhance branding and create cohesive participant experience.`,
+      location: 'Remote',
+      desc: `NEXUS 2024 was my playground for creating a complete visual identity from scratch. I designed everything from the logo and mascot to certificates and merch. The live event reports were particularly fun to create, giving the seminar a real-time energy that participants still talk about.`,
       skills: [
         'Editing', 'Graphics', 'Graphic Design', 'Adobe Photoshop', 'Adobe Illustrator',
         'Logo Design', 'Figma (Software)', 'Canva'
@@ -94,8 +94,8 @@ export default function AboutPage() {
       type: 'Committee',
       dates: 'Jan 2023 – Jul 2023',
       duration: '7 mos',
-      location: '—',
-      desc: `Developed overall design concept for Xenavion Year Book as creative team member, focusing on layout design and visual consistency throughout the publication.`,
+      location: 'Gorontalo, Indonesia',
+      desc: `My first real taste of publication design. Working on the Xenavion yearbook taught me how to maintain visual consistency across hundreds of pages while making sure every spread told its own story. It was meticulous work, but seeing classmates flip through the finished book made every late night worth it.`,
       skills: ['Graphic Design', 'Layout', 'Adobe Photoshop', 'Adobe Illustrator']
     },
     {
@@ -105,8 +105,8 @@ export default function AboutPage() {
       type: 'Arts Activity',
       dates: 'Sep 2022 – Jan 2023',
       duration: '5 mos',
-      location: '—',
-      desc: `Developed digital specifications for art scenes in Xenavion project. Managed training, performances, and overall coordination of Kecak dance performances while creating supporting digital content.`,
+      location: 'Gorontalo, Indonesia',
+      desc: `This project was all about blending traditional Kecak dance with modern digital storytelling. I created digital content that complemented our performances, learning how to capture the energy of live art through video and graphics. It opened my eyes to how design can honor tradition while reaching new audiences.`,
       skills: ['Adobe Premiere Pro', 'After Effects', 'Editing', 'Graphic Design', 'Social Media Graphic Design']
     },
     {
@@ -116,8 +116,8 @@ export default function AboutPage() {
       type: 'Student Organization',
       dates: 'Oct 2021 – Aug 2022',
       duration: '11 mos',
-      location: '—',
-      desc: `Worked in cultural and artistic fields to uphold institutional values and encourage student artistic pursuits. Organized events, created engaging content for division's Instagram, and developed interactive media showcasing student artwork.`,
+      location: 'Gorontalo, Indonesia',
+      desc: `This role taught me that good design serves a purpose beyond aesthetics. I organized cultural events and created content that actually got students excited about participating in arts programs. Managing our Instagram account was like running a mini creative agency, complete with content calendars and engagement strategies.`,
       skills: ['Adobe Premiere Pro', 'After Effects', 'Editing', 'Graphic Design', 'Adobe Photoshop', 'Adobe Illustrator']
     },
     {
@@ -127,8 +127,8 @@ export default function AboutPage() {
       type: 'School Event',
       dates: 'Nov 2021 – Dec 2021',
       duration: '2 mos',
-      location: '—',
-      desc: `Contributed to creative team for student showcase event where MAN Insan Cendekia Gorontalo students demonstrated their academic, athletic, and artistic skills following final semester examinations.`,
+      location: 'Gorontalo, Indonesia',
+      desc: `INSPIRAL was where I first experienced the rush of creating under pressure. With final exams behind us, we had this amazing opportunity to showcase what students could really do. I handled everything from logo design to promotional materials, learning that sometimes the best creative work happens when you're having fun with it.`,
       skills: ['Adobe Premiere Pro', 'After Effects', 'Editing', 'Graphic Design', 'Adobe Photoshop', 'Adobe Illustrator', 'Logo Design']
     }
   ]
@@ -144,7 +144,7 @@ export default function AboutPage() {
           <div className="mb-8">
             <TextType
               key={`about-tagline-${pageKey}`}
-              text="Graphic Designer • Head of Creative Media Division • 5+ Years Experience"
+              text="Graphic Designer • Creative Lead • AI Enthusiast • 5+ Years Experience"
               className="text-sm md:text-base text-white/60 font-medium tracking-wider uppercase"
               typingSpeed={80}
               showCursor={false}
@@ -178,22 +178,21 @@ export default function AboutPage() {
             </div>
             
             {/* Bio singkat */}
-            {/* Bio singkat */}
             <FadeIn key={`about-bio-${pageKey}`} delay={0.1}>
               <div className="mt-8 md:mt-0">
                 <p className="text-lg md:text-xl text-white/70 leading-relaxed font-light mb-4">
-                  Hi there! I'm <span className="font-semibold text-white">Ikrar Gempur Tirani</span>, a passionate{' '}
-                  <span className="text-white">Graphic Designer</span> born and raised in Gorontalo. At 20 years old, I've been creating visual stories for over 5 years, specializing in creative media strategies and publication design.
+                  Hey there! I'm <span className="font-semibold text-white">Ikrar Gempur Tirani</span>, a{' '}
+                  <span className="text-white">graphic designer</span> from Gorontalo who's been turning ideas into visuals for over 5 years now. What started as messing around with Photoshop in high school has become this genuine love for making complex things look simple and beautiful.
                 </p>
                 <p className="text-base md:text-lg text-white/60 leading-relaxed font-light">
-                  Currently balancing my studies in <span className="text-white">Informatics Engineering</span> fifth semester at Hasanuddin University in Makassar with my role as <span className="text-white">Head of Creative Media Division</span> at Google Developer on Campus. I believe great design goes beyond aesthetics, it communicates clearly and creates meaningful connections with audiences.
+                  Currently balancing my fifth semester in <span className="text-white">Informatics Engineering</span> at Hasanuddin University while leading creative media at Google Developer on Campus. I'm that person who gets excited about clean typography and perfectly aligned layouts, but also loves diving deep into how AI is reshaping the creative industry. For me, great design isn't just about looking good, it's about creating that instant connection where people just get it.
                 </p>
 
                 <div className="mt-6 grid gap-3 text-sm text-white/60">
                   <div className="flex items-center"><div className="w-1.5 h-1.5 bg-white/40 rounded-full mr-3" /> Born and raised in Gorontalo, January 6, 2005</div>
-                  <div className="flex items-center"><div className="w-1.5 h-1.5 bg-white/40 rounded-full mr-3" /> Currently studying in Makassar, South Sulawesi</div>
-                  <div className="flex items-center"><div className="w-1.5 h-1.5 bg-white/40 rounded-full mr-3" /> Informatics Engineering student, Hasanuddin University, fifth semester</div>
-                  <div className="flex items-center"><div className="w-1.5 h-1.5 bg-white/40 rounded-full mr-3" /> Specializing in creative media strategy, brand design & team leadership</div>
+                  <div className="flex items-center"><div className="w-1.5 h-1.5 bg-white/40 rounded-full mr-3" /> Currently living in Makassar, South Sulawesi</div>
+                  <div className="flex items-center"><div className="w-1.5 h-1.5 bg-white/40 rounded-full mr-3" /> Fifth semester Informatics student at Hasanuddin University</div>
+                  <div className="flex items-center"><div className="w-1.5 h-1.5 bg-white/40 rounded-full mr-3" /> Always curious about the intersection of design, technology, and human behavior</div>
                 </div>
 
                 <div className="mt-8">
@@ -215,7 +214,7 @@ export default function AboutPage() {
               <FadeIn key={`services-title-${pageKey}`}>
                 <SplitText
                   key={`services-split-${pageKey}`}
-                  text="Areas of Expertise"
+                  text="What Gets Me Excited"
                   className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-8"
                   splitType="words"
                   delay={60}
@@ -230,30 +229,36 @@ export default function AboutPage() {
             </div>
             <FadeIn key={`services-desc-${pageKey}`} delay={0.2}>
               <p className="text-lg md:text-xl text-white/60 max-w-3xl mx-auto font-light leading-relaxed">
-                Services that combine creativity with strategy—ensuring visuals are not only aesthetically pleasing but also effective in achieving communication objectives.
+                These are the areas where I lose track of time. I believe the best work happens when you genuinely enjoy what you're doing, and every project becomes an opportunity to learn something new.
               </p>
             </FadeIn>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
-                title: 'Creative Media Strategy',
-                desc: 'Developing comprehensive media strategies to grow communities and enhance brand visibility through strategic visual storytelling and content planning.',
+                title: 'Creative Strategy & Community Building',
+                desc: 'There\'s something special about watching communities grow through thoughtful design. I help organizations tell their stories in ways that actually resonate with people, using visuals that spark conversations and bring people together.',
                 icon: '🎯',
                 specialties: ['Social Media Strategy', 'Brand Development', 'Content Planning', 'Community Growth']
               },
               {
-                title: 'Graphic Design & Visual Identity',
-                desc: 'Creating cohesive visual systems and compelling graphics that communicate effectively across digital and print platforms.',
+                title: 'Visual Design & Brand Identity',
+                desc: 'From sketching logos to building complete brand systems, I create visuals that stick in people\'s minds. Whether it\'s digital or print, every design needs to serve a purpose and tell a story worth remembering.',
                 icon: '🎨',
                 specialties: ['Logo & Brand Identity', 'Social Media Graphics', 'Publication Design', 'Marketing Materials']
               },
               {
-                title: 'Publication & Documentation',
-                desc: 'Managing end-to-end content pipelines from concept to publication, ensuring organized documentation and effective content distribution.',
+                title: 'Content Management & Documentation',
+                desc: 'I love turning chaos into beautiful, organized systems. From content calendars to creative workflows, I make sure nothing gets lost and everything looks intentional. Good organization is good design.',
                 icon: '📚',
                 specialties: ['Content Coordination', 'Documentation Systems', 'Editorial Design', 'Archive Management']
+              },
+              {
+                title: 'AI Engineering & Creative Tech',
+                desc: 'The intersection of AI and design fascinates me. I\'m constantly exploring how machine learning can enhance creativity rather than replace it, and I love experimenting with new tools that push the boundaries of what\'s possible.',
+                icon: '🤖',
+                specialties: ['AI-Assisted Design', 'Creative Automation', 'Design Systems', 'Emerging Technologies']
               }
             ].map((service, i) => (
               <FadeIn key={`service-${i}-${pageKey}`} delay={0.1 * i}>
@@ -294,7 +299,7 @@ export default function AboutPage() {
               <FadeIn key={`skills-title-${pageKey}`}>
                 <SplitText
                   key={`skills-split-${pageKey}`}
-                  text="Technical Skills"
+                  text="My Creative Arsenal"
                   className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-8"
                   splitType="words"
                   delay={60}
@@ -308,7 +313,7 @@ export default function AboutPage() {
             </div>
             <FadeIn key={`skills-desc-${pageKey}`} delay={0.2}>
               <p className="text-lg md:text-xl text-white/60 max-w-3xl mx-auto font-light leading-relaxed">
-                Mastery of industry-standard design tools and digital content workflows. (Detailed list can be configured in <code>data/skills.json</code>.)
+                These tools have become extensions of my creativity over the years. Each one serves a different purpose in my workflow, and I'm always excited to learn new ones that can help bring ideas to life more effectively.
               </p>
             </FadeIn>
           </div>
@@ -330,7 +335,7 @@ export default function AboutPage() {
             <FadeIn key={`exp-title-${pageKey}`}>
               <SplitText
                 key={`exp-split-${pageKey}`}
-                text="Professional Journey"
+                text="My Creative Journey"
                 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-8"
                 splitType="words, chars"
                 delay={80}
@@ -343,7 +348,7 @@ export default function AboutPage() {
             </FadeIn>
             <FadeIn key={`exp-desc-${pageKey}`} delay={0.2}>
               <p className="text-lg md:text-xl text-white/60 max-w-3xl mx-auto font-light leading-relaxed">
-                A chronological overview of my career progression, showcasing growth from creative team member to division head.
+                From designing my first school event poster to leading creative teams, here's how I've grown as a designer and discovered what it really means to create work that connects with people.
               </p>
             </FadeIn>
           </div>
@@ -385,7 +390,7 @@ export default function AboutPage() {
                               <span className="text-white/60">{exp.dates}</span>
                               <span className="text-white/50">({exp.duration})</span>
                             </div>
-                            {exp.location && exp.location !== '—' && (
+                            {exp.location && exp.location !== 'Remote' && (
                               <p className="text-white/40 text-xs mt-1">{exp.location}</p>
                             )}
                           </div>
