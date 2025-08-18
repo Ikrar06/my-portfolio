@@ -22,8 +22,8 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ['@/components'],
   },
   
-  // Temporary: tidak pakai standalone untuk debugging
-  // output: 'standalone',
+  // Aktifkan kembali output standalone untuk produksi
+  output: 'standalone',
 }
 
 export default nextConfig
