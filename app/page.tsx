@@ -1,10 +1,8 @@
 // app/page.tsx
 import dynamic from 'next/dynamic'
 
-// Dynamic import untuk menghindari masalah SSR/build
-const MarketingHomePage = dynamic(() => import('./(marketing)/page'), {
-  ssr: false, // Karena komponen menggunakan 'use client'
-})
+// Dynamic import tanpa ssr: false untuk Next.js 15
+const MarketingHomePage = dynamic(() => import('./(marketing)/page'))
 
 export default function HomePage() {
   return <MarketingHomePage />
