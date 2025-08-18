@@ -4,7 +4,7 @@
 import * as React from 'react'
 
 type ShinyTextProps = {
-  as?: keyof JSX.IntrinsicElements
+  as?: React.ElementType // Ganti keyof JSX.IntrinsicElements dengan React.ElementType
   className?: string
   children: React.ReactNode
   speedMs?: number
@@ -22,36 +22,41 @@ export default function ShinyText({
   speedMs = 2200,
 }: ShinyTextProps) {
   return (
-    <Tag
-      className={[
-        'relative inline-block bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-600 bg-clip-text text-transparent',
-        'will-change-[mask-position]',
-        'motion-safe:animate-[shiny_var(--speed)_infinite_linear]',
-        className || '',
-      ].join(' ')}
-      style={
-        {
-          '--speed': `${speedMs}ms`,
-          WebkitMaskImage:
-            'linear-gradient(120deg, transparent 35%, rgba(0,0,0,0.6) 50%, transparent 65%)',
-          WebkitMaskSize: '250% 100%',
-          WebkitMaskPosition: '0% 0%',
-        } as React.CSSProperties
-      }
-    >
-      {children}
-      <style jsx>{`
+    <>
+      <Tag
+        className={[
+          'relative inline-block bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-600 bg-clip-text text-transparent',
+          'will-change-[mask-position]',
+          'motion-safe:animate-[shiny_var(--speed)_infinite_linear]',
+          className || '',
+        ].join(' ')}
+        style={
+          {
+            '--speed': `${speedMs}ms`,
+            WebkitMaskImage:
+              'linear-gradient(120deg, transparent 35%, rgba(0,0,0,0.6) 50%, transparent 65%)',
+            WebkitMaskSize: '250% 100%',
+            WebkitMaskPosition: '0% 0%',
+          } as React.CSSProperties
+        }
+      >
+        {children}
+      </Tag>
+      
+      {/* Pindahkan style ke global CSS atau component terpisah */}
+      <style jsx global>{`
         @media (prefers-reduced-motion: reduce) {
-          :global(.motion-safe\:animate-\[shiny_var\(--speed\)_infinite_linear\]) {
+          .motion-safe\\:animate-\\[shiny_var\\(--speed\\)_infinite_linear\\] {
             animation: none !important;
           }
         }
         @keyframes shiny {
           to {
             -webkit-mask-position: 250% 0%;
+            mask-position: 250% 0%;
           }
         }
       `}</style>
-    </Tag>
+    </>
   )
 }
