@@ -208,43 +208,88 @@ export function AdvancedFinalResults({ final, title }: SmartFinalResultsProps) {
   )
 }
 
-// Advanced Exploration - Simple masonry layout for browsing
+// Advanced Exploration - Dynamic masonry with aspect ratio adaptation
 export function AdvancedExploration({ final, title }: SmartFinalResultsProps) {
   const [imageData, setImageData] = useState<{ 
     [key: number]: { 
       loaded: boolean; 
-      orientation: 'portrait' | 'landscape';
+      orientation: 'portrait' | 'landscape' | 'square';
       aspectRatio: number;
+      width: number;
+      height: number;
     } 
   }>({})
 
   const handleImageLoad = useCallback((index: number, img: HTMLImageElement) => {
     const aspectRatio = img.naturalWidth / img.naturalHeight
-    const orientation = aspectRatio < 1 ? 'portrait' : 'landscape'
+    const width = img.naturalWidth
+    const height = img.naturalHeight
+    
+    let orientation: 'portrait' | 'landscape' | 'square'
+    if (aspectRatio > 1.2) orientation = 'landscape'
+    else if (aspectRatio < 0.8) orientation = 'portrait'
+    else orientation = 'square'
     
     setImageData(prev => ({
       ...prev,
-      [index]: { loaded: true, orientation, aspectRatio }
+      [index]: { loaded: true, orientation, aspectRatio, width, height }
     }))
   }, [])
+
+  // Calculate dynamic dimensions based on aspect ratio
+  const getItemStyle = (data: typeof imageData[0] | undefined) => {
+    if (!data?.loaded) {
+      return {
+        aspectRatio: '1',
+        minHeight: '200px'
+      }
+    }
+
+    const { aspectRatio, orientation } = data
+    
+    // Base dimensions
+    let gridColumnSpan = 1
+    let calculatedHeight = 'auto'
+    
+    // Dynamic column spanning based on aspect ratio
+    if (orientation === 'landscape') {
+      if (aspectRatio > 2) {
+        gridColumnSpan = 3 // Very wide images (panoramic)
+      } else if (aspectRatio > 1.5) {
+        gridColumnSpan = 2 // Wide images
+      } else {
+        gridColumnSpan = 1 // Slightly wide images
+      }
+    } else if (orientation === 'portrait') {
+      gridColumnSpan = 1 // Portrait always 1 column
+    } else {
+      gridColumnSpan = 1 // Square images
+    }
+
+    return {
+      gridColumn: `span ${gridColumnSpan}`,
+      aspectRatio: aspectRatio.toString(),
+      minHeight: orientation === 'portrait' ? '300px' : '200px'
+    }
+  }
 
   return (
     <div className="space-y-6">
       <h2 className="text-2xl font-bold tracking-tight">Exploration Results</h2>
       
-      {/* Masonry-style grid optimized for exploration */}
+      {/* Dynamic masonry grid that adapts to image ratios */}
       <div 
-        className="grid gap-3"
+        className="grid gap-4"
         style={{
-          gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-          gridAutoRows: 'min-content'
+          gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
+          gridAutoRows: 'min-content',
+          gridAutoFlow: 'row dense' // Allow items to fill gaps
         }}
       >
         {final.map((src: string, index: number) => {
           const data = imageData[index]
           const isLoaded = data?.loaded || false
-          const orientation = data?.orientation
-          const aspectRatio = data?.aspectRatio || 1
+          const itemStyle = getItemStyle(data)
           
           return (
             <figure
@@ -252,44 +297,42 @@ export function AdvancedExploration({ final, title }: SmartFinalResultsProps) {
               className={`
                 group overflow-hidden rounded-2xl border border-neutral-200 bg-white 
                 dark:border-neutral-800 dark:bg-neutral-900 shadow-sm 
-                hover:shadow-lg transition-all duration-300
-                ${isLoaded ? 'opacity-100' : 'opacity-0'}
+                hover:shadow-lg transition-all duration-500
+                ${isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}
               `}
-              style={{
-                gridColumn: isLoaded && orientation === 'landscape' ? 'span 2' : 'span 1'
-              }}
+              style={itemStyle}
             >
-              <div className="relative w-full overflow-hidden">
+              <div className="relative w-full h-full">
                 <Image
                   src={src}
                   alt={`${title} — exploration ${index + 1}`}
-                  width={orientation === 'landscape' ? 1920 : 1080}
-                  height={orientation === 'landscape' ? 1080 : 1920}
+                  fill
                   quality={95}
                   sizes={
-                    orientation === 'landscape' 
-                      ? "(min-width: 1280px) 50vw, (min-width: 768px) 70vw, 100vw"
-                      : "(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw"
+                    data?.orientation === 'landscape' && data.aspectRatio > 1.5
+                      ? "(min-width: 1280px) 66vw, (min-width: 768px) 80vw, 100vw" // Wide images
+                      : "(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw" // Normal images
                   }
-                  className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
                   {...(index < 6 ? { priority: true } : { loading: "lazy" })}
                   onLoad={(e) => {
                     const img = e.target as HTMLImageElement
                     handleImageLoad(index, img)
                   }}
-                  style={{
-                    aspectRatio: isLoaded ? aspectRatio : 'auto',
-                    objectFit: 'cover'
-                  }}
                 />
               </div>
               
-              {/* Simple loading state */}
+              {/* Loading state with aspect ratio placeholder */}
               {!isLoaded && (
-                <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-neutral-50 to-neutral-100 dark:from-neutral-800 dark:to-neutral-900">
+                <div 
+                  className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-neutral-50 to-neutral-100 dark:from-neutral-800 dark:to-neutral-900"
+                  style={{ minHeight: '200px' }}
+                >
                   <div className="w-8 h-8 border-2 border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
                 </div>
               )}
+              
+
             </figure>
           )
         })}

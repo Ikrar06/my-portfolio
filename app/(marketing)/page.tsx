@@ -170,49 +170,43 @@ export default function MarketingHomePage() {
                 title: 'GDG on Campus UNHAS',
                 category: 'Tech Community',
                 year: '2025',
-                color: 'from-blue-400/80 to-purple-600/80',
                 description: 'Complete visual identity for Google Developer Groups community at Hasanuddin University',
-                link: '/projects/gdg-on-campus-unhas', // Bisa diubah ke link yang diinginkan
+                link: '/projects/gdg-on-campus-unhas',
               },
               {
                 title: 'Coder Institute',
                 category: 'Tech Community',
                 year: '2025',
-                color: 'from-pink-400/80 to-rose-600/80',
-                description: 'User-friendly mobile shopping experience with focus on conversion and usability',
-                link: '/projects/coder-institute-coordinator', // Bisa diubah ke link yang diinginkan
+                description: 'Publication coordinator managing workflows, design standards, and documentation systems for 7 months',
+                link: '/projects/coder-institute-coordinator',
               },
               {
-                title: 'Portfolio Website',
-                category: 'Web Development',
+                title: 'EduQuest - Educational App Design',
+                category: 'Competition',
                 year: '2024',
-                color: 'from-emerald-400/80 to-teal-600/80',
-                description: 'Responsive website combining modern design with clean, maintainable code',
-                link: '/projects/portfolio-site', // Bisa diubah ke link yang diinginkan
+                description: 'Educational mobile app for students with focus mode, gamification, and personalized learning',
+                link: '/projects/eduquest-educational-app-design',
               },
               {
-                title: 'Social Media Campaign',
-                category: 'Digital Marketing',
+                title: 'LockIn - Password Manager',
+                category: 'Project',
                 year: '2024',
-                color: 'from-orange-400/80 to-red-600/80',
-                description: 'Cohesive visual campaign increasing engagement by 200% across all platforms',
-                link: '/projects/social-campaign', // Bisa diubah ke link yang diinginkan
+                description: 'Secure zero-knowledge password manager with client-side encryption and cross-browser compatibility',
+                link: '/projects/lockin-password-manager',
               },
               {
-                title: 'Analytics Dashboard',
-                category: 'UI/UX Design',
-                year: '2023',
-                color: 'from-indigo-400/80 to-blue-600/80',
-                description: 'Data visualization dashboard focusing on user experience and information hierarchy',
-                link: '/projects/dashboard', // Bisa diubah ke link yang diinginkan
+                title: 'RECURSION 1.0',
+                category: 'Event',
+                year: '2025',
+                description: 'National technology competition with UI/UX, CTF, Business Plan, and Programming categories',
+                link: '/projects/recursion-10',
               },
               {
-                title: 'Event Branding',
-                category: 'Print Design',
-                year: '2023',
-                color: 'from-green-400/80 to-emerald-600/80',
-                description: 'Complete event branding from posters to merchandise with consistent visual language',
-                link: '/projects/event-branding', // Bisa diubah ke link yang diinginkan
+                title: 'NEXUS 2024',
+                category: 'Event',
+                year: '2024',
+                description: 'Technology seminar visual identity with modern tech-inspired design and cohesive branding',
+                link: '/projects/nexus-2024',
               },
             ].map((project, i) => (
               <FadeIn key={`project-${i}-${pageKey}`} delay={0.05 * i}>
@@ -221,14 +215,15 @@ export default function MarketingHomePage() {
                     <div className="relative backdrop-blur-sm bg-white/[0.02] border border-white/10 rounded-3xl p-8 hover:bg-white/[0.05] transition-all duration-700 hover:scale-105 hover:shadow-2xl hover:border-white/20 h-full flex flex-col">
                       {/* Project Visual */}
                       <div className="aspect-[4/3] mb-8 rounded-2xl overflow-hidden relative">
-                        <div
-                          className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-70 group-hover:opacity-90 transition-all duration-700`}
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                        {/* Glass effect background */}
+                        <div className="absolute inset-0 bg-white/[0.03] backdrop-blur-md border border-white/10" />
+                        
                         <div className="absolute inset-0 flex items-center justify-center">
                           <div className="relative">
-                            <div className="w-20 h-20 bg-white/10 backdrop-blur-md rounded-3xl border border-white/20 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
-                              <div className="w-10 h-10 bg-white/80 rounded-xl shadow-lg" />
+                            {/* Glass box dengan efek transparan */}
+                            <div className="w-20 h-20 bg-white/[0.08] backdrop-blur-xl rounded-3xl border border-white/20 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-xl">
+                              {/* Icon dalam glass box */}
+                              <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-xl shadow-lg border border-white/30" />
                             </div>
                           </div>
                         </div>

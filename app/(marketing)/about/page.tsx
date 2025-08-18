@@ -163,7 +163,7 @@ export default function AboutPage() {
                 {/* Photo container */}
                 <div className="relative w-[260px] h-[260px] md:w-[380px] md:h-[380px]">
                   <Image
-                    src="/images/foto-ikrar.png"
+                    src="/images/foto-ikrar.jpg"
                     alt="Foto Ikrar Gempur Tirani"
                     fill
                     sizes="(max-width: 768px) 200px, 420px"
