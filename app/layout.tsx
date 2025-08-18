@@ -7,8 +7,8 @@ import '../styles/globals.css'
 import Nav from '@/components/nav'
 import Footer from '@/components/footer'
 
+// Base metadata akan di-override oleh metadata di (marketing)/layout.tsx
 export async function generateMetadata(): Promise<Metadata> {
-  // Base metadata
   const baseMetadata: Metadata = {
     title: 'Portfolio — Graphic Designer',
     description: 'Modern, profesional, cepat, mudah di-update.',
