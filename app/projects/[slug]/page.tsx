@@ -4,8 +4,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { getProjectBySlug, getProjectSlugs } from '@/lib/mdx'
 import { getRelatedProjects, type ExtendedProjectMeta } from '@/lib/projects-helpers'
-import ProjectGallery from '@/components/galleries/project-gallery'
 import ProjectCard from '@/components/cards/project-card'
+import SmartFinalResults, { AdvancedFinalResults, AdvancedExploration } from '@/components/project/SmartFinalResult'
 
 // ====== SSG params ======
 export async function generateStaticParams() {
@@ -508,7 +508,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                   width={1600}
                   height={1200}
                   className="max-w-full h-auto"
-                  quality={90}
+                  quality={100}
                   priority
                 />
               </div>
@@ -565,15 +565,15 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           {/* Event-specific galleries */}
           {eventWork && (
             <>
-              {/* Event Materials */}
+              {/* Event Materials - Masonry */}
               {eventMaterials.length > 0 && (
                 <div className="space-y-6">
                   <h2 className="text-2xl font-bold tracking-tight">Event Materials</h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
                     {eventMaterials.map((src: string, index: number) => (
                       <figure
                         key={`event-material-${index}`}
-                        className="group overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300"
+                        className="group overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300 break-inside-avoid mb-6"
                       >
                         <div className="relative w-full">
                           <Image
@@ -581,6 +581,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                             alt={`${title} — event material ${index + 1}`}
                             width={1200}
                             height={900}
+                            quality={100}
                             sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw"
                             className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-500"
                             loading="lazy"
@@ -592,15 +593,15 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                 </div>
               )}
 
-              {/* Event Documentation */}
+              {/* Event Documentation - Masonry */}
               {eventDocumentation.length > 0 && (
                 <div className="space-y-6">
                   <h2 className="text-2xl font-bold tracking-tight">Event Documentation</h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="columns-1 md:columns-2 gap-6 space-y-6">
                     {eventDocumentation.map((src: string, index: number) => (
                       <figure
                         key={`event-doc-${index}`}
-                        className="group overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300"
+                        className="group overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300 break-inside-avoid mb-6"
                       >
                         <div className="relative w-full">
                           <Image
@@ -608,6 +609,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                             alt={`${title} — event documentation ${index + 1}`}
                             width={1200}
                             height={800}
+                            quality={100}
                             sizes="(min-width:768px) 50vw, 100vw"
                             className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-500"
                             loading="lazy"
@@ -619,15 +621,15 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                 </div>
               )}
 
-              {/* Event Promotion */}
+              {/* Event Promotion - Masonry (keeping 4 columns for social posts) */}
               {eventPromotion.length > 0 && (
                 <div className="space-y-6">
                   <h2 className="text-2xl font-bold tracking-tight">Event Promotion</h2>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                  <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
                     {eventPromotion.map((src: string, index: number) => (
                       <figure
                         key={`event-promo-${index}`}
-                        className="group overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300"
+                        className="group overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300 break-inside-avoid mb-4"
                       >
                         <div className="relative w-full">
                           <Image
@@ -635,6 +637,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                             alt={`${title} — event promotion ${index + 1}`}
                             width={1080}
                             height={1080}
+                            quality={100}
                             sizes="(min-width:1024px) 25vw, (min-width:768px) 33vw, 50vw"
                             className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-500"
                             loading="lazy"
@@ -651,65 +654,62 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           {/* Organization work galleries */}
           {organizationWork && (
             <>
-              {/* Custom Social Media Sections */}
-              {socialMediaSections.length > 0 && (
-                <>
-                  {socialMediaSections.map((section, sectionIndex) => (
-                    <div key={`social-section-${sectionIndex}`} className="space-y-6">
-                      <div className="flex items-center justify-between">
-                        <h2 className="text-2xl font-bold tracking-tight">
-                          {section.title || `Social Media Section ${sectionIndex + 1}`}
-                        </h2>
-                        {section.description && (
-                          <p className="text-sm text-neutral-600 dark:text-neutral-400 max-w-md">
-                            {section.description}
-                          </p>
-                        )}
-                      </div>
-                      
-                      {section.images && section.images.length > 0 && (
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                          {section.images.map((src: string, imageIndex: number) => (
-                            <figure
-                              key={`social-${sectionIndex}-${imageIndex}`}
-                              className="group overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300"
-                            >
-                              <div className="relative w-full">
-                                <Image
-                                  src={src}
-                                  alt={`${section.title || 'Social media post'} ${imageIndex + 1}`}
-                                  width={1080}
-                                  height={1080}
-                                  sizes="(min-width:1024px) 25vw, (min-width:768px) 33vw, 50vw"
-                                  className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-500"
-                                  loading="lazy"
-                                />
-                              </div>
-                              {section.captions && section.captions[imageIndex] && (
-                                <div className="p-3 bg-neutral-50 dark:bg-neutral-800">
-                                  <p className="text-xs text-neutral-600 dark:text-neutral-400">
-                                    {section.captions[imageIndex]}
-                                  </p>
-                                </div>
-                              )}
-                            </figure>
-                          ))}
-                        </div>
-                      )}
+              {/* Social Media Sections - Masonry */}
+              {socialMediaSections.map((section, sectionIndex) => (
+                <div key={`social-section-${sectionIndex}`} className="space-y-6">
+                  <div className="flex items-center justify-between">
+                    <h2 className="text-2xl font-bold tracking-tight">
+                      {section.title || `Social Media Section ${sectionIndex + 1}`}
+                    </h2>
+                    {section.description && (
+                      <p className="text-sm text-neutral-600 dark:text-neutral-400 max-w-md">
+                        {section.description}
+                      </p>
+                    )}
+                  </div>
+                  
+                  {section.images && section.images.length > 0 && (
+                    <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
+                      {section.images.map((src: string, imageIndex: number) => (
+                        <figure
+                          key={`social-${sectionIndex}-${imageIndex}`}
+                          className="group overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300 break-inside-avoid mb-4"
+                        >
+                          <div className="relative w-full">
+                            <Image
+                              src={src}
+                              alt={`${section.title || 'Social media post'} ${imageIndex + 1}`}
+                              width={1080}
+                              height={1080}
+                              quality={100}
+                              sizes="(min-width:1024px) 25vw, (min-width:768px) 33vw, 50vw"
+                              className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-500"
+                              loading="lazy"
+                            />
+                          </div>
+                          {section.captions && section.captions[imageIndex] && (
+                            <div className="p-3 bg-neutral-50 dark:bg-neutral-800">
+                              <p className="text-xs text-neutral-600 dark:text-neutral-400">
+                                {section.captions[imageIndex]}
+                              </p>
+                            </div>
+                          )}
+                        </figure>
+                      ))}
                     </div>
-                  ))}
-                </>
-              )}
+                  )}
+                </div>
+              ))}
 
-              {/* Legacy Social Posts (fallback) */}
+              {/* Legacy Social Posts - Masonry */}
               {socialPosts.length > 0 && socialMediaSections.length === 0 && (
                 <div className="space-y-6">
                   <h2 className="text-2xl font-bold tracking-tight">Social Media Posts</h2>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                  <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
                     {socialPosts.map((src: string, index: number) => (
                       <figure
                         key={`legacy-social-${index}`}
-                        className="group overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300"
+                        className="group overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300 break-inside-avoid mb-4"
                       >
                         <div className="relative w-full">
                           <Image
@@ -717,6 +717,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                             alt={`${title} — social post ${index + 1}`}
                             width={1080}
                             height={1080}
+                            quality={100}
                             sizes="(min-width:1024px) 25vw, (min-width:768px) 33vw, 50vw"
                             className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-500"
                             loading="lazy"
@@ -728,15 +729,15 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                 </div>
               )}
 
-              {/* Campaigns */}
+              {/* Campaigns - Masonry */}
               {campaigns.length > 0 && (
                 <div className="space-y-6">
                   <h2 className="text-2xl font-bold tracking-tight">Campaign Materials</h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
                     {campaigns.map((src: string, index: number) => (
                       <figure
                         key={`campaign-${index}`}
-                        className="group overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300"
+                        className="group overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300 break-inside-avoid mb-6"
                       >
                         <div className="relative w-full">
                           <Image
@@ -744,6 +745,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                             alt={`${title} — campaign ${index + 1}`}
                             width={1200}
                             height={900}
+                            quality={100}
                             sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw"
                             className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-500"
                             loading="lazy"
@@ -755,15 +757,15 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                 </div>
               )}
 
-              {/* Brand Materials */}
+              {/* Brand Materials - Masonry */}
               {brandMaterials.length > 0 && (
                 <div className="space-y-6">
                   <h2 className="text-2xl font-bold tracking-tight">Brand Materials</h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="columns-1 md:columns-2 gap-6 space-y-6">
                     {brandMaterials.map((src: string, index: number) => (
                       <figure
                         key={`brand-${index}`}
-                        className="group overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300"
+                        className="group overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300 break-inside-avoid mb-6"
                       >
                         <div className="relative w-full">
                           <Image
@@ -771,6 +773,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                             alt={`${title} — brand material ${index + 1}`}
                             width={1200}
                             height={800}
+                            quality={100}
                             sizes="(min-width:768px) 50vw, 100vw"
                             className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-500"
                             loading="lazy"
@@ -784,13 +787,47 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             </>
           )}
 
-          {/* Regular Project Gallery */}
-          <ProjectGallery
-            projectTitle={title}
-            final={final}
-            applications={applications}
-            explorations={explorations}
-          />
+          {/* Regular Project Gallery - Enhanced with Orientation-Aware Final Results */}
+          {(final?.length > 0 || applications?.length > 0 || explorations?.length > 0) && (
+            <>
+              {final && final.length > 0 && (
+                <AdvancedFinalResults final={final} title={title} />
+              )}
+
+              {/* Applications - Masonry */}
+              {applications && applications.length > 0 && (
+                <div className="space-y-6">
+                  <h2 className="text-2xl font-bold tracking-tight">Applications</h2>
+                  <div className="columns-1 md:columns-2 gap-6 space-y-6">
+                    {applications.map((src: string, index: number) => (
+                      <figure
+                        key={`application-${index}`}
+                        className="group overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300 break-inside-avoid mb-6"
+                      >
+                        <div className="relative w-full">
+                          <Image
+                            src={src}
+                            alt={`${title} — application ${index + 1}`}
+                            width={1200}
+                            height={800}
+                            quality={100}
+                            sizes="(min-width:768px) 50vw, 100vw"
+                            className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-500"
+                            loading="lazy"
+                          />
+                        </div>
+                      </figure>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Design Explorations - Masonry */}
+              {explorations && explorations.length > 0 && (
+                <AdvancedExploration final={explorations} title={title} />
+              )}
+            </>
+          )}
         </section>
 
         {/* Project Story - Challenges, Solutions, Impact */}
@@ -929,17 +966,17 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           </section>
         )}
 
-        {/* More from this work */}
+        {/* More from this work - Masonry */}
         {more.length > 0 && (
           <section className="space-y-6">
             <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
               {eventWork ? 'More Event Materials' : organizationWork ? 'More Work Samples' : 'More Visuals'}
             </h2>
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
               {more.map((src: string, index: number) => (
                 <figure
                   key={`more-${index}`}
-                  className="group overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300"
+                  className="group overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300 break-inside-avoid mb-6"
                 >
                   <div className="relative w-full">
                     <Image

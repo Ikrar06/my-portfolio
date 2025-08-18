@@ -1,4 +1,4 @@
-// components/cards/project-card.tsx - NEUTRAL TAGS VERSION
+// components/cards/project-card.tsx - HIGH QUALITY VERSION
 import Link from 'next/link'
 import Image from 'next/image'
 import type { ProjectMeta } from '@/lib/projects'
@@ -30,6 +30,15 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               sizes="(min-width: 1280px) 25vw, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
               className="object-cover transition-transform duration-500 group-hover:scale-105"
               priority={false}
+              quality={100}
+              unoptimized={false}
+              placeholder="blur"
+              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyejRAjhcUNZJZUKm50sA3/2Q=="
+
+              style={{
+                objectFit: 'cover',
+                objectPosition: 'center'
+              }}
             />
           ) : (
             // Fallback placeholder when no cover image
@@ -56,7 +65,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             </div>
           )}
           
-          {/* Overlay gradient for better text readability */}
+          {/* Overlay gradient untuk readability yang lebih baik */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           
           {/* Category badge */}
@@ -80,7 +89,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             </p>
           </div>
 
-          {/* Tags - UPDATED TO MATCH SHOTS PAGE NEUTRAL COLORS */}
+          {/* Tags - NEUTRAL COLORS MATCHING SHOTS PAGE */}
           {tags && tags.length > 0 && (
             <div className="flex flex-wrap gap-1.5">
               {tags.slice(0, 3).map((tag) => (
