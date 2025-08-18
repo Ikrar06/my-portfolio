@@ -16,13 +16,14 @@ const nextConfig: NextConfig = {
   // Ganti experimental.serverComponentsExternalPackages dengan serverExternalPackages
   serverExternalPackages: [],
   
-  // Hapus experimental.serverComponentsExternalPackages
+  // Gabungkan semua experimental config dalam satu object
   experimental: {
-    // experimental configs lainnya bisa ditambahkan di sini jika diperlukan
+    // Untuk mengatasi masalah dengan route groups
+    optimizePackageImports: ['@/components'],
   },
   
-  // Output standalone untuk Vercel
-  output: 'standalone',
+  // Temporary: tidak pakai standalone untuk debugging
+  // output: 'standalone',
 }
 
 export default nextConfig
