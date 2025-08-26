@@ -386,11 +386,8 @@ export default function ContactPage() {
                     <span className="truncate">Let's make something awesome</span>
                   </div>
                   
-                  <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 break-words">
-                    Ready to Start Something
-                    <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">
-                      Cool Together?
-                    </span>
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 break-words leading-tight">
+                    Ready to Start Something Cool Together?
                   </h2>
                   
                   <p className="text-lg sm:text-xl text-white/70 mb-10 max-w-3xl mx-auto leading-relaxed break-words">
