@@ -1,10 +1,10 @@
 [
-  { "name": "Adobe Illustrator", "level": 90, "label": "Expert", "years": 5},
-  { "name": "Adobe Photoshop",   "level": 90, "label": "Expert", "years": 5},
-  { "name": "Figma",             "level": 90, "label": "Expert", "years": 2},
-  { "name": "Canva",             "level": 80, "label": "Advanced", "years": 3},
-  { "name": "Adobe After Effects",     "level": 65, "label": "Intermediate", "years": 3},
-  { "name": "Adobe Premiere Pro",     "level": 65, "label": "Intermediate", "years": 3},
-  { "name": "Adobe Animate",     "level": 60, "label": "Intermediate", "years": 1},
-  { "name": "Capcut",     "level": 80, "label": "Advanced", "years": 2}
+  { "name": "Adobe Illustrator", "label": "Expert", "years": 5},
+  { "name": "Adobe Photoshop", "label": "Expert", "years": 5},
+  { "name": "Figma", "label": "Expert", "years": 2},
+  { "name": "Canva", "label": "Advanced", "years": 3},
+  { "name": "Adobe After Effects", "label": "Intermediate", "years": 3},
+  { "name": "Adobe Premiere Pro", "label": "Intermediate", "years": 3},
+  { "name": "Adobe Animate", "label": "Intermediate", "years": 1},
+  { "name": "CapCut", "label": "Advanced", "years": 2}
 ]
