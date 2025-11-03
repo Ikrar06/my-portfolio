@@ -41,16 +41,9 @@ export default function MarketingHomePage() {
         <div className="relative text-center max-w-7xl mx-auto z-10">
           {/* Tagline — langsung tampil & jalan */}
           <div className="mb-8">
-            <TextType
-              key={`tagline-${pageKey}`}
-              text="Graphic Designer • Informatics Engineering student"
-              className="text-sm md:text-base text-white/60 font-medium tracking-wider uppercase"
-              typingSpeed={80}
-              showCursor={false}
-              initialDelay={0}
-              startOnVisible={false}
-              as="p"
-            />
+            <p className="text-sm md:text-base text-white/60 font-medium tracking-wider uppercase">
+              Graphic Designer • Informatics Engineering student
+            </p>
           </div>
 
           {/* Main Hero Heading — langsung animasi saat mount */}
