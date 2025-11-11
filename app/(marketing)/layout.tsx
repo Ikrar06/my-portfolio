@@ -6,7 +6,7 @@ export const metadata: Metadata = {
     template: '%s — Ikrar Gempur Tirani',
     default: 'Ikrar Gempur Tirani — Portfolio',
   },
-  description: 'Portfolio of Ikrar Gempur Tirani, a passionate graphic designer and Informatics Engineering student from Hasanuddin University. Specializing in brand identity, UI/UX design, creative direction, and tech community building.',
+  description: 'Ikrar Gempur Tirani — Portfolio of a passionate graphic designer and Informatics Engineering student from Hasanuddin University. Specializing in brand identity, UI/UX design, creative direction, and tech community building in Makassar, Indonesia.',
   authors: [{ name: 'Ikrar Gempur Tirani' }],
   creator: 'Ikrar Gempur Tirani',
   publisher: 'Ikrar Gempur Tirani',

@@ -26,6 +26,10 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="id" className="dark scroll-smooth">
+      <head>
+        {/* Google Search Console Verification */}
+        <meta name="google-site-verification" content="YMGy-xLqu4sGFHbgPyxg3CJAN1bpomnZX0X4wCUAWT8" />
+      </head>
       <body className="min-h-screen bg-neutral-950 text-neutral-100 antialiased">
         <a
           href="#main-content"
