@@ -8,20 +8,23 @@ import SortDropdown from '@/components/ui/sort-dropdown'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Projects — Portfolio',
-  description: 'Showcase of design projects, case studies, and creative work across various disciplines including UI/UX, graphic design, branding, and web development.',
+  title: 'Projects',
+  description: 'Explore the portfolio of Ikrar Gempur Tirani. Showcase of design projects, case studies, and creative work across UI/UX design, graphic design, branding, web development, and tech community initiatives.',
+  keywords: ['portfolio projects', 'UI/UX design', 'graphic design', 'brand identity', 'web development', 'case studies', 'creative work', 'Ikrar Gempur Tirani'],
   openGraph: {
-    title: 'Projects — Portfolio',
+    title: 'Projects — Ikrar Gempur Tirani',
     description: 'Showcase of design projects, case studies, and creative work across various disciplines including UI/UX, graphic design, branding, and web development.',
     url: (process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000') + '/projects',
-    type: 'website',
-    images: [{ url: '/images/og-projects.png', width: 1200, height: 630, alt: 'Projects Portfolio' }],
+    images: [{
+      url: '/images/foto-ikrar.jpg',
+      width: 1200,
+      height: 630,
+      alt: 'Projects by Ikrar Gempur Tirani'
+    }],
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Projects — Portfolio',
-    description: 'Showcase of design projects, case studies, and creative work across various disciplines.',
-    images: ['/images/og-projects.png'],
+    title: 'Projects — Ikrar Gempur Tirani',
+    description: 'Showcase of design projects, case studies, and creative work.',
   },
 }
 
@@ -121,26 +124,37 @@ export default async function ProjectsPage({ searchParams }: PageProps) {
       case 'oldest':
         const yearA = getProperty(a, 'year', 0)
         const yearB = getProperty(b, 'year', 0)
-        return yearA - yearB
-      
+        const monthA = getProperty(a, 'month', 12)
+        const monthB = getProperty(b, 'month', 12)
+        if (yearA !== yearB) return yearA - yearB
+        return monthA - monthB
+
       case 'title':
         const titleA = getProperty(a, 'title', '').toLowerCase()
         const titleB = getProperty(b, 'title', '').toLowerCase()
         return titleA.localeCompare(titleB)
-      
+
       case 'featured':
         const featuredA = getProperty(a, 'featured', false) || getProperty(a, 'tags', []).includes('featured')
         const featuredB = getProperty(b, 'featured', false) || getProperty(b, 'tags', []).includes('featured')
         if (featuredA && !featuredB) return -1
         if (!featuredA && featuredB) return 1
-        // If both are featured or both are not, sort by year (newest first)
-        return getProperty(b, 'year', 0) - getProperty(a, 'year', 0)
-      
+        // If both are featured or both are not, sort by year and month (newest first)
+        const yearFeatA = getProperty(a, 'year', 0)
+        const yearFeatB = getProperty(b, 'year', 0)
+        const monthFeatA = getProperty(a, 'month', 12)
+        const monthFeatB = getProperty(b, 'month', 12)
+        if (yearFeatB !== yearFeatA) return yearFeatB - yearFeatA
+        return monthFeatB - monthFeatA
+
       case 'newest':
       default:
         const yearADesc = getProperty(a, 'year', 0)
         const yearBDesc = getProperty(b, 'year', 0)
-        return yearBDesc - yearADesc
+        const monthADesc = getProperty(a, 'month', 12)
+        const monthBDesc = getProperty(b, 'month', 12)
+        if (yearBDesc !== yearADesc) return yearBDesc - yearADesc
+        return monthBDesc - monthADesc
     }
   })
 

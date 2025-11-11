@@ -67,7 +67,9 @@ export async function getAllProjects(options: ProjectListOptions = {}): Promise<
       const fb = isFeatured(b) ? 1 : 0
       if (fa !== fb) return fb - fa // featured dulu
     }
-    return b.year - a.year // default terbaru dulu
+    // Sort by year desc, then month desc (terbaru dulu)
+    if (b.year !== a.year) return b.year - a.year
+    return b.month - a.month
   })
 
   // Limit

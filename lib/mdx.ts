@@ -17,6 +17,7 @@ export type ProjectFrontmatter = {
   title: string
   slug?: string
   year: number
+  month?: number // 1-12, untuk sorting yang lebih presisi
   role?: string
   tools?: string[]
   skills?: string[]
@@ -85,6 +86,7 @@ export type ProjectMeta = {
   slug: string
   file: string
   year: number
+  month: number // default 12 jika tidak ada
   role: string
   tools: string[]
   skills: string[]
@@ -213,6 +215,7 @@ export async function getAllProjects(options: { featuredFirst?: boolean } = {}):
         slug,
         file,
         year: fm.year || new Date().getFullYear(),
+        month: fm.month || 12, // default December jika tidak ada
         role: ensureString(fm.role),
         tools: ensureArray(fm.tools),
         skills: ensureArray(fm.skills),
@@ -273,10 +276,16 @@ export async function getAllProjects(options: { featuredFirst?: boolean } = {}):
     items.sort((a, b) => {
       if (a.featured && !b.featured) return -1
       if (!a.featured && b.featured) return 1
-      return b.year - a.year
+      // Sort by year desc, then month desc
+      if (b.year !== a.year) return b.year - a.year
+      return b.month - a.month
     })
   } else {
-    items.sort((a, b) => b.year - a.year)
+    items.sort((a, b) => {
+      // Sort by year desc, then month desc
+      if (b.year !== a.year) return b.year - a.year
+      return b.month - a.month
+    })
   }
 
   return items
@@ -427,6 +436,7 @@ export async function getProjectBySlug(
     slug,
     file: path.basename(full),
     year: frontmatter.year || new Date().getFullYear(),
+    month: frontmatter.month || 12, // default December jika tidak ada
     role: ensureString(frontmatter.role),
     tools: ensureArray(frontmatter.tools),
     skills: ensureArray(frontmatter.skills),

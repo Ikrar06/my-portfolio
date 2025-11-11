@@ -13,6 +13,11 @@ export async function generateMetadata(): Promise<Metadata> {
     title: 'Portfolio — Graphic Designer',
     description: 'Modern, profesional, cepat, mudah di-update.',
     metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'),
+    icons: {
+      icon: '/icon.ico',
+      shortcut: '/icon.ico',
+      apple: '/icon.ico',
+    },
   }
 
   return baseMetadata

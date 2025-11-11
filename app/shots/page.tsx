@@ -5,26 +5,23 @@ import { getAllShots } from '@/lib/shots'
 import FadeIn from '@/components/motion/fade-in'
 
 export const metadata: Metadata = {
-  title: 'Shots — Portfolio',
-  description: 'A curated collection of visual experiments, design explorations, and creative shots that showcase artistic vision and technical skills.',
-  keywords: 'design shots, visual experiments, creative work, design inspiration, dribbble shots, portfolio gallery, design exploration',
+  title: 'Shots',
+  description: 'A curated collection of visual experiments, design explorations, and creative shots by Ikrar Gempur Tirani. Quick glimpses of the creative process and artistic vision.',
+  keywords: ['design shots', 'visual experiments', 'creative work', 'design inspiration', 'portfolio gallery', 'design exploration', 'Ikrar Gempur Tirani'],
   openGraph: {
-    title: 'Shots — Creative Visual Gallery',
+    title: 'Shots — Ikrar Gempur Tirani',
     description: 'A curated collection of visual experiments, design explorations, and creative shots that showcase artistic vision and technical skills.',
     url: (process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000') + '/shots',
-    type: 'website',
-    images: [{ 
-      url: '/images/og-shots.png', 
-      width: 1200, 
-      height: 630, 
-      alt: 'Shots - Creative Visual Gallery' 
+    images: [{
+      url: '/images/foto-ikrar.jpg',
+      width: 1200,
+      height: 630,
+      alt: 'Creative Shots by Ikrar Gempur Tirani'
     }],
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Shots — Creative Visual Gallery',
+    title: 'Shots — Ikrar Gempur Tirani',
     description: 'A curated collection of visual experiments, design explorations, and creative shots.',
-    images: ['/images/og-shots.png'],
   },
 }
 

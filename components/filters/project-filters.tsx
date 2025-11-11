@@ -167,15 +167,15 @@ export default function ProjectFilters({
                   onClick={() => toggleFilter(type, item)}
                   className={`
                     px-4 py-3 text-sm rounded-2xl border transition-all text-left hover:shadow-sm
-                    ${isSelected 
+                    ${isSelected
                       ? colorClasses
                       : 'border-neutral-200 text-neutral-700 hover:border-blue-300 hover:bg-blue-50 dark:border-neutral-700 dark:text-neutral-300 dark:hover:border-blue-600 dark:hover:bg-blue-950/30'
                     }
                   `}
                 >
-                  <div className="flex items-center gap-3">
-                    <span className={`w-2 h-2 rounded-full flex-shrink-0 ${isSelected ? 'bg-current' : 'bg-neutral-300 dark:bg-neutral-600'}`} />
-                    <span className="font-medium truncate">
+                  <div className="flex items-start gap-3">
+                    <span className={`w-2 h-2 rounded-full flex-shrink-0 mt-1 ${isSelected ? 'bg-current' : 'bg-neutral-300 dark:bg-neutral-600'}`} />
+                    <span className="font-medium break-words line-clamp-2">
                       {type === 'tags' ? `#${item}` : item}
                     </span>
                   </div>
