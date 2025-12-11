@@ -17,7 +17,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
     <article className="group">
       <Link
         href={`/projects/${slug}`}
-        className="block glass-card rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-[0_20px_60px_rgba(0,0,0,0.7),0_8px_24px_rgba(0,153,255,0.15)] focus:outline-none focus-visible:ring-2 focus-visible:ring-framer-blue focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary"
+        className="block glass-card rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-[0_20px_60px_rgba(0,0,0,0.8),0_0_1px_rgba(0,153,255,0.1)] focus:outline-none focus-visible:ring-2 focus-visible:ring-framer-blue focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary"
         aria-label={`View project details: ${title}`}
       >
         {/* Image Container */}

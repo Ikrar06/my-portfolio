@@ -325,28 +325,26 @@ export default function HomeClient({ featuredProjects }: HomeClientProps) {
       {/* Final CTA Section */}
       <section className="relative py-24 border-t border-white/5">
         <div className="container mx-auto px-6 text-center">
-          <div className="py-4">
-            <FadeIn key={`cta-title-${pageKey}`}>
-              <SplitText
-                key={`cta-split-${pageKey}`}
-                text="Got a Project in Mind?"
-                className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-8"
-                splitType="words"
-                delay={40}
-                duration={0.5}
-                ease="power2.out"
-                from={{ opacity: 0, y: 30 }}
-                to={{ opacity: 1, y: 0 }}
-                startOnVisible
-              />
-            </FadeIn>
-          </div>
+          <FadeIn key={`cta-title-${pageKey}`}>
+            <SplitText
+              key={`cta-split-${pageKey}`}
+              text="Got a Project in Mind?"
+              className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-6"
+              splitType="words"
+              delay={40}
+              duration={0.5}
+              ease="power2.out"
+              from={{ opacity: 0, y: 30 }}
+              to={{ opacity: 1, y: 0 }}
+              startOnVisible
+            />
+          </FadeIn>
 
           <FadeIn key={`cta-subtitle-${pageKey}`} delay={0.25}>
             <TextType
               key={`cta-text-${pageKey}`}
               text="Let's turn your ideas into something amazing together"
-              className="text-lg md:text-xl text-white/60 mb-12 max-w-3xl mx-auto"
+              className="text-lg md:text-xl text-text-secondary mb-12 max-w-3xl mx-auto"
               typingSpeed={60}
               showCursor={false}
               startOnVisible
@@ -357,15 +355,14 @@ export default function HomeClient({ featuredProjects }: HomeClientProps) {
           <FadeIn key={`cta-buttons-${pageKey}`} delay={0.4} className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <Link
               href="/contact"
-              className="group relative px-12 py-5 bg-white text-black font-semibold rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-white/10"
+              className="group relative px-12 py-5 bg-framer-blue text-white font-semibold rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 hover:bg-framer-blue-hover hover:shadow-2xl hover:shadow-framer-blue/20"
             >
               <span className="relative z-10">Let's Chat</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-gray-100 to-white transform translate-x-full group-hover:translate-x-0 transition-transform duration-300" />
             </Link>
 
             <Link
               href="/projects"
-              className="group px-12 py-5 text-white/70 hover:text-white font-medium transition-all duration-300 border-b border-white/20 hover:border-white/40"
+              className="group px-12 py-5 text-text-secondary hover:text-framer-blue font-medium transition-all duration-300 border-b border-white/20 hover:border-framer-blue/40"
             >
               <span>Check Out My Work</span>
               <span className="ml-3 group-hover:translate-x-2 transition-transform duration-300 inline-block">→</span>
