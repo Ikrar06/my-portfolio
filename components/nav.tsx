@@ -36,12 +36,12 @@ export default function Nav() {
           {/* Logo/Brand */}
           <Link
             href="/"
-            className="group flex-shrink-0 font-bold text-lg text-white hover:text-blue-300 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 rounded-lg px-2 py-1"
+            className="group flex-shrink-0 font-bold text-lg text-white hover:text-framer-blue transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-framer-blue focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary rounded-lg px-2 py-1"
             aria-label="Kembali ke halaman utama"
             onClick={closeMobileMenu}
           >
-            <span className="bg-gradient-to-r from-blue-400 via-blue-300 to-blue-500 bg-clip-text text-transparent group-hover:from-blue-300 group-hover:via-blue-200 group-hover:to-blue-400 transition-colors duration-300">
-              Portfolio
+            <span className="bg-gradient-to-r from-framer-blue via-framer-blue-light to-framer-blue bg-clip-text text-transparent group-hover:from-framer-blue-light group-hover:via-white group-hover:to-framer-blue-light transition-colors duration-300">
+              IGT
             </span>
           </Link>
 
@@ -57,31 +57,31 @@ export default function Nav() {
                       aria-current={isActive ? 'page' : undefined}
                       className={`
                         relative px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300
-                        focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900
+                        focus:outline-none focus-visible:ring-2 focus-visible:ring-framer-blue focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary
                         group overflow-hidden
-                        ${isActive 
-                          ? 'text-white shadow-lg transform scale-105' 
-                          : 'text-slate-300 hover:text-white hover:scale-105'
+                        ${isActive
+                          ? 'text-white shadow-lg transform scale-105'
+                          : 'text-text-secondary hover:text-white hover:scale-105'
                         }
                       `}
                     >
                       {/* Background untuk active state */}
-                      <div 
+                      <div
                         className={`
                           absolute inset-0 rounded-xl transition-all duration-300 ease-out
-                          ${isActive 
-                            ? 'bg-gradient-to-r from-blue-500/80 via-blue-400/80 to-blue-600/80 opacity-100 scale-100' 
-                            : 'bg-gradient-to-r from-blue-500/40 via-blue-400/40 to-blue-600/40 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100'
+                          ${isActive
+                            ? 'bg-framer-blue opacity-100 scale-100'
+                            : 'bg-framer-blue opacity-0 scale-95 group-hover:opacity-80 group-hover:scale-100'
                           }
                         `}
                       />
-                      
+
                       {/* Glass overlay untuk depth */}
-                      <div 
+                      <div
                         className={`
                           absolute inset-0 rounded-xl backdrop-blur-sm transition-all duration-300
-                          ${isActive 
-                            ? 'bg-white/10 border border-white/20' 
+                          ${isActive
+                            ? 'bg-white/10 border border-white/20'
                             : 'bg-white/5 border border-white/10 opacity-0 group-hover:opacity-100'
                           }
                         `}
@@ -111,7 +111,7 @@ export default function Nav() {
           {/* Mobile Menu Button */}
           <button
             type="button"
-            className="md:hidden p-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 transition-colors duration-200"
+            className="md:hidden p-2 rounded-lg text-text-secondary hover:text-white hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-framer-blue focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary transition-colors duration-200"
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-menu"
             aria-label={isMobileMenuOpen ? 'Tutup menu' : 'Buka menu'}
@@ -153,33 +153,33 @@ export default function Nav() {
                       aria-current={isActive ? 'page' : undefined}
                       className={`
                         relative block px-4 py-4 rounded-xl text-sm font-medium transition-all duration-300
-                        focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900
+                        focus:outline-none focus-visible:ring-2 focus-visible:ring-framer-blue focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary
                         group overflow-hidden
-                        ${isActive 
-                          ? 'text-white transform scale-[1.02]' 
-                          : 'text-slate-300 hover:text-white hover:scale-[1.02]'
+                        ${isActive
+                          ? 'text-white transform scale-[1.02]'
+                          : 'text-text-secondary hover:text-white hover:scale-[1.02]'
                         }
                       `}
                       onClick={closeMobileMenu}
                     >
                       {/* Background untuk mobile active state */}
-                      <div 
+                      <div
                         className={`
                           absolute inset-0 rounded-xl transition-all duration-300
-                          ${isActive 
-                            ? 'bg-gradient-to-r from-blue-500/70 via-blue-400/70 to-blue-600/70 opacity-100' 
-                            : 'bg-gradient-to-r from-blue-500/30 via-blue-400/30 to-blue-600/30 opacity-0 group-hover:opacity-100'
+                          ${isActive
+                            ? 'bg-framer-blue opacity-100'
+                            : 'bg-framer-blue opacity-0 group-hover:opacity-70'
                           }
                         `}
                       />
-                      
+
                       {/* Glass overlay untuk mobile */}
-                      <div 
+                      <div
                         className={`
                           absolute inset-0 rounded-xl backdrop-blur-sm transition-all duration-300
-                          ${isActive 
-                            ? 'bg-white/10 border-l-4 border-blue-400' 
-                            : 'bg-white/5 border-l-4 border-transparent group-hover:border-blue-400/50'
+                          ${isActive
+                            ? 'bg-white/10 border-l-4 border-framer-blue'
+                            : 'bg-white/5 border-l-4 border-transparent group-hover:border-framer-blue/50'
                           }
                         `}
                       />

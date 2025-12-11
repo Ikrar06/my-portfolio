@@ -43,15 +43,15 @@ export default function Footer() {
             {/* Brand & Personal Message */}
             <div className="space-y-4 lg:max-w-md">
               <div className="flex items-center gap-2">
-                <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 via-blue-300 to-blue-500 bg-clip-text text-transparent">
+                <span className="text-2xl font-bold bg-gradient-to-r from-framer-blue via-framer-blue-light to-framer-blue bg-clip-text text-transparent">
                   Ikrar Gempur Tirani
                 </span>
               </div>
-              <p className="text-slate-300 leading-relaxed">
-                Turning ideas into stunning visual experiences. I craft designs that don't just look good, but tell meaningful stories and connect with people.
+              <p className="text-text-secondary leading-relaxed">
+                Data Scientist specializing in statistical analysis, NLP, and production ML systems. Building AI products with full-stack skills and design thinking.
               </p>
-              <p className="text-sm text-slate-400">
-                Available for freelance projects and full-time opportunities.
+              <p className="text-sm text-text-tertiary">
+                Available for Data Science/ML roles and research collaborations.
               </p>
             </div>
 
@@ -66,12 +66,12 @@ export default function Footer() {
                     <li key={href}>
                       <Link
                         href={href}
-                        className="group block transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 rounded-sm"
+                        className="group block transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-framer-blue focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary rounded-sm"
                       >
-                        <span className="text-sm font-medium text-slate-300 group-hover:text-white transition-colors duration-200">
+                        <span className="text-sm font-medium text-text-secondary group-hover:text-framer-blue transition-colors duration-200">
                           {label}
                         </span>
-                        <p className="text-xs text-slate-500 group-hover:text-slate-400 transition-colors duration-200 mt-0.5">
+                        <p className="text-xs text-text-tertiary group-hover:text-text-secondary transition-colors duration-200 mt-0.5">
                           {description}
                         </p>
                       </Link>
@@ -90,7 +90,7 @@ export default function Footer() {
                         href={href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group flex items-start gap-3 transition-all duration-200 hover:translate-x-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 rounded-sm"
+                        className="group flex items-start gap-3 transition-all duration-200 hover:translate-x-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-framer-blue focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary rounded-sm"
                         aria-label={`Visit my ${name} profile (opens in new tab)`}
                       >
                         <span className="flex-shrink-0 mt-0.5 relative w-5 h-5">
@@ -104,20 +104,20 @@ export default function Footer() {
                               filter: 'brightness(0) saturate(100%) invert(64%) sepia(6%) saturate(394%) hue-rotate(185deg) brightness(96%) contrast(85%)'
                             }}
                           />
-                          <div 
+                          <div
                             className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
                             style={{
                               background: `url(${iconPath}) no-repeat center`,
                               backgroundSize: 'contain',
-                              filter: 'brightness(0) saturate(100%) invert(69%) sepia(54%) saturate(1094%) hue-rotate(183deg) brightness(97%) contrast(94%)'
+                              filter: 'brightness(0) saturate(100%) invert(50%) sepia(98%) saturate(2878%) hue-rotate(186deg) brightness(101%) contrast(107%)'
                             }}
                           />
                         </span>
                         <div>
-                          <span className="text-sm font-medium text-slate-300 group-hover:text-white transition-colors duration-200 block">
+                          <span className="text-sm font-medium text-text-secondary group-hover:text-framer-blue transition-colors duration-200 block">
                             {name}
                           </span>
-                          <p className="text-xs text-slate-500 group-hover:text-slate-400 transition-colors duration-200">
+                          <p className="text-xs text-text-tertiary group-hover:text-text-secondary transition-colors duration-200">
                             {description}
                           </p>
                         </div>
