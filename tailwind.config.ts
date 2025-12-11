@@ -20,6 +20,21 @@ const config: Config = {
   			sm: 'calc(var(--radius) - 4px)'
   		},
   		colors: {
+  			// Framer-inspired color palette
+  			'framer-blue': {
+  				DEFAULT: '#0099FF',
+  				hover: '#0088EE',
+  				light: '#33ADFF',
+  				dark: '#0077CC',
+  			},
+  			'bg-primary': '#0A0A0A',
+  			'bg-secondary': '#141414',
+  			'bg-tertiary': '#1A1A1A',
+  			'text-primary': '#FAFAFA',
+  			'text-secondary': '#A1A1A1',
+  			'text-tertiary': '#737373',
+
+  			// Shadcn UI colors (kept for compatibility)
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
