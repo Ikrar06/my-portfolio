@@ -17,7 +17,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
     <article className="group">
       <Link
         href={`/projects/${slug}`}
-        className="block glass-surface rounded-xl overflow-hidden transition-all duration-300 hover:scale-[1.02] focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
+        className="block glass-card rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-[0_20px_60px_rgba(0,0,0,0.7),0_8px_24px_rgba(0,153,255,0.15)] focus:outline-none focus-visible:ring-2 focus-visible:ring-framer-blue focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary"
         aria-label={`View project details: ${title}`}
       >
         {/* Image Container */}
@@ -81,10 +81,10 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         {/* Content */}
         <div className="p-5 space-y-3 rounded-b-xl">
           <div className="space-y-2">
-            <h3 className="text-base md:text-lg font-semibold leading-tight text-white line-clamp-2 group-hover:text-blue-100 transition-colors duration-200">
+            <h3 className="text-base md:text-lg font-semibold leading-tight text-white line-clamp-2 group-hover:text-framer-blue transition-colors duration-200">
               {title}
             </h3>
-            <p className="text-sm text-slate-300 line-clamp-3 leading-relaxed">
+            <p className="text-sm text-text-secondary line-clamp-3 leading-relaxed">
               {summary}
             </p>
           </div>
@@ -110,18 +110,18 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           
           {/* Footer */}
           <div className="flex items-center justify-between pt-2 border-t border-white/10">
-            <time 
-              className="text-xs font-medium text-slate-400 bg-slate-800/50 px-2 py-1 rounded-full"
+            <time
+              className="text-xs font-medium text-text-tertiary bg-bg-tertiary px-2 py-1 rounded-full"
               dateTime={year.toString()}
             >
               {year}
             </time>
-            <span className="text-xs font-medium text-blue-300 flex items-center gap-1 opacity-80 group-hover:opacity-100 transition-opacity duration-200">
+            <span className="text-xs font-medium text-framer-blue flex items-center gap-1 opacity-80 group-hover:opacity-100 transition-opacity duration-200">
               View details
-              <svg 
-                className="w-3 h-3 transition-transform duration-200 group-hover:translate-x-0.5" 
-                fill="none" 
-                viewBox="0 0 24 24" 
+              <svg
+                className="w-3 h-3 transition-transform duration-200 group-hover:translate-x-0.5"
+                fill="none"
+                viewBox="0 0 24 24"
                 stroke="currentColor"
                 aria-hidden="true"
               >

@@ -143,9 +143,9 @@ header, main, footer, section {
 .glass-surface:hover {
   background: rgba(20, 20, 20, 0.8);
   border-color: var(--border-hover);
-  box-shadow: var(--shadow-lg), var(--shadow-accent),
+  box-shadow: var(--shadow-lg),
     inset 0 1px 0 rgba(255, 255, 255, 0.15);
-  transform: translateY(-4px);
+  transform: translateY(-2px);
 }
 
 /* Pseudo-elements dihapus untuk border yang bersih */
@@ -175,7 +175,7 @@ header, main, footer, section {
   background: rgba(20, 20, 20, 0.8);
   border-color: var(--border-hover);
   transform: translateY(-8px) scale(1.02);
-  box-shadow: var(--shadow-lg), var(--shadow-accent),
+  box-shadow: var(--shadow-lg),
     inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
