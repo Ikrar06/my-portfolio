@@ -176,42 +176,42 @@ export default async function ProjectsPage({ searchParams }: PageProps) {
 
         {/* Active Filters Display */}
         {hasActiveFilters && (
-          <div className="flex flex-wrap items-center gap-3 p-5 bg-blue-50/50 dark:bg-blue-950/20 rounded-3xl border border-blue-200/50 dark:border-blue-800/30 backdrop-blur-sm">
-            <span className="text-sm font-medium text-blue-800 dark:text-blue-200 flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-3 p-5 bg-bg-secondary rounded-3xl border border-border backdrop-blur-sm">
+            <span className="text-sm font-medium text-text-primary flex items-center gap-2">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.207A1 1 0 013 6.5V4z" />
               </svg>
               Active filters:
             </span>
-            
+
             {/* Display selected tags */}
             {selectedTags.map(tag => (
-              <span key={`tag-${tag}`} className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium bg-blue-100 text-blue-800 rounded-2xl dark:bg-blue-900/30 dark:text-blue-200 border border-blue-200 dark:border-blue-700/50 max-w-xs">
-                <span className="w-1.5 h-1.5 bg-blue-600 rounded-full flex-shrink-0"></span>
+              <span key={`tag-${tag}`} className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium bg-neutral-100 dark:bg-neutral-800/50 text-neutral-600 dark:text-neutral-400 rounded-2xl border border-neutral-200 dark:border-neutral-700/50 max-w-xs">
+                <span className="w-1.5 h-1.5 bg-neutral-400 rounded-full flex-shrink-0"></span>
                 <span className="truncate">#{tag}</span>
               </span>
             ))}
 
             {/* Display selected categories */}
             {selectedCategories.map(category => (
-              <span key={`cat-${category}`} className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium bg-blue-200 text-blue-900 rounded-2xl dark:bg-blue-800/40 dark:text-blue-100 border border-blue-300 dark:border-blue-600/50 max-w-xs">
-                <span className="w-1.5 h-1.5 bg-blue-700 rounded-full flex-shrink-0"></span>
+              <span key={`cat-${category}`} className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium bg-neutral-100 dark:bg-neutral-800/50 text-neutral-600 dark:text-neutral-400 rounded-2xl border border-neutral-200 dark:border-neutral-700/50 max-w-xs">
+                <span className="w-1.5 h-1.5 bg-neutral-400 rounded-full flex-shrink-0"></span>
                 <span className="truncate">{category}</span>
               </span>
             ))}
 
             {/* Display selected skills */}
             {selectedSkills.map(skill => (
-              <span key={`skill-${skill}`} className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium bg-blue-50 text-blue-700 rounded-2xl dark:bg-blue-950/50 dark:text-blue-300 border border-blue-200 dark:border-blue-800/50 max-w-xs">
-                <span className="w-1.5 h-1.5 bg-blue-500 rounded-full flex-shrink-0"></span>
+              <span key={`skill-${skill}`} className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium bg-neutral-100 dark:bg-neutral-800/50 text-neutral-600 dark:text-neutral-400 rounded-2xl border border-neutral-200 dark:border-neutral-700/50 max-w-xs">
+                <span className="w-1.5 h-1.5 bg-neutral-400 rounded-full flex-shrink-0"></span>
                 <span className="truncate">{skill}</span>
               </span>
             ))}
 
             {/* Display selected years */}
             {selectedYears.map(year => (
-              <span key={`year-${year}`} className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium bg-blue-300/50 text-blue-800 rounded-2xl dark:bg-blue-700/30 dark:text-blue-200 border border-blue-300 dark:border-blue-600/50 max-w-xs">
-                <span className="w-1.5 h-1.5 bg-blue-600 rounded-full flex-shrink-0"></span>
+              <span key={`year-${year}`} className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium bg-neutral-100 dark:bg-neutral-800/50 text-neutral-600 dark:text-neutral-400 rounded-2xl border border-neutral-200 dark:border-neutral-700/50 max-w-xs">
+                <span className="w-1.5 h-1.5 bg-neutral-400 rounded-full flex-shrink-0"></span>
                 <span className="truncate">{year}</span>
               </span>
             ))}
@@ -219,7 +219,7 @@ export default async function ProjectsPage({ searchParams }: PageProps) {
             {/* Clear all filters button */}
             <a
               href="/projects"
-              className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-2xl border border-blue-500 hover:border-blue-600 transition-colors"
+              className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-medium text-white bg-framer-blue hover:bg-framer-blue-hover rounded-2xl border border-framer-blue hover:border-framer-blue-hover transition-colors"
             >
               <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -285,7 +285,7 @@ export default async function ProjectsPage({ searchParams }: PageProps) {
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <a
                 href="/projects"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-2xl hover:bg-blue-700 transition-colors font-medium shadow-sm hover:shadow-md"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-framer-blue text-white rounded-2xl hover:bg-framer-blue-hover transition-colors font-medium shadow-sm hover:shadow-md"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" />
@@ -294,7 +294,7 @@ export default async function ProjectsPage({ searchParams }: PageProps) {
               </a>
               <a
                 href="/"
-                className="inline-flex items-center gap-2 px-6 py-3 border border-blue-200 text-blue-700 rounded-2xl hover:bg-blue-50 dark:border-blue-700 dark:text-blue-300 dark:hover:bg-blue-950/30 transition-colors font-medium"
+                className="inline-flex items-center gap-2 px-6 py-3 border border-border text-text-secondary rounded-2xl hover:bg-bg-secondary hover:text-text-primary hover:border-border-hover transition-colors font-medium"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />

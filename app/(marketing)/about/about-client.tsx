@@ -449,10 +449,9 @@ export default function AboutClient({ skills }: AboutClientProps) {
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <Link
                   href="/contact"
-                  className="group relative px-10 py-4 bg-white text-black font-semibold rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-white/10"
+                  className="group relative px-10 py-4 bg-framer-blue text-white font-semibold rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:bg-framer-blue-hover hover:shadow-2xl hover:shadow-framer-blue/20"
                 >
                   <span className="relative z-10">Get in Touch</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-gray-100 to-white transform translate-x-full group-hover:translate-x-0 transition-transform duration-300" />
                 </Link>
                 <Link
                   href="/projects"

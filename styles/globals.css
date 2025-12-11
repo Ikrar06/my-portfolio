@@ -85,12 +85,11 @@ body {
   position: relative;
   line-height: 1.7;
 
-  /* Subtle gradient overlay */
+  /* Grid background only - removed radial gradient */
   background-image:
-    radial-gradient(circle at 50% 0%, rgba(0, 153, 255, 0.03), transparent 50%),
     linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
-  background-size: 100% 100%, var(--grid-size) var(--grid-size), var(--grid-size) var(--grid-size);
+  background-size: var(--grid-size) var(--grid-size), var(--grid-size) var(--grid-size);
 }
 
 /* Pastikan konten berada di atas grid spotlight */

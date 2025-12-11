@@ -40,17 +40,15 @@ export default function ContactClient({ contactInfo }: ContactClientProps) {
   return (
     <div className="w-full overflow-x-hidden">
       {/* Hero Section with Clean Design */}
-      <section className="relative min-h-screen flex flex-col justify-center px-4 sm:px-6 py-20 w-full">
-        {/* Background Elements - Repositioned to stay within viewport */}
-        <div className="absolute top-0 right-0 w-40 sm:w-60 md:w-80 h-40 sm:h-60 md:h-80 bg-blue-500/8 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-40 sm:w-60 md:w-80 h-40 sm:h-60 md:h-80 bg-indigo-500/8 rounded-full blur-3xl" />
+      <section className="relative min-h-screen flex flex-col justify-center px-4 sm:px-6 py-20 w-full overflow-hidden">
+        {/* Background Elements removed to avoid visual artifacts */}
 
         <div className="relative max-w-6xl mx-auto z-10 w-full">
           {/* Status Indicator */}
           <div className="mb-8 w-full">
             <FadeIn delay={0}>
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium max-w-full">
-                <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse flex-shrink-0" />
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-framer-blue/10 border border-framer-blue/20 text-framer-blue text-sm font-medium max-w-full">
+                <div className="w-2 h-2 bg-framer-blue rounded-full animate-pulse flex-shrink-0" />
                 <span className="truncate">Currently taking on new projects</span>
               </div>
             </FadeIn>
@@ -166,8 +164,8 @@ export default function ContactClient({ contactInfo }: ContactClientProps) {
                   <span className="text-xs sm:text-sm font-medium">{contactInfo.TIMEZONE}</span>
                 </div>
                 <div className="hidden sm:block w-1 h-1 bg-white/30 rounded-full flex-shrink-0" />
-                <div className="flex items-center gap-2 text-blue-400">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse flex-shrink-0" />
+                <div className="flex items-center gap-2 text-framer-blue">
+                  <div className="w-2 h-2 bg-framer-blue rounded-full animate-pulse flex-shrink-0" />
                   <span className="text-xs sm:text-sm font-medium">Usually around 9 AM - 6 PM</span>
                 </div>
               </div>
@@ -263,7 +261,7 @@ export default function ContactClient({ contactInfo }: ContactClientProps) {
               <FadeIn key={`step-${i}-${pageKey}`} delay={0.15 * i}>
                 <div className="backdrop-blur-sm bg-white/[0.02] border border-white/10 rounded-3xl p-6 sm:p-8 hover:bg-white/[0.04] hover:border-white/20 transition-all duration-500 group relative w-full">
                   {/* Step number */}
-                  <div className="absolute -top-3 -left-3 w-8 h-8 bg-blue-500 text-white text-sm font-bold rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="absolute -top-3 -left-3 w-8 h-8 bg-framer-blue text-white text-sm font-bold rounded-full flex items-center justify-center flex-shrink-0">
                     {step.step}
                   </div>
 
@@ -280,7 +278,7 @@ export default function ContactClient({ contactInfo }: ContactClientProps) {
                   </p>
 
                   <div className="text-center space-y-2">
-                    <div className="text-sm text-blue-400 font-medium">
+                    <div className="text-sm text-framer-blue font-medium">
                       Timeline: {step.timeline}
                     </div>
                     <div className="text-xs text-white/50">
@@ -360,7 +358,7 @@ export default function ContactClient({ contactInfo }: ContactClientProps) {
               <FadeIn key={`faq-item-${i}-${pageKey}`} delay={0.05 * i}>
                 <div className="backdrop-blur-sm bg-white/[0.02] border border-white/10 rounded-2xl p-4 sm:p-6 hover:bg-white/[0.04] hover:border-white/20 transition-all duration-300 group w-full">
                   <h3 className="text-base sm:text-lg font-semibold text-white mb-3 group-hover:text-white/90 transition-colors duration-300 flex items-start gap-3 break-words">
-                    <span className="text-blue-400 text-xl flex-shrink-0">Q.</span>
+                    <span className="text-framer-blue text-xl flex-shrink-0">Q.</span>
                     <span className="break-words">{faq.q}</span>
                   </h3>
                   <p className="text-sm sm:text-base text-white/60 leading-relaxed group-hover:text-white/70 transition-colors duration-300 ml-8 break-words">
@@ -378,14 +376,12 @@ export default function ContactClient({ contactInfo }: ContactClientProps) {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 w-full">
           <FadeIn key={`final-cta-${pageKey}`}>
             <div className="relative backdrop-blur-sm bg-white/[0.02] border border-white/10 rounded-3xl p-8 sm:p-12 md:p-16 text-center overflow-hidden w-full">
-              {/* Background decoration - repositioned */}
-              <div className="absolute top-0 right-0 w-40 sm:w-60 md:w-80 h-40 sm:h-60 md:h-80 bg-blue-500/8 rounded-full blur-3xl" />
-              <div className="absolute bottom-0 left-0 w-40 sm:w-60 md:w-80 h-40 sm:h-60 md:h-80 bg-indigo-500/8 rounded-full blur-3xl" />
+              {/* Background decoration removed to avoid visual artifacts */}
 
               <div className="relative z-10">
                 <div className="mb-8">
-                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/20 border border-blue-500/30 text-blue-300 text-sm font-medium mb-6 max-w-full">
-                    <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse flex-shrink-0" />
+                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-framer-blue/20 border border-framer-blue/30 text-framer-blue text-sm font-medium mb-6 max-w-full">
+                    <div className="w-2 h-2 bg-framer-blue rounded-full animate-pulse flex-shrink-0" />
                     <span className="truncate">Let's make something awesome</span>
                   </div>
 
@@ -404,7 +400,7 @@ export default function ContactClient({ contactInfo }: ContactClientProps) {
                     href={`https://wa.me/${contactInfo.WHATSAPP.replace(/[^\d]/g, '')}?text=${encodeURIComponent('Hey Ikrar! 🎨\n\nI\'ve got a project idea and would love to chat about it.\n\nWhat I need help with: \nRough timeline: \nBudget I\'m thinking: \n\nWhen works for a quick call?\n\nThanks!')}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group inline-flex items-center justify-center px-6 sm:px-8 py-4 text-sm sm:text-base font-semibold text-white bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl hover:from-blue-700 hover:to-blue-800 transition-all duration-300 shadow-lg hover:shadow-blue-500/25 w-full sm:w-auto min-w-[200px] break-words"
+                    className="group inline-flex items-center justify-center px-6 sm:px-8 py-4 text-sm sm:text-base font-semibold text-white bg-framer-blue rounded-2xl hover:bg-framer-blue-hover transition-all duration-300 shadow-lg hover:shadow-framer-blue/25 w-full sm:w-auto min-w-[200px] break-words"
                   >
                     <span className="mr-2 flex-shrink-0">💬</span>
                     <span className="truncate">Let's Chat on WhatsApp</span>
