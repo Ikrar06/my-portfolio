@@ -2,6 +2,8 @@
 import type { ProjectMeta } from './mdx'
 import {
   getAllProjects as _getAllProjectsRaw,
+  getCodingProjects as _getCodingProjectsRaw,
+  getDesignProjects as _getDesignProjectsRaw,
   getProjectBySlug as _getProjectBySlugRaw,
   getProjectSlugs as _getProjectSlugsRaw,
 } from './mdx'
@@ -83,3 +85,89 @@ export async function getAllProjects(options: ProjectListOptions = {}): Promise<
 /** Re-export helper detail & daftar slug dari mdx.ts */
 export const getProjectBySlug = _getProjectBySlugRaw
 export const getProjectSlugs = _getProjectSlugsRaw
+
+/** Get only coding projects */
+export async function getCodingProjects(options: ProjectListOptions = {}): Promise<ProjectMeta[]> {
+  let items = await _getCodingProjectsRaw()
+
+  // Filter by tag
+  if (options.tag) {
+    const target = options.tag.toLowerCase()
+    items = items.filter(
+      (p) => Array.isArray(p.tags) && p.tags.some((t) => t.toLowerCase() === target)
+    )
+  }
+
+  // Filter by tahun (exact) / range
+  if (typeof options.year === 'number') {
+    items = items.filter((p) => p.year === options.year)
+  }
+  if (typeof options.fromYear === 'number') {
+    items = items.filter((p) => p.year >= (options.fromYear as number))
+  }
+  if (typeof options.toYear === 'number') {
+    items = items.filter((p) => p.year <= (options.toYear as number))
+  }
+
+  // Sort
+  items.sort((a, b) => {
+    if (options.featuredFirst) {
+      const fa = isFeatured(a) ? 1 : 0
+      const fb = isFeatured(b) ? 1 : 0
+      if (fa !== fb) return fb - fa // featured dulu
+    }
+    // Sort by year desc, then month desc (terbaru dulu)
+    if (b.year !== a.year) return b.year - a.year
+    return b.month - a.month
+  })
+
+  // Limit
+  if (options.limit && options.limit > 0) {
+    items = items.slice(0, options.limit)
+  }
+
+  return items
+}
+
+/** Get only design projects */
+export async function getDesignProjects(options: ProjectListOptions = {}): Promise<ProjectMeta[]> {
+  let items = await _getDesignProjectsRaw()
+
+  // Filter by tag
+  if (options.tag) {
+    const target = options.tag.toLowerCase()
+    items = items.filter(
+      (p) => Array.isArray(p.tags) && p.tags.some((t) => t.toLowerCase() === target)
+    )
+  }
+
+  // Filter by tahun (exact) / range
+  if (typeof options.year === 'number') {
+    items = items.filter((p) => p.year === options.year)
+  }
+  if (typeof options.fromYear === 'number') {
+    items = items.filter((p) => p.year >= (options.fromYear as number))
+  }
+  if (typeof options.toYear === 'number') {
+    items = items.filter((p) => p.year <= (options.toYear as number))
+  }
+
+  // Sort
+  items.sort((a, b) => {
+    if (options.featuredFirst) {
+      const fa = isFeatured(a) ? 1 : 0
+      const fb = isFeatured(b) ? 1 : 0
+      if (fa !== fb) return fb - fa // featured dulu
+    }
+    // Sort by year desc, then month desc (terbaru dulu)
+    if (b.year !== a.year) return b.year - a.year
+    return b.month - a.month
+  })
+
+  // Limit
+  if (options.limit && options.limit > 0) {
+    items = items.slice(0, options.limit)
+  }
+
+  return items
+}

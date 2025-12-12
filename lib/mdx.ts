@@ -150,7 +150,8 @@ type Compiled<T> = {
 
 /** ====== PATHS ====== */
 const ROOT = process.cwd()
-const PROJECTS_DIR = path.join(ROOT, 'content', 'projects')
+const CODING_PROJECTS_DIR = path.join(ROOT, 'content', 'coding-projects')
+const DESIGN_PROJECTS_DIR = path.join(ROOT, 'content', 'design-projects')
 const SHOTS_DIR = path.join(ROOT, 'content', 'shots')
 
 /** Utils */
@@ -191,14 +192,14 @@ function ensureSocialMediaSections(value: SocialMediaSection[] | undefined): Soc
 }
 
 /** ====== PROJECTS (LIST / META) ====== */
-export async function getAllProjects(options: { featuredFirst?: boolean } = {}): Promise<ProjectMeta[]> {
-  const { featuredFirst = false } = options
-  const files = await listMdx(PROJECTS_DIR)
+
+// Helper to process files from a directory
+async function processProjectFiles(files: string[], directory: string): Promise<ProjectMeta[]> {
   const items: ProjectMeta[] = []
 
   for (const file of files) {
     try {
-      const full = path.join(PROJECTS_DIR, file)
+      const full = path.join(directory, file)
       const raw = await read(full)
       const { data } = matter(raw)
       const fm = data as Partial<ProjectFrontmatter>
@@ -230,7 +231,6 @@ export async function getAllProjects(options: { featuredFirst?: boolean } = {}):
         competitionWork: fm.competitionWork || false,
         competitionName: ensureString(fm.competitionName),
         competitionCategory: ensureString(fm.competitionCategory),
-        // ← ADD EVENT FIELDS
         eventWork: fm.eventWork || false,
         eventName: ensureString(fm.eventName),
         eventType: ensureString(fm.eventType),
@@ -246,7 +246,6 @@ export async function getAllProjects(options: { featuredFirst?: boolean } = {}):
         socialMediaSections: ensureSocialMediaSections(fm.socialMediaSections),
         campaigns: ensureArray(fm.campaigns),
         brandMaterials: ensureArray(fm.brandMaterials),
-        // ← ADD EVENT-SPECIFIC ARRAYS
         eventMaterials: ensureArray(fm.eventMaterials),
         eventDocumentation: ensureArray(fm.eventDocumentation),
         eventPromotion: ensureArray(fm.eventPromotion),
@@ -272,8 +271,13 @@ export async function getAllProjects(options: { featuredFirst?: boolean } = {}):
     }
   }
 
+  return items
+}
+
+// Helper to sort projects
+function sortProjects(items: ProjectMeta[], featuredFirst: boolean): ProjectMeta[] {
   if (featuredFirst) {
-    items.sort((a, b) => {
+    return items.sort((a, b) => {
       if (a.featured && !b.featured) return -1
       if (!a.featured && b.featured) return 1
       // Sort by year desc, then month desc
@@ -281,14 +285,47 @@ export async function getAllProjects(options: { featuredFirst?: boolean } = {}):
       return b.month - a.month
     })
   } else {
-    items.sort((a, b) => {
+    return items.sort((a, b) => {
       // Sort by year desc, then month desc
       if (b.year !== a.year) return b.year - a.year
       return b.month - a.month
     })
   }
+}
 
-  return items
+/** Get all coding projects from coding-projects folder */
+export async function getCodingProjects(options: { featuredFirst?: boolean } = {}): Promise<ProjectMeta[]> {
+  const { featuredFirst = false } = options
+  const files = await listMdx(CODING_PROJECTS_DIR)
+  const items = await processProjectFiles(files, CODING_PROJECTS_DIR)
+  return sortProjects(items, featuredFirst)
+}
+
+/** Get all design projects from design-projects folder */
+export async function getDesignProjects(options: { featuredFirst?: boolean } = {}): Promise<ProjectMeta[]> {
+  const { featuredFirst = false } = options
+  const files = await listMdx(DESIGN_PROJECTS_DIR)
+  const items = await processProjectFiles(files, DESIGN_PROJECTS_DIR)
+  return sortProjects(items, featuredFirst)
+}
+
+/** Get all projects from both coding and design folders */
+export async function getAllProjects(options: { featuredFirst?: boolean } = {}): Promise<ProjectMeta[]> {
+  const { featuredFirst = false } = options
+
+  // Read from both directories
+  const [codingFiles, designFiles] = await Promise.all([
+    listMdx(CODING_PROJECTS_DIR),
+    listMdx(DESIGN_PROJECTS_DIR)
+  ])
+
+  const [codingItems, designItems] = await Promise.all([
+    processProjectFiles(codingFiles, CODING_PROJECTS_DIR),
+    processProjectFiles(designFiles, DESIGN_PROJECTS_DIR)
+  ])
+
+  const items = [...codingItems, ...designItems]
+  return sortProjects(items, featuredFirst)
 }
 
 export async function getProjectSlugs(): Promise<string[]> {
@@ -395,29 +432,44 @@ export async function getProjectsByOrganization(organization: string): Promise<P
 export async function getProjectBySlug(
   slug: string
 ): Promise<Compiled<ProjectMeta>> {
-  const guess = path.join(PROJECTS_DIR, `${slug}.mdx`)
-  let full = guess
+  // Try both directories
+  const directories = [CODING_PROJECTS_DIR, DESIGN_PROJECTS_DIR]
+  let full: string | null = null
 
-  try {
-    await fs.access(guess)
-  } catch {
-    // Jika file tidak bernama "slug.mdx", cari berdasarkan frontmatter.slug
-    const files = await listMdx(PROJECTS_DIR)
-    let found = false
-    
-    for (const f of files) {
-      const raw = await read(path.join(PROJECTS_DIR, f))
-      const { data } = matter(raw)
-      if ((data as any)?.slug === slug) {
-        full = path.join(PROJECTS_DIR, f)
-        found = true
-        break
+  // First try direct file name match
+  for (const dir of directories) {
+    const guess = path.join(dir, `${slug}.mdx`)
+    try {
+      await fs.access(guess)
+      full = guess
+      break
+    } catch {
+      // Continue to next directory
+    }
+  }
+
+  // If not found by filename, search by frontmatter slug
+  if (!full) {
+    for (const dir of directories) {
+      const files = await listMdx(dir)
+      let found = false
+
+      for (const f of files) {
+        const raw = await read(path.join(dir, f))
+        const { data } = matter(raw)
+        if ((data as any)?.slug === slug) {
+          full = path.join(dir, f)
+          found = true
+          break
+        }
       }
+
+      if (found) break
     }
-    
-    if (!found) {
-      throw new Error(`Project dengan slug "${slug}" tidak ditemukan`)
-    }
+  }
+
+  if (!full) {
+    throw new Error(`Project dengan slug "${slug}" tidak ditemukan`)
   }
 
   const source = await read(full)
