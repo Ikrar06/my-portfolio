@@ -13,7 +13,7 @@ export default function Nav() {
     () => [
       { href: '/', label: 'Home' },
       { href: '/projects', label: 'Projects' },
-      { href: '/shots', label: 'Shots' },
+      { href: '/design', label: 'Design' },
       { href: '/about', label: 'About' },
       { href: '/contact', label: 'Contact' },
     ],
@@ -49,7 +49,9 @@ export default function Nav() {
           <nav aria-label="Navigasi utama" className="hidden md:flex">
             <ul className="flex items-center space-x-2">
               {links.map(({ href, label }) => {
-                const isActive = pathname === href
+                // For /design page, also highlight if on /shots
+                const isActive = pathname === href ||
+                                (href === '/design' && pathname === '/shots')
                 return (
                   <li key={href}>
                     <Link
@@ -145,7 +147,9 @@ export default function Nav() {
           >
             <ul className="space-y-2 glass-surface p-4">
               {links.map(({ href, label }) => {
-                const isActive = pathname === href
+                // For /design page, also highlight if on /shots
+                const isActive = pathname === href ||
+                                (href === '/design' && pathname === '/shots')
                 return (
                   <li key={href}>
                     <Link
