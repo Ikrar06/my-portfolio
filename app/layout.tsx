@@ -10,8 +10,8 @@ import Footer from '@/components/footer'
 // Base metadata akan di-override oleh metadata di (marketing)/layout.tsx
 export async function generateMetadata(): Promise<Metadata> {
   const baseMetadata: Metadata = {
-    title: 'Portfolio — Graphic Designer',
-    description: 'Modern, profesional, cepat, mudah di-update.',
+    title: 'Ikrar Gempur Tirani | Data Scientist & ML Engineer',
+    description: 'Data Scientist specializing in statistical analysis, NLP, and production ML systems. Building AI products with full-stack skills and design thinking.',
     metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'),
     icons: {
       icon: '/icon.ico',

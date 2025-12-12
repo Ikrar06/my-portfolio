@@ -29,8 +29,8 @@ export default function ContactClient({ contactInfo }: ContactClientProps) {
   const handleEmailCTAClick = (e: React.MouseEvent) => {
     e.preventDefault()
 
-    const subject = encodeURIComponent('Let\'s Talk About Your Project!')
-    const body = encodeURIComponent('Hey Ikrar!\n\nI came across your work and I\'m really impressed. I have a project in mind and would love to chat about it.\n\n🎯 What I\'m Looking For:\nProject type: \nTimeline: \nBudget range: \nA bit about the project: \n\n📅 When I\'m free for a quick call:\n- [Day/Time]\n- [Day/Time]\n- [Day/Time]\n\nExcited to potentially work together!\n\nCheers,')
+    const subject = encodeURIComponent('Data Science/ML Opportunity Discussion')
+    const body = encodeURIComponent('Hey Ikrar!\n\nI came across your Data Science and ML portfolio and I\'m really impressed with your work. I have an opportunity/project in mind and would love to discuss it.\n\n🎯 Opportunity Details:\nRole/Project type: \nCompany/Organization: \nKey requirements: \nTimeline: \n\n📅 When I\'m available for a call:\n- [Day/Time]\n- [Day/Time]\n- [Day/Time]\n\nLooking forward to connecting!\n\nBest,')
     const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${contactInfo.EMAIL}&subject=${subject}&body=${body}`
 
     // Open Gmail compose in new tab
@@ -49,7 +49,7 @@ export default function ContactClient({ contactInfo }: ContactClientProps) {
             <FadeIn delay={0}>
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-framer-blue/10 border border-framer-blue/20 text-framer-blue text-sm font-medium max-w-full">
                 <div className="w-2 h-2 bg-framer-blue rounded-full animate-pulse flex-shrink-0" />
-                <span className="truncate">Currently taking on new projects</span>
+                <span className="truncate">Open to Data Science & ML opportunities</span>
               </div>
             </FadeIn>
           </div>
@@ -89,11 +89,11 @@ export default function ContactClient({ contactInfo }: ContactClientProps) {
             <FadeIn key={`contact-desc-${pageKey}`} delay={0.3}>
               <div className="space-y-6">
                 <p className="text-lg sm:text-xl md:text-2xl text-white/80 leading-relaxed font-light break-words">
-                  Whether you need a fresh brand identity, killer social media graphics, or someone to lead your creative team, I'm here to help bring your vision to life with authentic design that genuinely connects with people.
+                  Whether you need data-driven insights for your business, a production ML system, or a full-stack application that brings AI to users, I'm here to help transform your data into impact with rigorous methodology and clean code.
                 </p>
                 <p className="text-base sm:text-lg md:text-xl text-white/60 leading-relaxed font-light break-words">
-                  I'm currently booking projects for <strong className="text-white/80">Q3-Q4 2025</strong>.
-                  I usually get back to people within a few hours (unless I'm deep in a design session), and I always offer a free 30-minute chat to see if we're a good fit.
+                  I'm currently available for <strong className="text-white/80">full-time Data Science/ML roles • internships • research collaborations • freelance projects</strong>.
+                  I usually get back to people within a few hours (unless I'm deep in a training run), and I always offer a free 30-minute chat to discuss opportunities.
                 </p>
               </div>
             </FadeIn>
@@ -131,7 +131,7 @@ export default function ContactClient({ contactInfo }: ContactClientProps) {
                 Let's Connect
               </h2>
               <p className="text-lg sm:text-xl text-white/60 max-w-3xl mx-auto leading-relaxed break-words">
-                Pick whatever works best for you. I'm pretty active on all these platforms and love hearing about new projects, no matter how big or small.
+                Pick whatever works best for you. I'm active on all these platforms and would love to discuss Data Science roles, ML projects, or collaboration opportunities.
               </p>
             </FadeIn>
           </div>
@@ -143,7 +143,7 @@ export default function ContactClient({ contactInfo }: ContactClientProps) {
                 email={contactInfo.EMAIL}
                 linkedinUrl={contactInfo.LINKEDIN}
                 whatsappNumber={contactInfo.WHATSAPP}
-                defaultMessage="Hi Ikrar! 👋 I saw your work and would love to chat about a design project. Got a few minutes for a quick call sometime?"
+                defaultMessage="Hi Ikrar! 👋 I saw your portfolio and would love to discuss a Data Science/ML opportunity or collaboration. Are you available for a quick chat?"
                 variant="cards"
                 className="mb-16"
               />
@@ -194,7 +194,7 @@ export default function ContactClient({ contactInfo }: ContactClientProps) {
             </FadeIn>
             <FadeIn key={`form-section-desc-${pageKey}`} delay={0.2}>
               <p className="text-lg sm:text-xl text-white/60 max-w-3xl mx-auto leading-relaxed break-words">
-                More of a detailed person? I get it. Use this form to tell me all about your project and I'll get back to you with some thoughts and next steps.
+                Prefer to share more details? Use this form to tell me about your opportunity, project, or collaboration idea and I'll get back to you with my thoughts.
               </p>
             </FadeIn>
           </div>
@@ -390,14 +390,14 @@ export default function ContactClient({ contactInfo }: ContactClientProps) {
                   </h2>
 
                   <p className="text-lg sm:text-xl text-white/70 mb-10 max-w-3xl mx-auto leading-relaxed break-words">
-                    I'm genuinely excited to hear about what you're working on. Every project is different and I love the challenge of figuring out how to make your vision come to life in the best way possible.
+                    I'm genuinely excited to hear about opportunities and projects. Whether it's a Data Science role, ML collaboration, or full-stack development project, I love solving complex problems with data and code.
                   </p>
                 </div>
 
                 {/* CTA Buttons - Mobile optimized */}
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8 w-full">
                   <a
-                    href={`https://wa.me/${contactInfo.WHATSAPP.replace(/[^\d]/g, '')}?text=${encodeURIComponent('Hey Ikrar! 🎨\n\nI\'ve got a project idea and would love to chat about it.\n\nWhat I need help with: \nRough timeline: \nBudget I\'m thinking: \n\nWhen works for a quick call?\n\nThanks!')}`}
+                    href={`https://wa.me/${contactInfo.WHATSAPP.replace(/[^\d]/g, '')}?text=${encodeURIComponent('Hey Ikrar! 👋\n\nI came across your Data Science/ML portfolio and would love to discuss an opportunity.\n\nOpportunity type: \nCompany/Project: \nKey requirements: \n\nWhen works for a quick call?\n\nLooking forward to connecting!')}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group inline-flex items-center justify-center px-6 sm:px-8 py-4 text-sm sm:text-base font-semibold text-white bg-framer-blue rounded-2xl hover:bg-framer-blue-hover transition-all duration-300 shadow-lg hover:shadow-framer-blue/25 w-full sm:w-auto min-w-[200px] break-words"
@@ -420,10 +420,10 @@ export default function ContactClient({ contactInfo }: ContactClientProps) {
                 {/* Additional Info */}
                 <div className="text-center space-y-2 text-white/50 w-full">
                   <p className="text-xs sm:text-sm break-words">
-                    ⚡ Free 30-minute chat • 📞 Quick responses guaranteed • 🎯 Custom approach for every project
+                    ⚡ Free 30-minute chat • 📞 Quick responses guaranteed • 🎯 Open to full-time, internship, and research opportunities
                   </p>
                   <p className="text-xs break-words">
-                    Booking projects for Q3-Q4 2025 • Based in {contactInfo.LOCATION}
+                    Available for Data Science/ML roles • Based in {contactInfo.LOCATION}
                   </p>
                 </div>
               </div>
