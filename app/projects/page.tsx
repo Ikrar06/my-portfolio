@@ -1,7 +1,7 @@
 // app/projects/page.tsx - ENHANCED VERSION with Multiple Filters
-import { getAllProjects } from '@/lib/projects'
+import { getCodingProjects } from '@/lib/projects'
 import { getProjectFilterOptions } from '@/lib/projects-helpers'
-import ProjectCard from '@/components/cards/project-card'
+import ProjectCardEnhanced from '@/components/cards/project-card-enhanced'
 import FadeIn from '@/components/motion/fade-in'
 import ProjectFilters from '@/components/filters/project-filters'
 import SortDropdown from '@/components/ui/sort-dropdown'
@@ -9,22 +9,22 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Projects',
-  description: 'Data Science, ML Engineering, and Full-Stack projects by Ikrar Gempur Tirani. From statistical analysis with 7,500-agent simulations to fine-tuning transformers with 90%+ accuracy. Real-world ML systems in production.',
-  keywords: ['Data Science projects', 'Machine Learning portfolio', 'NLP projects', 'Deep Learning', 'Statistical Analysis', 'Production ML systems', 'PyTorch', 'Full-Stack development', 'AI products', 'Ikrar Gempur Tirani'],
+  description: 'Data Science, ML Engineering, and Full-Stack development projects by Ikrar Gempur Tirani. From statistical analysis with 7,500-agent simulations to fine-tuning transformers with 90%+ accuracy. Real-world ML systems and production applications.',
+  keywords: ['Data Science projects', 'Machine Learning portfolio', 'NLP projects', 'Deep Learning', 'Statistical Analysis', 'Production ML systems', 'PyTorch', 'Full-Stack development', 'AI products', 'Web Development', 'Mobile Apps', 'Ikrar Gempur Tirani'],
   openGraph: {
     title: 'Projects — Ikrar Gempur Tirani',
-    description: 'Data Science, ML Engineering, and Full-Stack projects. From agent-based simulations to production NLP systems with 90%+ accuracy.',
+    description: 'Data Science, ML Engineering, and Full-Stack development projects. From agent-based simulations to production NLP systems and web applications.',
     url: (process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000') + '/projects',
     images: [{
       url: '/images/foto-ikrar.jpg',
       width: 1200,
       height: 630,
-      alt: 'Data Science & ML Projects by Ikrar Gempur Tirani'
+      alt: 'Data Science & Development Projects by Ikrar Gempur Tirani'
     }],
   },
   twitter: {
     title: 'Projects — Ikrar Gempur Tirani',
-    description: 'Data Science, ML Engineering, and Full-Stack projects. Real-world ML systems in production.',
+    description: 'Data Science, ML Engineering, and Full-Stack development projects. Real-world ML systems and applications in production.',
   },
 }
 
@@ -75,10 +75,10 @@ export default async function ProjectsPage({ searchParams }: PageProps) {
     years: availableYears 
   } = filterOptions
 
-  // Get all projects and filter them
-  const allProjects = await getAllProjects({ featuredFirst: true })
-  
-  // Filter projects based on multiple criteria
+  // Get all coding projects only
+  const allProjects = await getCodingProjects({ featuredFirst: true })
+
+  // Filter projects based on selected criteria
   const projects = allProjects.filter((project: any) => {
     // Helper function untuk akses property yang fleksibel
     const getProperty = (prop: string, fallback: any = undefined) => {
@@ -166,11 +166,11 @@ export default async function ProjectsPage({ searchParams }: PageProps) {
       <header className="space-y-4">
         <div className="flex flex-col gap-2">
           <h1 className="text-3xl md:text-4xl font-bold tracking-tight">
-            Projects
+            Technical Projects
           </h1>
           <p className="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl">
-            A collection of design projects spanning UI/UX design, graphic design, branding, 
-            web development, and creative explorations.
+            Data Science, Machine Learning, and Full-Stack development projects. From statistical analysis
+            and deep learning models to production web and mobile applications.
           </p>
         </div>
 
@@ -259,13 +259,13 @@ export default async function ProjectsPage({ searchParams }: PageProps) {
         {sortedProjects.length > 0 ? (
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {sortedProjects.map((project: any, index: number) => (
-              <FadeIn 
-                key={project.slug} 
-                delay={0.04 + index * 0.03} 
-                once 
+              <FadeIn
+                key={project.slug}
+                delay={0.04 + index * 0.03}
+                once
                 margin="-10% 0px -10% 0px"
               >
-                <ProjectCard project={project} />
+                <ProjectCardEnhanced project={project} />
               </FadeIn>
             ))}
           </div>
