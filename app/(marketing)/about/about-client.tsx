@@ -24,70 +24,82 @@ export default function AboutClient({ skills }: AboutClientProps) {
   // =========================
   const experiences = [
     {
+      icon: '💻',
+      org: 'Cirebon Kuring - Cafe Management System',
+      title: 'Fullstack Developer',
+      type: 'Technical Role',
+      dates: 'Jun 2025 – Present',
+      duration: '7 mos',
+      location: 'Remote',
+      desc: `Building comprehensive cafe management system with cross-platform architecture. Designed database schema, implemented real-time inventory tracking with low-stock alerts, and developed both web (Next.js) and mobile (Flutter) interfaces. Focused on requirements gathering, technical specifications, and creating seamless user experiences across platforms.`,
+      skills: [
+        'Next.js', 'Flutter', 'TypeScript', 'Dart', 'PostgreSQL', 'Supabase',
+        'Database Design', 'REST API', 'Cross-Platform Development', 'Requirements Gathering'
+      ]
+    },
+    {
       icon: '🚀',
       org: 'Google Developer Group on Campus Hasanuddin University',
       title: 'Head of Creative Media Division',
-      type: 'Organization',
+      type: 'Leadership Role',
       dates: 'Aug 2025 – Present',
-      duration: '1 mo',
+      duration: '5 mos',
       location: 'Makassar, South Sulawesi, Indonesia · On-site',
-      desc: `Leading creative media strategies that actually get people excited about tech. I manage a team of designers creating everything from event visuals to educational content, and honestly, seeing our community grow through great design is pretty rewarding. My focus is on making tech events feel approachable and fun, not intimidating.`,
+      desc: `Leading 6-member creative team with data-driven strategy achieving 46% follower growth (2,800 → 4,100) and 1M+ total content views. Managed content strategy, team coordination, and brand consistency across all channels. Peak performance: 515K monthly views (October 2025), representing 25x improvement vs previous period.`,
       extras: [
         { label: 'Instagram', value: '@gdgocunhas', href: 'https://instagram.com/gdgocunhas' }
       ],
       skills: [
-        'Social Media Graphic Design', 'Graphic Design', 'Branding', 'Creative Direction',
-        'Content Creation', 'Social Media Strategy', 'Digital Marketing', 'Team Leadership',
-        'Event Promotion & Branding', 'Project Management', 'Creative Problem-Solving'
+        'Team Leadership (6+ members)', 'Data-Driven Strategy', 'Content Strategy', 'Social Media Strategy',
+        'Brand Management', 'Performance Analytics', 'Graphic Design', 'Creative Direction'
       ]
     },
     {
       icon: '🏫',
-      org: 'Coder Institute',
-      title: 'Publication, Design, and Documentation Coordinator',
-      type: 'Organization',
+      org: 'Coder Institute Hasanuddin University',
+      title: 'Head of Creative Media Division',
+      type: 'Leadership Role',
       dates: 'Feb 2025 – Present',
-      duration: '7 mos',
+      duration: '11 mos',
       location: 'Gowa, South Sulawesi, Indonesia · On-site',
-      desc: `I handle the creative side of educational content here, from designing workshop materials to organizing all our documentation. Using Adobe Creative Suite and Figma, I make sure everything looks cohesive and actually helps people learn. There's something satisfying about turning complex coding concepts into visuals that just click.`,
+      desc: `Leading creative production for coding community. Managed workshop materials, educational content design, social media content strategy, and event branding. Ensured consistent brand identity across all channels while making complex coding concepts accessible through visual design.`,
       extras: [
         { label: 'Instagram', value: '@coderinstitute', href: 'https://instagram.com/coderinstitute' }
       ],
       skills: [
-        'Editing', 'Graphics', 'Graphic Design', 'Adobe Photoshop', 'Adobe Illustrator',
-        'Figma (Software)', 'Canva', 'Social Media Graphic Design'
+        'Content Strategy', 'Educational Content Design', 'Team Coordination', 'Brand Identity',
+        'Graphic Design', 'Adobe Creative Suite', 'Figma', 'Social Media Graphics'
       ]
     },
     {
       icon: '🧩',
-      org: 'Recursion UH',
+      org: 'Recursion UH (National Informatics Competition)',
       title: 'Publication, Design, and Documentation Coordinator',
-      type: 'National Event',
+      type: 'Leadership Role',
       dates: 'Sep 2024 – Apr 2025',
       duration: '8 mos',
       location: 'Makassar, South Sulawesi, Indonesia · On-site',
-      desc: `This was where I really learned what it means to manage a complete content pipeline. From brainstorming sessions to final posts, I coordinated everything while keeping our visual identity tight across all platforms. The analytics told a great story too, seeing engagement grow month by month was incredibly motivating.`,
+      desc: `Built social media presence from 0 → 894 followers in 7 months for inaugural national competition. Managed complete content pipeline, published 96+ content pieces, coordinated visual identity across all platforms. Promoted multi-campus competition with consistent branding and engagement strategy.`,
       extras: [
         { label: 'Instagram', value: '@recursion.uh', href: 'https://instagram.com/recursion.uh' }
       ],
       skills: [
-        'Adobe Illustrator', 'Adobe Photoshop', 'Adobe Premiere Pro', 'After Effects',
-        'Branding', 'Brochures', 'Canva', 'Creative Problem Solving', 'Figma (Software)',
-        'Graphic Design', 'Graphics', 'Social Media Graphic Design', 'Editing', 'Logo Design'
+        'Social Media Growth Strategy', 'Content Pipeline Management', 'Brand Identity', 'Visual Design',
+        'Adobe Creative Suite', 'Figma', 'Video Editing', 'Team Coordination', 'Logo Design'
       ]
     },
     {
       icon: '🎟️',
-      org: 'Coder Institute — NEXUS 2024',
+      org: 'Coder Institute — NEXUS 2024 Seminar',
       title: 'Publication, Design, and Documentation Team Member',
-      type: 'Event',
+      type: 'Event Project',
       dates: 'Aug 2024 – Sep 2024',
       duration: '2 mos',
       location: 'Remote',
-      desc: `NEXUS 2024 was my playground for creating a complete visual identity from scratch. I designed everything from the logo and mascot to certificates and merch. The live event reports were particularly fun to create, giving the seminar a real-time energy that participants still talk about.`,
+      desc: `Created complete visual identity from scratch for national tech seminar. Designed logo, mascot, certificates, merchandise, and live event report graphics. Delivered cohesive branding system that enhanced participant experience and event engagement.`,
       skills: [
-        'Editing', 'Graphics', 'Graphic Design', 'Adobe Photoshop', 'Adobe Illustrator',
-        'Logo Design', 'Figma (Software)', 'Canva'
+        'Complete Brand System Design', 'Logo Design', 'Mascot Design', 'Event Graphics',
+        'Adobe Creative Suite', 'Figma', 'Print Design', 'Merchandise Design'
       ]
     },
     {
@@ -145,7 +157,7 @@ export default function AboutClient({ skills }: AboutClientProps) {
           <div className="mb-8">
             <TextType
               key={`about-tagline-${pageKey}`}
-              text="Graphic Designer • Creative Lead • AI Enthusiast • 5+ Years of Experience"
+              text="Data Scientist • ML Engineer • Full-Stack Developer • 5+ Years Design Leadership"
               className="text-sm md:text-base text-white/60 font-medium tracking-wider uppercase"
               typingSpeed={80}
               showCursor={false}
@@ -182,18 +194,21 @@ export default function AboutClient({ skills }: AboutClientProps) {
             <FadeIn key={`about-bio-${pageKey}`} delay={0.1}>
               <div className="mt-8 md:mt-0">
                 <p className="text-lg md:text-xl text-white/70 leading-relaxed font-light mb-4">
-                  Hey there! I'm <span className="font-semibold text-white">Ikrar Gempur Tirani</span>, a{' '}
-                  <span className="text-white">graphic designer</span> from Gorontalo who's been turning ideas into visuals for over 5 years now. What started as messing around with Photoshop in high school has become this genuine love for making complex things look simple and beautiful.
+                  Hi, I'm <span className="font-semibold text-white">Ikrar Gempur Tirani</span>, an{' '}
+                  <span className="text-white">Informatics Engineering student</span> at Hasanuddin University (GPA 3.91/4.00) specializing in <span className="text-white">Data Science and Machine Learning</span> with focus on Natural Language Processing.
+                </p>
+                <p className="text-base md:text-lg text-white/60 leading-relaxed font-light mb-4">
+                  I transform complex data into actionable insights through statistical analysis and hypothesis testing. From simulating 7,500-agent marketplaces to fine-tuning deep learning models with <span className="text-white">90%+ accuracy</span>, I combine rigorous data science methodology with production ML engineering.
                 </p>
                 <p className="text-base md:text-lg text-white/60 leading-relaxed font-light">
-                  Currently balancing my fifth semester in <span className="text-white">Informatics Engineering</span> at Hasanuddin University while leading creative media at Google Developer on Campus. I'm that person who gets excited about clean typography and perfectly aligned layouts, but also loves diving deep into how AI is reshaping the creative industry. For me, great design isn't just about looking good, it's about creating that instant connection where people just get it.
+                  My experience spans the full spectrum: exploratory data analysis, statistical modeling, deep learning, and deploying ML systems to production. With full-stack development skills (Next.js, Flutter, Flask) and <span className="text-white">5 years of design leadership</span>, I bring a unique perspective to building AI products that are technically sound, production-ready, and intuitive for users.
                 </p>
 
                 <div className="mt-6 grid gap-3 text-sm text-white/60">
                   <div className="flex items-center"><div className="w-1.5 h-1.5 bg-white/40 rounded-full mr-3" /> Born and raised in Gorontalo, January 6, 2005</div>
                   <div className="flex items-center"><div className="w-1.5 h-1.5 bg-white/40 rounded-full mr-3" /> Currently living in Makassar, South Sulawesi</div>
-                  <div className="flex items-center"><div className="w-1.5 h-1.5 bg-white/40 rounded-full mr-3" /> Fifth semester Informatics student at Hasanuddin University</div>
-                  <div className="flex items-center"><div className="w-1.5 h-1.5 bg-white/40 rounded-full mr-3" /> Always curious about the intersection of design, technology, and human behavior</div>
+                  <div className="flex items-center"><div className="w-1.5 h-1.5 bg-white/40 rounded-full mr-3" /> Fifth semester Informatics student at Hasanuddin University (GPA 3.91)</div>
+                  <div className="flex items-center"><div className="w-1.5 h-1.5 bg-white/40 rounded-full mr-3" /> Pursuing Data Science and ML Engineering roles</div>
                 </div>
 
                 <div className="mt-8">
@@ -213,7 +228,7 @@ export default function AboutClient({ skills }: AboutClientProps) {
               <FadeIn key={`services-title-${pageKey}`}>
                 <SplitText
                   key={`services-split-${pageKey}`}
-                  text="What Gets Me Excited"
+                  text="What I Do"
                   className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-8"
                   splitType="words"
                   delay={60}
@@ -228,7 +243,7 @@ export default function AboutClient({ skills }: AboutClientProps) {
             </div>
             <FadeIn key={`services-desc-${pageKey}`} delay={0.2}>
               <p className="text-lg md:text-xl text-white/60 max-w-3xl mx-auto font-light leading-relaxed">
-                These are the areas where I lose track of time. I believe the best work happens when you genuinely enjoy what you're doing, and every project becomes an opportunity to learn something new.
+                My expertise spans data science, machine learning engineering, and full-stack development, with a unique differentiator in design leadership. This combination allows me to build AI products that are technically sound, production-ready, and user-friendly.
               </p>
             </FadeIn>
           </div>
@@ -236,28 +251,28 @@ export default function AboutClient({ skills }: AboutClientProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
-                title: 'Creative Strategy & Community Building',
-                desc: 'There\'s something special about watching communities grow through thoughtful design. I help organizations tell their stories in ways that actually resonate with people, using visuals that spark conversations and bring people together.',
-                icon: '🎯',
-                specialties: ['Social Media Strategy', 'Brand Development', 'Content Planning', 'Community Growth']
+                title: 'Data Science & Analytics',
+                desc: 'Transforming data into insights through statistical analysis and hypothesis testing. From exploratory data analysis to experimental design, I apply rigorous methodology to extract meaningful patterns and validate findings.',
+                icon: '📊',
+                specialties: ['Exploratory Data Analysis', 'Statistical Modeling', 'Hypothesis Testing', 'Data Visualization']
               },
               {
-                title: 'Visual Design & Brand Identity',
-                desc: 'From sketching logos to building complete brand systems, I create visuals that stick in people\'s minds. Whether it\'s digital or print, every design needs to serve a purpose and tell a story worth remembering.',
-                icon: '🎨',
-                specialties: ['Logo & Brand Identity', 'Social Media Graphics', 'Publication Design', 'Marketing Materials']
-              },
-              {
-                title: 'Content Management & Documentation',
-                desc: 'I love turning chaos into beautiful, organized systems. From content calendars to creative workflows, I make sure nothing gets lost and everything looks intentional. Good organization is good design.',
-                icon: '📚',
-                specialties: ['Content Coordination', 'Documentation Systems', 'Editorial Design', 'Archive Management']
-              },
-              {
-                title: 'AI Engineering & Creative Tech',
-                desc: 'The intersection of AI and design fascinates me. I\'m constantly exploring how machine learning can enhance creativity rather than replace it, and I love experimenting with new tools that push the boundaries of what\'s possible.',
+                title: 'Machine Learning & NLP',
+                desc: 'Building intelligent systems from training to production. Specializing in natural language processing and deep learning, with focus on fine-tuning transformers and deploying models that solve real-world problems.',
                 icon: '🤖',
-                specialties: ['AI-Assisted Design', 'Creative Automation', 'Design Systems', 'Emerging Technologies']
+                specialties: ['Deep Learning (PyTorch)', 'Natural Language Processing', 'Model Training & Optimization', 'Production ML Systems']
+              },
+              {
+                title: 'Full-Stack Development',
+                desc: 'Shipping applications that bring ML models to users. Building responsive web and mobile interfaces with modern frameworks, connecting them to backend APIs, and deploying to production environments.',
+                icon: '💻',
+                specialties: ['React & Next.js', 'Flutter Mobile Apps', 'Flask APIs', 'Database Design']
+              },
+              {
+                title: 'Design Leadership',
+                desc: 'Leading creative teams with data-driven strategy. 5 years of hands-on experience with proven metrics: 1M+ content views, 46% follower growth. Bringing UI/UX thinking to AI products and technical projects.',
+                icon: '🎨',
+                specialties: ['Team Management (6+ members)', 'Brand Strategy', 'UI/UX for AI Products', 'Proven Growth Metrics']
               }
             ].map((service, i) => (
               <FadeIn key={`service-${i}-${pageKey}`} delay={0.1 * i}>
@@ -296,7 +311,7 @@ export default function AboutClient({ skills }: AboutClientProps) {
               <FadeIn key={`skills-title-${pageKey}`}>
                 <SplitText
                   key={`skills-split-${pageKey}`}
-                  text="My Creative Arsenal"
+                  text="Technical Skills"
                   className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-8"
                   splitType="words"
                   delay={60}
@@ -310,7 +325,7 @@ export default function AboutClient({ skills }: AboutClientProps) {
             </div>
             <FadeIn key={`skills-desc-${pageKey}`} delay={0.2}>
               <p className="text-lg md:text-xl text-white/60 max-w-3xl mx-auto font-light leading-relaxed">
-                These tools have become extensions of my creativity over the years. Each one serves a different purpose in my workflow, and I'm always excited to learn new ones that can help bring ideas to life more effectively.
+                Tools and technologies I use to transform data into insights, build intelligent systems, and ship production-ready applications. From statistical analysis to deep learning to full-stack development.
               </p>
             </FadeIn>
           </div>
@@ -330,7 +345,7 @@ export default function AboutClient({ skills }: AboutClientProps) {
             <FadeIn key={`exp-title-${pageKey}`}>
               <SplitText
                 key={`exp-split-${pageKey}`}
-                text="My Creative Journey"
+                text="Experience & Leadership"
                 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-8"
                 splitType="words, chars"
                 delay={80}
@@ -343,7 +358,7 @@ export default function AboutClient({ skills }: AboutClientProps) {
             </FadeIn>
             <FadeIn key={`exp-desc-${pageKey}`} delay={0.2}>
               <p className="text-lg md:text-xl text-white/60 max-w-3xl mx-auto font-light leading-relaxed">
-                From designing my first school event poster to leading creative teams, here's how I've grown as a designer and discovered what it really means to create work that connects with people.
+                From full-stack development to leading creative teams with data-driven strategy. My journey combines technical skills with proven leadership metrics: 1M+ content views and 46% follower growth.
               </p>
             </FadeIn>
           </div>
