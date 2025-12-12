@@ -3,13 +3,13 @@
 
 import { useMemo } from 'react'
 import { usePathname } from 'next/navigation'
-import Image from 'next/image'
 import Link from 'next/link'
 import SplitText from '@/components/animated/reactbits/SplitText'
 import TextType from '@/components/animated/reactbits/TextType'
 import FadeIn from '@/components/motion/fade-in'
 import SkillsList, { type Skill } from '@/components/skills/skills-list'
 import DownloadCVButton from '@/components/download-cv-button'
+import { PixelatedImage } from '@/components/animated/pixelated-image'
 
 interface AboutClientProps {
   skills: Skill[]
@@ -173,18 +173,13 @@ export default function AboutClient({ skills }: AboutClientProps) {
             <div className="relative w-[300px] h-[300px] md:w-[440px] md:h-[440px] mx-auto md:mx-0">
               {/* Backdrop box */}
               <div className="backdrop-blur-sm bg-white/[0.02] border border-white/10 rounded-3xl p-3 hover:bg-white/[0.05] transition-all duration-700 hover:border-white/20 h-full flex flex-col items-center justify-center group">
-                {/* Photo container */}
+                {/* Photo container with pixelation effect */}
                 <div className="relative w-[260px] h-[260px] md:w-[380px] md:h-[380px]">
-                  <Image
+                  <PixelatedImage
                     src="/images/foto-ikrar.jpg"
+                    pixelatedSrc="/images/foto-ikrar-pixelated.PNG"
                     alt="Foto Ikrar Gempur Tirani"
-                    fill
-                    sizes="(max-width: 768px) 200px, 420px"
-                    priority
-                    quality={100}
-                    className="rounded-3xl object-cover border border-white/10 group-hover:border-white/20 transition-all duration-500"
-                    placeholder="blur"
-                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+                    className="w-full h-full"
                   />
                 </div>
               </div>

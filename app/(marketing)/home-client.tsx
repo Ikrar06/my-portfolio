@@ -7,6 +7,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import LightRays from '@/components/animated/reactbits/LightRays'
 import FadeIn from '@/components/motion/fade-in'
+import { InteractiveHeroText } from '@/components/animated/interactive-hero-text'
 import type { ProjectMeta } from '@/lib/mdx'
 
 interface HomeClientProps {
@@ -47,11 +48,8 @@ export default function HomeClient({ featuredProjects }: HomeClientProps) {
             Data Scientist • ML Engineer • Full-Stack Developer
           </p>
 
-          {/* Main Hero Heading */}
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white tracking-tight">
-            <span className="block">Building with</span>
-            <span className="block">Code and Design</span>
-          </h1>
+          {/* Main Hero Heading - Interactive */}
+          <InteractiveHeroText />
 
           {/* Hero Description */}
           <p className="text-lg md:text-xl text-text-secondary leading-relaxed max-w-2xl mx-auto pt-2">
