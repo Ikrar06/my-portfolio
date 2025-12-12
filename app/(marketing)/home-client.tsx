@@ -5,8 +5,6 @@ import { useMemo } from 'react'
 import { usePathname } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
-import SplitText from '@/components/animated/reactbits/SplitText'
-import TextType from '@/components/animated/reactbits/TextType'
 import LightRays from '@/components/animated/reactbits/LightRays'
 import FadeIn from '@/components/motion/fade-in'
 import type { ProjectMeta } from '@/lib/mdx'
@@ -42,80 +40,38 @@ export default function HomeClient({ featuredProjects }: HomeClientProps) {
       </div>
 
       {/* HERO Section */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center px-6">
-        <div className="relative text-center max-w-7xl mx-auto z-10">
+      <section className="relative h-screen flex flex-col items-center justify-center px-6 -mt-20">
+        <div className="relative text-center max-w-5xl mx-auto z-10 space-y-6">
           {/* Tagline */}
-          <div className="mb-8">
-            <p className="text-sm md:text-base text-white/60 font-medium tracking-wider uppercase">
-              Graphic Designer • Informatics Engineering Student
-            </p>
-          </div>
+          <p className="text-sm md:text-base text-text-tertiary font-medium tracking-wider uppercase">
+            Data Scientist • ML Engineer • Full-Stack Developer
+          </p>
 
           {/* Main Hero Heading */}
-          <div className="mb-12 py-4">
-            <SplitText
-              key={`hero-title-${pageKey}`}
-              text="Hi, I'm Ikrar! Welcome"
-              className="text-4xl md:text-6xl lg:text-8xl xl:text-9xl font-bold text-white leading-[0.9] tracking-tight"
-              splitType="words, chars"
-              delay={30}
-              duration={2}
-              ease="power3.out"
-              from={{ opacity: 0, y: 60, rotationX: -45 }}
-              to={{ opacity: 1, y: 0, rotationX: 0 }}
-              threshold={0.1}
-              rootMargin="-50px"
-              startOnVisible={false}
-            />
-          </div>
-
-          {/* Dynamic Subtitle */}
-          <div className="mb-16">
-            <TextType
-              key={`subtitle-${pageKey}`}
-              text={[
-                'Nice to meet you! Let me show you around',
-                'Creating designs that make people smile',
-                'Designing with purpose, building with passion',
-              ]}
-              className="text-lg md:text-2xl text-white/70 font-light max-w-4xl mx-auto"
-              typingSpeed={60}
-              pauseDuration={2000}
-              deletingSpeed={35}
-              loop
-              showCursor
-              cursorCharacter="|"
-              cursorClassName="text-white/40"
-              cursorBlinkDuration={0.8}
-              startOnVisible={false}
-              initialDelay={0}
-              as="h2"
-            />
-          </div>
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white tracking-tight">
+            <span className="block">Building with</span>
+            <span className="block">Code and Design</span>
+          </h1>
 
           {/* Hero Description */}
-          <div className="mb-16">
-            <p className="text-base md:text-xl text-white/60 leading-relaxed max-w-3xl mx-auto font-light">
-              I'm a graphic designer and Informatics Engineering student who believes great design creates instant connections.
-              I craft pixel-perfect visuals and write clean code that brings joy to people's digital lives—and I'd love to help bring your vision to life.
-            </p>
-          </div>
+          <p className="text-lg md:text-xl text-text-secondary leading-relaxed max-w-2xl mx-auto pt-2">
+            Specializing in NLP, statistical modeling, and production ML systems.
+            Combining data science with full-stack development to build AI products that work.
+          </p>
 
           {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
             <Link
               href="/projects"
-              className="group relative px-10 py-4 bg-white text-black font-semibold rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-white/10"
+              className="px-8 py-3 bg-framer-blue text-white font-medium rounded-full transition-all duration-200 hover:bg-framer-blue-hover"
             >
-              <span className="relative z-10">See My Work</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-gray-100 to-white transform translate-x-full group-hover:translate-x-0 transition-transform duration-300" />
+              View Projects
             </Link>
             <Link
-              href="/about"
-              className="group px-10 py-4 border border-white/20 text-white font-medium rounded-full hover:border-white/40 hover:bg-white/5 transition-all duration-300 backdrop-blur-sm"
+              href="/contact"
+              className="px-8 py-3 border border-border text-text-primary font-medium rounded-full hover:border-border-hover hover:bg-bg-secondary transition-all duration-200"
             >
-              <span>Get to Know Me</span>
-              <span className="ml-3 group-hover:translate-x-2 transition-transform duration-300 inline-block">→</span>
+              Get in Touch
             </Link>
           </div>
         </div>
@@ -125,39 +81,20 @@ export default function HomeClient({ featuredProjects }: HomeClientProps) {
       <section className="relative py-32">
         <div className="container mx-auto px-6">
           {/* Section Header */}
-          <div className="text-center mb-24">
-            <div className="py-4">
-              <FadeIn key={`works-title-${pageKey}`}>
-                <SplitText
-                  key={`works-split-${pageKey}`}
-                  text="Featured Projects"
-                  className="text-3xl md:text-5xl lg:text-7xl font-bold text-white mb-8"
-                  splitType="words"
-                  delay={40}
-                  duration={0.6}
-                  ease="power2.out"
-                  from={{ opacity: 0, y: 50, scale: 0.95 }}
-                  to={{ opacity: 1, y: 0, scale: 1 }}
-                  threshold={0.2}
-                  startOnVisible
-                />
-              </FadeIn>
-            </div>
-            <FadeIn key={`works-desc-${pageKey}`} delay={0.2}>
-              <p className="text-lg md:text-xl text-white/50 mb-10 max-w-3xl mx-auto font-light leading-relaxed">
-                From brand identities to digital interfaces, here's a collection of projects where creativity
-                meets functionality. Each piece tells a unique story.
-              </p>
-            </FadeIn>
-            <FadeIn key={`works-link-${pageKey}`} delay={0.35}>
-              <Link
-                href="/projects"
-                className="inline-flex items-center text-white/70 hover:text-white transition-all duration-300 font-medium group border-b border-white/20 hover:border-white/40 pb-1"
-              >
-                <span>Explore All Projects</span>
-                <span className="ml-3 group-hover:translate-x-2 transition-transform duration-300">→</span>
-              </Link>
-            </FadeIn>
+          <div className="text-center mb-16 space-y-4">
+            <h2 className="text-3xl md:text-5xl font-bold text-white">
+              Featured Work
+            </h2>
+            <p className="text-lg text-text-secondary max-w-2xl mx-auto">
+              Selected projects in data science, ML engineering, and full-stack development.
+            </p>
+            <Link
+              href="/projects"
+              className="inline-flex items-center text-text-secondary hover:text-framer-blue transition-colors font-medium group pt-2"
+            >
+              <span>View all projects</span>
+              <span className="ml-2 group-hover:translate-x-1 transition-transform duration-200">→</span>
+            </Link>
           </div>
 
           {/* Projects Grid - Dynamic from MDX */}
@@ -227,60 +164,44 @@ export default function HomeClient({ featuredProjects }: HomeClientProps) {
         </div>
       </section>
 
-      {/* Design Process Section */}
+      {/* Process Section */}
       <section className="relative py-32 border-t border-white/5">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-24">
-            <div className="py-4">
-              <FadeIn key={`philosophy-title-${pageKey}`}>
-                <SplitText
-                  key={`philosophy-split-${pageKey}`}
-                  text="How I Work"
-                  className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-8"
-                  splitType="words"
-                  delay={50}
-                  duration={0.5}
-                  ease="power2.out"
-                  from={{ opacity: 0, rotationY: 25 }}
-                  to={{ opacity: 1, rotationY: 0 }}
-                  startOnVisible
-                />
-              </FadeIn>
-            </div>
-            <FadeIn key={`philosophy-desc-${pageKey}`} delay={0.2}>
-              <p className="text-lg md:text-xl text-white/60 max-w-4xl mx-auto font-light leading-relaxed">
-                My approach blends creative thinking with technical precision. Every project starts with understanding
-                your goals and ends with solutions that actually work.
-              </p>
-            </FadeIn>
+          <div className="text-center mb-16 space-y-4">
+            <h2 className="text-3xl md:text-5xl font-bold text-white">
+              How I Work
+            </h2>
+            <p className="text-lg text-text-secondary max-w-2xl mx-auto">
+              A systematic approach to building data-driven solutions that deliver real value.
+            </p>
           </div>
 
           {/* Process Cards */}
-          <div className="grid lg:grid-cols-3 gap-12 lg:gap-16 max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {[
               {
                 phase: '01',
-                title: 'Listen & Learn',
+                title: 'Understand',
                 description:
-                  'First, I dive deep into understanding your brand, audience, and goals. Through conversations and research, I uncover what makes your project unique and what success looks like for you.',
-                icon: '👂',
-                keywords: ['Brand Research', 'User Analysis', 'Goal Setting'],
+                  'Define the problem, explore data sources, and establish success metrics. Understanding the business context is critical before diving into analysis.',
+                icon: '🔍',
+                keywords: ['Problem Framing', 'Data Exploration', 'KPI Definition'],
               },
               {
                 phase: '02',
-                title: 'Design & Iterate',
+                title: 'Build',
                 description:
-                  'Armed with insights, I start crafting solutions. Multiple concepts are explored, refined, and tested. Your feedback shapes each iteration until we land on something that feels just right.',
-                icon: '✏️',
-                keywords: ['Concept Development', 'Design Systems', 'User Testing'],
+                  'Develop models, engineer features, and iterate on solutions. Focus on reproducibility and code quality throughout the development process.',
+                icon: '⚙️',
+                keywords: ['Feature Engineering', 'Model Development', 'Validation'],
               },
               {
                 phase: '03',
-                title: 'Build & Perfect',
+                title: 'Deploy',
                 description:
-                  'The final step is bringing designs to life with pixel-perfect execution. Whether it\'s print-ready files or responsive web code, every detail is polished and optimized for real-world use.',
+                  'Ship production-ready solutions with monitoring and documentation. Ensure models perform reliably and stakeholders can act on insights.',
                 icon: '🚀',
-                keywords: ['Development', 'Quality Assurance', 'Launch Support'],
+                keywords: ['Production Deployment', 'Monitoring', 'Documentation'],
               },
             ].map((step, i) => (
               <FadeIn key={`process-${i}-${pageKey}`} delay={0.15 * i}>
@@ -324,50 +245,27 @@ export default function HomeClient({ featuredProjects }: HomeClientProps) {
 
       {/* Final CTA Section */}
       <section className="relative py-24 border-t border-white/5">
-        <div className="container mx-auto px-6 text-center">
-          <FadeIn key={`cta-title-${pageKey}`}>
-            <SplitText
-              key={`cta-split-${pageKey}`}
-              text="Got a Project in Mind?"
-              className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-6"
-              splitType="words"
-              delay={40}
-              duration={0.5}
-              ease="power2.out"
-              from={{ opacity: 0, y: 30 }}
-              to={{ opacity: 1, y: 0 }}
-              startOnVisible
-            />
-          </FadeIn>
-
-          <FadeIn key={`cta-subtitle-${pageKey}`} delay={0.25}>
-            <TextType
-              key={`cta-text-${pageKey}`}
-              text="Let's turn your ideas into something amazing together"
-              className="text-lg md:text-xl text-text-secondary mb-12 max-w-3xl mx-auto"
-              typingSpeed={60}
-              showCursor={false}
-              startOnVisible
-              as="p"
-            />
-          </FadeIn>
-
-          <FadeIn key={`cta-buttons-${pageKey}`} delay={0.4} className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+        <div className="container mx-auto px-6 text-center space-y-6">
+          <h2 className="text-3xl md:text-5xl font-bold text-white">
+            Let's Work Together
+          </h2>
+          <p className="text-lg text-text-secondary max-w-2xl mx-auto">
+            Open to data science roles, ML engineering positions, and research collaborations.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
             <Link
               href="/contact"
-              className="group relative px-12 py-5 bg-framer-blue text-white font-semibold rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 hover:bg-framer-blue-hover hover:shadow-2xl hover:shadow-framer-blue/20"
+              className="px-8 py-3 bg-framer-blue text-white font-medium rounded-full transition-all duration-200 hover:bg-framer-blue-hover"
             >
-              <span className="relative z-10">Let's Chat</span>
+              Get in Touch
             </Link>
-
             <Link
               href="/projects"
-              className="group px-12 py-5 text-text-secondary hover:text-framer-blue font-medium transition-all duration-300 border-b border-white/20 hover:border-framer-blue/40"
+              className="px-8 py-3 border border-border text-text-primary font-medium rounded-full hover:border-border-hover hover:bg-bg-secondary transition-all duration-200"
             >
-              <span>Check Out My Work</span>
-              <span className="ml-3 group-hover:translate-x-2 transition-transform duration-300 inline-block">→</span>
+              View Projects
             </Link>
-          </FadeIn>
+          </div>
         </div>
       </section>
     </>
