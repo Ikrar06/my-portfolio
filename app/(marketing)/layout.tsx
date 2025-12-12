@@ -4,27 +4,32 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: {
     template: '%s — Ikrar Gempur Tirani',
-    default: 'Ikrar Gempur Tirani — Portfolio',
+    default: 'Ikrar Gempur Tirani | Data Scientist & ML Engineer',
   },
-  description: 'Ikrar Gempur Tirani — Portfolio of a passionate graphic designer and Informatics Engineering student from Hasanuddin University. Specializing in brand identity, UI/UX design, creative direction, and tech community building in Makassar, Indonesia.',
+  description: 'Data Scientist specializing in statistical analysis, NLP, and production ML systems. Building AI products with full-stack skills and design thinking. Informatics Engineering student at Hasanuddin University (GPA 3.91).',
   authors: [{ name: 'Ikrar Gempur Tirani' }],
   creator: 'Ikrar Gempur Tirani',
   publisher: 'Ikrar Gempur Tirani',
+  keywords: ['Data Scientist', 'Machine Learning Engineer', 'NLP', 'Statistical Analysis', 'Deep Learning', 'PyTorch', 'Python', 'Production ML', 'Full-Stack Developer', 'AI Products'],
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000',
     siteName: 'Ikrar Gempur Tirani Portfolio',
+    title: 'Ikrar Gempur Tirani | Data Scientist & ML Engineer',
+    description: 'Transforming data into insights through statistical analysis and building production ML systems. Specializing in NLP, deep learning, and AI product development.',
     images: [{
       url: '/images/foto-ikrar.jpg',
       width: 1200,
       height: 630,
-      alt: 'Ikrar Gempur Tirani - Graphic Designer & Informatics Engineering Student'
+      alt: 'Ikrar Gempur Tirani - Data Scientist & ML Engineer'
     }],
   },
   twitter: {
     card: 'summary_large_image',
     creator: '@krarnotfound',
+    title: 'Ikrar Gempur Tirani | Data Scientist & ML Engineer',
+    description: 'Data Scientist specializing in statistical analysis, NLP, and production ML systems.',
     images: ['/images/foto-ikrar.jpg'],
   },
   robots: {

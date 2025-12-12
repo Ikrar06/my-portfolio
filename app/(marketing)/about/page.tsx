@@ -6,36 +6,37 @@ import type { Skill } from '@/components/skills/skills-list'
 
 export const metadata: Metadata = {
   title: 'About',
-  description: 'Get to know Ikrar Gempur Tirani — a passionate graphic designer and Informatics Engineering student from Hasanuddin University. With over 5 years of experience in creative media, brand identity, and tech community building, I create designs that connect with people.',
+  description: 'Informatics Engineering student at Hasanuddin University (GPA 3.91) specializing in Data Science and Machine Learning. From statistical analysis to production ML systems, combining technical rigor with 5 years of design leadership experience.',
   keywords: [
     'about Ikrar Gempur Tirani',
-    'graphic designer Indonesia',
+    'Data Scientist Indonesia',
+    'Machine Learning Engineer',
+    'NLP specialist',
+    'Statistical Analysis',
     'Hasanuddin University',
-    'creative media specialist',
-    'UI/UX designer Makassar',
-    'brand identity designer',
-    'tech community leader',
-    'Google Developer Groups',
-    'design portfolio',
-    'Informatics Engineering student',
-    'Gorontalo designer',
-    'Indonesian creative professional'
+    'Deep Learning PyTorch',
+    'Production ML systems',
+    'Full-Stack Developer',
+    'AI product development',
+    'Informatics Engineering',
+    'Data Science portfolio',
+    'ML Engineering Indonesia'
   ],
   openGraph: {
     title: 'About — Ikrar Gempur Tirani',
-    description: 'Get to know me — a passionate graphic designer and Informatics Engineering student with over 5 years of experience in creative media and tech community building.',
+    description: 'Data Scientist specializing in statistical analysis, NLP, and production ML systems. Informatics student at UNHAS (GPA 3.91) with 5 years of leadership experience.',
     images: [
       {
         url: '/images/foto-ikrar.jpg',
         width: 1200,
         height: 630,
-        alt: 'Ikrar Gempur Tirani - Graphic Designer & Developer',
+        alt: 'Ikrar Gempur Tirani - Data Scientist & ML Engineer',
       },
     ],
   },
   twitter: {
     title: 'About — Ikrar Gempur Tirani',
-    description: 'Get to know me — a passionate graphic designer and Informatics Engineering student with over 5 years of experience.',
+    description: 'Data Scientist specializing in statistical analysis, NLP, and production ML systems. Building AI products with full-stack skills.',
   },
 }
 

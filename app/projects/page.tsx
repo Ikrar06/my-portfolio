@@ -9,22 +9,22 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Projects',
-  description: 'Explore the portfolio of Ikrar Gempur Tirani. Showcase of design projects, case studies, and creative work across UI/UX design, graphic design, branding, web development, and tech community initiatives.',
-  keywords: ['portfolio projects', 'UI/UX design', 'graphic design', 'brand identity', 'web development', 'case studies', 'creative work', 'Ikrar Gempur Tirani'],
+  description: 'Data Science, ML Engineering, and Full-Stack projects by Ikrar Gempur Tirani. From statistical analysis with 7,500-agent simulations to fine-tuning transformers with 90%+ accuracy. Real-world ML systems in production.',
+  keywords: ['Data Science projects', 'Machine Learning portfolio', 'NLP projects', 'Deep Learning', 'Statistical Analysis', 'Production ML systems', 'PyTorch', 'Full-Stack development', 'AI products', 'Ikrar Gempur Tirani'],
   openGraph: {
     title: 'Projects — Ikrar Gempur Tirani',
-    description: 'Showcase of design projects, case studies, and creative work across various disciplines including UI/UX, graphic design, branding, and web development.',
+    description: 'Data Science, ML Engineering, and Full-Stack projects. From agent-based simulations to production NLP systems with 90%+ accuracy.',
     url: (process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000') + '/projects',
     images: [{
       url: '/images/foto-ikrar.jpg',
       width: 1200,
       height: 630,
-      alt: 'Projects by Ikrar Gempur Tirani'
+      alt: 'Data Science & ML Projects by Ikrar Gempur Tirani'
     }],
   },
   twitter: {
     title: 'Projects — Ikrar Gempur Tirani',
-    description: 'Showcase of design projects, case studies, and creative work.',
+    description: 'Data Science, ML Engineering, and Full-Stack projects. Real-world ML systems in production.',
   },
 }
 
