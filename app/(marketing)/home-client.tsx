@@ -60,7 +60,7 @@ export default function HomeClient({ featuredProjects }: HomeClientProps) {
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
             <Link
-              href="/projects"
+              href="/project"
               className="px-8 py-3 bg-framer-blue text-white font-medium rounded-full transition-all duration-200 hover:bg-framer-blue-hover"
             >
               View Projects
@@ -87,7 +87,7 @@ export default function HomeClient({ featuredProjects }: HomeClientProps) {
               Selected projects in data science, ML engineering, and full-stack development.
             </p>
             <Link
-              href="/projects"
+              href="/project"
               className="inline-flex items-center text-text-secondary hover:text-framer-blue transition-colors font-medium group pt-2"
             >
               <span>View all projects</span>
@@ -258,7 +258,7 @@ export default function HomeClient({ featuredProjects }: HomeClientProps) {
               Get in Touch
             </Link>
             <Link
-              href="/projects"
+              href="/project"
               className="px-8 py-3 border border-border text-text-primary font-medium rounded-full hover:border-border-hover hover:bg-bg-secondary transition-all duration-200"
             >
               View Projects

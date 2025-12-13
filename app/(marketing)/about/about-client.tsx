@@ -20,39 +20,31 @@ export default function AboutClient({ skills }: AboutClientProps) {
   const pageKey = useMemo(() => (pathname || 'about') + '-v3', [pathname])
 
   // =========================
-  // DATA PENGALAMAN (sorted by timeline - descending)
+  // DATA PENGALAMAN (sorted by timeline - descending, sesuai CV)
   // =========================
   const experiences = [
     {
       icon: '💻',
-      org: 'Cirebon Kuring - Cafe Management System',
+      org: 'Cirebon Kuring Cafe',
       title: 'Fullstack Developer',
       type: 'Technical Role',
-      dates: 'Jun 2025 – Present',
-      duration: '7 mos',
+      dates: 'June 2025 – Present',
       location: 'Remote',
-      desc: `Building comprehensive cafe management system with cross-platform architecture. Designed database schema, implemented real-time inventory tracking with low-stock alerts, and developed both web (Next.js) and mobile (Flutter) interfaces. Focused on requirements gathering, technical specifications, and creating seamless user experiences across platforms.`,
-      skills: [
-        'Next.js', 'Flutter', 'TypeScript', 'Dart', 'PostgreSQL', 'Supabase',
-        'Database Design', 'REST API', 'Cross-Platform Development', 'Requirements Gathering'
-      ]
+      desc: `Developing web and mobile application using TypeScript (Next.js) and Flutter with PostgreSQL database architecture currently in pre-launch phase. Designing database schema and data models to manage cafe operations, inventory tracking, and customer order systems. Collaborating with stakeholders to gather requirements and translate business needs into technical specifications.`,
+      skills: ['TypeScript', 'Next.js', 'Flutter', 'PostgreSQL', 'Database Design', 'Requirements Gathering']
     },
     {
       icon: '🚀',
-      org: 'Google Developer Group on Campus Hasanuddin University',
+      org: 'Google Developer Group on Campus - Hasanuddin University',
       title: 'Head of Creative Media Division',
       type: 'Leadership Role',
       dates: 'Aug 2025 – Present',
-      duration: '5 mos',
-      location: 'Makassar, South Sulawesi, Indonesia · On-site',
-      desc: `Leading 6-member creative team with data-driven strategy achieving 46% follower growth (2,800 → 4,100) and 1M+ total content views. Managed content strategy, team coordination, and brand consistency across all channels. Peak performance: 515K monthly views (October 2025), representing 25x improvement vs previous period.`,
+      location: 'Makassar, South Sulawesi',
+      desc: `Lead team of 6 members, growing Instagram community by 46% (2,800 to 4,100 followers) and generating 1M+ total content views since August 2025. Achieved record monthly performance of 515K views in October 2025, representing 25x improvement from pre-leadership baseline through strategic content optimization and audience targeting. Analyze social media engagement metrics using Instagram Insights to inform data-driven decisions on content format, posting schedules, and creative direction.`,
       extras: [
         { label: 'Instagram', value: '@gdgocunhas', href: 'https://instagram.com/gdgocunhas' }
       ],
-      skills: [
-        'Team Leadership (6+ members)', 'Data-Driven Strategy', 'Content Strategy', 'Social Media Strategy',
-        'Brand Management', 'Performance Analytics', 'Graphic Design', 'Creative Direction'
-      ]
+      skills: ['Team Leadership', 'Data-Driven Strategy', 'Social Media Analytics', 'Content Strategy', 'Brand Management']
     },
     {
       icon: '🏫',
@@ -60,91 +52,25 @@ export default function AboutClient({ skills }: AboutClientProps) {
       title: 'Head of Creative Media Division',
       type: 'Leadership Role',
       dates: 'Feb 2025 – Present',
-      duration: '11 mos',
-      location: 'Gowa, South Sulawesi, Indonesia · On-site',
-      desc: `Leading creative production for coding community. Managed workshop materials, educational content design, social media content strategy, and event branding. Ensured consistent brand identity across all channels while making complex coding concepts accessible through visual design.`,
+      location: 'Makassar, South Sulawesi',
+      desc: `Lead creative team to produce visual content, event documentation, and promotional materials for university coding community. Coordinate with technical and organizational teams to support community initiatives and educational programs. Manage content production workflow ensuring consistent brand identity across social media platforms.`,
       extras: [
         { label: 'Instagram', value: '@coderinstitute', href: 'https://instagram.com/coderinstitute' }
       ],
-      skills: [
-        'Content Strategy', 'Educational Content Design', 'Team Coordination', 'Brand Identity',
-        'Graphic Design', 'Adobe Creative Suite', 'Figma', 'Social Media Graphics'
-      ]
+      skills: ['Content Strategy', 'Team Coordination', 'Brand Identity', 'Graphic Design', 'Figma']
     },
     {
       icon: '🧩',
-      org: 'Recursion UH (National Informatics Competition)',
+      org: 'Recursion UH',
       title: 'Publication, Design, and Documentation Coordinator',
       type: 'Leadership Role',
       dates: 'Sep 2024 – Apr 2025',
-      duration: '8 mos',
-      location: 'Makassar, South Sulawesi, Indonesia · On-site',
-      desc: `Built social media presence from 0 → 894 followers in 7 months for inaugural national competition. Managed complete content pipeline, published 96+ content pieces, coordinated visual identity across all platforms. Promoted multi-campus competition with consistent branding and engagement strategy.`,
+      location: 'Makassar, South Sulawesi',
+      desc: `Coordinated publication and creative strategy for inaugural national-level informatics competition organized by Hasanuddin University, featuring CTF, UX Design, ICT Business Plan, and Competitive Programming tracks. Built social media presence from ground up, achieving 894 followers and 96+ published content pieces across Instagram platform within 8-month period. Designed promotional materials, infographics, and technical documentation to support competition promotion and participant communication across multiple university campuses.`,
       extras: [
         { label: 'Instagram', value: '@recursion.uh', href: 'https://instagram.com/recursion.uh' }
       ],
-      skills: [
-        'Social Media Growth Strategy', 'Content Pipeline Management', 'Brand Identity', 'Visual Design',
-        'Adobe Creative Suite', 'Figma', 'Video Editing', 'Team Coordination', 'Logo Design'
-      ]
-    },
-    {
-      icon: '🎟️',
-      org: 'Coder Institute — NEXUS 2024 Seminar',
-      title: 'Publication, Design, and Documentation Team Member',
-      type: 'Event Project',
-      dates: 'Aug 2024 – Sep 2024',
-      duration: '2 mos',
-      location: 'Remote',
-      desc: `Created complete visual identity from scratch for national tech seminar. Designed logo, mascot, certificates, merchandise, and live event report graphics. Delivered cohesive branding system that enhanced participant experience and event engagement.`,
-      skills: [
-        'Complete Brand System Design', 'Logo Design', 'Mascot Design', 'Event Graphics',
-        'Adobe Creative Suite', 'Figma', 'Print Design', 'Merchandise Design'
-      ]
-    },
-    {
-      icon: '📘',
-      org: 'MAN Insan Cendekia Gorontalo',
-      title: 'Creative Team on Xenavion Year Book Committee',
-      type: 'Committee',
-      dates: 'Jan 2023 – Jul 2023',
-      duration: '7 mos',
-      location: 'Gorontalo, Indonesia',
-      desc: `My first real taste of publication design. Working on the Xenavion yearbook taught me how to maintain visual consistency across hundreds of pages while making sure every spread told its own story. It was meticulous work, but seeing classmates flip through the finished book made every late night worth it.`,
-      skills: ['Graphic Design', 'Layout', 'Adobe Photoshop', 'Adobe Illustrator']
-    },
-    {
-      icon: '🎭',
-      org: 'NAYANGKARA',
-      title: 'Creative Team',
-      type: 'Arts Activity',
-      dates: 'Sep 2022 – Jan 2023',
-      duration: '5 mos',
-      location: 'Gorontalo, Indonesia',
-      desc: `This project was all about blending traditional Kecak dance with modern digital storytelling. I created digital content that complemented our performances, learning how to capture the energy of live art through video and graphics. It opened my eyes to how design can honor tradition while reaching new audiences.`,
-      skills: ['Adobe Premiere Pro', 'After Effects', 'Editing', 'Graphic Design', 'Social Media Graphic Design']
-    },
-    {
-      icon: '🎨',
-      org: 'MAN Insan Cendekia Gorontalo Student Council',
-      title: 'Art and Culture Division Member',
-      type: 'Student Organization',
-      dates: 'Oct 2021 – Aug 2022',
-      duration: '11 mos',
-      location: 'Gorontalo, Indonesia',
-      desc: `This role taught me that good design serves a purpose beyond aesthetics. I organized cultural events and created content that actually got students excited about participating in arts programs. Managing our Instagram account was like running a mini creative agency, complete with content calendars and engagement strategies.`,
-      skills: ['Adobe Premiere Pro', 'After Effects', 'Editing', 'Graphic Design', 'Adobe Photoshop', 'Adobe Illustrator']
-    },
-    {
-      icon: '✨',
-      org: 'INSPIRAL 2021',
-      title: 'Creative Team',
-      type: 'School Event',
-      dates: 'Nov 2021 – Dec 2021',
-      duration: '2 mos',
-      location: 'Gorontalo, Indonesia',
-      desc: `INSPIRAL was where I first experienced the rush of creating under pressure. With final exams behind us, we had this amazing opportunity to showcase what students could really do. I handled everything from logo design to promotional materials, learning that sometimes the best creative work happens when you're having fun with it.`,
-      skills: ['Adobe Premiere Pro', 'After Effects', 'Editing', 'Graphic Design', 'Adobe Photoshop', 'Adobe Illustrator', 'Logo Design']
+      skills: ['Social Media Growth', 'Content Management', 'Visual Design', 'Adobe Creative Suite', 'Figma']
     }
   ]
 
@@ -190,20 +116,20 @@ export default function AboutClient({ skills }: AboutClientProps) {
               <div className="mt-8 md:mt-0">
                 <p className="text-lg md:text-xl text-white/70 leading-relaxed font-light mb-4">
                   Hi, I'm <span className="font-semibold text-white">Ikrar Gempur Tirani</span>, an{' '}
-                  <span className="text-white">Informatics Engineering student</span> at Hasanuddin University (GPA 3.91/4.00) specializing in <span className="text-white">Data Science and Machine Learning</span> with focus on Natural Language Processing.
+                  <span className="text-white">Informatics Engineering student</span> at Hasanuddin University (GPA 3.91/4.00) specializing in <span className="text-white">Artificial Intelligence</span> with hands-on experience in machine learning, natural language processing, and statistical modeling.
                 </p>
                 <p className="text-base md:text-lg text-white/60 leading-relaxed font-light mb-4">
-                  I transform complex data into actionable insights through statistical analysis and hypothesis testing. From simulating 7,500-agent marketplaces to fine-tuning deep learning models with <span className="text-white">90%+ accuracy</span>, I combine rigorous data science methodology with production ML engineering.
+                  Proficient in <span className="text-white">Python, TensorFlow, and PyTorch</span> with experience building end-to-end ML systems from data preprocessing to deployment. I work on projects ranging from agent-based market simulations to fine-tuning deep learning models for NLP tasks, combining rigorous methodology with production engineering practices.
                 </p>
                 <p className="text-base md:text-lg text-white/60 leading-relaxed font-light">
-                  My experience spans the full spectrum: exploratory data analysis, statistical modeling, deep learning, and deploying ML systems to production. With full-stack development skills (Next.js, Flutter, Flask) and <span className="text-white">5 years of design leadership</span>, I bring a unique perspective to building AI products that are technically sound, production-ready, and intuitive for users.
+                  Currently leading Creative Media Division at <span className="text-white">Google Developer Groups on Campus</span>, combining technical expertise with strong communication and leadership skills. With full-stack development capabilities and design experience, I bring a comprehensive approach to building AI products that are both technically robust and user-friendly.
                 </p>
 
                 <div className="mt-6 grid gap-3 text-sm text-white/60">
                   <div className="flex items-center"><div className="w-1.5 h-1.5 bg-white/40 rounded-full mr-3" /> Born and raised in Gorontalo, January 6, 2005</div>
                   <div className="flex items-center"><div className="w-1.5 h-1.5 bg-white/40 rounded-full mr-3" /> Currently living in Makassar, South Sulawesi</div>
                   <div className="flex items-center"><div className="w-1.5 h-1.5 bg-white/40 rounded-full mr-3" /> Fifth semester Informatics student at Hasanuddin University (GPA 3.91)</div>
-                  <div className="flex items-center"><div className="w-1.5 h-1.5 bg-white/40 rounded-full mr-3" /> Pursuing Data Science and ML Engineering roles</div>
+                  <div className="flex items-center"><div className="w-1.5 h-1.5 bg-white/40 rounded-full mr-3" /> Pursuing Machine Learning Engineer and Data Science roles</div>
                 </div>
 
                 <div className="mt-8">
@@ -340,7 +266,7 @@ export default function AboutClient({ skills }: AboutClientProps) {
             <FadeIn key={`exp-title-${pageKey}`}>
               <SplitText
                 key={`exp-split-${pageKey}`}
-                text="Experience & Leadership"
+                text="Experience"
                 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-8"
                 splitType="words, chars"
                 delay={80}
@@ -353,7 +279,7 @@ export default function AboutClient({ skills }: AboutClientProps) {
             </FadeIn>
             <FadeIn key={`exp-desc-${pageKey}`} delay={0.2}>
               <p className="text-lg md:text-xl text-white/60 max-w-3xl mx-auto font-light leading-relaxed">
-                From full-stack development to leading creative teams with data-driven strategy. My journey combines technical skills with proven leadership metrics: 1M+ content views and 46% follower growth.
+                Full-stack development and creative leadership positions that combine technical implementation with data-driven strategy and team management.
               </p>
             </FadeIn>
           </div>
@@ -393,7 +319,6 @@ export default function AboutClient({ skills }: AboutClientProps) {
                               </span>
                               <span className="text-white/60">•</span>
                               <span className="text-white/60">{exp.dates}</span>
-                              <span className="text-white/50">({exp.duration})</span>
                             </div>
                             {exp.location && exp.location !== 'Remote' && (
                               <p className="text-white/40 text-xs mt-1">{exp.location}</p>
@@ -464,7 +389,7 @@ export default function AboutClient({ skills }: AboutClientProps) {
                   <span className="relative z-10">Get in Touch</span>
                 </Link>
                 <Link
-                  href="/projects"
+                  href="/project"
                   className="group px-10 py-4 border border-white/20 text-white font-medium rounded-full hover:border-white/40 hover:bg-white/5 transition-all duration-300 backdrop-blur-sm"
                 >
                   <span>View My Work</span>

@@ -230,7 +230,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           </Link>
           <span className="mx-2">/</span>
           <Link 
-            href="/projects" 
+            href="/project" 
             className="hover:text-neutral-900 dark:hover:text-neutral-200 transition-colors"
           >
             {workType}
@@ -243,7 +243,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         <header className="space-y-8">
           <div className="space-y-6">
             <Link
-              href="/projects"
+              href="/project"
               className="inline-flex items-center gap-2 text-sm text-emerald-700 hover:text-emerald-800 dark:text-emerald-400 dark:hover:text-emerald-300 transition-colors group"
             >
               <svg className="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1003,7 +1003,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                 {eventWork ? 'Related Events' : organizationWork ? 'Related Work' : 'Related Projects'}
               </h2>
               <Link 
-                href="/projects"
+                href="/project"
                 className="text-emerald-600 dark:text-emerald-400 hover:underline font-medium"
               >
                 {eventWork ? 'View all events →' : organizationWork ? 'View all work →' : 'View all projects →'}
@@ -1020,7 +1020,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         {/* Navigation */}
         <nav className="flex flex-col sm:flex-row gap-4 pt-8 border-t border-neutral-200 dark:border-neutral-800">
           <Link
-            href="/projects"
+            href="/project"
             className="flex-1 group p-6 bg-neutral-50 hover:bg-neutral-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 rounded-xl border border-neutral-200 dark:border-neutral-800 transition-colors text-center"
           >
             <div className="flex items-center justify-center gap-2 text-emerald-600 dark:text-emerald-400 font-medium">
@@ -1057,7 +1057,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         </div>
         
         <Link
-          href="/projects"
+          href="/project"
           className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700 transition-colors font-medium"
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
