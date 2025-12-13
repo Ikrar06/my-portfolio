@@ -12,7 +12,7 @@ export default function Nav() {
   const links = useMemo(
     () => [
       { href: '/', label: 'Home' },
-      { href: '/projects', label: 'Projects' },
+      { href: '/project', label: 'Project' },
       { href: '/design', label: 'Design' },
       { href: '/about', label: 'About' },
       { href: '/contact', label: 'Contact' },

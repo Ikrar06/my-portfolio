@@ -1,10 +1,30 @@
 [
-  { "name": "Adobe Illustrator", "label": "Expert", "years": 5},
-  { "name": "Adobe Photoshop", "label": "Expert", "years": 5},
-  { "name": "Figma", "label": "Expert", "years": 2},
-  { "name": "Canva", "label": "Advanced", "years": 3},
-  { "name": "Adobe After Effects", "label": "Intermediate", "years": 3},
-  { "name": "Adobe Premiere Pro", "label": "Intermediate", "years": 3},
-  { "name": "Adobe Animate", "label": "Intermediate", "years": 1},
-  { "name": "CapCut", "label": "Advanced", "years": 2}
+  {
+    "category": "Programming Languages",
+    "skills": ["Python", "SQL", "JavaScript", "TypeScript", "Java", "C++", "Dart"]
+  },
+  {
+    "category": "Data Science & Machine Learning",
+    "skills": ["TensorFlow", "PyTorch", "Scikit-learn", "Pandas", "NumPy", "NLTK", "Hugging Face"]
+  },
+  {
+    "category": "Data Analysis & Visualization",
+    "skills": ["Jupyter Notebook", "Matplotlib", "Seaborn", "Statistical Modeling"]
+  },
+  {
+    "category": "Databases",
+    "skills": ["MySQL", "PostgreSQL", "Supabase", "Firebase"]
+  },
+  {
+    "category": "Tools & Platforms",
+    "skills": ["Git", "GitHub", "Google Colab", "VS Code", "Railway", "Vercel"]
+  },
+  {
+    "category": "Web & App Development",
+    "skills": ["Next.js", "React", "Node.js", "Express.js", "Flask", "Flutter", "HTML/CSS"]
+  },
+  {
+    "category": "Design & Creative Tools",
+    "skills": ["Adobe Illustrator", "Adobe Photoshop", "Figma", "Adobe After Effects", "Adobe Premiere Pro", "Canva"]
+  }
 ]
