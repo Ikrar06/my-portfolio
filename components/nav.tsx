@@ -41,7 +41,7 @@ export default function Nav() {
             onClick={closeMobileMenu}
           >
             <span className="bg-gradient-to-r from-framer-blue via-framer-blue-light to-framer-blue bg-clip-text text-transparent group-hover:from-framer-blue-light group-hover:via-white group-hover:to-framer-blue-light transition-colors duration-300">
-              IGT
+              Ikrar Gempur Tirani
             </span>
           </Link>
 
