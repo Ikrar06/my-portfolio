@@ -1,8 +1,7 @@
 // app/design/design-client.tsx
 'use client'
 
-import { useState, Suspense } from 'react'
-import { useSearchParams } from 'next/navigation'
+import { useState } from 'react'
 import DesignProjects from '@/components/design/design-projects'
 import DesignShots from '@/components/design/design-shots'
 import type { ProjectMeta } from '@/lib/projects'
@@ -23,9 +22,7 @@ interface DesignClientProps {
 }
 
 export default function DesignClient({ projects, shots }: DesignClientProps) {
-  const searchParams = useSearchParams()
-  const initialTab = (searchParams?.get('tab') as TabType) || 'projects'
-  const [activeTab, setActiveTab] = useState<TabType>(initialTab)
+  const [activeTab, setActiveTab] = useState<TabType>('projects')
 
   const tabs = [
     { id: 'projects' as TabType, label: 'Projects', description: 'Full design case studies' },
@@ -76,17 +73,10 @@ export default function DesignClient({ projects, shots }: DesignClientProps) {
       </header>
 
       {/* Tab Content */}
-      <Suspense fallback={
-        <div className="flex items-center justify-center py-20">
-          <div className="flex flex-col items-center gap-4">
-            <div className="w-12 h-12 border-4 border-framer-blue/20 border-t-framer-blue rounded-full animate-spin" />
-            <p className="text-sm text-neutral-500 dark:text-neutral-400">Loading {activeTab}...</p>
-          </div>
-        </div>
-      }>
+      <div>
         {activeTab === 'projects' && <DesignProjects projects={projects} />}
         {activeTab === 'shots' && <DesignShots shots={shots} />}
-      </Suspense>
+      </div>
     </section>
   )
 }

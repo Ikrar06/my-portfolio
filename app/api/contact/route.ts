@@ -1,10 +1,18 @@
 // app/api/contact/route.ts
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 export async function POST(req: Request) {
   try {
+    // Initialize Resend at runtime to avoid build-time errors
+    const apiKey = process.env.RESEND_API_KEY
+    if (!apiKey) {
+      return Response.json(
+        { ok: false, error: 'RESEND_API_KEY is not set on server.' },
+        { status: 500 }
+      )
+    }
+    const resend = new Resend(apiKey)
+
     const to = process.env.CONTACT_TO
     if (!to) {
       return Response.json(
