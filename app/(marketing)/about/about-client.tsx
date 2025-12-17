@@ -193,22 +193,26 @@ export default function AboutClient({ skills }: AboutClientProps) {
               {
                 title: 'Data Science & Analytics',
                 desc: 'Statistical analysis and hypothesis testing to extract meaningful insights from complex data. Rigorous methodology from exploration to validation.',
-                specialties: ['Exploratory Data Analysis', 'Statistical Modeling', 'Hypothesis Testing', 'Data Visualization']
+                // specialties: ['Exploratory Data Analysis', 'Statistical Modeling', 'Hypothesis Testing', 'Data Visualization']
+                specialties: []
               },
               {
                 title: 'Machine Learning & NLP',
                 desc: 'Building intelligent systems from training to production. Specializing in NLP and deep learning with PyTorch and TensorFlow.',
-                specialties: ['Deep Learning (PyTorch)', 'Natural Language Processing', 'Model Training & Optimization', 'Production ML Systems']
+                // specialties: ['Deep Learning (PyTorch)', 'Natural Language Processing', 'Model Training & Optimization', 'Production ML Systems']
+                specialties: []
               },
               {
                 title: 'Full-Stack Development',
                 desc: 'Shipping web and mobile applications that bring ML models to users. Modern frameworks, APIs, and production deployment.',
-                specialties: ['React & Next.js', 'Flutter Mobile Apps', 'Flask APIs', 'Database Design']
+                // specialties: ['React & Next.js', 'Flutter Mobile Apps', 'Flask APIs', 'Database Design']
+                specialties: []
               },
               {
                 title: 'Design Leadership',
                 desc: 'Leading creative teams with data-driven strategy. 5 years experience with proven metrics: 1M+ content views, 46% follower growth.',
-                specialties: ['Team Management (6+ members)', 'Brand Strategy', 'UI/UX for AI Products', 'Growth Metrics']
+                // specialties: ['Team Management (6+ members)', 'Brand Strategy', 'UI/UX for AI Products', 'Growth Metrics']
+                specialties: []
               }
             ].map((service, i) => (
               <FadeIn key={`service-${i}-${pageKey}`} delay={0.1 * i}>
