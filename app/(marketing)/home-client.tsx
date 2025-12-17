@@ -45,16 +45,16 @@ export default function HomeClient({ featuredProjects }: HomeClientProps) {
         <div className="relative text-center max-w-5xl mx-auto z-10 space-y-6">
           {/* Tagline */}
           <p className="text-sm md:text-base text-text-tertiary font-medium tracking-wider uppercase">
-            Data Scientist • ML Engineer • Full-Stack Developer
+            Informatics Engineering Student • Artificial Intelligence Enthusiast
           </p>
 
           {/* Main Hero Heading - Interactive */}
           <InteractiveHeroText />
 
           {/* Hero Description */}
-          <p className="text-lg md:text-xl text-text-secondary leading-relaxed max-w-2xl mx-auto pt-2">
-            Focusing on NLP, statistical modeling, and production ML systems.
-            Learning to combine data science with full-stack development to build AI products.
+          <p className="text-lg md:text-xl text-text-secondary leading-relaxed max-w-3xl mx-auto pt-2">
+            Informatics student at Hasanuddin University focusing on artificial intelligence with growing experience in machine learning and NLP.
+            Learning to build end-to-end ML systems with Python, TensorFlow, and PyTorch.
           </p>
 
           {/* Action Buttons */}

@@ -28,7 +28,7 @@ export default function ContactClient({ contactInfo }: ContactClientProps) {
   return (
     <div className="w-full overflow-x-hidden">
       {/* Hero Section with Clean Design */}
-      <section className="relative min-h-screen flex flex-col justify-center px-4 sm:px-6 py-20 w-full overflow-hidden">
+      <section className="relative min-h-screen flex flex-col justify-start px-4 sm:px-6 pt-16 pb-12 w-full overflow-hidden">
         {/* Background Elements removed to avoid visual artifacts */}
 
         <div className="relative max-w-6xl mx-auto z-10 w-full">

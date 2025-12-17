@@ -79,7 +79,7 @@ export default function AboutClient({ skills }: AboutClientProps) {
           <div className="mb-8">
             <TextType
               key={`about-tagline-${pageKey}`}
-              text="Data Scientist • ML Engineer • Full-Stack Developer • 5+ Years Design Experience"
+              text="Informatics Engineering Student • Artificial Intelligence Enthusiast"
               className="text-sm md:text-base text-white/60 font-medium tracking-wider uppercase"
               typingSpeed={80}
               showCursor={false}
@@ -192,19 +192,19 @@ export default function AboutClient({ skills }: AboutClientProps) {
             {[
               {
                 title: 'Data Science & Analytics',
-                desc: 'Statistical analysis and hypothesis testing to extract meaningful insights from complex data. Rigorous methodology from exploration to validation.',
+                desc: 'Learning statistical analysis and hypothesis testing to extract insights from data. Developing skills in exploratory analysis, data visualization, and validation.',
                 // specialties: ['Exploratory Data Analysis', 'Statistical Modeling', 'Hypothesis Testing', 'Data Visualization']
                 specialties: []
               },
               {
                 title: 'Machine Learning & NLP',
-                desc: 'Building intelligent systems from training to production. Specializing in NLP and deep learning with PyTorch and TensorFlow.',
+                desc: 'Developing machine learning systems with focus on NLP. Learning deep learning with PyTorch and TensorFlow through academic and personal projects.',
                 // specialties: ['Deep Learning (PyTorch)', 'Natural Language Processing', 'Model Training & Optimization', 'Production ML Systems']
                 specialties: []
               },
               {
                 title: 'Full-Stack Development',
-                desc: 'Shipping web and mobile applications that bring ML models to users. Modern frameworks, APIs, and production deployment.',
+                desc: 'Building web and mobile applications to bring ML models to users. Learning modern frameworks, APIs, and deployment practices.',
                 // specialties: ['React & Next.js', 'Flutter Mobile Apps', 'Flask APIs', 'Database Design']
                 specialties: []
               },

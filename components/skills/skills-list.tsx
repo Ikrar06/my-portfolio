@@ -1,5 +1,4 @@
 // components/skills/skills-list.tsx
-import React from 'react'
 
 export type Skill = {
   category: string
@@ -12,7 +11,7 @@ type SkillsListProps = {
 
 export default function SkillsList({ skills }: SkillsListProps) {
   return (
-    <div className="space-y-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
       {skills.map((category, categoryIndex) => (
         <div
           key={category.category}
