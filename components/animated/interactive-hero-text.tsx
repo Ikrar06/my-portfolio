@@ -53,17 +53,29 @@ export function InteractiveHeroText() {
         <span className="block">Building with</span>
         <span className="block">
           <span
-            className="cursor-pointer transition-colors inline-block relative z-20"
+            className="cursor-pointer transition-all duration-300 inline-block relative z-20 hover:scale-105"
             onMouseEnter={() => setHoverState('code')}
             onMouseLeave={() => setHoverState(null)}
+            style={{
+              textShadow: hoverState === 'code'
+                ? '0 0 20px rgba(255, 255, 255, 0.6), 0 0 40px rgba(255, 255, 255, 0.3)'
+                : '0 0 20px rgba(255, 255, 255, 0.35), 0 0 40px rgba(255, 255, 255, 0.2)',
+              color: 'white'
+            }}
           >
             Code
           </span>
           {' and '}
           <span
-            className="cursor-pointer transition-colors inline-block relative z-20"
+            className="cursor-pointer transition-all duration-300 inline-block relative z-20 hover:scale-105"
             onMouseEnter={() => setHoverState('design')}
             onMouseLeave={() => setHoverState(null)}
+            style={{
+              textShadow: hoverState === 'design'
+                ? '0 0 20px rgba(255, 255, 255, 0.6), 0 0 40px rgba(255, 255, 255, 0.3)'
+                : '0 0 20px rgba(255, 255, 255, 0.35), 0 0 40px rgba(255, 255, 255, 0.2)',
+              color: 'white'
+            }}
           >
             Design
           </span>
