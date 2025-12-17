@@ -33,45 +33,45 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="mt-20 mb-6" role="contentinfo">
+    <footer className="mt-12 sm:mt-16 md:mt-20 mb-4 sm:mb-6" role="contentinfo">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="p-6 sm:p-8 rounded-2xl bg-neutral-900 border border-neutral-800 shadow-lg">
-          
+        <div className="p-4 sm:p-6 md:p-8 rounded-2xl bg-neutral-900 border border-neutral-800 shadow-lg">
+
           {/* Main Footer Content */}
-          <div className="flex flex-col lg:flex-row items-start justify-between gap-12">
-            
+          <div className="flex flex-col lg:flex-row items-start justify-between gap-8 sm:gap-10 md:gap-12">
+
             {/* Brand & Personal Message */}
-            <div className="space-y-4 lg:max-w-md">
+            <div className="space-y-3 sm:space-y-4 lg:max-w-md">
               <div className="flex items-center gap-2">
-                <span className="text-2xl font-bold bg-gradient-to-r from-framer-blue via-framer-blue-light to-framer-blue bg-clip-text text-transparent">
+                <span className="text-lg sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-framer-blue via-framer-blue-light to-framer-blue bg-clip-text text-transparent">
                   Ikrar Gempur Tirani
                 </span>
               </div>
-              <p className="text-text-secondary leading-relaxed text-justify">
+              <p className="text-xs sm:text-sm text-text-secondary leading-relaxed text-justify">
                 Informatics engineering student focusing on Data Science and ML. Learning to build intelligent systems with statistical analysis, NLP, and full-stack development.
               </p>
-              <p className="text-sm text-text-tertiary">
+              <p className="text-xs sm:text-sm text-text-tertiary">
                 Available for Data Science/ML roles and research collaborations.
               </p>
             </div>
 
             {/* Navigation Links */}
-            <div className="flex flex-col sm:flex-row gap-12">
-              
+            <div className="flex flex-col sm:flex-row gap-8 sm:gap-10 md:gap-12">
+
               {/* Quick Links */}
               <div>
-                <h3 className="text-sm font-semibold text-white mb-4 uppercase tracking-wider">Explore</h3>
-                <ul className="space-y-3">
+                <h3 className="text-xs sm:text-sm font-semibold text-white mb-3 sm:mb-4 uppercase tracking-wider">Explore</h3>
+                <ul className="space-y-2 sm:space-y-3">
                   {quickLinks.map(({ href, label, description }) => (
                     <li key={href}>
                       <Link
                         href={href}
                         className="group block transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-framer-blue focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary rounded-sm"
                       >
-                        <span className="text-sm font-medium text-text-secondary group-hover:text-framer-blue transition-colors duration-200">
+                        <span className="text-xs sm:text-sm font-medium text-text-secondary group-hover:text-framer-blue transition-colors duration-200">
                           {label}
                         </span>
-                        <p className="text-xs text-text-tertiary group-hover:text-text-secondary transition-colors duration-200 mt-0.5">
+                        <p className="text-[10px] sm:text-xs text-text-tertiary group-hover:text-text-secondary transition-colors duration-200 mt-0.5">
                           {description}
                         </p>
                       </Link>
@@ -82,8 +82,8 @@ export default function Footer() {
 
               {/* Social Links */}
               <div>
-                <h3 className="text-sm font-semibold text-white mb-4 uppercase tracking-wider">Connect</h3>
-                <ul className="space-y-3">
+                <h3 className="text-xs sm:text-sm font-semibold text-white mb-3 sm:mb-4 uppercase tracking-wider">Connect</h3>
+                <ul className="space-y-2 sm:space-y-3">
                   {socialLinks.map(({ name, href, description, iconPath }) => (
                     <li key={name}>
                       <Link

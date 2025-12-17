@@ -36,8 +36,8 @@ export function InteractiveHeroText() {
 
   return (
     <div className="relative">
-      {/* Floating elements container - positioned absolutely, can overlap the text */}
-      <div className="absolute inset-0 pointer-events-none z-0">
+      {/* Floating elements container - positioned absolutely, can overlap the text - Hidden on mobile */}
+      <div className="hidden md:block absolute inset-0 pointer-events-none z-0">
         <FloatingElements
           elements={codeElements}
           show={hoverState === 'code'}
@@ -49,7 +49,7 @@ export function InteractiveHeroText() {
       </div>
 
       {/* Main heading */}
-      <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white tracking-tight relative z-10">
+      <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white tracking-tight relative z-10 px-2">
         <span className="block">Building with</span>
         <span className="block">
           <span

@@ -73,14 +73,14 @@ export default function AboutClient({ skills }: AboutClientProps) {
   return (
     <>
       {/* Hero + Profile Snapshot */}
-      <section className="relative min-h-[80vh] flex flex-col justify-center px-6 py-20">
+      <section className="relative min-h-[80vh] flex flex-col justify-center px-4 sm:px-6 py-2">
         <div className="max-w-6xl mx-auto">
           {/* Tagline */}
-          <div className="mb-8">
+          <div className="mb-6 sm:mb-8">
             <TextType
               key={`about-tagline-${pageKey}`}
               text="Informatics Engineering Student • Artificial Intelligence Enthusiast"
-              className="text-sm md:text-base text-white/60 font-medium tracking-wider uppercase"
+              className="text-xs sm:text-sm md:text-base text-white/60 font-medium tracking-wider uppercase"
               typingSpeed={80}
               showCursor={false}
               initialDelay={0}
@@ -90,15 +90,15 @@ export default function AboutClient({ skills }: AboutClientProps) {
           </div>
 
           {/* Main Content Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-[auto,1fr] gap-8 md:gap-12 items-start">
+          <div className="grid grid-cols-1 md:grid-cols-[auto,1fr] gap-6 md:gap-8 lg:gap-12 items-start">
             {/* FOTO HD WITH BACKDROP BOX */}
-            <div className="relative w-[300px] md:w-[440px] mx-auto md:mx-0 space-y-4">
+            <div className="relative w-[240px] sm:w-[280px] md:w-[380px] lg:w-[440px] mx-auto md:mx-0 space-y-3 sm:space-y-4">
               {/* Photo Box */}
-              <div className="relative w-full h-[300px] md:h-[440px]">
+              <div className="relative w-full h-[240px] sm:h-[280px] md:h-[380px] lg:h-[440px]">
                 {/* Backdrop box */}
-                <div className="backdrop-blur-sm bg-white/[0.02] border border-white/10 rounded-3xl p-3 hover:bg-white/[0.05] transition-all duration-700 hover:border-white/20 h-full flex flex-col items-center justify-center group">
+                <div className="backdrop-blur-sm bg-white/[0.02] border border-white/10 rounded-2xl sm:rounded-3xl p-2 sm:p-3 hover:bg-white/[0.05] transition-all duration-700 hover:border-white/20 h-full flex flex-col items-center justify-center group">
                   {/* Photo container with pixelation effect */}
-                  <div className="relative w-[260px] h-[260px] md:w-[380px] md:h-[380px]">
+                  <div className="relative w-[210px] h-[210px] sm:w-[240px] sm:h-[240px] md:w-[330px] md:h-[330px] lg:w-[380px] lg:h-[380px]">
                     <PixelatedImage
                       src="/images/foto-ikrar.jpg"
                       pixelatedSrc="/images/foto-ikrar-pixelated.PNG"
@@ -109,50 +109,31 @@ export default function AboutClient({ skills }: AboutClientProps) {
                 </div>
               </div>
 
-              {/* Hover Me Box */}
-              <div className="group relative w-full overflow-hidden rounded-2xl backdrop-blur-sm bg-white/[0.02] border border-white/10 hover:bg-white/[0.05] hover:border-white/20 transition-all duration-700 cursor-pointer">
-                {/* Content */}
-                <div className="relative z-10 p-6 text-center">
-                  <div className="text-sm font-semibold text-white/40 uppercase tracking-widest group-hover:text-white/60 transition-colors duration-500">
-                    Hover Me
-                  </div>
-                </div>
-
-                {/* Animated gradient background on hover */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                  <div className="absolute inset-0 bg-gradient-to-br from-framer-blue/10 via-transparent to-framer-blue/5" />
-                </div>
-
-                {/* Glowing border effect */}
-                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-framer-blue/20 via-framer-blue-light/20 to-framer-blue/20 blur-xl" />
-                </div>
+              {/* Download CV Button */}
+              <div className="w-full">
+                <DownloadCVButton />
               </div>
             </div>
 
             {/* Bio singkat */}
             <FadeIn key={`about-bio-${pageKey}`} delay={0.1}>
-              <div className="mt-8 md:mt-0">
-                <p className="text-lg md:text-xl text-white/70 leading-relaxed font-light mb-4 text-justify">
+              <div className="mt-6 md:mt-0">
+                <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/70 leading-relaxed font-light mb-3 sm:mb-4 text-justify">
                   Hi, I'm <span className="font-semibold text-white">Ikrar Gempur Tirani</span>, an{' '}
                   <span className="text-white">Informatics Engineering student</span> at Hasanuddin University (GPA 3.91/4.00) focusing on <span className="text-white">Artificial Intelligence</span> with growing experience in machine learning, natural language processing, and statistical modeling.
                 </p>
-                <p className="text-base md:text-lg text-white/60 leading-relaxed font-light mb-4 text-justify">
+                <p className="text-xs sm:text-sm md:text-base lg:text-lg text-white/60 leading-relaxed font-light mb-3 sm:mb-4 text-justify">
                   Working with <span className="text-white">Python, TensorFlow, and PyTorch</span> to build end-to-end ML systems from data preprocessing to deployment. I work on projects ranging from agent-based market simulations to fine-tuning deep learning models for NLP tasks, learning to apply rigorous methodology with production engineering practices.
                 </p>
-                <p className="text-base md:text-lg text-white/60 leading-relaxed font-light text-justify">
+                <p className="text-xs sm:text-sm md:text-base lg:text-lg text-white/60 leading-relaxed font-light text-justify">
                   Currently leading Creative Media Division at <span className="text-white">Google Developer Groups on Campus</span>, developing technical expertise alongside communication and leadership skills. With full-stack development capabilities and design experience, I'm learning to build AI products that are both technically sound and user-friendly.
                 </p>
 
-                <div className="mt-6 grid gap-3 text-sm text-white/60">
+                <div className="mt-4 sm:mt-6 grid gap-2 sm:gap-3 text-xs sm:text-sm text-white/60">
                   <div className="flex items-center"><div className="w-1.5 h-1.5 bg-white/40 rounded-full mr-3" /> Born and raised in Gorontalo, January 6, 2005</div>
                   <div className="flex items-center"><div className="w-1.5 h-1.5 bg-white/40 rounded-full mr-3" /> Currently living in Makassar, South Sulawesi</div>
                   <div className="flex items-center"><div className="w-1.5 h-1.5 bg-white/40 rounded-full mr-3" /> Fifth semester Informatics student at Hasanuddin University (GPA 3.91)</div>
                   <div className="flex items-center"><div className="w-1.5 h-1.5 bg-white/40 rounded-full mr-3" /> Pursuing Machine Learning Engineer and Data Science roles</div>
-                </div>
-
-                <div className="mt-8">
-                  <DownloadCVButton />
                 </div>
               </div>
             </FadeIn>
@@ -161,15 +142,15 @@ export default function AboutClient({ skills }: AboutClientProps) {
       </section>
 
       {/* Layanan / Keahlian */}
-      <section className="relative py-24 border-t border-white/5">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-20">
-            <div className="py-4">
+      <section className="relative py-16 sm:py-20 md:py-24 border-t border-white/5">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-12 sm:mb-16 md:mb-20">
+            <div className="py-2 sm:py-4">
               <FadeIn key={`services-title-${pageKey}`}>
                 <SplitText
                   key={`services-split-${pageKey}`}
                   text="What I Do"
-                  className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-8"
+                  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 sm:mb-8"
                   splitType="words"
                   delay={60}
                   duration={0.6}
@@ -182,13 +163,13 @@ export default function AboutClient({ skills }: AboutClientProps) {
               </FadeIn>
             </div>
             <FadeIn key={`services-desc-${pageKey}`} delay={0.2}>
-              <p className="text-lg md:text-xl text-white/60 max-w-3xl mx-auto font-light leading-relaxed">
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/60 max-w-3xl mx-auto font-light leading-relaxed px-4">
                 Data science, machine learning engineering, and full-stack development. Building AI products that are technically sound and user-friendly.
               </p>
             </FadeIn>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {[
               {
                 title: 'Data Science & Analytics',

@@ -31,26 +31,26 @@ export default function Nav() {
 
   return (
     <header className="sticky top-4 z-40">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="p-4 flex items-center justify-between rounded-2xl bg-neutral-900 border border-neutral-800 shadow-lg">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div className="p-3 md:p-4 flex items-center justify-between rounded-2xl bg-neutral-900 border border-neutral-800 shadow-lg">
           
           {/* Logo/Brand */}
           <Link
             href="/"
-            className="group flex items-center gap-3 flex-shrink-0 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-framer-blue focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary rounded-lg"
+            className="group flex items-center gap-2 md:gap-3 flex-shrink-0 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-framer-blue focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary rounded-lg"
             aria-label="Kembali ke halaman utama"
             onClick={closeMobileMenu}
           >
             <Image
               src="/icon.ico"
               alt="Ikrar Gempur Tirani"
-              width={40}
-              height={40}
-              className="rounded-lg group-hover:opacity-80 transition-opacity duration-200"
+              width={32}
+              height={32}
+              className="rounded-lg group-hover:opacity-80 transition-opacity duration-200 md:w-10 md:h-10"
               priority
             />
-            {/* Animated GIF on hover */}
-            <div className="overflow-hidden max-w-0 group-hover:max-w-[60px] transition-all duration-300 ease-in-out">
+            {/* Animated GIF on hover - Hidden on mobile */}
+            <div className="hidden md:block overflow-hidden max-w-0 group-hover:max-w-[60px] transition-all duration-300 ease-in-out">
               <Image
                 src="/images/animasijalan.gif"
                 alt="Walking animation"
@@ -153,16 +153,16 @@ export default function Nav() {
         </div>
 
       </div>
-      
-      {/* Mobile Navigation - Outside main container */}
+
+      {/* Mobile Navigation - Overlay */}
       {isMobileMenuOpen && (
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-2">
+        <div className="absolute left-0 right-0 top-full mt-2 px-4 sm:px-6 lg:px-8 z-50">
           <nav
             id="mobile-menu"
             aria-label="Navigasi mobile"
             className="md:hidden"
           >
-            <ul className="space-y-2 p-4 rounded-2xl bg-neutral-900 border border-neutral-800 shadow-lg">
+            <ul className="space-y-2 p-3 rounded-2xl bg-neutral-900 border border-neutral-800 shadow-2xl">
               {links.map(({ href, label }) => {
                 // For /design page, also highlight if on /shots
                 const isActive = pathname === href ||
@@ -173,7 +173,7 @@ export default function Nav() {
                       href={href}
                       aria-current={isActive ? 'page' : undefined}
                       className={`
-                        relative block px-4 py-4 rounded-xl text-sm font-medium transition-all duration-300
+                        relative block px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300
                         focus:outline-none focus-visible:ring-2 focus-visible:ring-framer-blue focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary
                         group overflow-hidden
                         ${isActive
