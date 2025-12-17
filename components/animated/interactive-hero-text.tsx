@@ -22,7 +22,7 @@ export function InteractiveHeroText() {
   const codeElements: FloatingElement[] = [
     { id: 'code-1', icon: '/images/tensorflow.png', x: '-13%', y: '-15%', rotate: -8, size: 100 },
     { id: 'code-2', icon: '/images/python.png', x: '104%', y: '-10%', rotate: 12, size: 100 },
-    { id: 'code-3', icon: '/images/pytorch.png', x: '-14%', y: '105%', rotate: 5, size: 110 },
+    { id: 'code-3', icon: '/images/pytorch.png', x: '-14%', y: '105%', rotate: 5, size: 130 },
     { id: 'code-4', icon: '/images/react.png', x: '103%', y: '108%', rotate: -15, size: 100 },
   ]
 
