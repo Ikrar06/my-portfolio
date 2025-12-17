@@ -77,10 +77,10 @@ export default function ContactClient({ contactInfo }: ContactClientProps) {
             <FadeIn key={`contact-desc-${pageKey}`} delay={0.3}>
               <div className="space-y-6">
                 <p className="text-lg sm:text-xl md:text-2xl text-white/80 leading-relaxed font-light break-words">
-                  Whether you need data-driven insights for your business, a production ML system, or a full-stack application that brings AI to users, I'm here to help transform your data into impact with rigorous methodology and clean code.
+                  Open to full-time Data Science/ML roles, internships, research collaborations, and freelance projects.
                 </p>
                 <p className="text-base sm:text-lg md:text-xl text-white/60 leading-relaxed font-light break-words">
-                  I'm currently available for <strong className="text-white/80">full-time Data Science/ML roles • internships • research collaborations • freelance projects</strong>.
+                  Let's build production ML systems and AI products that make an impact.
                 </p>
               </div>
             </FadeIn>
@@ -97,7 +97,7 @@ export default function ContactClient({ contactInfo }: ContactClientProps) {
                 Let's Connect
               </h2>
               <p className="text-lg sm:text-xl text-white/60 max-w-3xl mx-auto leading-relaxed break-words">
-                Pick whatever works best for you. I'm active on all these platforms and would love to discuss Data Science roles, ML projects, or collaboration opportunities.
+                Available for Data Science roles, ML projects, and collaboration opportunities.
               </p>
             </FadeIn>
           </div>
@@ -109,7 +109,7 @@ export default function ContactClient({ contactInfo }: ContactClientProps) {
                 email={contactInfo.EMAIL}
                 linkedinUrl={contactInfo.LINKEDIN}
                 whatsappNumber={contactInfo.WHATSAPP}
-                defaultMessage="Hi Ikrar! 👋 I saw your portfolio and would love to discuss a Data Science/ML opportunity or collaboration. Are you available for a quick chat?"
+                defaultMessage="Hi Ikrar! I saw your portfolio and would love to discuss a Data Science/ML opportunity or collaboration. Are you available for a quick chat?"
                 variant="cards"
                 className="mb-16"
               />
@@ -121,12 +121,10 @@ export default function ContactClient({ contactInfo }: ContactClientProps) {
             <FadeIn key={`location-info-${pageKey}`} delay={0.5}>
               <div className="inline-flex flex-col sm:flex-row items-center gap-4 px-4 sm:px-6 py-4 bg-white/5 border border-white/10 rounded-2xl max-w-full">
                 <div className="flex items-center gap-2 text-white/70 text-center sm:text-left">
-                  <span className="text-lg flex-shrink-0">📍</span>
                   <span className="text-xs sm:text-sm font-medium break-words">{contactInfo.LOCATION}</span>
                 </div>
                 <div className="hidden sm:block w-1 h-1 bg-white/30 rounded-full flex-shrink-0" />
                 <div className="flex items-center gap-2 text-white/70">
-                  <span className="text-lg flex-shrink-0">🕐</span>
                   <span className="text-xs sm:text-sm font-medium">{contactInfo.TIMEZONE}</span>
                 </div>
                 <div className="hidden sm:block w-1 h-1 bg-white/30 rounded-full flex-shrink-0" />

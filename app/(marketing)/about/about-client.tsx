@@ -24,7 +24,6 @@ export default function AboutClient({ skills }: AboutClientProps) {
   // =========================
   const experiences = [
     {
-      icon: '💻',
       org: 'Cirebon Kuring Cafe',
       title: 'Fullstack Developer',
       type: 'Technical Role',
@@ -34,7 +33,6 @@ export default function AboutClient({ skills }: AboutClientProps) {
       skills: ['TypeScript', 'Next.js', 'Flutter', 'PostgreSQL', 'Database Design', 'Requirements Gathering']
     },
     {
-      icon: '🚀',
       org: 'Google Developer Group on Campus - Hasanuddin University',
       title: 'Head of Creative Media Division',
       type: 'Leadership Role',
@@ -47,7 +45,6 @@ export default function AboutClient({ skills }: AboutClientProps) {
       skills: ['Team Leadership', 'Data-Driven Strategy', 'Social Media Analytics', 'Content Strategy', 'Brand Management']
     },
     {
-      icon: '🏫',
       org: 'Coder Institute Hasanuddin University',
       title: 'Head of Creative Media Division',
       type: 'Leadership Role',
@@ -60,7 +57,6 @@ export default function AboutClient({ skills }: AboutClientProps) {
       skills: ['Content Strategy', 'Team Coordination', 'Brand Identity', 'Graphic Design', 'Figma']
     },
     {
-      icon: '🧩',
       org: 'Recursion UH',
       title: 'Publication, Design, and Documentation Coordinator',
       type: 'Leadership Role',
@@ -96,17 +92,40 @@ export default function AboutClient({ skills }: AboutClientProps) {
           {/* Main Content Grid */}
           <div className="grid grid-cols-1 md:grid-cols-[auto,1fr] gap-8 md:gap-12 items-start">
             {/* FOTO HD WITH BACKDROP BOX */}
-            <div className="relative w-[300px] h-[300px] md:w-[440px] md:h-[440px] mx-auto md:mx-0">
-              {/* Backdrop box */}
-              <div className="backdrop-blur-sm bg-white/[0.02] border border-white/10 rounded-3xl p-3 hover:bg-white/[0.05] transition-all duration-700 hover:border-white/20 h-full flex flex-col items-center justify-center group">
-                {/* Photo container with pixelation effect */}
-                <div className="relative w-[260px] h-[260px] md:w-[380px] md:h-[380px]">
-                  <PixelatedImage
-                    src="/images/foto-ikrar.jpg"
-                    pixelatedSrc="/images/foto-ikrar-pixelated.PNG"
-                    alt="Foto Ikrar Gempur Tirani"
-                    className="w-full h-full"
-                  />
+            <div className="relative w-[300px] md:w-[440px] mx-auto md:mx-0 space-y-4">
+              {/* Photo Box */}
+              <div className="relative w-full h-[300px] md:h-[440px]">
+                {/* Backdrop box */}
+                <div className="backdrop-blur-sm bg-white/[0.02] border border-white/10 rounded-3xl p-3 hover:bg-white/[0.05] transition-all duration-700 hover:border-white/20 h-full flex flex-col items-center justify-center group">
+                  {/* Photo container with pixelation effect */}
+                  <div className="relative w-[260px] h-[260px] md:w-[380px] md:h-[380px]">
+                    <PixelatedImage
+                      src="/images/foto-ikrar.jpg"
+                      pixelatedSrc="/images/foto-ikrar-pixelated.PNG"
+                      alt="Foto Ikrar Gempur Tirani"
+                      className="w-full h-full"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Hover Me Box */}
+              <div className="group relative w-full overflow-hidden rounded-2xl backdrop-blur-sm bg-white/[0.02] border border-white/10 hover:bg-white/[0.05] hover:border-white/20 transition-all duration-700 cursor-pointer">
+                {/* Content */}
+                <div className="relative z-10 p-6 text-center">
+                  <div className="text-sm font-semibold text-white/40 uppercase tracking-widest group-hover:text-white/60 transition-colors duration-500">
+                    Hover Me
+                  </div>
+                </div>
+
+                {/* Animated gradient background on hover */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                  <div className="absolute inset-0 bg-gradient-to-br from-framer-blue/10 via-transparent to-framer-blue/5" />
+                </div>
+
+                {/* Glowing border effect */}
+                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-framer-blue/20 via-framer-blue-light/20 to-framer-blue/20 blur-xl" />
                 </div>
               </div>
             </div>
@@ -114,15 +133,15 @@ export default function AboutClient({ skills }: AboutClientProps) {
             {/* Bio singkat */}
             <FadeIn key={`about-bio-${pageKey}`} delay={0.1}>
               <div className="mt-8 md:mt-0">
-                <p className="text-lg md:text-xl text-white/70 leading-relaxed font-light mb-4">
+                <p className="text-lg md:text-xl text-white/70 leading-relaxed font-light mb-4 text-justify">
                   Hi, I'm <span className="font-semibold text-white">Ikrar Gempur Tirani</span>, an{' '}
-                  <span className="text-white">Informatics Engineering student</span> at Hasanuddin University (GPA 3.91/4.00) specializing in <span className="text-white">Artificial Intelligence</span> with hands-on experience in machine learning, natural language processing, and statistical modeling.
+                  <span className="text-white">Informatics Engineering student</span> at Hasanuddin University (GPA 3.91/4.00) focusing on <span className="text-white">Artificial Intelligence</span> with growing experience in machine learning, natural language processing, and statistical modeling.
                 </p>
-                <p className="text-base md:text-lg text-white/60 leading-relaxed font-light mb-4">
-                  Proficient in <span className="text-white">Python, TensorFlow, and PyTorch</span> with experience building end-to-end ML systems from data preprocessing to deployment. I work on projects ranging from agent-based market simulations to fine-tuning deep learning models for NLP tasks, combining rigorous methodology with production engineering practices.
+                <p className="text-base md:text-lg text-white/60 leading-relaxed font-light mb-4 text-justify">
+                  Working with <span className="text-white">Python, TensorFlow, and PyTorch</span> to build end-to-end ML systems from data preprocessing to deployment. I work on projects ranging from agent-based market simulations to fine-tuning deep learning models for NLP tasks, learning to apply rigorous methodology with production engineering practices.
                 </p>
-                <p className="text-base md:text-lg text-white/60 leading-relaxed font-light">
-                  Currently leading Creative Media Division at <span className="text-white">Google Developer Groups on Campus</span>, combining technical expertise with strong communication and leadership skills. With full-stack development capabilities and design experience, I bring a comprehensive approach to building AI products that are both technically robust and user-friendly.
+                <p className="text-base md:text-lg text-white/60 leading-relaxed font-light text-justify">
+                  Currently leading Creative Media Division at <span className="text-white">Google Developer Groups on Campus</span>, developing technical expertise alongside communication and leadership skills. With full-stack development capabilities and design experience, I'm learning to build AI products that are both technically sound and user-friendly.
                 </p>
 
                 <div className="mt-6 grid gap-3 text-sm text-white/60">
@@ -164,7 +183,7 @@ export default function AboutClient({ skills }: AboutClientProps) {
             </div>
             <FadeIn key={`services-desc-${pageKey}`} delay={0.2}>
               <p className="text-lg md:text-xl text-white/60 max-w-3xl mx-auto font-light leading-relaxed">
-                My expertise spans data science, machine learning engineering, and full-stack development, with a unique differentiator in design leadership. This combination allows me to build AI products that are technically sound, production-ready, and user-friendly.
+                Data science, machine learning engineering, and full-stack development. Building AI products that are technically sound and user-friendly.
               </p>
             </FadeIn>
           </div>
@@ -173,39 +192,35 @@ export default function AboutClient({ skills }: AboutClientProps) {
             {[
               {
                 title: 'Data Science & Analytics',
-                desc: 'Transforming data into insights through statistical analysis and hypothesis testing. From exploratory data analysis to experimental design, I apply rigorous methodology to extract meaningful patterns and validate findings.',
-                icon: '📊',
+                desc: 'Statistical analysis and hypothesis testing to extract meaningful insights from complex data. Rigorous methodology from exploration to validation.',
                 specialties: ['Exploratory Data Analysis', 'Statistical Modeling', 'Hypothesis Testing', 'Data Visualization']
               },
               {
                 title: 'Machine Learning & NLP',
-                desc: 'Building intelligent systems from training to production. Specializing in natural language processing and deep learning, with focus on fine-tuning transformers and deploying models that solve real-world problems.',
-                icon: '🤖',
+                desc: 'Building intelligent systems from training to production. Specializing in NLP and deep learning with PyTorch and TensorFlow.',
                 specialties: ['Deep Learning (PyTorch)', 'Natural Language Processing', 'Model Training & Optimization', 'Production ML Systems']
               },
               {
                 title: 'Full-Stack Development',
-                desc: 'Shipping applications that bring ML models to users. Building responsive web and mobile interfaces with modern frameworks, connecting them to backend APIs, and deploying to production environments.',
-                icon: '💻',
+                desc: 'Shipping web and mobile applications that bring ML models to users. Modern frameworks, APIs, and production deployment.',
                 specialties: ['React & Next.js', 'Flutter Mobile Apps', 'Flask APIs', 'Database Design']
               },
               {
                 title: 'Design Leadership',
-                desc: 'Leading creative teams with data-driven strategy. 5 years of hands-on experience with proven metrics: 1M+ content views, 46% follower growth. Bringing UI/UX thinking to AI products and technical projects.',
-                icon: '🎨',
-                specialties: ['Team Management (6+ members)', 'Brand Strategy', 'UI/UX for AI Products', 'Proven Growth Metrics']
+                desc: 'Leading creative teams with data-driven strategy. 5 years experience with proven metrics: 1M+ content views, 46% follower growth.',
+                specialties: ['Team Management (6+ members)', 'Brand Strategy', 'UI/UX for AI Products', 'Growth Metrics']
               }
             ].map((service, i) => (
               <FadeIn key={`service-${i}-${pageKey}`} delay={0.1 * i}>
                 <div className="group h-full">
                   <div className="backdrop-blur-sm bg-white/[0.02] border border-white/10 rounded-3xl p-8 hover:bg-white/[0.05] transition-all duration-700 hover:border-white/20 h-full flex flex-col">
-                    <div className="w-16 h-16 bg-gradient-to-br from-white/10 to-white/5 rounded-2xl flex items-center justify-center mb-6 group-hover:from-white/20 group-hover:to-white/10 transition-all duration-500">
-                      <span className="text-3xl" aria-hidden="true">{service.icon}</span>
+                    <div className="w-16 h-16 bg-gradient-to-br from-framer-blue/20 to-framer-blue/5 rounded-2xl flex items-center justify-center mb-6 group-hover:from-framer-blue/30 group-hover:to-framer-blue/10 transition-all duration-500">
+                      <span className="text-xl font-bold text-framer-blue">0{i + 1}</span>
                     </div>
                     <h3 className="text-xl font-bold text-white mb-4 group-hover:text-white/90 transition-colors duration-300">
                       {service.title}
                     </h3>
-                    <p className="text-white/60 leading-relaxed mb-6 group-hover:text-white/70 transition-colors duration-300 flex-1">
+                    <p className="text-white/60 leading-relaxed mb-6 group-hover:text-white/70 transition-colors duration-300 flex-1 text-justify">
                       {service.desc}
                     </p>
                     <div className="space-y-2">
@@ -246,7 +261,7 @@ export default function AboutClient({ skills }: AboutClientProps) {
             </div>
             <FadeIn key={`skills-desc-${pageKey}`} delay={0.2}>
               <p className="text-lg md:text-xl text-white/60 max-w-3xl mx-auto font-light leading-relaxed">
-                Tools and technologies I use to transform data into insights, build intelligent systems, and ship production-ready applications. From statistical analysis to deep learning to full-stack development.
+                Tools and technologies for data analysis, machine learning, and production software development.
               </p>
             </FadeIn>
           </div>
@@ -306,27 +321,22 @@ export default function AboutClient({ skills }: AboutClientProps) {
                           <div className="w-2 h-2 bg-white rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
                         </div>
 
-                        <header className="flex items-start mb-6">
-                          <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center mr-5 group-hover:bg-white/15 transition-colors duration-500 flex-shrink-0">
-                            <span className="text-2xl" aria-hidden="true">{exp.icon}</span>
+                        <header className="mb-6">
+                          <h3 className="text-lg font-bold text-white">{exp.title}</h3>
+                          <p className="text-white/80 font-medium">{exp.org}</p>
+                          <div className="flex flex-wrap items-center gap-2 mt-1 text-sm">
+                            <span className="px-2 py-1 rounded-full bg-white/10 text-white/70 text-xs">
+                              {exp.type}
+                            </span>
+                            <span className="text-white/60">•</span>
+                            <span className="text-white/60">{exp.dates}</span>
                           </div>
-                          <div className="flex-1 min-w-0">
-                            <h3 className="text-lg font-bold text-white">{exp.title}</h3>
-                            <p className="text-white/80 font-medium">{exp.org}</p>
-                            <div className="flex flex-wrap items-center gap-2 mt-1 text-sm">
-                              <span className="px-2 py-1 rounded-full bg-white/10 text-white/70 text-xs">
-                                {exp.type}
-                              </span>
-                              <span className="text-white/60">•</span>
-                              <span className="text-white/60">{exp.dates}</span>
-                            </div>
-                            {exp.location && exp.location !== 'Remote' && (
-                              <p className="text-white/40 text-xs mt-1">{exp.location}</p>
-                            )}
-                          </div>
+                          {exp.location && exp.location !== 'Remote' && (
+                            <p className="text-white/40 text-xs mt-1">{exp.location}</p>
+                          )}
                         </header>
 
-                        <p className="text-white/70 leading-relaxed mb-5">{exp.desc}</p>
+                        <p className="text-white/70 leading-relaxed mb-5 text-justify">{exp.desc}</p>
 
                         {/* Extras (link IG, dsb) */}
                         {exp.extras?.length ? (

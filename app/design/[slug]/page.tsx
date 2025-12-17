@@ -1,16 +1,17 @@
-// app/projects/[slug]/page.tsx - COMPLETELY REWRITTEN WITH PROPER INTEGRATION
+// app/design/[slug]/page.tsx - Design project detail page
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { getProjectBySlug, getProjectSlugs } from '@/lib/mdx'
-import { getRelatedProjects } from '@/lib/projects-helpers'
+import { getProjectBySlug } from '@/lib/mdx'
+import { getDesignProjects } from '@/lib/projects'
+import { getRelatedProjects, type ExtendedProjectMeta } from '@/lib/projects-helpers'
 import ProjectCard from '@/components/cards/project-card'
 import { AdvancedFinalResults, AdvancedExploration } from '@/components/project/SmartFinalResult'
 
 // ====== SSG params ======
 export async function generateStaticParams() {
-  const slugs = await getProjectSlugs()
-  return slugs.map((slug: string) => ({ slug }))
+  const projects = await getDesignProjects()
+  return projects.map((project) => ({ slug: project.slug }))
 }
 
 // ====== SEO per project ======
@@ -18,19 +19,19 @@ type PageProps = { params: Promise<{ slug: string }> }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params
-  
+
   try {
     const { meta } = await getProjectBySlug(slug)
-    const { 
-      title, 
-      summary, 
-      cover, 
-      category, 
-      tags, 
-      skills, 
-      organizationWork, 
+    const {
+      title,
+      summary,
+      cover,
+      category,
+      tags,
+      skills,
+      organizationWork,
       competitionWork,
-      eventWork 
+      eventWork
     } = meta
 
     const keywords = [
@@ -42,7 +43,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     ].filter(Boolean)
 
     // Determine page type
-    let pageType = 'Project Case Study'
+    let pageType = 'Design Case Study'
     if (eventWork) {
       pageType = 'Event Work'
       keywords.push('event work', 'event design')
@@ -64,9 +65,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         title: `${title} — ${pageType}`,
         description: summary,
         type: 'article',
-        images: cover ? [{ 
-          url: cover, 
-          width: 1200, 
+        images: cover ? [{
+          url: cover,
+          width: 1200,
           height: 630,
           alt: `${title} ${pageType.toLowerCase()} cover image`
         }] : undefined,
@@ -79,20 +80,20 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       },
     }
   } catch (error) {
-    console.error('Error generating metadata for project:', error)
+    console.error('Error generating metadata for design project:', error)
     return {
-      title: 'Project Not Found',
-      description: 'The requested project could not be found.'
+      title: 'Design Project Not Found',
+      description: 'The requested design project could not be found.'
     }
   }
 }
 
-export default async function ProjectDetailPage({ params }: PageProps) {
+export default async function DesignDetailPage({ params }: PageProps) {
   const { slug } = await params
-  
+
   try {
     const { meta, content } = await getProjectBySlug(slug)
-    
+
     // Safe destructuring with proper fallbacks
     const {
       title = 'Untitled Project',
@@ -172,10 +173,10 @@ export default async function ProjectDetailPage({ params }: PageProps) {
     const relatedProjects = await getRelatedProjects(slug, relatedProjectsOptions)
 
     // Determine work type and navigation
-    let workType = 'Projects'
-    let workTypeLabel = 'Project'
-    let backText = 'Back to Projects'
-    
+    let workType = 'Design'
+    let workTypeLabel = 'Design Project'
+    let backText = 'Back to Design'
+
     if (eventWork) {
       workType = 'Events'
       workTypeLabel = 'Event Work'
@@ -192,7 +193,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
     // Combine images for "More from this work" section
     let morePool: string[] = []
-    
+
     if (eventWork) {
       morePool = [
         ...eventMaterials,
@@ -222,15 +223,15 @@ export default async function ProjectDetailPage({ params }: PageProps) {
       <article className="space-y-12">
         {/* Breadcrumb & Back Navigation */}
         <nav className="flex items-center text-sm text-neutral-600 dark:text-neutral-400">
-          <Link 
-            href="/" 
+          <Link
+            href="/"
             className="hover:text-neutral-900 dark:hover:text-neutral-200 transition-colors"
           >
             Home
           </Link>
           <span className="mx-2">/</span>
-          <Link 
-            href="/project" 
+          <Link
+            href="/design"
             className="hover:text-neutral-900 dark:hover:text-neutral-200 transition-colors"
           >
             {workType}
@@ -239,14 +240,11 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           <span className="text-neutral-900 dark:text-neutral-200 font-medium">{title}</span>
         </nav>
 
-        {/* Header with Blur Background */}
+        {/* Header */}
         <header className="relative space-y-8">
-          {/* Blur Background Effect */}
-          {/* Ornament blur removed for cleaner design */}
-
           <div className="space-y-6 relative">
             <Link
-              href="/project"
+              href="/design"
               className="inline-flex items-center gap-2 text-sm text-emerald-700 hover:text-emerald-800 dark:text-emerald-400 dark:hover:text-emerald-300 transition-colors group"
             >
               <svg className="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -263,7 +261,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                     {category}
                   </span>
                 )}
-                
+
                 {/* Work Type Badges */}
                 {eventWork ? (
                   <span className="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-xl font-medium dark:bg-indigo-900 dark:text-indigo-200">
@@ -279,7 +277,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                   </span>
                 ) : (
                   <span className="px-3 py-1 bg-emerald-100 text-emerald-800 rounded-xl font-medium dark:bg-emerald-900 dark:text-emerald-200">
-                    Project
+                    Design
                   </span>
                 )}
 
@@ -289,7 +287,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                     {eventName}
                   </span>
                 )}
-                
+
                 {eventWork && eventType && (
                   <span className="px-3 py-1 bg-cyan-100 text-cyan-800 rounded-xl font-medium dark:bg-cyan-900 dark:text-cyan-200">
                     {eventType}
@@ -301,7 +299,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                     {competitionName}
                   </span>
                 )}
-                
+
                 {competitionWork && competitionCategory && (
                   <span className="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-xl font-medium dark:bg-yellow-900 dark:text-yellow-200">
                     {competitionCategory}
@@ -322,7 +320,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">
                 {title}
               </h1>
-              
+
               <p className="text-xl text-neutral-700 dark:text-neutral-300 leading-relaxed max-w-3xl">
                 {summary}
               </p>
@@ -417,7 +415,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                 <p className="text-neutral-900 dark:text-neutral-100 font-medium">{eventRole || role}</p>
               </div>
             )}
-            
+
             {/* Conditional rendering based on work type */}
             {eventWork ? (
               <>
@@ -670,7 +668,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                       </p>
                     )}
                   </div>
-                  
+
                   {section.images && section.images.length > 0 && (
                     <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
                       {section.images.map((src: string, imageIndex: number) => (
@@ -951,13 +949,13 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         {tags.length > 0 && (
           <section className="space-y-4">
             <h2 className="text-2xl font-bold tracking-tight">
-              {eventWork ? 'Event Tags' : organizationWork ? 'Work Tags' : 'Project Tags'}
+              {eventWork ? 'Event Tags' : organizationWork ? 'Work Tags' : 'Design Tags'}
             </h2>
             <div className="flex flex-wrap gap-3">
               {tags.map((tag: string, index: number) => (
                 <Link
                   key={`tag-${index}`}
-                  href={`/projects?tag=${encodeURIComponent(tag)}`}
+                  href={`/design?tag=${encodeURIComponent(tag)}`}
                   className="group px-4 py-2 bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 rounded-xl border border-neutral-200 dark:border-neutral-700 transition-all duration-200 hover:scale-105"
                 >
                   <span className="text-neutral-700 dark:text-neutral-300 font-medium">
@@ -1003,13 +1001,13 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           <section className="space-y-6 border-t border-neutral-200 dark:border-neutral-800 pt-12">
             <div className="flex items-center justify-between">
               <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
-                {eventWork ? 'Related Events' : organizationWork ? 'Related Work' : 'Related Projects'}
+                {eventWork ? 'Related Events' : organizationWork ? 'Related Work' : 'Related Design Projects'}
               </h2>
-              <Link 
-                href="/project"
+              <Link
+                href="/design"
                 className="text-emerald-600 dark:text-emerald-400 hover:underline font-medium"
               >
-                {eventWork ? 'View all events →' : organizationWork ? 'View all work →' : 'View all projects →'}
+                {eventWork ? 'View all events →' : organizationWork ? 'View all work →' : 'View all design →'}
               </Link>
             </div>
             <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -1023,21 +1021,21 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         {/* Navigation */}
         <nav className="flex flex-col sm:flex-row gap-4 pt-8 border-t border-neutral-200 dark:border-neutral-800">
           <Link
-            href="/project"
+            href="/design"
             className="flex-1 group p-6 bg-neutral-50 hover:bg-neutral-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 rounded-xl border border-neutral-200 dark:border-neutral-800 transition-colors text-center"
           >
             <div className="flex items-center justify-center gap-2 text-emerald-600 dark:text-emerald-400 font-medium">
               <svg className="w-5 h-5 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
-              {eventWork ? 'Browse All Events' : organizationWork ? 'Browse All Work' : 'Browse All Projects'}
+              {eventWork ? 'Browse All Events' : organizationWork ? 'Browse All Work' : 'Browse All Design'}
             </div>
             <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-400">
-              {eventWork 
-                ? 'Discover more event work and creative projects' 
-                : organizationWork 
-                ? 'Discover more organization work and creative projects' 
-                : 'Discover more case studies and creative work'
+              {eventWork
+                ? 'Discover more event work and creative projects'
+                : organizationWork
+                ? 'Discover more organization work and creative projects'
+                : 'Discover more design case studies and creative work'
               }
             </p>
           </Link>
@@ -1046,27 +1044,27 @@ export default async function ProjectDetailPage({ params }: PageProps) {
     )
 
   } catch (error) {
-    console.error('Error loading project:', error)
-    
+    console.error('Error loading design project:', error)
+
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] space-y-4">
         <div className="text-center space-y-2">
           <h1 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100">
-            Project Not Found
+            Design Project Not Found
           </h1>
           <p className="text-neutral-600 dark:text-neutral-400">
-            The project you're looking for doesn't exist or has been moved.
+            The design project you're looking for doesn't exist or has been moved.
           </p>
         </div>
-        
+
         <Link
-          href="/project"
+          href="/design"
           className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700 transition-colors font-medium"
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
-          Back to Projects
+          Back to Design
         </Link>
       </div>
     )

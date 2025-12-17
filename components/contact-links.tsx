@@ -72,7 +72,7 @@ export default function ContactLinks({
       id: 'email',
       label: 'Email',
       value: email,
-      icon: '✉️',
+      icon: '',
       href: '#', // Changed to # since we handle click manually
       description: 'Professional inquiries',
       color: 'emerald',
@@ -83,7 +83,7 @@ export default function ContactLinks({
       id: 'whatsapp',
       label: 'WhatsApp',
       value: whatsappNumber,
-      icon: '💬',
+      icon: '',
       href: waUrl,
       description: 'Quick messages',
       color: 'green',
@@ -94,7 +94,7 @@ export default function ContactLinks({
       id: 'linkedin',
       label: 'LinkedIn',
       value: 'Professional network',
-      icon: '🔗',
+      icon: '',
       href: linkedinUrl,
       description: 'Connect professionally',
       color: 'blue',
@@ -145,12 +145,12 @@ export default function ContactLinks({
             target={item.target}
             rel={item.target ? 'noreferrer' : undefined}
             onClick={item.action || undefined}
-            className="group w-12 h-12 bg-white/5 border border-white/20 rounded-xl flex items-center justify-center hover:bg-white/10 hover:border-white/30 transition-all duration-300"
+            className="group px-4 py-2 bg-white/5 border border-white/20 rounded-xl flex items-center justify-center hover:bg-white/10 hover:border-white/30 transition-all duration-300"
             aria-label={item.label}
             title={item.label}
           >
-            <span className="text-xl group-hover:scale-110 transition-transform">
-              {item.icon}
+            <span className="text-sm font-medium text-white/80 group-hover:text-white transition-colors">
+              {item.label}
             </span>
           </a>
         ))}
@@ -171,9 +171,6 @@ export default function ContactLinks({
               className="block p-4 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-300"
             >
               <div className="flex items-center gap-3 mb-2">
-                <div className="w-10 h-10 bg-gradient-to-br from-white/10 to-white/5 rounded-xl flex items-center justify-center group-hover:from-white/20 group-hover:to-white/10 transition-all">
-                  <span className="text-lg">{item.icon}</span>
-                </div>
                 <div>
                   <h3 className="font-semibold text-white">{item.label}</h3>
                   <p className="text-xs text-white/60">{item.description}</p>
@@ -189,10 +186,10 @@ export default function ContactLinks({
                   e.stopPropagation()
                   copyEmail()
                 }}
-                className="absolute top-2 right-2 w-6 h-6 bg-white/10 hover:bg-white/20 border border-white/20 rounded flex items-center justify-center text-xs text-white/70 hover:text-white transition-all"
+                className="absolute top-2 right-2 px-2 py-1 bg-white/10 hover:bg-white/20 border border-white/20 rounded text-xs text-white/70 hover:text-white transition-all"
                 title="Copy email"
               >
-                {copiedEmail ? '✓' : '📋'}
+                {copiedEmail ? 'Copied' : 'Copy'}
               </button>
             )}
           </div>

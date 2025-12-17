@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Projects — Ikrar Gempur Tirani',
     description: 'Data Science, ML Engineering, and Full-Stack development projects. From agent-based simulations to production NLP systems and web applications.',
-    url: (process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000') + '/projects',
+    url: (process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000') + '/project',
     images: [{
       url: '/images/foto-ikrar.jpg',
       width: 1200,

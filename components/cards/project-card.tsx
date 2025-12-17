@@ -8,7 +8,7 @@ type ProjectCardProps = {
 }
 
 export default function ProjectCard({ project }: ProjectCardProps) {
-  const { slug, title, summary, cover, year, category, tags } = project
+  const { slug, title, summary, cover, year, category, tags, projectType } = project
 
   // Validasi cover image - pastikan tidak kosong atau undefined
   const hasCover = cover && cover.trim() !== ''
@@ -16,7 +16,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
   return (
     <article className="group">
       <Link
-        href={`/projects/${slug}`}
+        href={`/${projectType === 'coding' ? 'project' : 'design'}/${slug}`}
         className="block glass-card rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-[0_20px_60px_rgba(0,0,0,0.8),0_0_1px_rgba(0,153,255,0.1)] focus:outline-none focus-visible:ring-2 focus-visible:ring-framer-blue focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary"
         aria-label={`View project details: ${title}`}
       >
@@ -81,7 +81,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         {/* Content */}
         <div className="p-5 space-y-3 rounded-b-xl">
           <div className="space-y-2">
-            <h3 className="text-base md:text-lg font-semibold leading-tight text-white line-clamp-2 group-hover:text-framer-blue transition-colors duration-200">
+            <h3 className="text-base md:text-lg font-semibold leading-tight text-white group-hover:text-framer-blue transition-colors duration-200">
               {title}
             </h3>
             <p className="text-sm text-text-secondary line-clamp-3 leading-relaxed">

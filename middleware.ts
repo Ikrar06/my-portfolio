@@ -3,6 +3,8 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
 export function middleware(request: NextRequest) {
+  // MAINTENANCE MODE - Uncomment the code below to enable maintenance mode
+  /*
   // Check for bypass parameter - for testing/development
   // Usage: add ?bypass=dev123 to any URL to access the site
   const bypassParam = request.nextUrl.searchParams.get('bypass')
@@ -37,6 +39,10 @@ export function middleware(request: NextRequest) {
 
   // Redirect all other routes to maintenance page
   return NextResponse.redirect(new URL('/maintenance', request.url))
+  */
+
+  // Site is live - allow all traffic
+  return NextResponse.next()
 }
 
 export const config = {

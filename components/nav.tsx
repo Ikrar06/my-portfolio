@@ -2,6 +2,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useMemo, useState } from 'react'
 
@@ -31,18 +32,34 @@ export default function Nav() {
   return (
     <header className="sticky top-4 z-40">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="glass-surface p-4 flex items-center justify-between">
+        <div className="p-4 flex items-center justify-between rounded-2xl bg-neutral-900 border border-neutral-800 shadow-lg">
           
           {/* Logo/Brand */}
           <Link
             href="/"
-            className="group flex-shrink-0 font-bold text-lg text-white hover:text-framer-blue transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-framer-blue focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary rounded-lg px-2 py-1"
+            className="group flex items-center gap-3 flex-shrink-0 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-framer-blue focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary rounded-lg"
             aria-label="Kembali ke halaman utama"
             onClick={closeMobileMenu}
           >
-            <span className="bg-gradient-to-r from-framer-blue via-framer-blue-light to-framer-blue bg-clip-text text-transparent group-hover:from-framer-blue-light group-hover:via-white group-hover:to-framer-blue-light transition-colors duration-300">
-              Ikrar Gempur Tirani
-            </span>
+            <Image
+              src="/icon.ico"
+              alt="Ikrar Gempur Tirani"
+              width={40}
+              height={40}
+              className="rounded-lg group-hover:opacity-80 transition-opacity duration-200"
+              priority
+            />
+            {/* Animated GIF on hover */}
+            <div className="overflow-hidden max-w-0 group-hover:max-w-[60px] transition-all duration-300 ease-in-out">
+              <Image
+                src="/images/animasijalan.gif"
+                alt="Walking animation"
+                width={60}
+                height={60}
+                className="object-contain"
+                unoptimized
+              />
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -140,12 +157,12 @@ export default function Nav() {
       {/* Mobile Navigation - Outside main container */}
       {isMobileMenuOpen && (
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-2">
-          <nav 
-            id="mobile-menu" 
-            aria-label="Navigasi mobile" 
+          <nav
+            id="mobile-menu"
+            aria-label="Navigasi mobile"
             className="md:hidden"
           >
-            <ul className="space-y-2 glass-surface p-4">
+            <ul className="space-y-2 p-4 rounded-2xl bg-neutral-900 border border-neutral-800 shadow-lg">
               {links.map(({ href, label }) => {
                 // For /design page, also highlight if on /shots
                 const isActive = pathname === href ||

@@ -5,23 +5,23 @@ import HomeClient from './home-client'
 
 export const metadata: Metadata = {
   title: 'Home',
-  description: 'Welcome to the portfolio of Ikrar Gempur Tirani. Creating designs that make people smile. Passionate graphic designer and Informatics Engineering student specializing in brand identity, UI/UX design, and digital experiences.',
-  keywords: ['graphic designer', 'UI/UX designer', 'portfolio', 'Ikrar Gempur Tirani', 'Hasanuddin University', 'creative direction', 'brand identity', 'web design', 'Indonesia designer', 'Makassar'],
+  description: 'Ikrar Gempur Tirani - Informatics Engineering student at Hasanuddin University (GPA 3.91/4.00) focusing on Data Science and Machine Learning. Learning Natural Language Processing, statistical modeling, and production ML systems with full-stack development experience.',
+  keywords: ['Data Science Student', 'Machine Learning', 'NLP', 'Deep Learning', 'Python', 'TensorFlow', 'PyTorch', 'Statistical Modeling', 'Ikrar Gempur Tirani', 'Hasanuddin University', 'AI Portfolio'],
   openGraph: {
-    title: 'Home — Ikrar Gempur Tirani',
-    description: 'Creating designs that make people smile. Passionate graphic designer and Informatics Engineering student specializing in brand identity and digital experiences.',
+    title: 'Ikrar Gempur Tirani — Data Science & ML Portfolio',
+    description: 'Informatics student focusing on Data Science and ML. Learning to build end-to-end machine learning solutions with Python, TensorFlow, and PyTorch.',
     images: [
       {
         url: '/images/foto-ikrar.jpg',
         width: 1200,
         height: 630,
-        alt: 'Ikrar Gempur Tirani - Graphic Designer & Developer',
+        alt: 'Ikrar Gempur Tirani - Data Science & ML Portfolio',
       },
     ],
   },
   twitter: {
-    title: 'Home — Ikrar Gempur Tirani',
-    description: 'Creating designs that make people smile. Portfolio of creative work and projects.',
+    title: 'Ikrar Gempur Tirani — Data Science & ML Portfolio',
+    description: 'Informatics student focusing on Data Science and ML. Portfolio of machine learning projects and technical work.',
   },
 }
 

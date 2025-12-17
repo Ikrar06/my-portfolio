@@ -5,13 +5,13 @@ import Image from 'next/image'
 const socialLinks = [
   {
     name: 'Instagram',
-    href: 'https://www.instagram.com/krarnotfound',
+    href: 'https://www.instagram.com/krargmprr',
     description: 'Behind the scenes & daily work',
     iconPath: '/icons/instagram.svg'
   },
   {
     name: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/ikrar-gempur-tirani-867537283/',
+    href: 'https://www.linkedin.com/in/ikrargempurtirani/',
     description: 'Professional network',
     iconPath: '/icons/linkedin.svg'
   },
@@ -24,8 +24,8 @@ const socialLinks = [
 ] as const
 
 const quickLinks = [
-  { href: '/projects', label: 'My Work', description: 'See what I\'ve created' },
-  { href: '/about', label: 'About Me', description: 'Get to know the designer' },
+  { href: '/project', label: 'My Work', description: 'See what I\'ve created' },
+  { href: '/about', label: 'About Me', description: 'Get to know me' },
   { href: '/contact', label: 'Let\'s Talk', description: 'Start your project' }
 ] as const
 
@@ -35,7 +35,7 @@ export default function Footer() {
   return (
     <footer className="mt-20 mb-6" role="contentinfo">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="glass-surface p-6 sm:p-8">
+        <div className="p-6 sm:p-8 rounded-2xl bg-neutral-900 border border-neutral-800 shadow-lg">
           
           {/* Main Footer Content */}
           <div className="flex flex-col lg:flex-row items-start justify-between gap-12">
@@ -47,8 +47,8 @@ export default function Footer() {
                   Ikrar Gempur Tirani
                 </span>
               </div>
-              <p className="text-text-secondary leading-relaxed">
-                Data Scientist specializing in statistical analysis, NLP, and production ML systems. Building AI products with full-stack skills and design thinking.
+              <p className="text-text-secondary leading-relaxed text-justify">
+                Informatics engineering student focusing on Data Science and ML. Learning to build intelligent systems with statistical analysis, NLP, and full-stack development.
               </p>
               <p className="text-sm text-text-tertiary">
                 Available for Data Science/ML roles and research collaborations.
@@ -133,17 +133,11 @@ export default function Footer() {
           <div className="mt-8 pt-6 border-t border-slate-700/30">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
               <p className="text-center sm:text-left">
-                © {currentYear} Ikrar Gempur Tirani. Designed with <span className="text-red-400">♥</span> and lots of coffee
+                © {currentYear} Ikrar Gempur Tirani
               </p>
               <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
                 <p className="flex items-center gap-1">
-                  <span>Crafted in</span>
-                  <span className="text-red-400">🇮🇩</span>
                   <span className="text-slate-400">Makassar, Indonesia</span>
-                </p>
-                <span className="hidden sm:inline text-slate-600">•</span>
-                <p className="text-slate-400 italic">
-                  Building beautiful things
                 </p>
               </div>
             </div>

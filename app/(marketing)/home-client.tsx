@@ -53,8 +53,8 @@ export default function HomeClient({ featuredProjects }: HomeClientProps) {
 
           {/* Hero Description */}
           <p className="text-lg md:text-xl text-text-secondary leading-relaxed max-w-2xl mx-auto pt-2">
-            Specializing in NLP, statistical modeling, and production ML systems.
-            Combining data science with full-stack development to build AI products that work.
+            Focusing on NLP, statistical modeling, and production ML systems.
+            Learning to combine data science with full-stack development to build AI products.
           </p>
 
           {/* Action Buttons */}
@@ -99,7 +99,7 @@ export default function HomeClient({ featuredProjects }: HomeClientProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 lg:gap-12 max-w-7xl mx-auto">
             {featuredProjects.map((project, i) => (
               <FadeIn key={`project-${project.slug}-${pageKey}`} delay={0.05 * i}>
-                <Link href={`/projects/${project.slug}`}>
+                <Link href={`/${project.projectType === 'coding' ? 'project' : 'design'}/${project.slug}`}>
                   <article className="group cursor-pointer h-full" role="article" aria-label={project.title}>
                     <div className="relative backdrop-blur-sm bg-white/[0.02] border border-white/10 rounded-3xl p-8 hover:bg-white/[0.05] transition-all duration-700 hover:scale-105 hover:shadow-2xl hover:border-white/20 h-full flex flex-col">
                       {/* Project Image */}
@@ -182,7 +182,6 @@ export default function HomeClient({ featuredProjects }: HomeClientProps) {
                 title: 'Understand',
                 description:
                   'Define the problem, explore data sources, and establish success metrics. Understanding the business context is critical before diving into analysis.',
-                icon: '🔍',
                 keywords: ['Problem Framing', 'Data Exploration', 'KPI Definition'],
               },
               {
@@ -190,7 +189,6 @@ export default function HomeClient({ featuredProjects }: HomeClientProps) {
                 title: 'Build',
                 description:
                   'Develop models, engineer features, and iterate on solutions. Focus on reproducibility and code quality throughout the development process.',
-                icon: '⚙️',
                 keywords: ['Feature Engineering', 'Model Development', 'Validation'],
               },
               {
@@ -198,7 +196,6 @@ export default function HomeClient({ featuredProjects }: HomeClientProps) {
                 title: 'Deploy',
                 description:
                   'Ship production-ready solutions with monitoring and documentation. Ensure models perform reliably and stakeholders can act on insights.',
-                icon: '🚀',
                 keywords: ['Production Deployment', 'Monitoring', 'Documentation'],
               },
             ].map((step, i) => (
@@ -207,8 +204,8 @@ export default function HomeClient({ featuredProjects }: HomeClientProps) {
                   <div className="backdrop-blur-sm bg-white/[0.02] border border-white/10 rounded-3xl p-10 hover:bg-white/[0.04] transition-all duration-700 hover:border-white/20 h-full">
                     {/* Phase Number */}
                     <div className="flex items-center mb-8">
-                      <div className="w-16 h-16 bg-gradient-to-br from-white/10 to-white/5 rounded-2xl flex items-center justify-center mr-6 group-hover:from-white/20 group-hover:to-white/10 transition-all duration-500">
-                        <span className="text-3xl" aria-hidden="true">{step.icon}</span>
+                      <div className="w-16 h-16 bg-gradient-to-br from-framer-blue/20 to-framer-blue/5 rounded-2xl flex items-center justify-center mr-6 group-hover:from-framer-blue/30 group-hover:to-framer-blue/10 transition-all duration-500">
+                        <span className="text-2xl font-bold text-framer-blue">{step.phase}</span>
                       </div>
                       <span className="text-sm font-bold text-white/40 tracking-widest">STEP {step.phase}</span>
                     </div>
@@ -218,7 +215,7 @@ export default function HomeClient({ featuredProjects }: HomeClientProps) {
                       {step.title}
                     </h3>
 
-                    <p className="text-white/50 leading-relaxed mb-8 group-hover:text-white/60 transition-colors duration-300">
+                    <p className="text-white/50 leading-relaxed mb-8 group-hover:text-white/60 transition-colors duration-300 text-justify">
                       {step.description}
                     </p>
 

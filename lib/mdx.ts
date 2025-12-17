@@ -85,6 +85,7 @@ export type ProjectMeta = {
   title: string
   slug: string
   file: string
+  projectType: 'coding' | 'design'
   year: number
   month: number // default 12 jika tidak ada
   role: string
@@ -194,7 +195,7 @@ function ensureSocialMediaSections(value: SocialMediaSection[] | undefined): Soc
 /** ====== PROJECTS (LIST / META) ====== */
 
 // Helper to process files from a directory
-async function processProjectFiles(files: string[], directory: string): Promise<ProjectMeta[]> {
+async function processProjectFiles(files: string[], directory: string, projectType: 'coding' | 'design'): Promise<ProjectMeta[]> {
   const items: ProjectMeta[] = []
 
   for (const file of files) {
@@ -215,6 +216,7 @@ async function processProjectFiles(files: string[], directory: string): Promise<
         title: fm.title,
         slug,
         file,
+        projectType,
         year: fm.year || new Date().getFullYear(),
         month: fm.month || 12, // default December jika tidak ada
         role: ensureString(fm.role),
@@ -297,7 +299,7 @@ function sortProjects(items: ProjectMeta[], featuredFirst: boolean): ProjectMeta
 export async function getCodingProjects(options: { featuredFirst?: boolean } = {}): Promise<ProjectMeta[]> {
   const { featuredFirst = false } = options
   const files = await listMdx(CODING_PROJECTS_DIR)
-  const items = await processProjectFiles(files, CODING_PROJECTS_DIR)
+  const items = await processProjectFiles(files, CODING_PROJECTS_DIR, 'coding')
   return sortProjects(items, featuredFirst)
 }
 
@@ -305,7 +307,7 @@ export async function getCodingProjects(options: { featuredFirst?: boolean } = {
 export async function getDesignProjects(options: { featuredFirst?: boolean } = {}): Promise<ProjectMeta[]> {
   const { featuredFirst = false } = options
   const files = await listMdx(DESIGN_PROJECTS_DIR)
-  const items = await processProjectFiles(files, DESIGN_PROJECTS_DIR)
+  const items = await processProjectFiles(files, DESIGN_PROJECTS_DIR, 'design')
   return sortProjects(items, featuredFirst)
 }
 
@@ -320,8 +322,8 @@ export async function getAllProjects(options: { featuredFirst?: boolean } = {}):
   ])
 
   const [codingItems, designItems] = await Promise.all([
-    processProjectFiles(codingFiles, CODING_PROJECTS_DIR),
-    processProjectFiles(designFiles, DESIGN_PROJECTS_DIR)
+    processProjectFiles(codingFiles, CODING_PROJECTS_DIR, 'coding'),
+    processProjectFiles(designFiles, DESIGN_PROJECTS_DIR, 'design')
   ])
 
   const items = [...codingItems, ...designItems]

@@ -3,31 +3,35 @@
 
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
+import Image from 'next/image'
 
 interface FloatingElement {
   id: string
-  text: string
+  text?: string
+  icon?: string
   x: string // Changed to string for percentage-based positioning
   y: string
   rotate: number // Rotation in degrees
+  size?: number // Icon size in pixels
 }
 
 export function InteractiveHeroText() {
   const [hoverState, setHoverState] = useState<'code' | 'design' | null>(null)
 
-  // Fewer, larger elements positioned closer and overlapping the heading with varied rotations
+  // Icon elements for code (tensorflow, python, pytorch, react)
   const codeElements: FloatingElement[] = [
-    { id: 'code-1', text: 'Python', x: '-18%', y: '-12%', rotate: -8 },
-    { id: 'code-2', text: 'PyTorch', x: '108%', y: '3%', rotate: 12 },
-    { id: 'code-3', text: '90%+', x: '-22%', y: '85%', rotate: 5 }, // Kiri bawah - turun dan ke kiri lebih
-    { id: 'code-4', text: 'NLP', x: '110%', y: '88%', rotate: -15 },
+    { id: 'code-1', icon: '/images/tensorflow.png', x: '-13%', y: '-15%', rotate: -8, size: 100 },
+    { id: 'code-2', icon: '/images/python.png', x: '104%', y: '-10%', rotate: 12, size: 100 },
+    { id: 'code-3', icon: '/images/pytorch.png', x: '-14%', y: '105%', rotate: 5, size: 110 },
+    { id: 'code-4', icon: '/images/react.png', x: '103%', y: '108%', rotate: -15, size: 100 },
   ]
 
+  // Icon elements for design (photoshop, illustrator, figma, premiere pro)
   const designElements: FloatingElement[] = [
-    { id: 'design-1', text: 'Figma', x: '-16%', y: '-8%', rotate: 10 },
-    { id: 'design-2', text: 'Leadership', x: '100%', y: '12%', rotate: -6 },
-    { id: 'design-3', text: '1M+ views', x: '-30%', y: '110%', rotate: -12 }, // Kiri bawah - turun dan ke kiri lebih
-    { id: 'design-4', text: 'Brand', x: '107%', y: '110%', rotate: 8 },
+    { id: 'design-1', icon: '/images/photoshop.png', x: '-10%', y: '-18%', rotate: 10, size: 100 },
+    { id: 'design-2', icon: '/images/illustrator.png', x: '103%', y: '-8%', rotate: -6, size: 100 },
+    { id: 'design-3', icon: '/images/figma.png', x: '-15%', y: '110%', rotate: -12, size: 100 },
+    { id: 'design-4', icon: '/images/premierepro.png', x: '106%', y: '112%', rotate: 8, size: 100 },
   ]
 
   return (
@@ -85,7 +89,7 @@ function FloatingElements({
               key={el.id}
               initial={{ opacity: 0, scale: 0.5, y: 20, rotate: 0 }}
               animate={{
-                opacity: 0.4,
+                opacity: 0.7,
                 scale: 1,
                 y: 0,
                 rotate: el.rotate,
@@ -96,13 +100,33 @@ function FloatingElements({
                 delay: index * 0.1,
                 ease: [0.22, 1, 0.36, 1]
               }}
-              className="absolute text-2xl md:text-4xl lg:text-5xl text-white/30 font-bold whitespace-nowrap select-none"
+              className="absolute select-none"
               style={{
                 left: el.x,
                 top: el.y,
               }}
             >
-              {el.text}
+              {el.icon ? (
+                <div
+                  style={{
+                    width: `${el.size || 80}px`,
+                    height: `${el.size || 80}px`
+                  }}
+                >
+                  <Image
+                    src={el.icon}
+                    alt=""
+                    width={el.size || 80}
+                    height={el.size || 80}
+                    className="w-full h-full object-contain"
+                    draggable={false}
+                  />
+                </div>
+              ) : (
+                <span className="text-2xl md:text-4xl lg:text-5xl text-white/30 font-bold whitespace-nowrap">
+                  {el.text}
+                </span>
+              )}
             </motion.div>
           ))}
         </>

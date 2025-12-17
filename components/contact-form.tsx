@@ -51,37 +51,37 @@ export default function ContactFormLite() {
       value: 'brand-identity',
       label: 'Brand Identity',
       description: 'Logo, brand guidelines, visual identity',
-      icon: '🎯'
+      icon: ''
     },
     {
       value: 'social-media',
       label: 'Social Media',
       description: 'Graphics, templates, content strategy',
-      icon: '📱'
+      icon: ''
     },
     {
       value: 'publication',
       label: 'Publication Design',
       description: 'Magazines, reports, presentations',
-      icon: '📚'
+      icon: ''
     },
     {
       value: 'web-design',
       label: 'Web Design',
       description: 'Website design, UI/UX, landing pages',
-      icon: '💻'
+      icon: ''
     },
     {
       value: 'creative-direction',
       label: 'Creative Direction',
       description: 'Ongoing creative strategy and coordination',
-      icon: '🎨'
+      icon: ''
     },
     {
       value: 'other',
       label: 'Other',
       description: 'Custom project or consultation',
-      icon: '💡'
+      icon: ''
     }
   ]
 
@@ -289,7 +289,6 @@ export default function ContactFormLite() {
             className="rounded-xl border border-red-500/40 bg-red-500/10 px-4 py-3 text-sm text-red-300 outline-none ring-0"
           >
             <div className="flex items-start gap-3">
-              <span className="text-lg">⚠️</span>
               <div>{error}</div>
             </div>
           </div>
@@ -299,7 +298,7 @@ export default function ContactFormLite() {
         {currentStep === 1 && (
           <div className="space-y-6 animate-in slide-in-from-right-5 duration-300">
             <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold text-white mb-2">Nice to meet you! 👋</h3>
+              <h3 className="text-2xl font-bold text-white mb-2">Nice to meet you!</h3>
               <p className="text-white/60">Let's start with some basic information about you</p>
             </div>
 
@@ -367,7 +366,7 @@ export default function ContactFormLite() {
         {currentStep === 2 && (
           <div className="space-y-6 animate-in slide-in-from-right-5 duration-300">
             <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold text-white mb-2">Tell me about your project 🎯</h3>
+              <h3 className="text-2xl font-bold text-white mb-2">Tell me about your project</h3>
               <p className="text-white/60">This helps me understand your needs and provide accurate estimates</p>
             </div>
 
@@ -519,7 +518,7 @@ The more details you provide, the better I can understand your vision and provid
                     Sending...
                   </span>
                 ) : (
-                  'Send Message 🚀'
+                  'Send Message'
                 )}
               </Button>
             </div>
