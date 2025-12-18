@@ -198,14 +198,14 @@ export default function AboutClient({ skills }: AboutClientProps) {
             ].map((service, i) => (
               <FadeIn key={`service-${i}-${pageKey}`} delay={0.1 * i}>
                 <div className="group h-full">
-                  <div className="backdrop-blur-sm bg-white/[0.02] border border-white/10 rounded-3xl p-8 hover:bg-white/[0.05] transition-all duration-700 hover:border-white/20 h-full flex flex-col">
-                    <div className="w-16 h-16 bg-gradient-to-br from-framer-blue/20 to-framer-blue/5 rounded-2xl flex items-center justify-center mb-6 group-hover:from-framer-blue/30 group-hover:to-framer-blue/10 transition-all duration-500">
-                      <span className="text-xl font-bold text-framer-blue">0{i + 1}</span>
+                  <div className="backdrop-blur-sm bg-white/[0.02] border border-white/10 rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-8 hover:bg-white/[0.05] transition-all duration-700 hover:border-white/20 h-full flex flex-col">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-br from-framer-blue/20 to-framer-blue/5 rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-5 md:mb-6 group-hover:from-framer-blue/30 group-hover:to-framer-blue/10 transition-all duration-500">
+                      <span className="text-lg sm:text-xl font-bold text-framer-blue">0{i + 1}</span>
                     </div>
-                    <h3 className="text-xl font-bold text-white mb-4 group-hover:text-white/90 transition-colors duration-300">
+                    <h3 className="text-base sm:text-lg md:text-xl font-bold text-white mb-3 sm:mb-4 group-hover:text-white/90 transition-colors duration-300">
                       {service.title}
                     </h3>
-                    <p className="text-white/60 leading-relaxed mb-6 group-hover:text-white/70 transition-colors duration-300 flex-1 text-justify">
+                    <p className="text-xs sm:text-sm md:text-base text-white/60 leading-relaxed mb-4 sm:mb-5 md:mb-6 group-hover:text-white/70 transition-colors duration-300 flex-1 text-justify">
                       {service.desc}
                     </p>
                     <div className="space-y-2">
@@ -225,15 +225,15 @@ export default function AboutClient({ skills }: AboutClientProps) {
       </section>
 
       {/* Keahlian Teknis */}
-      <section className="relative py-24 border-t border-white/5" aria-labelledby="skills-heading">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-20">
-            <div className="py-4">
+      <section className="relative py-16 sm:py-20 md:py-24 border-t border-white/5" aria-labelledby="skills-heading">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-12 sm:mb-16 md:mb-20">
+            <div className="py-2 sm:py-4">
               <FadeIn key={`skills-title-${pageKey}`}>
                 <SplitText
                   key={`skills-split-${pageKey}`}
                   text="Technical Skills"
-                  className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-8"
+                  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 sm:mb-8"
                   splitType="words"
                   delay={60}
                   duration={0.6}
@@ -245,7 +245,7 @@ export default function AboutClient({ skills }: AboutClientProps) {
               </FadeIn>
             </div>
             <FadeIn key={`skills-desc-${pageKey}`} delay={0.2}>
-              <p className="text-lg md:text-xl text-white/60 max-w-3xl mx-auto font-light leading-relaxed">
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/60 max-w-3xl mx-auto font-light leading-relaxed px-4">
                 Tools and technologies for data analysis, machine learning, and production software development.
               </p>
             </FadeIn>
@@ -260,14 +260,14 @@ export default function AboutClient({ skills }: AboutClientProps) {
       </section>
 
       {/* Pengalaman */}
-      <section className="relative py-24 border-t border-white/5">
-        <div className="max-w-5xl mx-auto px-6">
-          <div className="text-center mb-16">
+      <section className="relative py-16 sm:py-20 md:py-24 border-t border-white/5">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-10 sm:mb-12 md:mb-16">
             <FadeIn key={`exp-title-${pageKey}`}>
               <SplitText
                 key={`exp-split-${pageKey}`}
                 text="Experience"
-                className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-8"
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 sm:mb-8"
                 splitType="words, chars"
                 delay={80}
                 duration={0.5}
@@ -278,7 +278,7 @@ export default function AboutClient({ skills }: AboutClientProps) {
               />
             </FadeIn>
             <FadeIn key={`exp-desc-${pageKey}`} delay={0.2}>
-              <p className="text-lg md:text-xl text-white/60 max-w-3xl mx-auto font-light leading-relaxed">
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/60 max-w-3xl mx-auto font-light leading-relaxed px-4">
                 Full-stack development and creative leadership positions that combine technical implementation with data-driven strategy and team management.
               </p>
             </FadeIn>
@@ -289,7 +289,7 @@ export default function AboutClient({ skills }: AboutClientProps) {
             {/* Timeline line */}
             <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-white/40 via-white/30 to-white/10 transform -translate-x-0.5"></div>
 
-            <div className="space-y-12 md:space-y-16">
+            <div className="space-y-8 sm:space-y-10 md:space-y-12 lg:space-y-16">
               {experiences.map((exp, i) => (
                 <FadeIn key={`exp-${i}-${pageKey}`} delay={0.12 * i}>
                   <div className="relative flex items-center">
@@ -300,39 +300,39 @@ export default function AboutClient({ skills }: AboutClientProps) {
 
                     {/* Content */}
                     <div className={`w-full md:w-[calc(50%-3rem)] ${i % 2 === 0 ? 'md:pr-8' : 'md:pl-8 md:ml-auto'}`}>
-                      <article className="backdrop-blur-sm bg-white/[0.02] border border-white/10 rounded-3xl p-8 hover:bg-white/[0.04] hover:border-white/20 transition-all duration-700 group relative">
+                      <article className="backdrop-blur-sm bg-white/[0.02] border border-white/10 rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-8 hover:bg-white/[0.04] hover:border-white/20 transition-all duration-700 group relative">
                         {/* Timeline dot for mobile */}
-                        <div className="md:hidden w-5 h-5 bg-white/30 rounded-full absolute -left-2.5 top-8 border-2 border-black shadow-lg z-10">
-                          <div className="w-2 h-2 bg-white rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
+                        <div className="md:hidden w-4 h-4 sm:w-5 sm:h-5 bg-white/30 rounded-full absolute -left-2 sm:-left-2.5 top-6 sm:top-8 border-2 border-black shadow-lg z-10">
+                          <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
                         </div>
 
-                        <header className="mb-6">
-                          <h3 className="text-lg font-bold text-white">{exp.title}</h3>
-                          <p className="text-white/80 font-medium">{exp.org}</p>
-                          <div className="flex flex-wrap items-center gap-2 mt-1 text-sm">
-                            <span className="px-2 py-1 rounded-full bg-white/10 text-white/70 text-xs">
+                        <header className="mb-4 sm:mb-5 md:mb-6">
+                          <h3 className="text-base sm:text-lg font-bold text-white">{exp.title}</h3>
+                          <p className="text-sm sm:text-base text-white/80 font-medium">{exp.org}</p>
+                          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mt-1 text-xs sm:text-sm">
+                            <span className="px-2 py-0.5 sm:py-1 rounded-full bg-white/10 text-white/70 text-[10px] sm:text-xs">
                               {exp.type}
                             </span>
                             <span className="text-white/60">•</span>
                             <span className="text-white/60">{exp.dates}</span>
                           </div>
                           {exp.location && exp.location !== 'Remote' && (
-                            <p className="text-white/40 text-xs mt-1">{exp.location}</p>
+                            <p className="text-white/40 text-[10px] sm:text-xs mt-1">{exp.location}</p>
                           )}
                         </header>
 
-                        <p className="text-white/70 leading-relaxed mb-5 text-justify">{exp.desc}</p>
+                        <p className="text-xs sm:text-sm text-white/70 leading-relaxed mb-4 sm:mb-5 text-justify">{exp.desc}</p>
 
                         {/* Extras (link IG, dsb) */}
                         {exp.extras?.length ? (
-                          <div className="flex flex-wrap gap-3 mb-5">
+                          <div className="flex flex-wrap gap-2 sm:gap-3 mb-4 sm:mb-5">
                             {exp.extras.map((ex, idx) => (
                               <a
                                 key={idx}
                                 href={ex.href}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-xs px-3 py-1 rounded-full border border-white/15 text-white/80 hover:text-white hover:border-white/30 transition-colors"
+                                className="text-[10px] sm:text-xs px-2.5 sm:px-3 py-1 rounded-full border border-white/15 text-white/80 hover:text-white hover:border-white/30 transition-colors"
                                 aria-label={`${ex.label}: ${ex.value}`}
                                 title={`${ex.label}: ${ex.value}`}
                               >
@@ -344,11 +344,11 @@ export default function AboutClient({ skills }: AboutClientProps) {
 
                         {/* Skills chips */}
                         {exp.skills?.length ? (
-                          <ul className="flex flex-wrap gap-2">
+                          <ul className="flex flex-wrap gap-1.5 sm:gap-2">
                             {exp.skills.map((s, idx) => (
                               <li
                                 key={idx}
-                                className="text-[11px] leading-5 px-2.5 py-1 rounded-full bg-white/[0.04] border border-white/10 text-white/70"
+                                className="text-[10px] sm:text-[11px] leading-5 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full bg-white/[0.04] border border-white/10 text-white/70"
                               >
                                 {s}
                               </li>
@@ -366,29 +366,29 @@ export default function AboutClient({ skills }: AboutClientProps) {
       </section>
 
       {/* Final CTA Section */}
-      <section className="relative py-24 border-t border-white/5">
-        <div className="container mx-auto px-6 text-center">
+      <section className="relative py-16 sm:py-20 md:py-24 border-t border-white/5">
+        <div className="container mx-auto px-4 sm:px-6 text-center">
           <FadeIn key={`about-cta-${pageKey}`}>
             <div className="max-w-3xl mx-auto">
-              <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mb-4 sm:mb-6">
                 Ready to Work Together?
               </h2>
-              <p className="text-lg md:text-xl text-white/60 mb-10 leading-relaxed">
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/60 mb-8 sm:mb-10 leading-relaxed px-4">
                 I'd love to hear about your project and explore how we can create something amazing together.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4">
                 <Link
                   href="/contact"
-                  className="group relative px-10 py-4 bg-framer-blue text-white font-semibold rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:bg-framer-blue-hover hover:shadow-2xl hover:shadow-framer-blue/20"
+                  className="w-full sm:w-auto group relative px-8 sm:px-10 py-3 sm:py-4 bg-framer-blue text-white text-sm sm:text-base font-semibold rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:bg-framer-blue-hover hover:shadow-2xl hover:shadow-framer-blue/20"
                 >
                   <span className="relative z-10">Get in Touch</span>
                 </Link>
                 <Link
                   href="/project"
-                  className="group px-10 py-4 border border-white/20 text-white font-medium rounded-full hover:border-white/40 hover:bg-white/5 transition-all duration-300 backdrop-blur-sm"
+                  className="w-full sm:w-auto group px-8 sm:px-10 py-3 sm:py-4 border border-white/20 text-white text-sm sm:text-base font-medium rounded-full hover:border-white/40 hover:bg-white/5 transition-all duration-300 backdrop-blur-sm"
                 >
                   <span>View My Work</span>
-                  <span className="ml-3 group-hover:translate-x-2 transition-transform duration-300 inline-block">→</span>
+                  <span className="ml-2 sm:ml-3 group-hover:translate-x-2 transition-transform duration-300 inline-block">→</span>
                 </Link>
               </div>
             </div>

@@ -33,9 +33,9 @@ export default function ContactClient({ contactInfo }: ContactClientProps) {
 
         <div className="relative max-w-6xl mx-auto z-10 w-full">
           {/* Status Indicator */}
-          <div className="mb-8 w-full">
+          <div className="mb-6 sm:mb-8 w-full">
             <FadeIn delay={0}>
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-framer-blue/10 border border-framer-blue/20 text-framer-blue text-sm font-medium max-w-full">
+              <div className="inline-flex items-center gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-framer-blue/10 border border-framer-blue/20 text-framer-blue text-xs sm:text-sm font-medium max-w-full">
                 <div className="w-2 h-2 bg-framer-blue rounded-full animate-pulse flex-shrink-0" />
                 <span className="truncate">Open to Data Science & ML opportunities</span>
               </div>
@@ -43,11 +43,11 @@ export default function ContactClient({ contactInfo }: ContactClientProps) {
           </div>
 
           {/* Tagline */}
-          <div className="mb-8 w-full">
+          <div className="mb-6 sm:mb-8 w-full">
             <TextType
               key={`contact-tagline-${pageKey}`}
               text="Let's Make Something Amazing"
-              className="text-sm md:text-base text-white/60 font-medium tracking-[0.1em] sm:tracking-[0.2em] uppercase break-words"
+              className="text-xs sm:text-sm md:text-base text-white/60 font-medium tracking-[0.1em] sm:tracking-[0.2em] uppercase break-words"
               typingSpeed={100}
               showCursor={false}
               initialDelay={200}
@@ -57,11 +57,11 @@ export default function ContactClient({ contactInfo }: ContactClientProps) {
           </div>
 
           {/* Main Title */}
-          <div className="mb-16 py-4 w-full">
+          <div className="mb-10 sm:mb-12 md:mb-16 py-3 sm:py-4 w-full">
             <SplitText
               key={`contact-title-${pageKey}`}
               text="Got a Project in Mind?"
-              className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-[0.85] tracking-tight mb-8 break-words"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-[0.85] tracking-tight mb-6 sm:mb-8 break-words"
               splitType="words, chars"
               delay={30}
               duration={0.8}
@@ -73,13 +73,13 @@ export default function ContactClient({ contactInfo }: ContactClientProps) {
           </div>
 
           {/* Enhanced Description */}
-          <div className="mb-12 max-w-4xl w-full">
+          <div className="mb-10 sm:mb-12 max-w-4xl w-full">
             <FadeIn key={`contact-desc-${pageKey}`} delay={0.3}>
-              <div className="space-y-6">
-                <p className="text-lg sm:text-xl md:text-2xl text-white/80 leading-relaxed font-light break-words">
+              <div className="space-y-4 sm:space-y-6">
+                <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/80 leading-relaxed font-light break-words">
                   Open to full-time Data Science/ML roles, internships, research collaborations, and freelance projects.
                 </p>
-                <p className="text-base sm:text-lg md:text-xl text-white/60 leading-relaxed font-light break-words">
+                <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/60 leading-relaxed font-light break-words">
                   Let's build production ML systems and AI products that make an impact.
                 </p>
               </div>
@@ -89,14 +89,14 @@ export default function ContactClient({ contactInfo }: ContactClientProps) {
       </section>
 
       {/* Contact Methods Section - Simplified */}
-      <section className="relative py-24 border-t border-white/10 w-full overflow-hidden">
+      <section className="relative py-16 sm:py-20 md:py-24 border-t border-white/10 w-full overflow-hidden">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 w-full">
-          <div className="text-center mb-20">
+          <div className="text-center mb-12 sm:mb-16 md:mb-20">
             <FadeIn key={`methods-title-${pageKey}`}>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 break-words">
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mb-4 sm:mb-6 break-words">
                 Let's Connect
               </h2>
-              <p className="text-lg sm:text-xl text-white/60 max-w-3xl mx-auto leading-relaxed break-words">
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/60 max-w-3xl mx-auto leading-relaxed break-words px-4">
                 Available for Data Science roles, ML projects, and collaboration opportunities.
               </p>
             </FadeIn>
@@ -119,18 +119,18 @@ export default function ContactClient({ contactInfo }: ContactClientProps) {
           {/* Location & Availability Info */}
           <div className="text-center w-full">
             <FadeIn key={`location-info-${pageKey}`} delay={0.5}>
-              <div className="inline-flex flex-col sm:flex-row items-center gap-4 px-4 sm:px-6 py-4 bg-white/5 border border-white/10 rounded-2xl max-w-full">
+              <div className="inline-flex flex-col sm:flex-row items-center gap-3 sm:gap-4 px-3 sm:px-4 md:px-6 py-3 sm:py-4 bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl max-w-full">
                 <div className="flex items-center gap-2 text-white/70 text-center sm:text-left">
-                  <span className="text-xs sm:text-sm font-medium break-words">{contactInfo.LOCATION}</span>
+                  <span className="text-[10px] sm:text-xs md:text-sm font-medium break-words">{contactInfo.LOCATION}</span>
                 </div>
                 <div className="hidden sm:block w-1 h-1 bg-white/30 rounded-full flex-shrink-0" />
                 <div className="flex items-center gap-2 text-white/70">
-                  <span className="text-xs sm:text-sm font-medium">{contactInfo.TIMEZONE}</span>
+                  <span className="text-[10px] sm:text-xs md:text-sm font-medium">{contactInfo.TIMEZONE}</span>
                 </div>
                 <div className="hidden sm:block w-1 h-1 bg-white/30 rounded-full flex-shrink-0" />
                 <div className="flex items-center gap-2 text-framer-blue">
                   <div className="w-2 h-2 bg-framer-blue rounded-full animate-pulse flex-shrink-0" />
-                  <span className="text-xs sm:text-sm font-medium">Usually around 9 AM - 6 PM</span>
+                  <span className="text-[10px] sm:text-xs md:text-sm font-medium">Usually around 9 AM - 6 PM</span>
                 </div>
               </div>
             </FadeIn>
@@ -139,14 +139,14 @@ export default function ContactClient({ contactInfo }: ContactClientProps) {
       </section>
 
       {/* Contact Form Section */}
-      <section className="relative py-24 border-t border-white/10 w-full" id="contact-form">
+      <section className="relative py-16 sm:py-20 md:py-24 border-t border-white/10 w-full" id="contact-form">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 w-full">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 sm:mb-12 md:mb-16">
             <FadeIn key={`form-section-title-${pageKey}`}>
               <SplitText
                 key={`form-section-split-${pageKey}`}
                 text="Or Drop Me a Line"
-                className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-8 break-words"
+                className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mb-6 sm:mb-8 break-words"
                 splitType="words"
                 delay={40}
                 duration={0.6}
@@ -157,14 +157,14 @@ export default function ContactClient({ contactInfo }: ContactClientProps) {
               />
             </FadeIn>
             <FadeIn key={`form-section-desc-${pageKey}`} delay={0.2}>
-              <p className="text-lg sm:text-xl text-white/60 max-w-3xl mx-auto leading-relaxed break-words">
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/60 max-w-3xl mx-auto leading-relaxed break-words px-4">
                 Got a design project in mind? Share the details and I'll get back to you with creative ideas and next steps.
               </p>
             </FadeIn>
           </div>
 
           <FadeIn key={`contact-form-wrapper-${pageKey}`} delay={0.3}>
-            <div className="backdrop-blur-sm bg-white/[0.02] border border-white/10 rounded-3xl p-6 sm:p-8 md:p-12 relative overflow-hidden w-full">
+            <div className="backdrop-blur-sm bg-white/[0.02] border border-white/10 rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-8 lg:p-12 relative overflow-hidden w-full">
               <div className="relative w-full">
                 <ContactFormLite />
               </div>

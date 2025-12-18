@@ -139,15 +139,15 @@ export default function HomeClient({ featuredProjects }: HomeClientProps) {
                           <span className="text-[10px] sm:text-xs text-white/30 font-light">{project.year}</span>
                         </div>
 
-                        <h3 className="text-base sm:text-lg md:text-xl font-bold text-white mb-3 sm:mb-4 group-hover:text-white/90 transition-colors duration-300">
+                        <h3 className="text-base sm:text-lg md:text-xl font-bold text-white mb-3 sm:mb-4 group-hover:text-white/90 transition-colors duration-300 line-clamp-2">
                           {project.title}
                         </h3>
 
-                        <p className="text-xs sm:text-sm text-white/50 leading-relaxed flex-1 group-hover:text-white/60 transition-colors duration-300 line-clamp-3">
+                        <p className="text-xs sm:text-sm text-white/50 leading-relaxed group-hover:text-white/60 transition-colors duration-300 line-clamp-3 mb-4 sm:mb-6">
                           {project.summary}
                         </p>
 
-                        <div className="mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-white/10">
+                        <div className="pt-3 sm:pt-4 border-t border-white/10 mt-auto">
                           <span className="text-xs sm:text-sm text-white/40 group-hover:text-white/60 transition-colors duration-300 font-medium">
                             View Details →
                           </span>

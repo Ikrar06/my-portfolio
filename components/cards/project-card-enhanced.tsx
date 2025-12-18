@@ -73,7 +73,7 @@ export default function ProjectCardEnhanced({ project }: ProjectCardProps) {
         />
 
         {/* Image Container */}
-        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-t-xl">
+        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-t-lg sm:rounded-t-xl">
           {hasCover ? (
             <div className="relative w-full h-full">
               <Image
@@ -130,8 +130,8 @@ export default function ProjectCardEnhanced({ project }: ProjectCardProps) {
 
           {/* Category badge with enhanced animation */}
           {category && (
-            <div className="absolute top-3 left-3 transform transition-all duration-300 group-hover:scale-110">
-              <span className="px-2.5 py-1 text-xs font-medium bg-black/60 text-white rounded-xl backdrop-blur-md border border-white/10">
+            <div className="absolute top-2 left-2 sm:top-3 sm:left-3 transform transition-all duration-300 group-hover:scale-110">
+              <span className="px-2 sm:px-2.5 py-0.5 sm:py-1 text-[10px] sm:text-xs font-medium bg-black/60 text-white rounded-xl sm:rounded-xl backdrop-blur-md border border-white/10">
                 {category}
               </span>
             </div>
@@ -139,23 +139,23 @@ export default function ProjectCardEnhanced({ project }: ProjectCardProps) {
         </div>
 
         {/* Content */}
-        <div className="p-5 space-y-3 rounded-b-xl flex-1 flex flex-col">
-          <div className="space-y-2 flex-1">
-            <h3 className="text-base md:text-lg font-semibold leading-tight text-white group-hover:text-framer-blue transition-colors duration-300">
+        <div className="p-3 sm:p-4 md:p-5 space-y-2 sm:space-y-3 rounded-b-lg sm:rounded-b-xl flex-1 flex flex-col">
+          <div className="space-y-1.5 sm:space-y-2 flex-1">
+            <h3 className="text-sm sm:text-base md:text-lg font-semibold leading-tight text-white group-hover:text-framer-blue transition-colors duration-300">
               {title}
             </h3>
-            <p className="text-sm text-text-secondary line-clamp-3 leading-relaxed group-hover:text-white/70 transition-colors duration-300">
+            <p className="text-xs sm:text-sm text-text-secondary line-clamp-3 leading-relaxed group-hover:text-white/70 transition-colors duration-300">
               {summary}
             </p>
           </div>
 
           {/* Tags with stagger animation */}
           {tags && tags.length > 0 && (
-            <div className="flex flex-wrap gap-1.5">
+            <div className="flex flex-wrap gap-1 sm:gap-1.5">
               {tags.slice(0, 3).map((tag, index) => (
                 <span
                   key={tag}
-                  className="px-2.5 py-0.5 text-xs font-medium bg-neutral-100 dark:bg-neutral-800/50 text-neutral-600 dark:text-neutral-400 rounded-xl border border-neutral-200 dark:border-neutral-700/50 transition-all duration-300 group-hover:bg-neutral-200 dark:group-hover:bg-neutral-700/50 group-hover:border-neutral-300 dark:group-hover:border-neutral-600/50"
+                  className="px-2 sm:px-2.5 py-0.5 text-[10px] sm:text-xs font-medium bg-neutral-100 dark:bg-neutral-800/50 text-neutral-600 dark:text-neutral-400 rounded-xl sm:rounded-xl border border-neutral-200 dark:border-neutral-700/50 transition-all duration-300 group-hover:bg-neutral-200 dark:group-hover:bg-neutral-700/50 group-hover:border-neutral-300 dark:group-hover:border-neutral-600/50"
                   style={{
                     transitionDelay: `${index * 50}ms`,
                   }}
@@ -164,7 +164,7 @@ export default function ProjectCardEnhanced({ project }: ProjectCardProps) {
                 </span>
               ))}
               {tags.length > 3 && (
-                <span className="px-2.5 py-0.5 text-xs font-medium bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 rounded-xl transition-all duration-300 group-hover:bg-neutral-200 dark:group-hover:bg-neutral-700">
+                <span className="px-2 sm:px-2.5 py-0.5 text-[10px] sm:text-xs font-medium bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 rounded-xl sm:rounded-xl transition-all duration-300 group-hover:bg-neutral-200 dark:group-hover:bg-neutral-700">
                   +{tags.length - 3} more
                 </span>
               )}
@@ -172,17 +172,18 @@ export default function ProjectCardEnhanced({ project }: ProjectCardProps) {
           )}
 
           {/* Footer */}
-          <div className="flex items-center justify-between pt-2 border-t border-white/10">
+          <div className="flex items-center justify-between pt-1.5 sm:pt-2 border-t border-white/10">
             <time
-              className="text-xs font-medium text-text-tertiary bg-bg-tertiary px-2 py-1 rounded-full transition-all duration-300 group-hover:bg-framer-blue/10 group-hover:text-framer-blue"
+              className="text-[10px] sm:text-xs font-medium text-text-tertiary bg-bg-tertiary px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full transition-all duration-300 group-hover:bg-framer-blue/10 group-hover:text-framer-blue"
               dateTime={year.toString()}
             >
               {year}
             </time>
-            <span className="text-xs font-medium text-framer-blue flex items-center gap-1 opacity-80 group-hover:opacity-100 transition-all duration-300">
-              View details
+            <span className="text-[10px] sm:text-xs font-medium text-framer-blue flex items-center gap-0.5 sm:gap-1 opacity-80 group-hover:opacity-100 transition-all duration-300">
+              <span className="hidden sm:inline">View details</span>
+              <span className="sm:hidden">View</span>
               <svg
-                className="w-3 h-3 transition-transform duration-300 group-hover:translate-x-1"
+                className="w-2.5 h-2.5 sm:w-3 sm:h-3 transition-transform duration-300 group-hover:translate-x-1"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"

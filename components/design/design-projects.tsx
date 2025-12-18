@@ -33,13 +33,13 @@ export default function DesignProjects({ projects }: DesignProjectsProps) {
     <div className="space-y-6">
       {/* Project count */}
       <div className="flex items-center justify-between">
-        <p className="text-sm text-neutral-600 dark:text-neutral-400">
+        <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
           Showing <span className="font-semibold text-neutral-900 dark:text-neutral-100">{projects.length}</span> design project{projects.length !== 1 ? 's' : ''}
         </p>
       </div>
 
       {/* Projects Grid */}
-      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="grid grid-cols-1 gap-5 sm:gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {projects.map((project, index) => (
           <FadeIn
             key={project.slug}

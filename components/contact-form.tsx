@@ -247,20 +247,20 @@ export default function ContactFormLite() {
   return (
     <div className="w-full">
       {/* Progress Bar */}
-      <div className="mb-8">
-        <div className="flex justify-between items-center mb-4">
-          <h3 className="text-lg font-semibold text-white">
+      <div className="mb-6 sm:mb-8">
+        <div className="flex justify-between items-center mb-3 sm:mb-4">
+          <h3 className="text-sm sm:text-base md:text-lg font-semibold text-white">
             Step {currentStep} of {totalSteps}
           </h3>
-          <span className="text-sm text-white/60">
+          <span className="text-xs sm:text-sm text-white/60">
             {currentStep === 1 && "Basic Information"}
             {currentStep === 2 && "Project Details"}
             {currentStep === 3 && "Tell Me More"}
           </span>
         </div>
-        <div className="w-full bg-white/10 rounded-full h-2">
-          <div 
-            className="bg-gradient-to-r from-blue-500 to-blue-600 h-2 rounded-full transition-all duration-500 ease-out"
+        <div className="w-full bg-white/10 rounded-full h-1.5 sm:h-2">
+          <div
+            className="bg-gradient-to-r from-blue-500 to-blue-600 h-1.5 sm:h-2 rounded-full transition-all duration-500 ease-out"
             style={{ width: `${progress}%` }}
           />
         </div>
@@ -269,26 +269,23 @@ export default function ContactFormLite() {
       <form onSubmit={onSubmit} className="space-y-6" noValidate>
         {/* Success/Error Messages */}
         {success && (
-          <div 
-            role="status" 
+          <div
+            role="status"
             aria-live="polite"
-            className="rounded-xl border border-blue-500/40 bg-blue-500/10 px-4 py-3 text-sm text-blue-300"
+            className="rounded-xl sm:rounded-xl border border-blue-500/40 bg-blue-500/10 px-3 sm:px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-blue-300"
           >
-            <div className="flex items-start gap-3">
-              <span className="text-lg">✅</span>
-              <div>{success}</div>
-            </div>
+            <div>{success}</div>
           </div>
         )}
 
         {error && (
-          <div 
-            ref={alertRef} 
-            tabIndex={-1} 
+          <div
+            ref={alertRef}
+            tabIndex={-1}
             role="alert"
-            className="rounded-xl border border-red-500/40 bg-red-500/10 px-4 py-3 text-sm text-red-300 outline-none ring-0"
+            className="rounded-xl sm:rounded-xl border border-red-500/40 bg-red-500/10 px-3 sm:px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-red-300 outline-none ring-0"
           >
-            <div className="flex items-start gap-3">
+            <div className="flex items-start gap-2 sm:gap-3">
               <div>{error}</div>
             </div>
           </div>
@@ -296,64 +293,64 @@ export default function ContactFormLite() {
 
         {/* Step 1: Basic Information */}
         {currentStep === 1 && (
-          <div className="space-y-6 animate-in slide-in-from-right-5 duration-300">
-            <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold text-white mb-2">Nice to meet you!</h3>
-              <p className="text-white/60">Let's start with some basic information about you</p>
+          <div className="space-y-4 sm:space-y-6 animate-in slide-in-from-right-5 duration-300">
+            <div className="text-center mb-6 sm:mb-8">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2">Nice to meet you!</h3>
+              <p className="text-sm sm:text-base text-white/60">Let's start with some basic information about you</p>
             </div>
 
-            <div className="grid gap-6">
+            <div className="grid gap-4 sm:gap-6">
               <div className="grid gap-2">
-                <Label htmlFor="name" className="text-white font-medium">
+                <Label htmlFor="name" className="text-sm sm:text-base text-white font-medium">
                   Your Name *
                 </Label>
-                <Input 
-                  id="name" 
-                  name="name" 
+                <Input
+                  id="name"
+                  name="name"
                   placeholder="John Doe"
-                  value={state.name} 
+                  value={state.name}
                   onChange={setField('name')}
-                  required 
-                  className="bg-white/5 border-white/20 text-white placeholder:text-white/40 focus:border-blue-500/50 focus:ring-blue-500/25 rounded-xl"
+                  required
+                  className="bg-white/5 border-white/20 text-white placeholder:text-white/40 focus:border-blue-500/50 focus:ring-blue-500/25 rounded-xl sm:rounded-xl h-10 sm:h-11 text-sm sm:text-base"
                 />
               </div>
 
               <div className="grid gap-2">
-                <Label htmlFor="email" className="text-white font-medium">
+                <Label htmlFor="email" className="text-sm sm:text-base text-white font-medium">
                   Email Address *
                 </Label>
-                <Input 
-                  id="email" 
-                  name="email" 
-                  type="email" 
+                <Input
+                  id="email"
+                  name="email"
+                  type="email"
                   placeholder="john@example.com"
-                  value={state.email} 
+                  value={state.email}
                   onChange={setField('email')}
-                  required 
-                  className="bg-white/5 border-white/20 text-white placeholder:text-white/40 focus:border-blue-500/50 focus:ring-blue-500/25 rounded-xl"
+                  required
+                  className="bg-white/5 border-white/20 text-white placeholder:text-white/40 focus:border-blue-500/50 focus:ring-blue-500/25 rounded-xl sm:rounded-xl h-10 sm:h-11 text-sm sm:text-base"
                 />
               </div>
 
               <div className="grid gap-2">
-                <Label htmlFor="company" className="text-white font-medium">
+                <Label htmlFor="company" className="text-sm sm:text-base text-white font-medium">
                   Company/Organization <span className="text-white/60">(optional)</span>
                 </Label>
-                <Input 
-                  id="company" 
-                  name="company" 
+                <Input
+                  id="company"
+                  name="company"
                   placeholder="Your Company Inc."
-                  value={state.company} 
+                  value={state.company}
                   onChange={setField('company')}
-                  className="bg-white/5 border-white/20 text-white placeholder:text-white/40 focus:border-blue-500/50 focus:ring-blue-500/25 rounded-xl"
+                  className="bg-white/5 border-white/20 text-white placeholder:text-white/40 focus:border-blue-500/50 focus:ring-blue-500/25 rounded-xl sm:rounded-xl h-10 sm:h-11 text-sm sm:text-base"
                 />
               </div>
             </div>
 
-            <div className="flex justify-end pt-4">
-              <Button 
-                type="button" 
+            <div className="flex justify-end pt-3 sm:pt-4">
+              <Button
+                type="button"
                 onClick={nextStep}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-8 rounded-xl"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-5 sm:px-6 md:px-8 rounded-xl sm:rounded-xl text-sm sm:text-base h-10 sm:h-11"
                 disabled={!state.name || !state.email}
               >
                 Continue →
@@ -364,35 +361,35 @@ export default function ContactFormLite() {
 
         {/* Step 2: Project Details */}
         {currentStep === 2 && (
-          <div className="space-y-6 animate-in slide-in-from-right-5 duration-300">
-            <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold text-white mb-2">Tell me about your project</h3>
-              <p className="text-white/60">This helps me understand your needs and provide accurate estimates</p>
+          <div className="space-y-4 sm:space-y-6 animate-in slide-in-from-right-5 duration-300">
+            <div className="text-center mb-6 sm:mb-8">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2">Tell me about your project</h3>
+              <p className="text-sm sm:text-base text-white/60">This helps me understand your needs and provide accurate estimates</p>
             </div>
 
-            <div className="grid gap-6">
+            <div className="grid gap-4 sm:gap-6">
               {/* Project Type */}
-              <div className="grid gap-3">
-                <Label className="text-white font-medium">
+              <div className="grid gap-2 sm:gap-3">
+                <Label className="text-sm sm:text-base text-white font-medium">
                   What type of project do you need? *
                 </Label>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
                   {projectTypes.map((type) => (
                     <button
                       key={type.value}
                       type="button"
                       onClick={() => setSelectField('projectType')(type.value)}
-                      className={`p-4 rounded-xl border text-left transition-all duration-200 ${
+                      className={`p-3 sm:p-4 rounded-xl sm:rounded-xl border text-left transition-all duration-200 ${
                         state.projectType === type.value
                           ? 'border-blue-500/50 bg-blue-500/10 text-blue-300'
                           : 'border-white/20 bg-white/5 text-white hover:border-white/30 hover:bg-white/10'
                       }`}
                     >
-                      <div className="flex items-start gap-3">
-                        <span className="text-xl">{type.icon}</span>
+                      <div className="flex items-start gap-2 sm:gap-3">
+                        <span className="text-base sm:text-xl">{type.icon}</span>
                         <div>
-                          <div className="font-semibold">{type.label}</div>
-                          <div className="text-sm opacity-70">{type.description}</div>
+                          <div className="font-semibold text-sm sm:text-base">{type.label}</div>
+                          <div className="text-xs sm:text-sm opacity-70">{type.description}</div>
                         </div>
                       </div>
                     </button>
@@ -401,24 +398,24 @@ export default function ContactFormLite() {
               </div>
 
               {/* Budget Range */}
-              <div className="grid gap-3">
-                <Label className="text-white font-medium">
+              <div className="grid gap-2 sm:gap-3">
+                <Label className="text-sm sm:text-base text-white font-medium">
                   What's your budget range? <span className="text-white/60">(optional but helpful)</span>
                 </Label>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
                   {budgetRanges.map((budget) => (
                     <button
                       key={budget.value}
                       type="button"
                       onClick={() => setSelectField('budget')(budget.value)}
-                      className={`p-3 rounded-xl border text-left transition-all duration-200 ${
+                      className={`p-2.5 sm:p-3 rounded-xl sm:rounded-xl border text-left transition-all duration-200 ${
                         state.budget === budget.value
                           ? 'border-blue-500/50 bg-blue-500/10 text-blue-300'
                           : 'border-white/20 bg-white/5 text-white hover:border-white/30 hover:bg-white/10'
                       }`}
                     >
-                      <div className="font-semibold text-sm">{budget.label}</div>
-                      <div className="text-xs opacity-70">{budget.description}</div>
+                      <div className="font-semibold text-xs sm:text-sm">{budget.label}</div>
+                      <div className="text-[10px] sm:text-xs opacity-70">{budget.description}</div>
                     </button>
                   ))}
                 </div>
@@ -426,33 +423,33 @@ export default function ContactFormLite() {
 
               {/* Timeline */}
               <div className="grid gap-2">
-                <Label htmlFor="timeline" className="text-white font-medium">
+                <Label htmlFor="timeline" className="text-sm sm:text-base text-white font-medium">
                   When do you need this completed? <span className="text-white/60">(optional)</span>
                 </Label>
-                <Input 
-                  id="timeline" 
-                  name="timeline" 
+                <Input
+                  id="timeline"
+                  name="timeline"
                   placeholder="e.g., 'By end of November' or 'ASAP' or 'Flexible'"
-                  value={state.timeline} 
+                  value={state.timeline}
                   onChange={setField('timeline')}
-                  className="bg-white/5 border-white/20 text-white placeholder:text-white/40 focus:border-blue-500/50 focus:ring-blue-500/25 rounded-xl"
+                  className="bg-white/5 border-white/20 text-white placeholder:text-white/40 focus:border-blue-500/50 focus:ring-blue-500/25 rounded-xl sm:rounded-xl h-10 sm:h-11 text-sm sm:text-base"
                 />
               </div>
             </div>
 
-            <div className="flex justify-between pt-4">
-              <Button 
-                type="button" 
+            <div className="flex justify-between pt-3 sm:pt-4">
+              <Button
+                type="button"
                 onClick={prevStep}
                 variant="outline"
-                className="border-white/20 text-white hover:bg-white/10 rounded-xl"
+                className="border-white/20 text-white hover:bg-white/10 rounded-xl sm:rounded-xl px-4 sm:px-5 md:px-6 text-sm sm:text-base h-10 sm:h-11"
               >
                 ← Back
               </Button>
-              <Button 
-                type="button" 
+              <Button
+                type="button"
                 onClick={nextStep}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-8 rounded-xl"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-5 sm:px-6 md:px-8 rounded-xl sm:rounded-xl text-sm sm:text-base h-10 sm:h-11"
                 disabled={!state.projectType}
               >
                 Continue →
@@ -463,21 +460,21 @@ export default function ContactFormLite() {
 
         {/* Step 3: Project Details */}
         {currentStep === 3 && (
-          <div className="space-y-6 animate-in slide-in-from-right-5 duration-300">
-            <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold text-white mb-2">Almost done! 📝</h3>
-              <p className="text-white/60">Tell me more about your vision and goals</p>
+          <div className="space-y-4 sm:space-y-6 animate-in slide-in-from-right-5 duration-300">
+            <div className="text-center mb-6 sm:mb-8">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2">Almost done! 📝</h3>
+              <p className="text-sm sm:text-base text-white/60">Tell me more about your vision and goals</p>
             </div>
 
-            <div className="grid gap-6">
+            <div className="grid gap-4 sm:gap-6">
               <div className="grid gap-2">
-                <Label htmlFor="message" className="text-white font-medium">
+                <Label htmlFor="message" className="text-sm sm:text-base text-white font-medium">
                   Project Details *
                 </Label>
-                <Textarea 
-                  id="message" 
-                  name="message" 
-                  rows={8} 
+                <Textarea
+                  id="message"
+                  name="message"
+                  rows={8}
                   placeholder="Please describe your project in detail. Include:
 
 • What you're looking to achieve
@@ -487,30 +484,30 @@ export default function ContactFormLite() {
 • Any additional context that would be helpful
 
 The more details you provide, the better I can understand your vision and provide an accurate proposal."
-                  value={state.message} 
+                  value={state.message}
                   onChange={setField('message')}
                   required
-                  className="bg-white/5 border-white/20 text-white placeholder:text-white/40 focus:border-blue-500/50 focus:ring-blue-500/25 min-h-[200px] rounded-xl"
+                  className="bg-white/5 border-white/20 text-white placeholder:text-white/40 focus:border-blue-500/50 focus:ring-blue-500/25 min-h-[180px] sm:min-h-[200px] rounded-xl sm:rounded-xl text-sm sm:text-base"
                 />
-                <p className="text-xs text-white/50">
+                <p className="text-[10px] sm:text-xs text-white/50">
                   Minimum 20 characters • Current: {state.message.length}
                 </p>
               </div>
             </div>
 
-            <div className="flex justify-between pt-4">
-              <Button 
-                type="button" 
+            <div className="flex justify-between pt-3 sm:pt-4">
+              <Button
+                type="button"
                 onClick={prevStep}
                 variant="outline"
-                className="border-white/20 text-white hover:bg-white/10 rounded-xl"
+                className="border-white/20 text-white hover:bg-white/10 rounded-xl sm:rounded-xl px-4 sm:px-5 md:px-6 text-sm sm:text-base h-10 sm:h-11"
               >
                 ← Back
               </Button>
-              <Button 
-                type="submit" 
+              <Button
+                type="submit"
                 disabled={submitting || !state.message || state.message.length < 20}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-8 disabled:opacity-50 rounded-xl"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-5 sm:px-6 md:px-8 disabled:opacity-50 rounded-xl sm:rounded-xl text-sm sm:text-base h-10 sm:h-11"
               >
                 {submitting ? (
                   <span className="flex items-center gap-2">
@@ -526,10 +523,10 @@ The more details you provide, the better I can understand your vision and provid
         )}
 
         {/* Alternative Contact */}
-        <div className="pt-6 border-t border-white/10">
-          <p className="text-xs text-white/50 text-center">
+        <div className="pt-4 sm:pt-6 border-t border-white/10">
+          <p className="text-[10px] sm:text-xs text-white/50 text-center leading-relaxed">
             Prefer a different method? {' '}
-            <button 
+            <button
               type="button"
               onClick={handleEmailClick}
               className="text-blue-400 hover:text-blue-300 underline transition-colors cursor-pointer"
@@ -537,7 +534,7 @@ The more details you provide, the better I can understand your vision and provid
               send me an email directly
             </button>
             {' or '}
-            <a 
+            <a
               className="text-blue-400 hover:text-blue-300 underline transition-colors"
               href={`https://wa.me/6281214590205?text=${encodeURIComponent('Hi Ikrar! I\'d like to discuss a design project.')}`}
               target="_blank"

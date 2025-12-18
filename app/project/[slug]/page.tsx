@@ -219,9 +219,9 @@ export default async function ProjectDetailPage({ params }: PageProps) {
     const more = morePool.slice(0, 6)
 
     return (
-      <article className="space-y-12">
+      <article className="space-y-6 sm:space-y-8 md:space-y-12 px-4 sm:px-6">
         {/* Breadcrumb & Back Navigation */}
-        <nav className="flex items-center text-sm text-neutral-600 dark:text-neutral-400">
+        <nav className="flex items-center text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
           <Link 
             href="/" 
             className="hover:text-neutral-900 dark:hover:text-neutral-200 transition-colors"
@@ -240,14 +240,14 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         </nav>
 
         {/* Header with Blur Background */}
-        <header className="relative space-y-8">
+        <header className="relative space-y-6 sm:space-y-8">
           {/* Blur Background Effect */}
           {/* Ornament blur removed for cleaner design */}
 
-          <div className="space-y-6 relative">
+          <div className="space-y-4 sm:space-y-6 relative">
             <Link
               href="/project"
-              className="inline-flex items-center gap-2 text-sm text-emerald-700 hover:text-emerald-800 dark:text-emerald-400 dark:hover:text-emerald-300 transition-colors group"
+              className="inline-flex items-center gap-2 text-xs sm:text-sm text-emerald-700 hover:text-emerald-800 dark:text-emerald-400 dark:hover:text-emerald-300 transition-colors group"
             >
               <svg className="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -255,88 +255,88 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               {backText}
             </Link>
 
-            <div className="space-y-4">
-              <div className="flex flex-wrap items-center gap-3 text-sm">
+            <div className="space-y-3 sm:space-y-4">
+              <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs sm:text-sm">
                 {/* Category Badge */}
                 {category && (
-                  <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-xl font-medium dark:bg-blue-900 dark:text-blue-200">
+                  <span className="px-2 sm:px-3 py-0.5 sm:py-1 bg-blue-100 text-blue-800 rounded-xl text-[10px] sm:text-sm font-medium dark:bg-blue-900 dark:text-blue-200">
                     {category}
                   </span>
                 )}
                 
                 {/* Work Type Badges */}
                 {eventWork ? (
-                  <span className="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-xl font-medium dark:bg-indigo-900 dark:text-indigo-200">
+                  <span className="px-2 sm:px-3 py-0.5 sm:py-1 bg-indigo-100 text-indigo-800 rounded-xl text-[10px] sm:text-sm font-medium dark:bg-indigo-900 dark:text-indigo-200">
                     Event Work
                   </span>
                 ) : competitionWork ? (
-                  <span className="px-3 py-1 bg-orange-100 text-orange-800 rounded-xl font-medium dark:bg-orange-900 dark:text-orange-200">
+                  <span className="px-2 sm:px-3 py-0.5 sm:py-1 bg-orange-100 text-orange-800 rounded-xl text-[10px] sm:text-sm font-medium dark:bg-orange-900 dark:text-orange-200">
                     Competition
                   </span>
                 ) : organizationWork ? (
-                  <span className="px-3 py-1 bg-purple-100 text-purple-800 rounded-xl font-medium dark:bg-purple-900 dark:text-purple-200">
+                  <span className="px-2 sm:px-3 py-0.5 sm:py-1 bg-purple-100 text-purple-800 rounded-xl text-[10px] sm:text-sm font-medium dark:bg-purple-900 dark:text-purple-200">
                     Organization Work
                   </span>
                 ) : (
-                  <span className="px-3 py-1 bg-emerald-100 text-emerald-800 rounded-xl font-medium dark:bg-emerald-900 dark:text-emerald-200">
+                  <span className="px-2 sm:px-3 py-0.5 sm:py-1 bg-emerald-100 text-emerald-800 rounded-xl text-[10px] sm:text-sm font-medium dark:bg-emerald-900 dark:text-emerald-200">
                     Project
                   </span>
                 )}
 
                 {/* Specific Work Badges */}
                 {eventWork && eventName && (
-                  <span className="px-3 py-1 bg-violet-100 text-violet-800 rounded-xl font-medium dark:bg-violet-900 dark:text-violet-200">
+                  <span className="px-2 sm:px-3 py-0.5 sm:py-1 bg-violet-100 text-violet-800 rounded-xl text-[10px] sm:text-sm font-medium dark:bg-violet-900 dark:text-violet-200">
                     {eventName}
                   </span>
                 )}
-                
+
                 {eventWork && eventType && (
-                  <span className="px-3 py-1 bg-cyan-100 text-cyan-800 rounded-xl font-medium dark:bg-cyan-900 dark:text-cyan-200">
+                  <span className="px-2 sm:px-3 py-0.5 sm:py-1 bg-cyan-100 text-cyan-800 rounded-xl text-[10px] sm:text-sm font-medium dark:bg-cyan-900 dark:text-cyan-200">
                     {eventType}
                   </span>
                 )}
 
                 {competitionWork && competitionName && (
-                  <span className="px-3 py-1 bg-amber-100 text-amber-800 rounded-xl font-medium dark:bg-amber-900 dark:text-amber-200">
+                  <span className="px-2 sm:px-3 py-0.5 sm:py-1 bg-amber-100 text-amber-800 rounded-xl text-[10px] sm:text-sm font-medium dark:bg-amber-900 dark:text-amber-200">
                     {competitionName}
                   </span>
                 )}
-                
+
                 {competitionWork && competitionCategory && (
-                  <span className="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-xl font-medium dark:bg-yellow-900 dark:text-yellow-200">
+                  <span className="px-2 sm:px-3 py-0.5 sm:py-1 bg-yellow-100 text-yellow-800 rounded-xl text-[10px] sm:text-sm font-medium dark:bg-yellow-900 dark:text-yellow-200">
                     {competitionCategory}
                   </span>
                 )}
 
                 {/* Time Badges */}
-                <span className="px-3 py-1 bg-neutral-100 text-neutral-700 rounded-xl font-medium dark:bg-neutral-800 dark:text-neutral-300">
+                <span className="px-2 sm:px-3 py-0.5 sm:py-1 bg-neutral-100 text-neutral-700 rounded-xl text-[10px] sm:text-sm font-medium dark:bg-neutral-800 dark:text-neutral-300">
                   {year}
                 </span>
                 {(duration || eventDuration) && (
-                  <span className="px-3 py-1 bg-neutral-100 text-neutral-700 rounded-xl font-medium dark:bg-neutral-800 dark:text-neutral-300">
+                  <span className="px-2 sm:px-3 py-0.5 sm:py-1 bg-neutral-100 text-neutral-700 rounded-xl text-[10px] sm:text-sm font-medium dark:bg-neutral-800 dark:text-neutral-300">
                     {eventDuration || duration}
                   </span>
                 )}
               </div>
 
-              <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">
+              <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight leading-tight">
                 {title}
               </h1>
-              
-              <p className="text-xl text-neutral-700 dark:text-neutral-300 leading-relaxed max-w-3xl">
+
+              <p className="text-base sm:text-lg md:text-xl text-neutral-700 dark:text-neutral-300 leading-relaxed max-w-3xl">
                 {summary}
               </p>
             </div>
 
             {/* Project/Organization/Event Links */}
             {(liveUrl || githubUrl || behanceUrl || dribbbleUrl || instagramUrl || linkedinUrl) && (
-              <div className="flex flex-wrap items-center gap-3">
+              <div className="flex flex-wrap items-center gap-2 sm:gap-3">
                 {liveUrl && (
                   <a
                     href={liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700 transition-colors font-medium"
+                    className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm bg-emerald-600 text-white rounded-xl sm:rounded-xl hover:bg-emerald-700 transition-colors font-medium"
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -349,7 +349,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                     href={instagramUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-xl hover:from-pink-600 hover:to-purple-700 transition-colors font-medium"
+                    className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-xl sm:rounded-xl hover:from-pink-600 hover:to-purple-700 transition-colors font-medium"
                   >
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
@@ -362,7 +362,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                     href={linkedinUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors font-medium"
+                    className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm bg-blue-600 text-white rounded-xl sm:rounded-xl hover:bg-blue-700 transition-colors font-medium"
                   >
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
@@ -375,7 +375,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                     href={githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 border border-neutral-300 text-neutral-700 rounded-xl hover:bg-neutral-50 dark:border-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-800 transition-colors font-medium"
+                    className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm border border-neutral-300 text-neutral-700 rounded-xl sm:rounded-xl hover:bg-neutral-50 dark:border-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-800 transition-colors font-medium"
                   >
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
@@ -388,7 +388,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                     href={behanceUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 border border-neutral-300 text-neutral-700 rounded-xl hover:bg-neutral-50 dark:border-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-800 transition-colors font-medium"
+                    className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm border border-neutral-300 text-neutral-700 rounded-xl sm:rounded-xl hover:bg-neutral-50 dark:border-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-800 transition-colors font-medium"
                   >
                     Behance
                   </a>
@@ -398,7 +398,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                     href={dribbbleUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 border border-neutral-300 text-neutral-700 rounded-xl hover:bg-neutral-50 dark:border-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-800 transition-colors font-medium"
+                    className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm border border-neutral-300 text-neutral-700 rounded-xl sm:rounded-xl hover:bg-neutral-50 dark:border-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-800 transition-colors font-medium"
                   >
                     Dribbble
                   </a>
@@ -408,7 +408,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           </div>
 
           {/* Meta Information Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-6 bg-neutral-50 dark:bg-neutral-900 rounded-xl border border-neutral-200 dark:border-neutral-800">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 p-4 sm:p-6 bg-neutral-50 dark:bg-neutral-900 rounded-xl sm:rounded-xl border border-neutral-200 dark:border-neutral-800">
             {(role || eventRole) && (
               <div>
                 <h3 className="text-sm font-semibold text-neutral-500 dark:text-neutral-400 uppercase tracking-wide mb-2">
@@ -503,14 +503,14 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
           {/* Cover Image */}
           {cover && (
-            <figure className="overflow-hidden rounded-2xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-lg">
+            <figure className="overflow-hidden rounded-xl sm:rounded-2xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-lg">
               <div className="relative w-full flex justify-center bg-neutral-50 dark:bg-neutral-900">
                 <Image
                   src={cover}
                   alt={`${title} — ${workTypeLabel.toLowerCase()} cover`}
                   width={1600}
                   height={1200}
-                  className="max-w-full h-auto"
+                  className="max-w-full h-auto max-h-[300px] sm:max-h-[400px] md:max-h-none object-contain"
                   quality={100}
                   priority
                 />
@@ -521,19 +521,19 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
         {/* Skills & Tools */}
         {(skills.length > 0 || tools.length > 0) && (
-          <section className="space-y-6">
-            <h2 className="text-2xl font-bold tracking-tight">Skills & Tools</h2>
+          <section className="space-y-4 sm:space-y-6">
+            <h2 className="text-lg sm:text-xl md:text-2xl font-bold tracking-tight">Skills & Tools</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {skills.length > 0 && (
                 <div>
-                  <h3 className="text-lg font-semibold mb-3 text-emerald-700 dark:text-emerald-400">
+                  <h3 className="text-sm sm:text-base md:text-lg font-semibold mb-2 sm:mb-3 text-emerald-700 dark:text-emerald-400">
                     Skills Applied
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {skills.map((skill: string, index: number) => (
                       <span
                         key={`skill-${index}`}
-                        className="px-3 py-2 bg-emerald-50 text-emerald-800 rounded-xl font-medium border border-emerald-200 dark:bg-emerald-900/30 dark:text-emerald-300 dark:border-emerald-800"
+                        className="px-2 sm:px-3 py-1 sm:py-2 bg-emerald-50 text-emerald-800 rounded-xl sm:rounded-xl text-xs sm:text-sm font-medium border border-emerald-200 dark:bg-emerald-900/30 dark:text-emerald-300 dark:border-emerald-800"
                       >
                         {skill}
                       </span>
@@ -551,7 +551,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                     {tools.map((tool: string, index: number) => (
                       <span
                         key={`tool-${index}`}
-                        className="px-3 py-2 bg-blue-50 text-blue-800 rounded-xl font-medium border border-blue-200 dark:bg-blue-900/30 dark:text-blue-300 dark:border-blue-800"
+                        className="px-2 sm:px-3 py-1 sm:py-2 bg-blue-50 text-blue-800 rounded-xl sm:rounded-xl text-xs sm:text-sm font-medium border border-blue-200 dark:bg-blue-900/30 dark:text-blue-300 dark:border-blue-800"
                       >
                         {tool}
                       </span>
@@ -564,19 +564,19 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         )}
 
         {/* Enhanced Gallery Section */}
-        <section className="space-y-12">
+        <section className="space-y-6 sm:space-y-8 md:space-y-12">
           {/* Event-specific galleries */}
           {eventWork && (
             <>
               {/* Event Materials - Masonry */}
               {eventMaterials.length > 0 && (
-                <div className="space-y-6">
-                  <h2 className="text-2xl font-bold tracking-tight">Event Materials</h2>
-                  <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+                <div className="space-y-3 sm:space-y-4">
+                  <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold tracking-tight">Event Materials</h2>
+                  <div className="columns-1 md:columns-2 lg:columns-3 gap-3 sm:gap-4 md:gap-6 space-y-3 sm:space-y-4 md:space-y-6">
                     {eventMaterials.map((src: string, index: number) => (
                       <figure
                         key={`event-material-${index}`}
-                        className="group overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300 break-inside-avoid mb-6"
+                        className="group overflow-hidden rounded-lg sm:rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300 break-inside-avoid mb-3 sm:mb-4 md:mb-6"
                       >
                         <div className="relative w-full">
                           <Image
@@ -584,7 +584,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                             alt={`${title} — event material ${index + 1}`}
                             width={1200}
                             height={900}
-                            quality={100}
+                            quality={90}
                             sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw"
                             className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-500"
                             loading="lazy"
@@ -598,13 +598,13 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
               {/* Event Documentation - Masonry */}
               {eventDocumentation.length > 0 && (
-                <div className="space-y-6">
-                  <h2 className="text-2xl font-bold tracking-tight">Event Documentation</h2>
-                  <div className="columns-1 md:columns-2 gap-6 space-y-6">
+                <div className="space-y-3 sm:space-y-4">
+                  <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold tracking-tight">Event Documentation</h2>
+                  <div className="columns-1 md:columns-2 gap-3 sm:gap-4 md:gap-6 space-y-3 sm:space-y-4 md:space-y-6">
                     {eventDocumentation.map((src: string, index: number) => (
                       <figure
                         key={`event-doc-${index}`}
-                        className="group overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300 break-inside-avoid mb-6"
+                        className="group overflow-hidden rounded-lg sm:rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300 break-inside-avoid mb-3 sm:mb-4 md:mb-6"
                       >
                         <div className="relative w-full">
                           <Image
@@ -612,7 +612,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                             alt={`${title} — event documentation ${index + 1}`}
                             width={1200}
                             height={800}
-                            quality={100}
+                            quality={90}
                             sizes="(min-width:768px) 50vw, 100vw"
                             className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-500"
                             loading="lazy"
@@ -626,13 +626,13 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
               {/* Event Promotion - Masonry (keeping 4 columns for social posts) */}
               {eventPromotion.length > 0 && (
-                <div className="space-y-6">
-                  <h2 className="text-2xl font-bold tracking-tight">Event Promotion</h2>
-                  <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
+                <div className="space-y-3 sm:space-y-4">
+                  <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold tracking-tight">Event Promotion</h2>
+                  <div className="columns-2 sm:columns-2 md:columns-3 lg:columns-4 gap-2 sm:gap-3 md:gap-4 space-y-2 sm:space-y-3 md:space-y-4">
                     {eventPromotion.map((src: string, index: number) => (
                       <figure
                         key={`event-promo-${index}`}
-                        className="group overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300 break-inside-avoid mb-4"
+                        className="group overflow-hidden rounded-lg sm:rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300 break-inside-avoid mb-2 sm:mb-3 md:mb-4"
                       >
                         <div className="relative w-full">
                           <Image
@@ -640,7 +640,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                             alt={`${title} — event promotion ${index + 1}`}
                             width={1080}
                             height={1080}
-                            quality={100}
+                            quality={90}
                             sizes="(min-width:1024px) 25vw, (min-width:768px) 33vw, 50vw"
                             className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-500"
                             loading="lazy"
@@ -659,24 +659,24 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             <>
               {/* Social Media Sections - Masonry */}
               {socialMediaSections.map((section, sectionIndex) => (
-                <div key={`social-section-${sectionIndex}`} className="space-y-6">
-                  <div className="flex items-center justify-between">
-                    <h2 className="text-2xl font-bold tracking-tight">
+                <div key={`social-section-${sectionIndex}`} className="space-y-3 sm:space-y-4">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                    <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold tracking-tight">
                       {section.title || `Social Media Section ${sectionIndex + 1}`}
                     </h2>
                     {section.description && (
-                      <p className="text-sm text-neutral-600 dark:text-neutral-400 max-w-md">
+                      <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 max-w-md">
                         {section.description}
                       </p>
                     )}
                   </div>
-                  
+
                   {section.images && section.images.length > 0 && (
-                    <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
+                    <div className="columns-2 sm:columns-2 md:columns-3 lg:columns-4 gap-2 sm:gap-3 md:gap-4 space-y-2 sm:space-y-3 md:space-y-4">
                       {section.images.map((src: string, imageIndex: number) => (
                         <figure
                           key={`social-${sectionIndex}-${imageIndex}`}
-                          className="group overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300 break-inside-avoid mb-4"
+                          className="group overflow-hidden rounded-lg sm:rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300 break-inside-avoid mb-2 sm:mb-3 md:mb-4"
                         >
                           <div className="relative w-full">
                             <Image
@@ -684,15 +684,15 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                               alt={`${section.title || 'Social media post'} ${imageIndex + 1}`}
                               width={1080}
                               height={1080}
-                              quality={100}
+                              quality={90}
                               sizes="(min-width:1024px) 25vw, (min-width:768px) 33vw, 50vw"
                               className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-500"
                               loading="lazy"
                             />
                           </div>
                           {section.captions && section.captions[imageIndex] && (
-                            <div className="p-3 bg-neutral-50 dark:bg-neutral-800">
-                              <p className="text-xs text-neutral-600 dark:text-neutral-400">
+                            <div className="p-2 sm:p-3 bg-neutral-50 dark:bg-neutral-800">
+                              <p className="text-[10px] sm:text-xs text-neutral-600 dark:text-neutral-400">
                                 {section.captions[imageIndex]}
                               </p>
                             </div>
@@ -706,13 +706,13 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
               {/* Legacy Social Posts - Masonry */}
               {socialPosts.length > 0 && socialMediaSections.length === 0 && (
-                <div className="space-y-6">
-                  <h2 className="text-2xl font-bold tracking-tight">Social Media Posts</h2>
-                  <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
+                <div className="space-y-3 sm:space-y-4">
+                  <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold tracking-tight">Social Media Posts</h2>
+                  <div className="columns-2 sm:columns-2 md:columns-3 lg:columns-4 gap-2 sm:gap-3 md:gap-4 space-y-2 sm:space-y-3 md:space-y-4">
                     {socialPosts.map((src: string, index: number) => (
                       <figure
                         key={`legacy-social-${index}`}
-                        className="group overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300 break-inside-avoid mb-4"
+                        className="group overflow-hidden rounded-lg sm:rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300 break-inside-avoid mb-2 sm:mb-3 md:mb-4"
                       >
                         <div className="relative w-full">
                           <Image
@@ -720,7 +720,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                             alt={`${title} — social post ${index + 1}`}
                             width={1080}
                             height={1080}
-                            quality={100}
+                            quality={90}
                             sizes="(min-width:1024px) 25vw, (min-width:768px) 33vw, 50vw"
                             className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-500"
                             loading="lazy"
@@ -734,13 +734,13 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
               {/* Campaigns - Masonry */}
               {campaigns.length > 0 && (
-                <div className="space-y-6">
-                  <h2 className="text-2xl font-bold tracking-tight">Campaign Materials</h2>
-                  <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+                <div className="space-y-3 sm:space-y-4">
+                  <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold tracking-tight">Campaign Materials</h2>
+                  <div className="columns-1 md:columns-2 lg:columns-3 gap-3 sm:gap-4 md:gap-6 space-y-3 sm:space-y-4 md:space-y-6">
                     {campaigns.map((src: string, index: number) => (
                       <figure
                         key={`campaign-${index}`}
-                        className="group overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300 break-inside-avoid mb-6"
+                        className="group overflow-hidden rounded-lg sm:rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300 break-inside-avoid mb-3 sm:mb-4 md:mb-6"
                       >
                         <div className="relative w-full">
                           <Image
@@ -748,7 +748,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                             alt={`${title} — campaign ${index + 1}`}
                             width={1200}
                             height={900}
-                            quality={100}
+                            quality={90}
                             sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw"
                             className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-500"
                             loading="lazy"
@@ -762,13 +762,13 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
               {/* Brand Materials - Masonry */}
               {brandMaterials.length > 0 && (
-                <div className="space-y-6">
-                  <h2 className="text-2xl font-bold tracking-tight">Brand Materials</h2>
-                  <div className="columns-1 md:columns-2 gap-6 space-y-6">
+                <div className="space-y-3 sm:space-y-4">
+                  <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold tracking-tight">Brand Materials</h2>
+                  <div className="columns-1 md:columns-2 gap-3 sm:gap-4 md:gap-6 space-y-3 sm:space-y-4 md:space-y-6">
                     {brandMaterials.map((src: string, index: number) => (
                       <figure
                         key={`brand-${index}`}
-                        className="group overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300 break-inside-avoid mb-6"
+                        className="group overflow-hidden rounded-lg sm:rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300 break-inside-avoid mb-3 sm:mb-4 md:mb-6"
                       >
                         <div className="relative w-full">
                           <Image
@@ -776,7 +776,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                             alt={`${title} — brand material ${index + 1}`}
                             width={1200}
                             height={800}
-                            quality={100}
+                            quality={90}
                             sizes="(min-width:768px) 50vw, 100vw"
                             className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-500"
                             loading="lazy"
@@ -799,13 +799,13 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
               {/* Applications - Masonry */}
               {applications && applications.length > 0 && (
-                <div className="space-y-6">
-                  <h2 className="text-2xl font-bold tracking-tight">Applications</h2>
-                  <div className="columns-1 md:columns-2 gap-6 space-y-6">
+                <div className="space-y-3 sm:space-y-4">
+                  <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold tracking-tight">Applications</h2>
+                  <div className="columns-1 md:columns-2 gap-3 sm:gap-4 md:gap-6 space-y-3 sm:space-y-4 md:space-y-6">
                     {applications.map((src: string, index: number) => (
                       <figure
                         key={`application-${index}`}
-                        className="group overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300 break-inside-avoid mb-6"
+                        className="group overflow-hidden rounded-lg sm:rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300 break-inside-avoid mb-3 sm:mb-4 md:mb-6"
                       >
                         <div className="relative w-full">
                           <Image
@@ -813,7 +813,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                             alt={`${title} — application ${index + 1}`}
                             width={1200}
                             height={800}
-                            quality={100}
+                            quality={90}
                             sizes="(min-width:768px) 50vw, 100vw"
                             className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-500"
                             loading="lazy"
@@ -835,53 +835,53 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
         {/* Project Story - Challenges, Solutions, Impact */}
         {(challenges || solutions || impact) && (
-          <section className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <section className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
             {challenges && (
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 bg-red-100 dark:bg-red-900/30 rounded-xl flex items-center justify-center">
-                    <svg className="w-4 h-4 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="space-y-3 sm:space-y-4">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 bg-red-100 dark:bg-red-900/30 rounded-lg sm:rounded-xl flex items-center justify-center">
+                    <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-bold">Challenges</h3>
+                  <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold">Challenges</h3>
                 </div>
-                <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">{challenges}</p>
+                <p className="text-xs sm:text-sm md:text-base text-neutral-700 dark:text-neutral-300 leading-relaxed">{challenges}</p>
               </div>
             )}
 
             {solutions && (
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 bg-emerald-100 dark:bg-emerald-900/30 rounded-xl flex items-center justify-center">
-                    <svg className="w-4 h-4 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="space-y-3 sm:space-y-4">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg sm:rounded-xl flex items-center justify-center">
+                    <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-bold">Solutions</h3>
+                  <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold">Solutions</h3>
                 </div>
-                <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">{solutions}</p>
+                <p className="text-xs sm:text-sm md:text-base text-neutral-700 dark:text-neutral-300 leading-relaxed">{solutions}</p>
               </div>
             )}
 
             {impact && (
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 bg-purple-100 dark:bg-purple-900/30 rounded-xl flex items-center justify-center">
-                    <svg className="w-4 h-4 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="space-y-3 sm:space-y-4">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 bg-purple-100 dark:bg-purple-900/30 rounded-lg sm:rounded-xl flex items-center justify-center">
+                    <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-bold">Impact</h3>
+                  <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold">Impact</h3>
                 </div>
-                <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">{impact}</p>
+                <p className="text-xs sm:text-sm md:text-base text-neutral-700 dark:text-neutral-300 leading-relaxed">{impact}</p>
               </div>
             )}
           </section>
         )}
 
         {/* Main Content - MDX Content */}
-        <section className="prose prose-neutral dark:prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-6 prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4 prose-p:leading-relaxed prose-p:text-neutral-700 dark:prose-p:text-neutral-300 prose-ul:list-disc prose-ol:list-decimal prose-li:text-neutral-700 dark:prose-li:text-neutral-300 prose-blockquote:border-l-4 prose-blockquote:border-emerald-500 prose-blockquote:pl-6 prose-blockquote:italic prose-blockquote:text-neutral-600 dark:prose-blockquote:text-neutral-400 prose-code:bg-neutral-100 dark:prose-code:bg-neutral-800 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-strong:text-neutral-900 dark:prose-strong:text-neutral-100 prose-a:text-emerald-600 dark:prose-a:text-emerald-400 prose-a:no-underline hover:prose-a:underline">
+        <section className="prose prose-sm sm:prose-base prose-neutral dark:prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-h2:text-lg prose-h2:mt-8 prose-h2:mb-4 sm:prose-h2:text-xl sm:prose-h2:mt-10 sm:prose-h2:mb-5 md:prose-h2:text-2xl md:prose-h2:mt-12 md:prose-h2:mb-6 prose-h3:text-base prose-h3:mt-6 prose-h3:mb-3 sm:prose-h3:text-lg sm:prose-h3:mt-7 sm:prose-h3:mb-3.5 md:prose-h3:text-xl md:prose-h3:mt-8 md:prose-h3:mb-4 prose-p:leading-relaxed prose-p:text-neutral-700 dark:prose-p:text-neutral-300 prose-ul:list-disc prose-ol:list-decimal prose-li:text-neutral-700 dark:prose-li:text-neutral-300 prose-blockquote:border-l-4 prose-blockquote:border-emerald-500 prose-blockquote:pl-4 sm:prose-blockquote:pl-6 prose-blockquote:italic prose-blockquote:text-neutral-600 dark:prose-blockquote:text-neutral-400 prose-code:bg-neutral-100 dark:prose-code:bg-neutral-800 prose-code:px-1.5 prose-code:py-0.5 sm:prose-code:px-2 sm:prose-code:py-1 prose-code:rounded prose-code:text-xs sm:prose-code:text-sm prose-strong:text-neutral-900 dark:prose-strong:text-neutral-100 prose-a:text-emerald-600 dark:prose-a:text-emerald-400 prose-a:no-underline hover:prose-a:underline">
           {content}
         </section>
 
@@ -914,10 +914,10 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
         {/* Metrics & Credits */}
         {(metrics.length > 0 || credits.length > 0) && (
-          <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <section className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             {metrics.length > 0 && (
-              <div className="space-y-4">
-                <h2 className="text-2xl font-bold tracking-tight">
+              <div className="space-y-3 sm:space-y-4">
+                <h2 className="text-lg sm:text-xl md:text-2xl font-bold tracking-tight">
                   {eventWork ? 'Event Results' : organizationWork ? 'Work Results' : 'Project Metrics'}
                 </h2>
                 <div className="space-y-3">
@@ -932,8 +932,8 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             )}
 
             {credits.length > 0 && (
-              <div className="space-y-4">
-                <h2 className="text-2xl font-bold tracking-tight">Credits & Acknowledgments</h2>
+              <div className="space-y-3 sm:space-y-4">
+                <h2 className="text-lg sm:text-xl md:text-2xl font-bold tracking-tight">Credits & Acknowledgments</h2>
                 <div className="space-y-3">
                   {credits.map((credit: string, index: number) => (
                     <div key={`credit-${index}`} className="flex items-start gap-3">
@@ -949,8 +949,8 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
         {/* Tags */}
         {tags.length > 0 && (
-          <section className="space-y-4">
-            <h2 className="text-2xl font-bold tracking-tight">
+          <section className="space-y-3 sm:space-y-4">
+            <h2 className="text-lg sm:text-xl md:text-2xl font-bold tracking-tight">
               {eventWork ? 'Event Tags' : organizationWork ? 'Work Tags' : 'Project Tags'}
             </h2>
             <div className="flex flex-wrap gap-3">
@@ -958,7 +958,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                 <Link
                   key={`tag-${index}`}
                   href={`/projects?tag=${encodeURIComponent(tag)}`}
-                  className="group px-4 py-2 bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 rounded-xl border border-neutral-200 dark:border-neutral-700 transition-all duration-200 hover:scale-105"
+                  className="group px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 rounded-xl sm:rounded-xl border border-neutral-200 dark:border-neutral-700 transition-all duration-200 hover:scale-105"
                 >
                   <span className="text-neutral-700 dark:text-neutral-300 font-medium">
                     #{tag}
@@ -971,15 +971,15 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
         {/* More from this work - Masonry */}
         {more.length > 0 && (
-          <section className="space-y-6">
-            <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
+          <section className="space-y-3 sm:space-y-4">
+            <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold tracking-tight">
               {eventWork ? 'More Event Materials' : organizationWork ? 'More Work Samples' : 'More Visuals'}
             </h2>
-            <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+            <div className="columns-2 sm:columns-2 md:columns-2 lg:columns-3 gap-2 sm:gap-3 md:gap-4 lg:gap-6 space-y-2 sm:space-y-3 md:space-y-4 lg:space-y-6">
               {more.map((src: string, index: number) => (
                 <figure
                   key={`more-${index}`}
-                  className="group overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300 break-inside-avoid mb-6"
+                  className="group overflow-hidden rounded-lg sm:rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300 break-inside-avoid mb-2 sm:mb-3 md:mb-4 lg:mb-6"
                 >
                   <div className="relative w-full">
                     <Image
@@ -987,6 +987,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                       alt={`${title} — additional material ${index + 1}`}
                       width={1200}
                       height={900}
+                      quality={90}
                       sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
                       className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-500"
                       loading="lazy"
@@ -1000,9 +1001,9 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
         {/* Related Projects */}
         {relatedProjects.length > 0 && (
-          <section className="space-y-6 border-t border-neutral-200 dark:border-neutral-800 pt-12">
+          <section className="space-y-4 sm:space-y-6 border-t border-neutral-200 dark:border-neutral-800 pt-8 sm:pt-12">
             <div className="flex items-center justify-between">
-              <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
+              <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold tracking-tight">
                 {eventWork ? 'Related Events' : organizationWork ? 'Related Work' : 'Related Projects'}
               </h2>
               <Link 
@@ -1012,7 +1013,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                 {eventWork ? 'View all events →' : organizationWork ? 'View all work →' : 'View all projects →'}
               </Link>
             </div>
-            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1 gap-5 sm:gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {relatedProjects.map((project: any, index: number) => (
                 <ProjectCard key={`related-${index}-${project.slug}`} project={project} />
               ))}
@@ -1024,7 +1025,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         <nav className="flex flex-col sm:flex-row gap-4 pt-8 border-t border-neutral-200 dark:border-neutral-800">
           <Link
             href="/project"
-            className="flex-1 group p-6 bg-neutral-50 hover:bg-neutral-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 rounded-xl border border-neutral-200 dark:border-neutral-800 transition-colors text-center"
+            className="flex-1 group p-4 sm:p-6 bg-neutral-50 hover:bg-neutral-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 rounded-xl sm:rounded-xl border border-neutral-200 dark:border-neutral-800 transition-colors text-center"
           >
             <div className="flex items-center justify-center gap-2 text-emerald-600 dark:text-emerald-400 font-medium">
               <svg className="w-5 h-5 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1061,7 +1062,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         
         <Link
           href="/project"
-          className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700 transition-colors font-medium"
+          className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base bg-emerald-600 text-white rounded-xl sm:rounded-xl hover:bg-emerald-700 transition-colors font-medium"
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />

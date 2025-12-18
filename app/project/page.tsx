@@ -30,14 +30,14 @@ export default async function ProjectsPage() {
   const projects = await getCodingProjects({ featuredFirst: true })
 
   return (
-    <section className="space-y-8">
+    <section className="space-y-6 sm:space-y-8 px-4 sm:px-6">
       {/* Header */}
-      <header className="space-y-4">
+      <header className="space-y-3 sm:space-y-4">
         <div className="flex flex-col gap-2">
-          <h1 className="text-3xl md:text-4xl font-bold tracking-tight">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">
             Technical Projects
           </h1>
-          <p className="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl">
+          <p className="text-sm sm:text-base md:text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl">
             Data Science, Machine Learning, and Full-Stack development projects. From statistical analysis
             and deep learning models to production web and mobile applications.
           </p>
@@ -45,16 +45,16 @@ export default async function ProjectsPage() {
       </header>
 
       {/* Projects Grid */}
-      <div className="space-y-6">
+      <div className="space-y-5 sm:space-y-6">
         {/* Project count */}
         <div className="flex items-center justify-between">
-          <p className="text-sm text-neutral-600 dark:text-neutral-400">
+          <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
             Showing <span className="font-semibold text-neutral-900 dark:text-neutral-100">{projects.length}</span> project{projects.length !== 1 ? 's' : ''}
           </p>
         </div>
 
         {projects.length > 0 ? (
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="grid grid-cols-1 gap-5 sm:gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {projects.map((project, index) => (
               <FadeIn
                 key={project.slug}
