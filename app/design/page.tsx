@@ -37,8 +37,8 @@ export const metadata: Metadata = {
 }
 
 export default async function DesignPage() {
-  // Fetch all design projects only
-  const designProjects = await getDesignProjects({ featuredFirst: true })
+  // Fetch all design projects (sorted by newest first)
+  const designProjects = await getDesignProjects()
 
   // Fetch all shots
   const shots = await getAllShots()

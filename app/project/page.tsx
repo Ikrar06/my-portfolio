@@ -26,8 +26,8 @@ export const metadata: Metadata = {
 }
 
 export default async function ProjectsPage() {
-  // Get all coding projects
-  const projects = await getCodingProjects({ featuredFirst: true })
+  // Get all coding projects (sorted by newest first)
+  const projects = await getCodingProjects()
 
   return (
     <section className="space-y-6 sm:space-y-8 px-4 sm:px-6">
