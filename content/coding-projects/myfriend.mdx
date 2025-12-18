@@ -8,12 +8,12 @@ tools: ["Flutter", "Firebase Auth", "Cloud Firestore", "Firebase Cloud Messaging
 skills: ["Mobile Development", "State Management", "Real-time Database", "Push Notifications", "Location Services", "Background Processing"]
 tags: ["flutter", "firebase", "emergency-app"]
 category: "Emergency Mobile Application"
-duration: "3 months"
-team: "Solo Developer"
-client: "Mobile Programming Course"
+duration: "2 months"
+team: "3-person Team"
+client: "Academic Project - Mobile Programming Course"
 summary: "Production-ready emergency SOS app with multi-layered persistent notification system (foreground + background + 60 scheduled alarms), real-time location sharing, and comprehensive contact management using Flutter and Firebase."
 cover: "/images/myfriends/cover.png"
-githubUrl: "https://github.com/Ikrar06/myfriends_app"
+githubUrl: "https://github.com/Ikrar06/MyFriends-app"
 metrics:
   - "3-layer notification system: foreground timer + background isolate + 60 scheduled exact-time alarms"
   - "100% notification delivery success rate (bypasses Do Not Disturb mode)"
@@ -533,18 +533,6 @@ Store the download URL in contact's `photoUrl` field. This decouples image stora
   </table>
 </div>
 
-### User Feedback (8 testers)
-
-**Positive**:
-- "Slide button prevents accidents - great UX"
-- "Loud even on DND - exactly what you need"
-- "Google Maps integration is seamless"
-
-**Improvements**:
-- Add voice call integration
-- Pre-written emergency message templates
-- Battery drain noticeable (expected)
-
 ---
 
 ## Challenges & Solutions
@@ -572,28 +560,6 @@ Store the download URL in contact's `photoUrl` field. This decouples image stora
 **Problem**: Contacts have phone numbers, but Firebase Auth uses email.
 
 **Solution**: Email-based matching by querying Firestore `users` collection for registered emails.
-
----
-
-## Future Enhancements
-
-**Short-term (1-3 months)**:
-- Voice/video call integration in SOS notifications
-- Pre-written emergency message templates
-- SOS history with timeline view
-- Battery optimization (reduce frequency after 1 minute)
-
-**Medium-term (3-6 months)**:
-- Group emergency broadcasts
-- Silent SOS mode (no sound in dangerous situations)
-- Geofencing auto-triggers
-- Multi-language support (Indonesian, English)
-
-**Long-term (6-12 months)**:
-- Apple Watch integration
-- Live location streaming (continuous updates)
-- SOS chat (two-way messaging)
-- AI false positive detection
 
 ---
 
@@ -634,8 +600,10 @@ This project serves as a reference for building safety-critical Flutter applicat
 
 ---
 
-**Repository**: [GitHub - MyFriends App](https://github.com/Ikrar06/myfriends_app)
+**Repository**: [GitHub - MyFriends App](https://github.com/Ikrar06/MyFriends-app)
 
 **Technologies**: Flutter 3.27, Firebase (Auth, Firestore, Storage, FCM), Provider, Geolocator
 
-**Duration**: 3 months solo development
+**Duration**: 3 months
+
+**Course**: Mobile Programming, Hasanuddin University, 2025
