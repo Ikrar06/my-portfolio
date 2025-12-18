@@ -321,7 +321,7 @@ export default async function DesignDetailPage({ params }: PageProps) {
                 {title}
               </h1>
 
-              <p className="text-base sm:text-lg md:text-xl text-neutral-700 dark:text-neutral-300 leading-relaxed max-w-3xl">
+              <p className="text-base sm:text-lg md:text-xl text-neutral-700 dark:text-neutral-300 leading-relaxed max-w-3xl text-justify">
                 {summary}
               </p>
             </div>
@@ -574,7 +574,7 @@ export default async function DesignDetailPage({ params }: PageProps) {
                     {eventMaterials.map((src: string, index: number) => (
                       <figure
                         key={`event-material-${index}`}
-                        className="group overflow-hidden rounded-lg sm:rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300 break-inside-avoid mb-3 sm:mb-4 md:mb-6"
+                        className="group overflow-hidden rounded-xl sm:rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300 break-inside-avoid mb-3 sm:mb-4 md:mb-6"
                       >
                         <div className="relative w-full">
                           <Image
@@ -602,7 +602,7 @@ export default async function DesignDetailPage({ params }: PageProps) {
                     {eventDocumentation.map((src: string, index: number) => (
                       <figure
                         key={`event-doc-${index}`}
-                        className="group overflow-hidden rounded-lg sm:rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300 break-inside-avoid mb-3 sm:mb-4 md:mb-6"
+                        className="group overflow-hidden rounded-xl sm:rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300 break-inside-avoid mb-3 sm:mb-4 md:mb-6"
                       >
                         <div className="relative w-full">
                           <Image
@@ -630,7 +630,7 @@ export default async function DesignDetailPage({ params }: PageProps) {
                     {eventPromotion.map((src: string, index: number) => (
                       <figure
                         key={`event-promo-${index}`}
-                        className="group overflow-hidden rounded-lg sm:rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300 break-inside-avoid mb-2 sm:mb-3 md:mb-4"
+                        className="group overflow-hidden rounded-xl sm:rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300 break-inside-avoid mb-2 sm:mb-3 md:mb-4"
                       >
                         <div className="relative w-full">
                           <Image
@@ -674,7 +674,7 @@ export default async function DesignDetailPage({ params }: PageProps) {
                       {section.images.map((src: string, imageIndex: number) => (
                         <figure
                           key={`social-${sectionIndex}-${imageIndex}`}
-                          className="group overflow-hidden rounded-lg sm:rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300 break-inside-avoid mb-2 sm:mb-3 md:mb-4"
+                          className="group overflow-hidden rounded-xl sm:rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300 break-inside-avoid mb-2 sm:mb-3 md:mb-4"
                         >
                           <div className="relative w-full">
                             <Image
@@ -710,7 +710,7 @@ export default async function DesignDetailPage({ params }: PageProps) {
                     {socialPosts.map((src: string, index: number) => (
                       <figure
                         key={`legacy-social-${index}`}
-                        className="group overflow-hidden rounded-lg sm:rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300 break-inside-avoid mb-2 sm:mb-3 md:mb-4"
+                        className="group overflow-hidden rounded-xl sm:rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300 break-inside-avoid mb-2 sm:mb-3 md:mb-4"
                       >
                         <div className="relative w-full">
                           <Image
@@ -738,7 +738,7 @@ export default async function DesignDetailPage({ params }: PageProps) {
                     {campaigns.map((src: string, index: number) => (
                       <figure
                         key={`campaign-${index}`}
-                        className="group overflow-hidden rounded-lg sm:rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300 break-inside-avoid mb-3 sm:mb-4 md:mb-6"
+                        className="group overflow-hidden rounded-xl sm:rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300 break-inside-avoid mb-3 sm:mb-4 md:mb-6"
                       >
                         <div className="relative w-full">
                           <Image
@@ -766,7 +766,7 @@ export default async function DesignDetailPage({ params }: PageProps) {
                     {brandMaterials.map((src: string, index: number) => (
                       <figure
                         key={`brand-${index}`}
-                        className="group overflow-hidden rounded-lg sm:rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300 break-inside-avoid mb-3 sm:mb-4 md:mb-6"
+                        className="group overflow-hidden rounded-xl sm:rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300 break-inside-avoid mb-3 sm:mb-4 md:mb-6"
                       >
                         <div className="relative w-full">
                           <Image
@@ -803,7 +803,7 @@ export default async function DesignDetailPage({ params }: PageProps) {
                     {applications.map((src: string, index: number) => (
                       <figure
                         key={`application-${index}`}
-                        className="group overflow-hidden rounded-lg sm:rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300 break-inside-avoid mb-3 sm:mb-4 md:mb-6"
+                        className="group overflow-hidden rounded-xl sm:rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300 break-inside-avoid mb-3 sm:mb-4 md:mb-6"
                       >
                         <div className="relative w-full">
                           <Image
@@ -837,49 +837,49 @@ export default async function DesignDetailPage({ params }: PageProps) {
             {challenges && (
               <div className="space-y-3 sm:space-y-4">
                 <div className="flex items-center gap-2 sm:gap-3">
-                  <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 bg-red-100 dark:bg-red-900/30 rounded-lg sm:rounded-xl flex items-center justify-center">
+                  <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 bg-red-100 dark:bg-red-900/30 rounded-xl sm:rounded-xl flex items-center justify-center">
                     <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
                     </svg>
                   </div>
                   <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold">Challenges</h3>
                 </div>
-                <p className="text-xs sm:text-sm md:text-base text-neutral-700 dark:text-neutral-300 leading-relaxed">{challenges}</p>
+                <p className="text-xs sm:text-sm md:text-base text-neutral-700 dark:text-neutral-300 leading-relaxed text-justify">{challenges}</p>
               </div>
             )}
 
             {solutions && (
               <div className="space-y-3 sm:space-y-4">
                 <div className="flex items-center gap-2 sm:gap-3">
-                  <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg sm:rounded-xl flex items-center justify-center">
+                  <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 bg-emerald-100 dark:bg-emerald-900/30 rounded-xl sm:rounded-xl flex items-center justify-center">
                     <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                     </svg>
                   </div>
                   <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold">Solutions</h3>
                 </div>
-                <p className="text-xs sm:text-sm md:text-base text-neutral-700 dark:text-neutral-300 leading-relaxed">{solutions}</p>
+                <p className="text-xs sm:text-sm md:text-base text-neutral-700 dark:text-neutral-300 leading-relaxed text-justify">{solutions}</p>
               </div>
             )}
 
             {impact && (
               <div className="space-y-3 sm:space-y-4">
                 <div className="flex items-center gap-2 sm:gap-3">
-                  <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 bg-purple-100 dark:bg-purple-900/30 rounded-lg sm:rounded-xl flex items-center justify-center">
+                  <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 bg-purple-100 dark:bg-purple-900/30 rounded-xl sm:rounded-xl flex items-center justify-center">
                     <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                     </svg>
                   </div>
                   <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold">Impact</h3>
                 </div>
-                <p className="text-xs sm:text-sm md:text-base text-neutral-700 dark:text-neutral-300 leading-relaxed">{impact}</p>
+                <p className="text-xs sm:text-sm md:text-base text-neutral-700 dark:text-neutral-300 leading-relaxed text-justify">{impact}</p>
               </div>
             )}
           </section>
         )}
 
         {/* Main Content - MDX Content */}
-        <section className="prose prose-sm sm:prose-base prose-neutral dark:prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-h2:text-lg prose-h2:mt-8 prose-h2:mb-4 sm:prose-h2:text-xl sm:prose-h2:mt-10 sm:prose-h2:mb-5 md:prose-h2:text-2xl md:prose-h2:mt-12 md:prose-h2:mb-6 prose-h3:text-base prose-h3:mt-6 prose-h3:mb-3 sm:prose-h3:text-lg sm:prose-h3:mt-7 sm:prose-h3:mb-3.5 md:prose-h3:text-xl md:prose-h3:mt-8 md:prose-h3:mb-4 prose-p:leading-relaxed prose-p:text-neutral-700 dark:prose-p:text-neutral-300 prose-ul:list-disc prose-ol:list-decimal prose-li:text-neutral-700 dark:prose-li:text-neutral-300 prose-blockquote:border-l-4 prose-blockquote:border-emerald-500 prose-blockquote:pl-4 sm:prose-blockquote:pl-6 prose-blockquote:italic prose-blockquote:text-neutral-600 dark:prose-blockquote:text-neutral-400 prose-code:bg-neutral-100 dark:prose-code:bg-neutral-800 prose-code:px-1.5 prose-code:py-0.5 sm:prose-code:px-2 sm:prose-code:py-1 prose-code:rounded prose-code:text-xs sm:prose-code:text-sm prose-strong:text-neutral-900 dark:prose-strong:text-neutral-100 prose-a:text-emerald-600 dark:prose-a:text-emerald-400 prose-a:no-underline hover:prose-a:underline">
+        <section className="prose prose-sm sm:prose-base prose-neutral dark:prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-h2:text-lg prose-h2:mt-8 prose-h2:mb-4 sm:prose-h2:text-xl sm:prose-h2:mt-10 sm:prose-h2:mb-5 md:prose-h2:text-2xl md:prose-h2:mt-12 md:prose-h2:mb-6 prose-h3:text-base prose-h3:mt-6 prose-h3:mb-3 sm:prose-h3:text-lg sm:prose-h3:mt-7 sm:prose-h3:mb-3.5 md:prose-h3:text-xl md:prose-h3:mt-8 md:prose-h3:mb-4 prose-p:leading-relaxed prose-p:text-justify prose-p:text-neutral-700 dark:prose-p:text-neutral-300 prose-ul:list-disc prose-ol:list-decimal prose-li:text-neutral-700 dark:prose-li:text-neutral-300 prose-blockquote:border-l-4 prose-blockquote:border-emerald-500 prose-blockquote:pl-4 sm:prose-blockquote:pl-6 prose-blockquote:italic prose-blockquote:text-neutral-600 dark:prose-blockquote:text-neutral-400 prose-code:bg-neutral-100 dark:prose-code:bg-neutral-800 prose-code:px-1.5 prose-code:py-0.5 sm:prose-code:px-2 sm:prose-code:py-1 prose-code:rounded prose-code:text-xs sm:prose-code:text-sm prose-strong:text-neutral-900 dark:prose-strong:text-neutral-100 prose-a:text-emerald-600 dark:prose-a:text-emerald-400 prose-a:no-underline hover:prose-a:underline">
           {content}
         </section>
 
@@ -912,17 +912,17 @@ export default async function DesignDetailPage({ params }: PageProps) {
 
         {/* Metrics & Credits */}
         {(metrics.length > 0 || credits.length > 0) && (
-          <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <section className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
             {metrics.length > 0 && (
-              <div className="space-y-4">
-                <h2 className="text-2xl font-bold tracking-tight">
+              <div className="space-y-3 sm:space-y-4">
+                <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold tracking-tight">
                   {eventWork ? 'Event Results' : organizationWork ? 'Work Results' : 'Project Metrics'}
                 </h2>
-                <div className="space-y-3">
+                <div className="space-y-2 sm:space-y-3">
                   {metrics.map((metric: string, index: number) => (
-                    <div key={`metric-${index}`} className="flex items-start gap-3">
-                      <div className="w-2 h-2 bg-emerald-500 rounded-full mt-2.5 flex-shrink-0" />
-                      <p className="text-neutral-700 dark:text-neutral-300">{metric}</p>
+                    <div key={`metric-${index}`} className="flex items-start gap-2 sm:gap-3">
+                      <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-emerald-500 rounded-full mt-1.5 sm:mt-2.5 flex-shrink-0" />
+                      <p className="text-xs sm:text-sm md:text-base text-neutral-700 dark:text-neutral-300">{metric}</p>
                     </div>
                   ))}
                 </div>
@@ -930,13 +930,13 @@ export default async function DesignDetailPage({ params }: PageProps) {
             )}
 
             {credits.length > 0 && (
-              <div className="space-y-4">
-                <h2 className="text-2xl font-bold tracking-tight">Credits & Acknowledgments</h2>
-                <div className="space-y-3">
+              <div className="space-y-3 sm:space-y-4">
+                <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold tracking-tight">Credits & Acknowledgments</h2>
+                <div className="space-y-2 sm:space-y-3">
                   {credits.map((credit: string, index: number) => (
-                    <div key={`credit-${index}`} className="flex items-start gap-3">
-                      <div className="w-2 h-2 bg-blue-500 rounded-full mt-2.5 flex-shrink-0" />
-                      <p className="text-neutral-700 dark:text-neutral-300">{credit}</p>
+                    <div key={`credit-${index}`} className="flex items-start gap-2 sm:gap-3">
+                      <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-blue-500 rounded-full mt-1.5 sm:mt-2.5 flex-shrink-0" />
+                      <p className="text-xs sm:text-sm md:text-base text-neutral-700 dark:text-neutral-300">{credit}</p>
                     </div>
                   ))}
                 </div>
@@ -947,16 +947,16 @@ export default async function DesignDetailPage({ params }: PageProps) {
 
         {/* Tags */}
         {tags.length > 0 && (
-          <section className="space-y-4">
-            <h2 className="text-2xl font-bold tracking-tight">
+          <section className="space-y-3 sm:space-y-4">
+            <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold tracking-tight">
               {eventWork ? 'Event Tags' : organizationWork ? 'Work Tags' : 'Design Tags'}
             </h2>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-2 sm:gap-3">
               {tags.map((tag: string, index: number) => (
                 <Link
                   key={`tag-${index}`}
                   href={`/design?tag=${encodeURIComponent(tag)}`}
-                  className="group px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 rounded-xl sm:rounded-xl border border-neutral-200 dark:border-neutral-700 transition-all duration-200 hover:scale-105"
+                  className="group px-2.5 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 text-xs sm:text-sm bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 rounded-xl sm:rounded-xl border border-neutral-200 dark:border-neutral-700 transition-all duration-200 hover:scale-105"
                 >
                   <span className="text-neutral-700 dark:text-neutral-300 font-medium">
                     #{tag}
@@ -977,7 +977,7 @@ export default async function DesignDetailPage({ params }: PageProps) {
               {more.map((src: string, index: number) => (
                 <figure
                   key={`more-${index}`}
-                  className="group overflow-hidden rounded-lg sm:rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300 break-inside-avoid mb-2 sm:mb-3 md:mb-4 lg:mb-6"
+                  className="group overflow-hidden rounded-xl sm:rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 shadow-sm hover:shadow-lg transition-all duration-300 break-inside-avoid mb-2 sm:mb-3 md:mb-4 lg:mb-6"
                 >
                   <div className="relative w-full">
                     <Image

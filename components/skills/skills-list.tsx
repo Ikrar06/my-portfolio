@@ -28,7 +28,7 @@ export default function SkillsList({ skills }: SkillsListProps) {
             {category.skills.map((skill, skillIndex) => (
               <span
                 key={skill}
-                className="inline-flex items-center px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg sm:rounded-xl bg-white/[0.04] border border-white/10 text-white/80 text-xs sm:text-sm font-medium hover:bg-white/[0.08] hover:border-white/20 hover:text-white transition-all duration-300"
+                className="inline-flex items-center px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl sm:rounded-xl bg-white/[0.04] border border-white/10 text-white/80 text-xs sm:text-sm font-medium hover:bg-white/[0.08] hover:border-white/20 hover:text-white transition-all duration-300"
                 style={{ animationDelay: `${categoryIndex * 0.1 + skillIndex * 0.05}s` }}
               >
                 {skill}

@@ -37,7 +37,7 @@ export default function Nav() {
           {/* Logo/Brand */}
           <Link
             href="/"
-            className="group flex items-center gap-2 md:gap-3 flex-shrink-0 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-framer-blue focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary rounded-lg"
+            className="group flex items-center gap-2 md:gap-3 flex-shrink-0 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-framer-blue focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary rounded-xl"
             aria-label="Kembali ke halaman utama"
             onClick={closeMobileMenu}
           >
@@ -46,7 +46,7 @@ export default function Nav() {
               alt="Ikrar Gempur Tirani"
               width={32}
               height={32}
-              className="rounded-lg group-hover:opacity-80 transition-opacity duration-200 md:w-10 md:h-10"
+              className="rounded-xl group-hover:opacity-80 transition-opacity duration-200 md:w-10 md:h-10"
               priority
             />
             {/* Animated GIF on hover - Hidden on mobile */}
@@ -130,7 +130,7 @@ export default function Nav() {
           {/* Mobile Menu Button */}
           <button
             type="button"
-            className="md:hidden p-2 rounded-lg text-text-secondary hover:text-white hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-framer-blue focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary transition-colors duration-200"
+            className="md:hidden p-2 rounded-xl text-text-secondary hover:text-white hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-framer-blue focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary transition-colors duration-200"
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-menu"
             aria-label={isMobileMenuOpen ? 'Tutup menu' : 'Buka menu'}

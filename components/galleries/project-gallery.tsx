@@ -34,7 +34,7 @@ function Section({
         {images.map((src, i) => (
           <figure
             key={`${id}-${i}`}
-            className="group overflow-hidden rounded-lg border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900"
+            className="group overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900"
           >
             {/* Anti-CLS: aspect ratio + fill + sizes */}
             <div className="relative aspect-[4/3] w-full overflow-hidden">

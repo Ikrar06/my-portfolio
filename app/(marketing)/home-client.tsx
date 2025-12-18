@@ -119,7 +119,7 @@ export default function HomeClient({ featuredProjects }: HomeClientProps) {
                             <div className="absolute inset-0 flex items-center justify-center">
                               <div className="relative">
                                 <div className="w-16 sm:w-20 h-16 sm:h-20 bg-white/[0.08] backdrop-blur-xl rounded-2xl sm:rounded-3xl border border-white/20 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-xl">
-                                  <div className="w-8 sm:w-10 h-8 sm:h-10 bg-white/20 backdrop-blur-sm rounded-lg sm:rounded-xl shadow-lg border border-white/30" />
+                                  <div className="w-8 sm:w-10 h-8 sm:h-10 bg-white/20 backdrop-blur-sm rounded-xl sm:rounded-xl shadow-lg border border-white/30" />
                                 </div>
                               </div>
                             </div>
@@ -170,7 +170,7 @@ export default function HomeClient({ featuredProjects }: HomeClientProps) {
               How I Work
             </h2>
             <p className="text-sm sm:text-base md:text-lg text-text-secondary max-w-2xl mx-auto px-4">
-              A systematic approach to building data-driven solutions that deliver real value.
+              My approach to tackling projects, from understanding the problem to delivering solutions.
             </p>
           </div>
 
@@ -181,22 +181,22 @@ export default function HomeClient({ featuredProjects }: HomeClientProps) {
                 phase: '01',
                 title: 'Understand',
                 description:
-                  'Define the problem, explore data sources, and establish success metrics. Understanding the business context is critical before diving into analysis.',
-                keywords: ['Problem Framing', 'Data Exploration', 'KPI Definition'],
+                  'Start by understanding the requirements, exploring available resources, and defining what success looks like. Learning to ask the right questions before diving into implementation.',
+                keywords: [],
               },
               {
                 phase: '02',
                 title: 'Build',
                 description:
-                  'Develop models, engineer features, and iterate on solutions. Focus on reproducibility and code quality throughout the development process.',
-                keywords: ['Feature Engineering', 'Model Development', 'Validation'],
+                  'Develop and iterate on solutions while learning best practices in code organization and design. Focus on creating clean, maintainable, and well-documented work.',
+                keywords: [],
               },
               {
                 phase: '03',
-                title: 'Deploy',
+                title: 'Deliver',
                 description:
-                  'Ship production-ready solutions with monitoring and documentation. Ensure models perform reliably and stakeholders can act on insights.',
-                keywords: ['Production Deployment', 'Monitoring', 'Documentation'],
+                  'Work towards creating polished solutions with proper documentation. Learning to present work effectively and gather feedback for continuous improvement.',
+                keywords: [],
               },
             ].map((step, i) => (
               <FadeIn key={`process-${i}-${pageKey}`} delay={0.15 * i}>

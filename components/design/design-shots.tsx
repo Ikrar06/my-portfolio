@@ -121,7 +121,7 @@ export default function DesignShots({ shots }: DesignShotsProps) {
                   {/* Meta Info */}
                   <div className="flex items-center justify-between gap-2 sm:gap-3 text-xs sm:text-sm">
                     {/* Year */}
-                    <span className="inline-flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 rounded-lg sm:rounded-xl text-[10px] sm:text-xs font-medium">
+                    <span className="inline-flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 rounded-xl sm:rounded-xl text-[10px] sm:text-xs font-medium">
                       <svg className="w-2.5 h-2.5 sm:w-3 sm:h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                       </svg>
@@ -130,7 +130,7 @@ export default function DesignShots({ shots }: DesignShotsProps) {
 
                     {/* Image count */}
                     {images.length > 1 && (
-                      <span className="inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-2.5 py-1 bg-framer-blue/10 text-framer-blue rounded-lg sm:rounded-xl text-[10px] sm:text-xs font-medium">
+                      <span className="inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-2.5 py-1 bg-framer-blue/10 text-framer-blue rounded-xl sm:rounded-xl text-[10px] sm:text-xs font-medium">
                         <svg className="w-2.5 h-2.5 sm:w-3 sm:h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
@@ -145,13 +145,13 @@ export default function DesignShots({ shots }: DesignShotsProps) {
                       {shot.tags.slice(0, 4).map((tag) => (
                         <span
                           key={`${shot.title}-tag-${tag}`}
-                          className="inline-flex items-center px-2 sm:px-2.5 py-0.5 sm:py-1 bg-neutral-100 dark:bg-neutral-800/50 text-neutral-600 dark:text-neutral-400 rounded-lg sm:rounded-xl text-[10px] sm:text-xs font-medium border border-neutral-200 dark:border-neutral-700/50"
+                          className="inline-flex items-center px-2 sm:px-2.5 py-0.5 sm:py-1 bg-neutral-100 dark:bg-neutral-800/50 text-neutral-600 dark:text-neutral-400 rounded-xl sm:rounded-xl text-[10px] sm:text-xs font-medium border border-neutral-200 dark:border-neutral-700/50"
                         >
                           #{tag}
                         </span>
                       ))}
                       {shot.tags.length > 4 && (
-                        <span className="inline-flex items-center px-2 sm:px-2.5 py-0.5 sm:py-1 bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 rounded-lg sm:rounded-xl text-[10px] sm:text-xs font-medium">
+                        <span className="inline-flex items-center px-2 sm:px-2.5 py-0.5 sm:py-1 bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 rounded-xl sm:rounded-xl text-[10px] sm:text-xs font-medium">
                           +{shot.tags.length - 4}
                         </span>
                       )}
