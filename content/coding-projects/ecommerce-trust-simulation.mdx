@@ -84,19 +84,7 @@ Which consumer persona is most vulnerable to fake reviews? (Impulsive vs Careful
 
 ### MESA Framework Design
 
-Multi-agent system built on **MESA (Modular Entity Scheduling Architecture)**:
-
-```
-FakeReviewModel (MESA Model)
-├── Products (5 headphone models)
-│   ├── Quality Attributes (sound, build, battery, comfort)
-│   └── Review Storage
-├── Agent Scheduler (RandomActivation)
-├── Data Collector (metrics tracking)
-└── Phase Execution
-    ├── Review Phase (genuine + fake review generation)
-    └── Shopping Phase (purchase decisions)
-```
+Multi-agent system built on **MESA (Modular Entity Scheduling Architecture)** with Products (5 headphone models with quality attributes), Agent Scheduler (RandomActivation), Data Collector (metrics tracking), and Phase Execution (Review Phase for genuine + fake review generation, Shopping Phase for purchase decisions).
 
 ### Agent Population Breakdown (7,580 Total)
 
@@ -189,68 +177,21 @@ Five headphone products with realistic quality attributes:
 
 ### Prompt Engineering Strategy
 
-**Genuine Reviewer Prompts**: Quality-aware rating system with personality-based guidance
+**Genuine Reviewer Prompts**: Quality-aware rating system with personality-based guidance. Example: Critical personality reviewing BudgetBeats (4.25/10 quality) generates 1-2 star reviews with specific feature mentions (sound, build, battery, comfort) using natural language without templates.
 
-Example for Critical personality + Low quality product:
-```
-Product: BudgetBeats (Rp 150,000)
-Personality: Critical
+**Fake Reviewer Prompts**: Variation strategy avoiding detection patterns with ALWAYS 5 stars, varied openings (direct opinion, time context, comparison, situation), natural language, specific details, and 1-4 sentences.
 
-ACTUAL QUALITY SCORES:
-- Sound: 4.0/10
-- Build: 3.5/10
-- Battery: 5.5/10
-- Comfort: 4.5/10
-Average: 4.25/10
-
-YOUR RATING MUST BE: 1-2 stars (poor quality)
-
-CRITICAL RULES:
-1. Rating MUST reflect actual quality
-2. DO NOT give 4-5 stars to quality &lt; 7.0
-3. Write 2-3 sentences mentioning specific features
-4. Use natural language, no templates
-```
-
-**Fake Reviewer Prompts**: Variation strategy to avoid detection patterns
-
-```
-CRITICAL RULES:
-1. ALWAYS give 5 stars
-2. Vary opening - DO NOT always start with "I've been using"
-3. Sound natural and human-like
-4. Include ONE specific detail
-5. Keep 1-4 sentences
-
-OPENING VARIATIONS:
-- Direct opinion: 'Really happy with this...'
-- Time context: 'After two weeks...'
-- Comparison: 'Better than expected...'
-- Situation: 'Bought for commute...'
-```
-
-**Shopper Decision Prompts**: Persona-specific logic with measurable metrics
-
-- **Impulsive**: Trusts rating &gt;= 3.8 leads to immediate BUY (HIGH vulnerability)
-- **Careful**: Analyzes 10 reviews, balances positive/negative (MEDIUM vulnerability)
-- **Skeptical**: Detects burst patterns, rating jumps, 5-star surges (LOW vulnerability)
+**Shopper Decision Prompts**: Persona-specific logic - Impulsive (rating above 3.8 leads to BUY, HIGH vulnerability), Careful (10 reviews analysis, MEDIUM vulnerability), Skeptical (burst/pattern detection, LOW vulnerability).
 
 ## Experimental Design
 
 ### Attack Timeline
 
-```
-Iteration:  1   2   3   4   5   6   7   8  ...  20
-            |-------|   |---|   |----------------|
-            BASELINE    BURST     MAINTENANCE
+**Baseline (iterations 1-3)**: Only 180 genuine reviews (3 x 60)
 
-Baseline (1-3):   Only 180 genuine reviews (3 x 60)
-Burst (4-5):      40 fake/target/iter = 160 total fake
-Maintenance (6+): Adaptive volume based on rating:
-                  - AGGRESSIVE (15): if rating &lt; 4.0
-                  - MODERATE (11):   if rating &lt; 4.3
-                  - NORMAL (7):      if rating &gt;= 4.3
-```
+**Burst (iterations 4-5)**: 40 fake reviews per target per iteration = 160 total fake
+
+**Maintenance (iterations 6-20)**: Adaptive volume based on rating - AGGRESSIVE (15 reviews if rating below 4.0), MODERATE (11 if rating below 4.3), NORMAL (7 if rating 4.3 or above)
 
 ### Data Collection Pipeline
 

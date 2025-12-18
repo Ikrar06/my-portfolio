@@ -89,7 +89,7 @@ Three-tier architecture with ML-powered backend:
 **Training Data Generation**
 - LLM API: Gemini Flash 2.0 (Google AI Studio)
 - Prompt Engineering: Custom prompts for Indonesian medical terminology
-- Dataset Size: 14,000 samples (1,000 per intent × 14 classes)
+- Dataset Size: 14,000 samples (1,000 per intent x 14 classes)
 - Generation Cost: ~$3.50 total (FREE tier)
 
 ## Training Data Generation with Gemini Flash 2.0
@@ -145,23 +145,13 @@ Key prompt design decisions:
 
 **Solution**: Custom preprocessing pipeline with domain-specific dictionaries.
 
-### Text Preprocessing
+### Text Preprocessing Pipeline
 
-```python
-def preprocess(text, slang_dict, stopwords):
-    text = text.lower()                              # Lowercase normalization
-    text = re.sub(r'[^\w\s]', ' ', text)            # Remove punctuation
-    words = text.split()                             # Tokenization
-    words = [slang_dict.get(w, w) for w in words]   # Slang normalization
-    words = [w for w in words if w not in stopwords] # Stopword removal
-    return ' '.join(words)
-```
+Custom preprocessing pipeline combining lowercase normalization, punctuation removal, tokenization, slang normalization (94 mappings), and stopword filtering (93 words).
 
-Example transformation:
-```
-Input:  "Dok saya batuk gak sembuh-sembuh udah 3 hari"
-Output: "batuk tidak sembuh sudah 3 hari"
-```
+**Example transformation:**
+- Input: "Dok saya batuk gak sembuh-sembuh udah 3 hari"
+- Output: "batuk tidak sembuh sudah 3 hari"
 
 ### Slang Normalization
 
@@ -206,17 +196,11 @@ Custom medical stopwords: Removed common but uninformative words ("dok", "bu", "
 
 ### Context-Aware Duration Extraction
 
-Critical feature: Context-aware extraction prevents false positives (e.g., "28 tahun" for age should NOT be extracted as duration).
+Critical feature: Context-aware extraction using keywords like 'sudah', 'sejak', 'selama', 'sekitar' to prevent false positives.
 
-```python
-# Pattern 1: Duration with context keywords
-duration_contexts = ['sudah', 'sejak', 'selama', 'sekitar']
-pattern = rf'{context}\s+(\d+)\s*(?:hari|minggu|bulan|tahun)'
-
-# Example:
-Input: "Batuk sudah 3 hari" outputs 'sudah 3 hari'
-Input: "Umur saya 28 tahun" outputs None (correctly rejects)
-```
+**Examples:**
+- "Batuk sudah 3 hari" -&gt; Extracts 'sudah 3 hari' (correct)
+- "Umur saya 28 tahun" -&gt; Correctly rejects (not duration)
 
 ### NER Performance
 
@@ -273,18 +257,11 @@ Validation (500-sample manual test):
 4. **Probabilistic outputs**: Enables confidence thresholding
 5. **Interpretable**: Can inspect feature importance
 
-### TF-IDF Configuration
+### TF-IDF Vectorization
 
-```python
-vectorizer = TfidfVectorizer(
-    max_features=5000,        # Top 5000 most informative terms
-    ngram_range=(1, 2),       # Unigrams + bigrams for context
-    min_df=2,                 # Ignore very rare terms
-    sublinear_tf=True         # Log-scale term frequency
-)
-```
+Configuration: 5000 max features, unigrams + bigrams (1-2), min document frequency = 2, sublinear term frequency scaling.
 
-**Feature examples**:
+**Feature examples:**
 - Unigrams: batuk, demam, pusing, sakit, sudah, hari
 - Bigrams: batuk kering, demam tinggi, sakit kepala, sudah hari
 
@@ -335,22 +312,7 @@ Stateful anamnesis interview:
 
 **Purpose**: Auto-fill future stages if user provides information early.
 
-**Example scenario**:
-```
-User (at keluhan_utama stage): "Saya sakit kepala parah sudah 3 hari di bagian kanan"
-
-Extracted entities:
-- Symptom: "sakit kepala"
-- Severity: "parah" (berat)
-- Duration: "sudah 3 hari"
-- Location: "kepala"
-
-Prefilling action:
-- Auto-fill durasi stage (stage 8)
-- Auto-fill lokasi stage (stage 9)
-- Auto-fill severity stage (stage 10)
-- Skip these stages in conversation
-```
+**Example:** User says "Saya sakit kepala parah sudah 3 hari di bagian kanan" at initial stage. System extracts symptom (sakit kepala), severity (parah), duration (3 hari), and location (kepala), then auto-fills stages 8-10 and skips those questions.
 
 **Impact**: Reduces average anamnesis time by ~30% (tested with healthcare workers).
 

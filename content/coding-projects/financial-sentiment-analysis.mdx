@@ -95,37 +95,16 @@ After flattening entity-sentiment pairs:
 
 **Challenge**: Same headline can contain multiple entities with different sentiments. Standard row-based splitting would leak entity context between train/test.
 
-**Solution**: Title-based splitting strategy
+**Solution**: Title-based splitting strategy using unique headlines with `train_test_split` (test_size=0.2, random_state=42) to prevent entity context leakage between train/test sets.
 
-```python
-# Split based on UNIQUE TITLES to prevent leakage
-unique_titles = df['Title'].unique()
-train_titles, test_titles = train_test_split(
-    unique_titles,
-    test_size=0.2,
-    random_state=42
-)
-```
-
-**Split Results**
+**Split Results:**
 - Training: 8,548 unique headlines (11,493 aspect-sentiment pairs)
 - Test: 2,138 unique headlines (2,916 aspect-sentiment pairs)
 - Ratio: 80/20 split
 
 ### Data Flattening
 
-Converting multi-entity headlines into individual training samples:
-
-**Example**:
-```
-From: 1 headline with multiple entities
-Title: "Gold shines; Silver dull"
-Decisions: Gold is positive, Silver is negative
-
-To: 2 separate training samples
-Sample 1: entity="Gold", sentence="Gold shines; Silver dull", label="positive"
-Sample 2: entity="Silver", sentence="Gold shines; Silver dull", label="negative"
-```
+Converting multi-entity headlines into individual training samples. Example: "Gold shines; Silver dull" becomes 2 samples with entity="Gold"/label="positive" and entity="Silver"/label="negative".
 
 ## Model Architecture
 
@@ -141,13 +120,7 @@ Sample 2: entity="Silver", sentence="Gold shines; Silver dull", label="negative"
 - Trainable Parameters: **124,647,939** (all layers fine-tuned)
 - Input Format: `[CLS] entity [SEP] sentence [SEP]`
 
-**ABSA Input Format**
-
-Example:
-```
-Input: [CLS] MMTC [SEP] MMTC Q2 net loss at Rs 10.4 crore [SEP]
-Output: Sentiment logits for [negative, neutral, positive]
-```
+**ABSA Input Format**: `[CLS] entity [SEP] sentence [SEP]` structure (e.g., `[CLS] MMTC [SEP] MMTC Q2 net loss at Rs 10.4 crore [SEP]`) outputs sentiment logits for negative, neutral, and positive classes.
 
 **Tokenization Configuration**:
 - MAX_LENGTH: 40 tokens
@@ -158,87 +131,28 @@ Output: Sentiment logits for [negative, neutral, positive]
 
 Comprehensive overfitting prevention pipeline:
 
-**1. Weighted Cross-Entropy Loss**
+**1. Weighted Cross-Entropy Loss:** Addresses class imbalance with computed weights (Negative: 1.26, Neutral: 0.87, Positive: 0.95)
 
-Addresses severe class imbalance:
+**2. Label Smoothing:** 0.05 smoothing factor to reduce overconfidence
 
-```python
-from sklearn.utils.class_weight import compute_class_weight
+**3. Dropout Regularization:** 30% dropout rate
 
-class_weights = compute_class_weight(
-    class_weight='balanced',
-    classes=np.array([0, 1, 2]),
-    y=train_flat['label_id'].values
-)
+**4. L2 Regularization:** Weight decay = 0.01
 
-# Results:
-# Negative class (0): 1.2590
-# Neutral class (1): 0.8697
-# Positive class (2): 0.9471
-```
-
-**2. Label Smoothing**
-
-Reduces overconfidence:
-```python
-criterion = nn.CrossEntropyLoss(
-    weight=class_weights,
-    label_smoothing=0.05
-)
-```
-
-**3. Dropout Regularization**
-```python
-self.dropout = nn.Dropout(0.3)  # 30% dropout rate
-```
-
-**4. L2 Regularization (Weight Decay)**
-```python
-optimizer = AdamW(
-    model.parameters(),
-    lr=2e-5,
-    weight_decay=0.01  # L2 regularization
-)
-```
-
-**5. Gradient Clipping**
-```python
-torch.nn.utils.clip_grad_norm_(
-    model.parameters(),
-    max_norm=1.0
-)
-```
+**5. Gradient Clipping:** Max norm = 1.0
 
 ### Training Configuration
 
-**Optimizer: AdamW**
-```python
-optimizer = AdamW(
-    model.parameters(),
-    lr=2e-5,              # Learning rate
-    betas=(0.9, 0.999),   # Adam beta parameters
-    eps=1e-8,             # Numerical stability
-    weight_decay=0.01     # L2 regularization
-)
-```
+**Optimizer:** AdamW (lr=2e-5, betas=(0.9, 0.999), eps=1e-8, weight_decay=0.01)
 
-**Learning Rate Schedule**: Warmup + Linear Decay
-```python
-scheduler = get_linear_schedule_with_warmup(
-    optimizer,
-    num_warmup_steps=135,      # 10% of total steps
-    num_training_steps=1350    # 15 epochs × 90 batches
-)
-```
+**Learning Rate Schedule:** Warmup + Linear Decay (135 warmup steps, 1350 total steps)
 
-**Training Hyperparameters**:
-- BATCH_SIZE: 128
-- NUM_EPOCHS: 15 (maximum)
-- PATIENCE: 5 (early stopping)
-- MAX_LENGTH: 40 tokens
-- RANDOM_STATE: 42
-
-**Early Stopping**: Monitor validation F1-Macro, stop if no improvement for 5 consecutive epochs
+**Hyperparameters:**
+- Batch Size: 128
+- Max Epochs: 15
+- Early Stopping Patience: 5 (monitoring validation F1-Macro)
+- Max Length: 40 tokens
+- Random State: 42
 
 ## Experimental Results
 
@@ -321,13 +235,7 @@ Comprehensive evaluation on held-out test data (2,916 samples):
 
 ### GPU Optimization
 
-**Hardware Configuration**:
-```
-Device: NVIDIA GeForce RTX 3060
-Memory: 12.88 GB VRAM
-CUDA Version: Available
-Framework: PyTorch with CUDA acceleration
-```
+**Hardware Configuration**: NVIDIA GeForce RTX 3060 (12.88 GB VRAM) with CUDA-accelerated PyTorch.
 
 **Training Efficiency**:
 - 90 batches per epoch (training)
@@ -341,41 +249,9 @@ Framework: PyTorch with CUDA acceleration
 
 ### Model Persistence
 
-Complete model packaging for deployment:
+Complete model packaging for deployment including model state dict, tokenizer, label mappings, max_length, validation metrics, training history, and device configuration.
 
-```python
-model_package = {
-    'model_state_dict': model.state_dict(),
-    'model_class': RobertaForABSA,
-    'tokenizer': tokenizer,
-    'label2id': label2id,
-    'id2label': id2label,
-    'max_length': MAX_LENGTH,
-    'best_val_f1': best_val_f1,
-    'history': history,
-    'device': 'cuda'
-}
-```
-
-**Inference Example**:
-```python
-def predict_sentiment(entity, sentence):
-    encoding = tokenizer(
-        entity, sentence,
-        max_length=40,
-        padding='max_length',
-        truncation=True,
-        return_tensors='pt'
-    )
-
-    with torch.no_grad():
-        logits = model(encoding['input_ids'], encoding['attention_mask'])
-        probs = torch.softmax(logits, dim=1)
-        pred_class = torch.argmax(probs).item()
-        confidence = probs[0][pred_class].item()
-
-    return id2label[pred_class], confidence
-```
+**Inference:** Tokenize entity and sentence -&gt; Forward pass -&gt; Softmax -&gt; Return predicted sentiment class and confidence score.
 
 ## Key Findings
 
@@ -422,31 +298,13 @@ def predict_sentiment(entity, sentence):
 
 ### Model Serving
 
-**Inference Pipeline**:
-```python
-def predict_absa(entity: str, headline: str) -> dict:
-    """
-    Predict sentiment for entity in financial headline
+**Inference Pipeline:** Takes entity and headline as input, returns dictionary with entity, sentiment, confidence, and timestamp.
 
-    Returns:
-        Dictionary with entity, sentiment, confidence, timestamp
-    """
-    sentiment, confidence = predict_sentiment(entity, headline)
-
-    return {
-        'entity': entity,
-        'sentiment': sentiment,
-        'confidence': confidence,
-        'timestamp': datetime.now()
-    }
-```
-
-**Deployment Requirements**:
-- PyTorch version 1.9.0+
-- Transformers version 4.12.0+
-- CUDA support for GPU inference (optional)
-- Model file: ~500 MB storage
-- Inference latency: Less than 50ms per prediction on GPU
+**Deployment Requirements:**
+- PyTorch 1.9.0+, Transformers 4.12.0+
+- CUDA support (optional)
+- Model size: ~500 MB
+- Inference latency: under 50ms per prediction on GPU
 
 ### Real-World Applications
 
