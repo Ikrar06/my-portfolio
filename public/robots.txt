@@ -5,7 +5,7 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://ikrar-gempur-tirani.vercel.app/sitemap.xml
+Sitemap: https://ikrar.dev/sitemap.xml
 
 # Crawl-delay for respectful crawling
 Crawl-delay: 1
