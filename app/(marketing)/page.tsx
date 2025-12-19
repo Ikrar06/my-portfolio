@@ -5,23 +5,23 @@ import HomeClient from './home-client'
 
 export const metadata: Metadata = {
   title: 'Home',
-  description: 'Ikrar Gempur Tirani - Informatics Engineering student at Hasanuddin University (GPA 3.91/4.00) focusing on Data Science and Machine Learning. Learning Natural Language Processing, statistical modeling, and production ML systems with full-stack development experience.',
-  keywords: ['Data Science Student', 'Machine Learning', 'NLP', 'Deep Learning', 'Python', 'TensorFlow', 'PyTorch', 'Statistical Modeling', 'Ikrar Gempur Tirani', 'Hasanuddin University', 'AI Portfolio'],
+  description: 'Ikrar Gempur Tirani - Informatics Engineering student at Hasanuddin University (GPA 3.91/4.00) learning Data Science and Machine Learning. Exploring Natural Language Processing, statistical modeling, and building ML systems while developing full-stack skills.',
+  keywords: ['Ikrar Gempur Tirani', 'Data Science Student', 'Machine Learning Student', 'NLP', 'Python', 'TensorFlow', 'PyTorch', 'Hasanuddin University', 'Student Portfolio', 'Learning AI'],
   openGraph: {
-    title: 'Ikrar Gempur Tirani — Data Science & ML Portfolio',
-    description: 'Informatics student focusing on Data Science and ML. Learning to build end-to-end machine learning solutions with Python, TensorFlow, and PyTorch.',
+    title: 'Ikrar Gempur Tirani — Student Portfolio',
+    description: 'Informatics student learning Data Science and ML at Hasanuddin University. Exploring machine learning, NLP, and statistical modeling through hands-on projects.',
     images: [
       {
         url: '/images/foto-ikrar.jpg',
         width: 1200,
         height: 630,
-        alt: 'Ikrar Gempur Tirani - Data Science & ML Portfolio',
+        alt: 'Ikrar Gempur Tirani - Student Portfolio',
       },
     ],
   },
   twitter: {
-    title: 'Ikrar Gempur Tirani — Data Science & ML Portfolio',
-    description: 'Informatics student focusing on Data Science and ML. Portfolio of machine learning projects and technical work.',
+    title: 'Ikrar Gempur Tirani — Student Portfolio',
+    description: 'Informatics student learning Data Science and ML. Portfolio of learning projects and technical explorations.',
   },
 }
 

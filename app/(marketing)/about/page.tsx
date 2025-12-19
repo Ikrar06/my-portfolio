@@ -6,37 +6,37 @@ import type { Skill } from '@/components/skills/skills-list'
 
 export const metadata: Metadata = {
   title: 'About',
-  description: 'Informatics Engineering student at Hasanuddin University (GPA 3.91) specializing in Data Science and Machine Learning. From statistical analysis to production ML systems, combining technical rigor with 5 years of design leadership experience.',
+  description: 'Informatics Engineering student at Hasanuddin University (GPA 3.91/4.00) learning Data Science and Machine Learning. Passionate about exploring statistical analysis, NLP, and building ML systems while developing full-stack skills and leadership experience.',
   keywords: [
     'about Ikrar Gempur Tirani',
-    'Data Scientist Indonesia',
-    'Machine Learning Engineer',
-    'NLP specialist',
+    'Informatics Student',
+    'Data Science Student',
+    'Machine Learning Student',
+    'NLP',
     'Statistical Analysis',
     'Hasanuddin University',
-    'Deep Learning PyTorch',
-    'Production ML systems',
-    'Full-Stack Developer',
-    'AI product development',
-    'Informatics Engineering',
-    'Data Science portfolio',
-    'ML Engineering Indonesia'
+    'PyTorch',
+    'TensorFlow',
+    'Python Student',
+    'Student Portfolio',
+    'Learning AI',
+    'Indonesia Student'
   ],
   openGraph: {
     title: 'About — Ikrar Gempur Tirani',
-    description: 'Data Scientist specializing in statistical analysis, NLP, and production ML systems. Informatics student at UNHAS (GPA 3.91) with 5 years of leadership experience.',
+    description: 'Informatics student at Hasanuddin University (GPA 3.91/4.00) learning Data Science and ML. Exploring statistical analysis, NLP, and building ML systems through hands-on projects.',
     images: [
       {
         url: '/images/foto-ikrar.jpg',
         width: 1200,
         height: 630,
-        alt: 'Ikrar Gempur Tirani - Data Scientist & ML Engineer',
+        alt: 'Ikrar Gempur Tirani - Student Portfolio',
       },
     ],
   },
   twitter: {
     title: 'About — Ikrar Gempur Tirani',
-    description: 'Data Scientist specializing in statistical analysis, NLP, and production ML systems. Building AI products with full-stack skills.',
+    description: 'Informatics student learning Data Science and ML. Passionate about building AI projects and exploring machine learning.',
   },
 }
 

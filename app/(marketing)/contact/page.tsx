@@ -4,36 +4,34 @@ import ContactClient from './contact-client'
 
 export const metadata: Metadata = {
   title: 'Contact',
-  description: 'Get in touch with Ikrar Gempur Tirani for Data Science and ML Engineering opportunities. Open to full-time roles, internships, and research collaborations. Let\'s build AI products that make an impact.',
+  description: 'Get in touch with Ikrar Gempur Tirani, Informatics student learning Data Science and ML. Open to internships, learning opportunities, research collaborations, and project discussions. Always eager to learn and contribute.',
   keywords: [
-    'contact Data Scientist',
-    'hire ML Engineer',
-    'Data Science opportunities',
-    'Machine Learning jobs',
-    'NLP specialist contact',
-    'AI product development',
-    'Indonesia Data Scientist',
-    'research collaboration',
-    'ML internship',
-    'Data Science consultation',
-    'AI project inquiry',
-    'production ML systems'
+    'contact Ikrar Gempur Tirani',
+    'student contact',
+    'Data Science internship',
+    'Machine Learning internship',
+    'research collaboration student',
+    'AI project discussion',
+    'Indonesia student',
+    'learning opportunities',
+    'ML student',
+    'Hasanuddin University student'
   ],
   openGraph: {
     title: 'Contact — Ikrar Gempur Tirani',
-    description: 'Open to Data Science and ML Engineering opportunities. Let\'s collaborate on building AI products and production ML systems.',
+    description: 'Informatics student open to internships, learning opportunities, and research collaborations. Let\'s connect and learn together.',
     images: [
       {
         url: '/images/foto-ikrar.jpg',
         width: 1200,
         height: 630,
-        alt: 'Contact Ikrar Gempur Tirani - Data Scientist & ML Engineer',
+        alt: 'Contact Ikrar Gempur Tirani - Student Portfolio',
       },
     ],
   },
   twitter: {
     title: 'Contact — Ikrar Gempur Tirani',
-    description: 'Open to Data Science/ML roles, internships, and research collaborations.',
+    description: 'Student open to internships, learning opportunities, and research collaborations.',
   },
 }
 
