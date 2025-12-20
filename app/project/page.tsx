@@ -32,8 +32,8 @@ export default async function ProjectsPage() {
   return (
     <section className="space-y-6 sm:space-y-8 px-4 sm:px-6">
       {/* Header */}
-      <header className="space-y-3 sm:space-y-4">
-        <div className="flex flex-col gap-2">
+      <header className="space-y-5 sm:space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">
             Technical Projects
           </h1>
