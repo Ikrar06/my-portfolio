@@ -1,44 +1,30 @@
-## ✨ Special Features
+# My Portfolio Website
 
-- **Dynamic Routing** - Individual pages for each project (`/projects/[slug]`)
-- **MDX Content** - Rich content with embedded components
-- **Custom Animations** - Hand-crafted micro-interactions
-- **Image Optimization** - Next.js Image component with WebP support
-- **API Integration** - Contact form with backend processing
-- **Responsive Design** - Mobile-first approach
-- **SEO Optimized** - Meta tags, sitemap, and robots.txt# My Portfolio Website
+Personal portfolio website showcasing design projects, creative shots, and experience as a graphic designer.
 
-Personal portfolio website showcasing my design projects, creative shots, and experience as a graphic designer.
+## Features
 
-## 🌟 Features
+- Modern design with clean UI/UX
+- Responsive layout for all devices
+- Interactive components with smooth animations
+- Project showcase and creative shots gallery
+- Functional contact form
+- Dynamic routing for individual project pages
+- MDX content with embedded components
+- Image optimization with WebP support
+- SEO optimized
 
-- **Modern Design** - Clean and professional UI/UX
-- **Responsive Layout** - Optimized for all devices (mobile, tablet, desktop)
-- **Interactive Components** - Smooth animations and transitions
-- **Project Showcase** - Detailed presentation of design work
-- **Creative Shots** - Gallery of creative design pieces
-- **Contact Form** - Functional contact form for client inquiries
-- **Fast Performance** - Optimized for speed and SEO
+## Tech Stack
 
-## 🛠️ Tech Stack
-
-- **Framework:** Next.js 14 (App Router)
+- **Framework:** Next.js 15 (App Router)
 - **Language:** TypeScript
 - **Styling:** Tailwind CSS
 - **UI Components:** Shadcn/UI
-- **Content:** MDX for project descriptions
-- **Icons:** Custom SVG icons + Lucide React
+- **Content:** MDX
+- **Icons:** Lucide React + Custom SVG
 - **Deployment:** Vercel
 
-## 📱 Sections
-
-- **Hero/Landing** - Introduction and portfolio overview
-- **About** - Background, design philosophy, and experience
-- **Projects** - Portfolio of design projects and client work
-- **Shots** - Creative design pieces and experimental work
-- **Contact** - Contact form and social links
-
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - Node.js 18.0 or later
@@ -70,11 +56,10 @@ npm run build
 npm start
 ```
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 my-portfolio/
-├── .env.example                    # Environment variables template
 ├── app/                           # Next.js app directory
 │   ├── (marketing)/               # Marketing pages group
 │   │   ├── about/                 # About page
@@ -82,40 +67,50 @@ my-portfolio/
 │   │   └── page.tsx              # Home page
 │   ├── api/                      # API routes
 │   │   └── contact/              # Contact form API
-│   ├── projects/                 # Projects pages
-│   │   └── [slug]/              # Dynamic project pages
+│   ├── design/                   # Design projects pages
+│   │   └── [slug]/              # Dynamic design project pages
+│   ├── project/                  # Coding projects pages
+│   │   └── [slug]/              # Dynamic coding project pages
 │   ├── shots/                   # Creative shots gallery
-│   └── layout.tsx               # Root layout
-├── components/                   # Reusable components
-│   ├── animated/                # Animation components
-│   │   └── reactbits/          # Custom animated components
-│   ├── cards/                  # Card components
-│   ├── filters/                # Filter components
-│   ├── galleries/              # Gallery components
-│   ├── motion/                 # Motion/transition components
-│   ├── skills/                 # Skills-related components
-│   └── ui/                     # Shadcn UI components
-├── content/                     # MDX content files
-│   ├── projects/               # Project descriptions
-│   └── shots/                  # Creative shots descriptions
-├── data/                       # Static data files
-│   └── skills.json            # Skills data
-├── lib/                        # Utility functions
-│   ├── mdx.ts                 # MDX processing
-│   ├── projects.ts            # Project data handling
-│   └── shots.ts               # Shots data handling
-├── public/                     # Static assets
-│   ├── cv/                    # CV/Resume files
-│   ├── icons/                 # SVG icons
-│   └── images/                # Project and shot images
-│       ├── coder-institute/   # Project images
-│       ├── gdgoc/            # Project images
-│       └── shots/            # Creative shots images
-└── styles/                    # Global styles
-    └── globals.css           # Main stylesheet
+│   ├── maintenance/             # Maintenance page
+│   ├── layout.tsx              # Root layout
+│   ├── robots.ts               # Robots.txt configuration
+│   └── sitemap.ts              # Sitemap configuration
+├── components/                  # Reusable components
+│   ├── animated/               # Animation components
+│   │   └── reactbits/         # Custom animated components
+│   ├── cards/                 # Card components
+│   ├── design/                # Design-related components
+│   ├── filters/               # Filter components
+│   ├── galleries/             # Gallery components
+│   ├── layout/                # Layout components
+│   ├── motion/                # Motion/transition components
+│   ├── project/               # Project-related components
+│   ├── skills/                # Skills-related components
+│   └── ui/                    # Shadcn UI components
+├── content/                    # MDX content files
+│   ├── design-projects/       # Design project descriptions
+│   ├── coding-projects/       # Coding project descriptions
+│   └── shots/                 # Creative shots descriptions
+├── data/                      # Static data files
+│   └── skills.json           # Skills data
+├── lib/                       # Utility functions
+│   ├── mdx.ts                # MDX processing
+│   ├── projects.ts           # Project data handling
+│   ├── projects-helpers.ts   # Project helper functions
+│   ├── shots.ts              # Shots data handling
+│   └── utils.ts              # General utilities
+├── public/                    # Static assets
+│   ├── cv/                   # CV/Resume files
+│   ├── icons/                # SVG icons
+│   └── images/               # Project and shot images
+├── styles/                    # Global styles
+│   └── globals.css           # Main stylesheet
+├── middleware.ts             # Next.js middleware
+└── tailwind.config.ts        # Tailwind CSS configuration
 ```
 
-## 🎨 Key Components
+## Key Components
 
 - **Hero Section** - Animated introduction with custom text animations
 - **Project Cards** - Interactive design project showcases with filtering
@@ -125,18 +120,12 @@ my-portfolio/
 - **Project Filters** - Category-based project filtering system
 - **CV Download** - Direct resume download functionality
 
-## 📧 Contact
-
-Feel free to reach out for design collaborations or project inquiries!
+## Contact
 
 - **Email:** ikrargempurtrn@gmail.com
-- **LinkedIn:** [LinkedIn](https://www.linkedin.com/in/ikrar-gempur-tirani-867537283/)
-- **GitHub:** [GitHub](https://github.com/Ikrar06)
+- **LinkedIn:** [linkedin.com/in/ikrar-gempur-tirani-867537283](https://www.linkedin.com/in/ikrar-gempur-tirani-867537283/)
+- **GitHub:** [github.com/Ikrar06](https://github.com/Ikrar06)
 
-## 📄 License
+## License
 
-This project is open source and available under the [MIT License](LICENSE).
-
----
-
-⭐ **Star this repository** if you found it helpful!
+Copyright © 2025 Ikrar Gempur Tirani. All Rights Reserved.
