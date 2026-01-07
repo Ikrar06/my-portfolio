@@ -7,6 +7,7 @@ import '../styles/globals.css'
 import Nav from '@/components/nav'
 import Footer from '@/components/footer'
 import StructuredData from '@/components/structured-data'
+import ConsoleEasterEgg from '@/components/console-easter-egg'
 
 // Base metadata akan di-override oleh metadata di (marketing)/layout.tsx
 export async function generateMetadata(): Promise<Metadata> {
@@ -68,6 +69,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="google-site-verification" content="YMGy-xLqu4sGFHbgPyxg3CJAN1bpomnZX0X4wCUAWT8" />
       </head>
       <body className="min-h-screen bg-neutral-950 text-neutral-100 antialiased">
+        {/* Console Easter Egg */}
+        <ConsoleEasterEgg />
+
         {/* Structured Data for SEO */}
         <StructuredData />
 
