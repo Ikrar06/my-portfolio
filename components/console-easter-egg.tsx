@@ -21,58 +21,26 @@ export default function ConsoleEasterEgg() {
 ╚══════════════════════════════════════════════╝
 `
 
+    // Main banner and welcome message in one log
     console.log(
-      '%c' + banner,
-      'color: #0099FF; font-weight: bold; font-family: monospace;'
-    )
-
-    console.log(
-      '%cHello, curious developer!',
-      'font-size: 16px; font-weight: bold; color: #0099FF;'
-    )
-
-    console.log(
-      '%cWelcome to my portfolio. I see you\'re checking out the console.',
-      'font-size: 12px; color: #a3a3a3;'
-    )
-
-    console.log(
-      '%c\nFun fact: This site is built with Next.js 15, TypeScript, and Tailwind CSS.',
-      'font-size: 11px; color: #737373;'
-    )
-
-    console.log(
-      '%c\nLooking for something specific? Feel free to explore!',
-      'font-size: 11px; color: #737373;'
-    )
-
-    console.log(
-      '%c\nWant to collaborate? Reach out at ikrargempurtrn@gmail.com',
-      'font-size: 11px; color: #0099FF;'
-    )
-
-    console.log(
-      '%c\nGitHub: github.com/Ikrar06',
-      'font-size: 11px; color: #737373;'
-    )
-
-    console.log(
-      '%c\n─────────────────────────────────────────────────────────────',
-      'color: #404040;'
-    )
-
-    console.log(
-      '%c\nHappy exploring!',
-      'font-size: 12px; font-weight: bold; color: #0099FF;'
-    )
-
-    // Fun interactive command
-    console.log('\n')
-    console.log(
-      '%cTip: Try typing %cikrar.info()%c in the console',
-      'color: #a3a3a3;',
-      'color: #0099FF; font-weight: bold; background: #1a1a1a; padding: 2px 6px; border-radius: 3px;',
-      'color: #a3a3a3;'
+      '%c' + banner + '\n\n' +
+      '%cHello, curious developer!\n' +
+      '%cWelcome to my portfolio. I see you\'re checking out the console.\n\n' +
+      '%cFun fact: This site is built with Next.js 15, TypeScript, and Tailwind CSS.\n\n' +
+      '%cLooking for something specific? Feel free to explore!\n\n' +
+      '%cWant to collaborate? Reach out at ikrargempurtrn@gmail.com\n' +
+      '%cGitHub: github.com/Ikrar06\n\n' +
+      '%cHappy exploring!\n\n' +
+      '%cTip: Try typing ikrar.info() in the console',
+      'color: #0099FF; font-weight: bold; font-family: monospace;',
+      'font-size: 16px; font-weight: bold; color: #0099FF;',
+      'font-size: 12px; color: #a3a3a3;',
+      'font-size: 11px; color: #737373;',
+      'font-size: 11px; color: #737373;',
+      'font-size: 11px; color: #0099FF;',
+      'font-size: 11px; color: #737373;',
+      'font-size: 12px; font-weight: bold; color: #0099FF;',
+      'color: #a3a3a3; font-size: 11px;'
     )
 
     // Add interactive function
