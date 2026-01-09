@@ -165,7 +165,7 @@ export default function HomeClient({ featuredProjects }: HomeClientProps) {
       {/* Process Section */}
       <section className="relative py-16 sm:py-24 md:py-32 border-t border-white/5">
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="text-center mb-10 sm:mb-12 md:mb-16 space-y-3 sm:space-y-4">
+          <div className="text-center mb-6 sm:mb-8 md:mb-10 space-y-3 sm:space-y-4">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white">
               How I Work
             </h2>
@@ -174,8 +174,9 @@ export default function HomeClient({ featuredProjects }: HomeClientProps) {
             </p>
           </div>
 
-          {/* Process Cards */}
-          <div className="grid lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
+          {/* Process Cards - Mobile: Vertical Stack, Desktop: Stacked with Hover */}
+          {/* Mobile Version - Vertical */}
+          <div className="flex flex-col gap-6 max-w-md mx-auto md:hidden">
             {[
               {
                 phase: '01',
@@ -199,41 +200,104 @@ export default function HomeClient({ featuredProjects }: HomeClientProps) {
                 keywords: [],
               },
             ].map((step, i) => (
-              <FadeIn key={`process-${i}-${pageKey}`} delay={0.15 * i}>
-                <div className="relative group">
-                  <div className="backdrop-blur-sm bg-white/[0.02] border border-white/10 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 hover:bg-white/[0.04] transition-all duration-700 hover:border-white/20 h-full">
+              <FadeIn key={`process-mobile-${i}-${pageKey}`} delay={0.15 * i}>
+                <div className="w-full">
+                  <div className="backdrop-blur-sm bg-neutral-900/95 border border-white/10 rounded-2xl p-5 shadow-2xl">
                     {/* Phase Number */}
-                    <div className="flex items-center mb-6 sm:mb-8">
-                      <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-br from-framer-blue/20 to-framer-blue/5 rounded-xl sm:rounded-2xl flex items-center justify-center mr-4 sm:mr-5 md:mr-6 group-hover:from-framer-blue/30 group-hover:to-framer-blue/10 transition-all duration-500">
-                        <span className="text-xl sm:text-2xl font-bold text-framer-blue">{step.phase}</span>
+                    <div className="flex items-center mb-4">
+                      <div className="w-10 h-10 bg-gradient-to-br from-framer-blue/20 to-framer-blue/5 rounded-xl flex items-center justify-center mr-3">
+                        <span className="text-lg font-bold text-framer-blue">{step.phase}</span>
                       </div>
-                      <span className="text-xs sm:text-sm font-bold text-white/40 tracking-widest">STEP {step.phase}</span>
+                      <span className="text-[10px] font-bold text-white/40 tracking-widest">STEP {step.phase}</span>
                     </div>
 
                     {/* Content */}
-                    <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-4 sm:mb-5 md:mb-6 group-hover:text-white/90 transition-colors duration-300">
+                    <h3 className="text-base font-bold text-white mb-3">
                       {step.title}
                     </h3>
 
-                    <p className="text-xs sm:text-sm md:text-base text-white/50 leading-relaxed mb-6 sm:mb-7 md:mb-8 group-hover:text-white/60 transition-colors duration-300 text-justify">
+                    <p className="text-[11px] text-white/50 leading-relaxed text-justify">
                       {step.description}
                     </p>
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
 
-                    {/* Keywords */}
-                    <div className="flex flex-wrap gap-2">
-                      {step.keywords.map((keyword, idx) => (
-                        <span
-                          key={idx}
-                          className="text-[10px] sm:text-xs px-2.5 sm:px-3 py-1 bg-white/5 border border-white/10 rounded-full text-white/40 group-hover:text-white/50 group-hover:bg-white/10 transition-all duration-300"
-                        >
-                          {keyword}
-                        </span>
-                      ))}
+          {/* Desktop Version - Stacked with Hover */}
+          <div className="hidden md:block relative max-w-2xl mx-auto h-[500px] lg:h-[540px] group/stack">
+            {[
+              {
+                phase: '01',
+                title: 'Understand',
+                description:
+                  'Start by understanding the requirements, exploring available resources, and defining what success looks like. Learning to ask the right questions before diving into implementation.',
+                keywords: [],
+              },
+              {
+                phase: '02',
+                title: 'Build',
+                description:
+                  'Develop and iterate on solutions while learning best practices in code organization and design. Focus on creating clean, maintainable, and well-documented work.',
+                keywords: [],
+              },
+              {
+                phase: '03',
+                title: 'Deliver',
+                description:
+                  'Work towards creating polished solutions with proper documentation. Learning to present work effectively and gather feedback for continuous improvement.',
+                keywords: [],
+              },
+            ].map((step, i) => (
+              <FadeIn key={`process-desktop-${i}-${pageKey}`} delay={0.15 * i}>
+                <div
+                  className={`process-card-${i} absolute top-1/2 left-1/2 w-full max-w-md transition-all duration-700 ease-out cursor-pointer`}
+                  style={{
+                    transform: `translate(-50%, -50%) ${
+                      i === 0 ? 'rotate(-6deg) translateX(-90px)' :
+                      i === 2 ? 'rotate(6deg) translateX(90px)' :
+                      'rotate(0deg)'
+                    }`,
+                    zIndex: i === 1 ? 30 : i === 0 ? 10 : 20,
+                  }}
+                >
+                  <div className="transition-transform duration-500">
+                    <div className="backdrop-blur-sm bg-neutral-900/95 border border-white/10 rounded-3xl p-6 md:p-8 shadow-2xl">
+                      {/* Phase Number */}
+                      <div className="flex items-center mb-6">
+                        <div className="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-framer-blue/20 to-framer-blue/5 rounded-xl md:rounded-2xl flex items-center justify-center mr-4 md:mr-5 transition-all duration-500">
+                          <span className="text-xl md:text-2xl font-bold text-framer-blue">{step.phase}</span>
+                        </div>
+                        <span className="text-xs font-bold text-white/40 tracking-widest">STEP {step.phase}</span>
+                      </div>
+
+                      {/* Content */}
+                      <h3 className="text-lg md:text-xl font-bold text-white mb-4 md:mb-5 transition-colors duration-300">
+                        {step.title}
+                      </h3>
+
+                      <p className="text-xs md:text-sm text-white/50 leading-relaxed transition-colors duration-300 text-justify">
+                        {step.description}
+                      </p>
                     </div>
                   </div>
                 </div>
               </FadeIn>
             ))}
+
+            {/* Hover effect styles for desktop only */}
+            <style jsx>{`
+              .group\/stack:hover .process-card-0 {
+                transform: translate(-50%, -50%) rotate(-8deg) translateX(-420px) translateY(0px) scale(0.95) !important;
+              }
+              .group\/stack:hover .process-card-1 {
+                transform: translate(-50%, -50%) rotate(0deg) translateX(0px) translateY(0px) scale(0.95) !important;
+              }
+              .group\/stack:hover .process-card-2 {
+                transform: translate(-50%, -50%) rotate(8deg) translateX(420px) translateY(0px) scale(0.95) !important;
+              }
+            `}</style>
           </div>
         </div>
       </section>

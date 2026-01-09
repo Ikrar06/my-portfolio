@@ -49,32 +49,37 @@ export function InteractiveHeroText() {
       </div>
 
       {/* Main heading */}
-      <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white tracking-tight relative z-10 px-2">
-        <span className="block">Building with</span>
+      <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight relative z-10 px-2" style={{ lineHeight: '1.15' }}>
+        <span
+          className="block pb-1 bg-gradient-to-t from-neutral-500 to-neutral-300 bg-clip-text text-transparent overflow-visible"
+          style={{ lineHeight: '1.15' }}
+        >
+          Building with
+        </span>
         <span className="block">
           <span
-            className="cursor-pointer transition-all duration-300 inline-block relative z-20 hover:scale-105"
+            className="cursor-pointer transition-all duration-300 inline-block relative z-20 hover:scale-105 text-white"
             onMouseEnter={() => setHoverState('code')}
             onMouseLeave={() => setHoverState(null)}
             style={{
               textShadow: hoverState === 'code'
-                ? '0 0 20px rgba(255, 255, 255, 0.4), 0 0 40px rgba(255, 255, 255, 0.2)'
-                : '0 0 20px rgba(255, 255, 255, 0.3), 0 0 40px rgba(255, 255, 255, 0.15)',
-              color: 'white'
+                ? '0 0 15px rgba(255, 255, 255, 0.3), 0 0 30px rgba(255, 255, 255, 0.15)'
+                : '0 0 15px rgba(255, 255, 255, 0.2), 0 0 30px rgba(255, 255, 255, 0.1)',
             }}
           >
             Code
           </span>
-          {' and '}
+          <span className="bg-gradient-to-t from-neutral-500 to-neutral-300 bg-clip-text text-transparent">
+            {' and '}
+          </span>
           <span
-            className="cursor-pointer transition-all duration-300 inline-block relative z-20 hover:scale-105"
+            className="cursor-pointer transition-all duration-300 inline-block relative z-20 hover:scale-105 text-white"
             onMouseEnter={() => setHoverState('design')}
             onMouseLeave={() => setHoverState(null)}
             style={{
               textShadow: hoverState === 'design'
-                ? '0 0 20px rgba(255, 255, 255, 0.4), 0 0 40px rgba(255, 255, 255, 0.2)'
-                : '0 0 20px rgba(255, 255, 255, 0.3), 0 0 40px rgba(255, 255, 255, 0.15)',
-              color: 'white'
+                ? '0 0 15px rgba(255, 255, 255, 0.3), 0 0 30px rgba(255, 255, 255, 0.15)'
+                : '0 0 15px rgba(255, 255, 255, 0.2), 0 0 30px rgba(255, 255, 255, 0.1)',
             }}
           >
             Design
