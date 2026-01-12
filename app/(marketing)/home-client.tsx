@@ -1,7 +1,7 @@
 // app/(marketing)/home-client.tsx
 'use client'
 
-import { useMemo } from 'react'
+import { useMemo, useState, useEffect, useRef } from 'react'
 import { usePathname } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -17,6 +17,40 @@ interface HomeClientProps {
 export default function HomeClient({ featuredProjects }: HomeClientProps) {
   const pathname = usePathname()
   const pageKey = useMemo(() => (pathname || 'home') + '-v1', [pathname])
+  const [cardsExpanded, setCardsExpanded] = useState(false)
+  const sectionRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          // Expand when section is well centered (65% or more visible)
+          if (entry.intersectionRatio >= 0.65) {
+            // Delay before expanding for better UX
+            setTimeout(() => {
+              setCardsExpanded(true)
+            }, 500)
+          } else {
+            setCardsExpanded(false)
+          }
+        })
+      },
+      {
+        threshold: [0, 0.2, 0.4, 0.6, 0.65, 0.8, 1.0],
+        rootMargin: '-8% 0px'
+      }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current)
+      }
+    }
+  }, [])
 
   return (
     <>
@@ -163,9 +197,9 @@ export default function HomeClient({ featuredProjects }: HomeClientProps) {
       </section>
 
       {/* Process Section */}
-      <section className="relative py-16 sm:py-24 md:py-32 border-t border-white/5">
+      <section ref={sectionRef} className="relative py-8 sm:py-12 md:py-16 border-t border-white/5">
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="text-center mb-6 sm:mb-8 md:mb-10 space-y-3 sm:space-y-4">
+          <div className="text-center mb-4 sm:mb-6 md:mb-4 space-y-3 sm:space-y-4">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white">
               How I Work
             </h2>
@@ -174,9 +208,9 @@ export default function HomeClient({ featuredProjects }: HomeClientProps) {
             </p>
           </div>
 
-          {/* Process Cards - Mobile: Vertical Stack, Desktop: Stacked with Hover */}
-          {/* Mobile Version - Vertical */}
-          <div className="flex flex-col gap-6 max-w-md mx-auto md:hidden">
+          {/* Process Cards - Mobile/Tablet: Vertical Stack, Desktop: Stacked with Scroll */}
+          {/* Mobile & Tablet Version - Vertical */}
+          <div className="flex flex-col gap-6 max-w-md mx-auto lg:hidden">
             {[
               {
                 phase: '01',
@@ -225,8 +259,8 @@ export default function HomeClient({ featuredProjects }: HomeClientProps) {
             ))}
           </div>
 
-          {/* Desktop Version - Stacked with Hover */}
-          <div className="hidden md:block relative max-w-2xl mx-auto h-[500px] lg:h-[540px] group/stack">
+          {/* Desktop Version - Stacked with Scroll Animation */}
+          <div className="hidden lg:block relative max-w-2xl mx-auto h-[500px] lg:h-[540px]">
             {[
               {
                 phase: '01',
@@ -250,18 +284,24 @@ export default function HomeClient({ featuredProjects }: HomeClientProps) {
                 keywords: [],
               },
             ].map((step, i) => (
-              <FadeIn key={`process-desktop-${i}-${pageKey}`} delay={0.15 * i}>
-                <div
-                  className={`process-card-${i} absolute top-1/2 left-1/2 w-full max-w-md transition-all duration-700 ease-out cursor-pointer`}
-                  style={{
-                    transform: `translate(-50%, -50%) ${
-                      i === 0 ? 'rotate(-6deg) translateX(-90px)' :
-                      i === 2 ? 'rotate(6deg) translateX(90px)' :
-                      'rotate(0deg)'
-                    }`,
-                    zIndex: i === 1 ? 30 : i === 0 ? 10 : 20,
-                  }}
-                >
+              <div
+                key={`process-desktop-${i}-${pageKey}`}
+                className={`process-card-${i} absolute top-1/2 left-1/2 w-full max-w-md transition-all duration-1000 ease-out`}
+                style={{
+                  transform: cardsExpanded
+                    ? `translate(-50%, -50%) ${
+                        i === 0 ? 'rotate(-8deg) translateX(-420px) scale(0.95)' :
+                        i === 2 ? 'rotate(8deg) translateX(420px) scale(0.95)' :
+                        'rotate(0deg) translateX(0px) scale(0.95)'
+                      }`
+                    : `translate(-50%, -50%) ${
+                        i === 0 ? 'rotate(-6deg) translateX(-40px)' :
+                        i === 2 ? 'rotate(6deg) translateX(40px)' :
+                        'rotate(0deg)'
+                      }`,
+                  zIndex: i === 1 ? 30 : i === 0 ? 10 : 20,
+                }}
+              >
                   <div className="transition-transform duration-500">
                     <div className="backdrop-blur-sm bg-neutral-900/95 border border-white/10 rounded-3xl p-6 md:p-8 shadow-2xl">
                       {/* Phase Number */}
@@ -282,22 +322,8 @@ export default function HomeClient({ featuredProjects }: HomeClientProps) {
                       </p>
                     </div>
                   </div>
-                </div>
-              </FadeIn>
+              </div>
             ))}
-
-            {/* Hover effect styles for desktop only */}
-            <style jsx>{`
-              .group\/stack:hover .process-card-0 {
-                transform: translate(-50%, -50%) rotate(-8deg) translateX(-420px) translateY(0px) scale(0.95) !important;
-              }
-              .group\/stack:hover .process-card-1 {
-                transform: translate(-50%, -50%) rotate(0deg) translateX(0px) translateY(0px) scale(0.95) !important;
-              }
-              .group\/stack:hover .process-card-2 {
-                transform: translate(-50%, -50%) rotate(8deg) translateX(420px) translateY(0px) scale(0.95) !important;
-              }
-            `}</style>
           </div>
         </div>
       </section>
