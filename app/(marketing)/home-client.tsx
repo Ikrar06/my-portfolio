@@ -17,38 +17,35 @@ interface HomeClientProps {
 export default function HomeClient({ featuredProjects }: HomeClientProps) {
   const pathname = usePathname()
   const pageKey = useMemo(() => (pathname || 'home') + '-v1', [pathname])
-  const [cardsExpanded, setCardsExpanded] = useState(false)
+  const [scrollProgress, setScrollProgress] = useState(0)
   const sectionRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          // Expand when section is well centered (65% or more visible)
-          if (entry.intersectionRatio >= 0.65) {
-            // Delay before expanding for better UX
-            setTimeout(() => {
-              setCardsExpanded(true)
-            }, 500)
-          } else {
-            setCardsExpanded(false)
-          }
-        })
-      },
-      {
-        threshold: [0, 0.2, 0.4, 0.6, 0.65, 0.8, 1.0],
-        rootMargin: '-8% 0px'
-      }
-    )
+    const handleScroll = () => {
+      if (!sectionRef.current) return
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
+      const section = sectionRef.current
+      const rect = section.getBoundingClientRect()
+      const windowHeight = window.innerHeight
+
+      // Calculate how centered the section is (0 to 1)
+      // 1 = perfectly centered, 0 = out of view
+      const sectionCenter = rect.top + rect.height / 2
+      const windowCenter = windowHeight / 2
+      const distanceFromCenter = Math.abs(sectionCenter - windowCenter)
+      const maxDistance = windowHeight / 2 + rect.height / 2
+
+      // Calculate progress: 1 when centered, 0 when far
+      const progress = Math.max(0, Math.min(1, 1 - distanceFromCenter / maxDistance))
+
+      setScrollProgress(progress)
     }
 
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll() // Initial calculation
+
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
-      }
+      window.removeEventListener('scroll', handleScroll)
     }
   }, [])
 
@@ -283,25 +280,28 @@ export default function HomeClient({ featuredProjects }: HomeClientProps) {
                   'Work towards creating polished solutions with proper documentation. Learning to present work effectively and gather feedback for continuous improvement.',
                 keywords: [],
               },
-            ].map((step, i) => (
-              <div
-                key={`process-desktop-${i}-${pageKey}`}
-                className={`process-card-${i} absolute top-1/2 left-1/2 w-full max-w-md transition-all duration-1000 ease-out`}
-                style={{
-                  transform: cardsExpanded
-                    ? `translate(-50%, -50%) ${
-                        i === 0 ? 'rotate(-8deg) translateX(-420px) scale(0.95)' :
-                        i === 2 ? 'rotate(8deg) translateX(420px) scale(0.95)' :
-                        'rotate(0deg) translateX(0px) scale(0.95)'
-                      }`
-                    : `translate(-50%, -50%) ${
-                        i === 0 ? 'rotate(-6deg) translateX(-40px)' :
-                        i === 2 ? 'rotate(6deg) translateX(40px)' :
-                        'rotate(0deg)'
-                      }`,
-                  zIndex: i === 1 ? 30 : i === 0 ? 10 : 20,
-                }}
-              >
+            ].map((step, i) => {
+              // Interpolate values based on scroll progress
+              const startRotation = i === 0 ? -6 : i === 2 ? 6 : 0
+              const endRotation = i === 0 ? -8 : i === 2 ? 8 : 0
+              const startX = i === 0 ? -40 : i === 2 ? 40 : 0
+              const endX = i === 0 ? -420 : i === 2 ? 420 : 0
+              const startScale = 1
+              const endScale = 0.95
+
+              const rotation = startRotation + (endRotation - startRotation) * scrollProgress
+              const translateX = startX + (endX - startX) * scrollProgress
+              const scale = startScale + (endScale - startScale) * scrollProgress
+
+              return (
+                <div
+                  key={`process-desktop-${i}-${pageKey}`}
+                  className={`process-card-${i} absolute top-1/2 left-1/2 w-full max-w-md transition-all duration-300 ease-out`}
+                  style={{
+                    transform: `translate(-50%, -50%) rotate(${rotation}deg) translateX(${translateX}px) scale(${scale})`,
+                    zIndex: i === 1 ? 30 : i === 0 ? 10 : 20,
+                  }}
+                >
                   <div className="transition-transform duration-500">
                     <div className="backdrop-blur-sm bg-neutral-900/95 border border-white/10 rounded-3xl p-6 md:p-8 shadow-2xl">
                       {/* Phase Number */}
@@ -322,8 +322,9 @@ export default function HomeClient({ featuredProjects }: HomeClientProps) {
                       </p>
                     </div>
                   </div>
-              </div>
-            ))}
+                </div>
+              )
+            })}
           </div>
         </div>
       </section>
