@@ -1,42 +1,39 @@
-// components/animated/interactive-hero-text.tsx
 'use client'
 
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
-import Image from 'next/image'
 
 interface FloatingElement {
   id: string
   text?: string
   icon?: string
-  x: string // Changed to string for percentage-based positioning
+  x: string
   y: string
-  rotate: number // Rotation in degrees
-  size?: number // Icon size in pixels
+  rotate: number
 }
 
 export function InteractiveHeroText() {
   const [hoverState, setHoverState] = useState<'code' | 'design' | null>(null)
 
-  // Icon elements for code (tensorflow, python, pytorch, react)
+  // Icon elements untuk code (tensorflow, python, pytorch, react)
   const codeElements: FloatingElement[] = [
-    { id: 'code-1', icon: '/images/tensorflow.png', x: '-13%', y: '-15%', rotate: -8, size: 100 },
-    { id: 'code-2', icon: '/images/python.png', x: '104%', y: '-10%', rotate: 12, size: 100 },
-    { id: 'code-3', icon: '/images/pytorch.png', x: '-14%', y: '105%', rotate: 5, size: 130 },
-    { id: 'code-4', icon: '/images/react.png', x: '103%', y: '108%', rotate: -15, size: 100 },
+    { id: 'code-1', icon: '/images/tensorflow.svg', x: '-13%', y: '-15%', rotate: -8 },
+    { id: 'code-2', icon: '/images/python.svg', x: '104%', y: '-10%', rotate: 12 },
+    { id: 'code-3', icon: '/images/pytorch.svg', x: '-14%', y: '105%', rotate: 5 },
+    { id: 'code-4', icon: '/images/react.svg', x: '103%', y: '108%', rotate: -15 },
   ]
 
-  // Icon elements for design (photoshop, illustrator, figma, premiere pro)
+  // Icon elements untuk design (photoshop, illustrator, figma, premiere pro)
   const designElements: FloatingElement[] = [
-    { id: 'design-1', icon: '/images/photoshop.png', x: '-10%', y: '-18%', rotate: 10, size: 100 },
-    { id: 'design-2', icon: '/images/illustrator.png', x: '103%', y: '-8%', rotate: -6, size: 100 },
-    { id: 'design-3', icon: '/images/figma.png', x: '-15%', y: '110%', rotate: -12, size: 100 },
-    { id: 'design-4', icon: '/images/premierepro.png', x: '106%', y: '112%', rotate: 8, size: 100 },
+    { id: 'design-1', icon: '/images/adobe-photoshop.svg', x: '-10%', y: '-18%', rotate: 10 },
+    { id: 'design-2', icon: '/images/adobe-illustrator.svg', x: '103%', y: '-8%', rotate: -6 },
+    { id: 'design-3', icon: '/images/figma.svg', x: '-15%', y: '110%', rotate: -12 },
+    { id: 'design-4', icon: '/images/adobe-premiere.svg', x: '106%', y: '112%', rotate: 8 },
   ]
 
   return (
     <div className="relative">
-      {/* Floating elements container - positioned absolutely, can overlap the text - Hidden on mobile */}
+      {/* Floating elements container - Hidden on mobile */}
       <div className="hidden md:block absolute inset-0 pointer-events-none z-0">
         <FloatingElements
           elements={codeElements}
@@ -97,6 +94,8 @@ function FloatingElements({
   elements: FloatingElement[]
   show: boolean
 }) {
+  const uniformSize = 120 // Ukuran sama untuk semua icon
+
   return (
     <AnimatePresence>
       {show && (
@@ -126,15 +125,15 @@ function FloatingElements({
               {el.icon ? (
                 <div
                   style={{
-                    width: `${el.size || 80}px`,
-                    height: `${el.size || 80}px`
+                    width: `${uniformSize}px`,
+                    height: `${uniformSize}px`
                   }}
                 >
-                  <Image
+                  <img
                     src={el.icon}
                     alt=""
-                    width={el.size || 80}
-                    height={el.size || 80}
+                    width={uniformSize}
+                    height={uniformSize}
                     className="w-full h-full object-contain"
                     draggable={false}
                   />
