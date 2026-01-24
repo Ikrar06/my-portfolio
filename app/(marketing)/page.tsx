@@ -5,7 +5,7 @@ import HomeClient from './home-client'
 
 export const metadata: Metadata = {
   title: 'Home',
-  description: 'Ikrar Gempur Tirani - Informatics Engineering student at Hasanuddin University (GPA 3.91/4.00) learning Data Science and Machine Learning. Exploring Natural Language Processing, statistical modeling, and building ML systems while developing full-stack skills.',
+  description: 'Ikrar Gempur Tirani - Informatics Engineering student at Hasanuddin University (GPA 3.92/4.00) learning Data Science and Machine Learning. Exploring Natural Language Processing, statistical modeling, and building ML systems while developing full-stack skills.',
   keywords: ['Ikrar Gempur Tirani', 'Data Science Student', 'Machine Learning Student', 'NLP', 'Python', 'TensorFlow', 'PyTorch', 'Hasanuddin University', 'Student Portfolio', 'Learning AI'],
   openGraph: {
     title: 'Ikrar Gempur Tirani — Student Portfolio',

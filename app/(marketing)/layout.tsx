@@ -6,7 +6,7 @@ export const metadata: Metadata = {
     template: '%s — Ikrar Gempur Tirani',
     default: 'Ikrar Gempur Tirani | Data Scientist & ML Engineer',
   },
-  description: 'Data Scientist specializing in statistical analysis, NLP, and production ML systems. Building AI products with full-stack skills and design thinking. Informatics Engineering student at Hasanuddin University (GPA 3.91).',
+  description: 'Data Scientist specializing in statistical analysis, NLP, and production ML systems. Building AI products with full-stack skills and design thinking. Informatics Engineering student at Hasanuddin University (GPA 3.92).',
   authors: [{ name: 'Ikrar Gempur Tirani' }],
   creator: 'Ikrar Gempur Tirani',
   publisher: 'Ikrar Gempur Tirani',

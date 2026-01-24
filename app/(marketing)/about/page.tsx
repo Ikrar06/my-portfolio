@@ -6,7 +6,7 @@ import type { Skill } from '@/components/skills/skills-list'
 
 export const metadata: Metadata = {
   title: 'About',
-  description: 'Informatics Engineering student at Hasanuddin University (GPA 3.91/4.00) learning Data Science and Machine Learning. Passionate about exploring statistical analysis, NLP, and building ML systems while developing full-stack skills and leadership experience.',
+  description: 'Informatics Engineering student at Hasanuddin University (GPA 3.92/4.00) learning Data Science and Machine Learning. Passionate about exploring statistical analysis, NLP, and building ML systems while developing full-stack skills and leadership experience.',
   keywords: [
     'about Ikrar Gempur Tirani',
     'Informatics Student',
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: 'About — Ikrar Gempur Tirani',
-    description: 'Informatics student at Hasanuddin University (GPA 3.91/4.00) learning Data Science and ML. Exploring statistical analysis, NLP, and building ML systems through hands-on projects.',
+    description: 'Informatics student at Hasanuddin University (GPA 3.92/4.00) learning Data Science and ML. Exploring statistical analysis, NLP, and building ML systems through hands-on projects.',
     images: [
       {
         url: '/images/foto-ikrar.jpg',

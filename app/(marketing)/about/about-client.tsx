@@ -120,7 +120,7 @@ export default function AboutClient({ skills }: AboutClientProps) {
               <div className="mt-6 md:mt-0">
                 <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/70 leading-relaxed font-light mb-3 sm:mb-4 text-justify">
                   Hi, I'm <span className="font-semibold text-white">Ikrar Gempur Tirani</span>, an{' '}
-                  <span className="text-white">Informatics Engineering student</span> at Hasanuddin University (GPA 3.91/4.00) focusing on <span className="text-white">Artificial Intelligence</span> with growing experience in machine learning, natural language processing, and statistical modeling.
+                  <span className="text-white">Informatics Engineering student</span> at Hasanuddin University (GPA 3.92/4.00) focusing on <span className="text-white">Artificial Intelligence</span> with growing experience in machine learning, natural language processing, and statistical modeling.
                 </p>
                 <p className="text-xs sm:text-sm md:text-base lg:text-lg text-white/60 leading-relaxed font-light mb-3 sm:mb-4 text-justify">
                   Working with <span className="text-white">Python, TensorFlow, and PyTorch</span> to build end-to-end ML systems from data preprocessing to deployment. I work on projects ranging from agent-based market simulations to fine-tuning deep learning models for NLP tasks, learning to apply rigorous methodology with production engineering practices.
@@ -132,7 +132,7 @@ export default function AboutClient({ skills }: AboutClientProps) {
                 <div className="mt-4 sm:mt-6 grid gap-2 sm:gap-3 text-xs sm:text-sm text-white/60">
                   <div className="flex items-center"><div className="w-1.5 h-1.5 bg-white/40 rounded-full mr-3" /> Born and raised in Gorontalo, January 6, 2005</div>
                   <div className="flex items-center"><div className="w-1.5 h-1.5 bg-white/40 rounded-full mr-3" /> Currently living in Makassar, South Sulawesi</div>
-                  <div className="flex items-center"><div className="w-1.5 h-1.5 bg-white/40 rounded-full mr-3" /> Fifth semester Informatics student at Hasanuddin University (GPA 3.91)</div>
+                  <div className="flex items-center"><div className="w-1.5 h-1.5 bg-white/40 rounded-full mr-3" /> Sixth semester Informatics student at Hasanuddin University (GPA 3.92)</div>
                   <div className="flex items-center"><div className="w-1.5 h-1.5 bg-white/40 rounded-full mr-3" /> Pursuing Machine Learning Engineer and Data Science roles</div>
                 </div>
               </div>

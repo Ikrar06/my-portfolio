@@ -10,7 +10,7 @@ export default function StructuredData() {
     url: siteUrl,
     image: `${siteUrl}/images/foto-ikrar.jpg`,
     jobTitle: 'Informatics Engineering Student',
-    description: 'Informatics Engineering student at Hasanuddin University (GPA 3.91/4.00) learning Data Science and Machine Learning. Passionate about NLP, statistical modeling, and building ML systems.',
+    description: 'Informatics Engineering student at Hasanuddin University (GPA 3.92/4.00) learning Data Science and Machine Learning. Passionate about NLP, statistical modeling, and building ML systems.',
     alumniOf: {
       '@type': 'EducationalOrganization',
       name: 'Hasanuddin University',

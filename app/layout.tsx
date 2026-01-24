@@ -13,7 +13,7 @@ import ConsoleEasterEgg from '@/components/console-easter-egg'
 export async function generateMetadata(): Promise<Metadata> {
   const baseMetadata: Metadata = {
     title: 'Ikrar Gempur Tirani | Informatics Student Learning Data Science & ML',
-    description: 'Informatics Engineering student at Hasanuddin University (GPA 3.91/4.00) learning Data Science and Machine Learning. Exploring NLP, statistical modeling, and building ML systems with Python, TensorFlow, and PyTorch.',
+    description: 'Informatics Engineering student at Hasanuddin University (GPA 3.92/4.00) learning Data Science and Machine Learning. Exploring NLP, statistical modeling, and building ML systems with Python, TensorFlow, and PyTorch.',
     metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'),
     icons: {
       icon: '/icon.ico',
