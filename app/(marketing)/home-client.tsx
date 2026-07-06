@@ -84,8 +84,8 @@ export default function HomeClient({ featuredProjects }: HomeClientProps) {
 
           {/* Hero Description */}
           <p className="text-sm sm:text-base md:text-lg lg:text-xl text-text-secondary leading-relaxed max-w-3xl mx-auto pt-2 px-2">
-            Informatics student at Hasanuddin University focusing on artificial intelligence with growing experience in machine learning and NLP.
-            Learning to build end-to-end ML systems with Python, TensorFlow, and PyTorch.
+            Informatics student at Hasanuddin University focusing on artificial intelligence with hands-on experience in machine learning and NLP.
+            Building end-to-end ML and RAG systems with Python, vLLM, TensorFlow, and PyTorch.
           </p>
 
           {/* Action Buttons */}

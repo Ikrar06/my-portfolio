@@ -48,7 +48,7 @@ export default function Footer() {
                 </span>
               </div>
               <p className="text-xs sm:text-sm text-text-secondary leading-relaxed text-justify">
-                Informatics engineering student focusing on Data Science and ML. Learning to build intelligent systems with statistical analysis, NLP, and full-stack development.
+                Informatics engineering student focusing on AI/ML engineering. Building intelligent systems with RAG, statistical analysis, NLP, and full-stack development.
               </p>
               <p className="text-xs sm:text-sm text-text-tertiary">
                 Available for Data Science/ML roles and research collaborations.
