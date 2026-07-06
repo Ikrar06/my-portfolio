@@ -12,8 +12,8 @@ import ConsoleEasterEgg from '@/components/console-easter-egg'
 // Base metadata akan di-override oleh metadata di (marketing)/layout.tsx
 export async function generateMetadata(): Promise<Metadata> {
   const baseMetadata: Metadata = {
-    title: 'Ikrar Gempur Tirani | Informatics Student Learning Data Science & ML',
-    description: 'Informatics Engineering student at Hasanuddin University (GPA 3.92/4.00) learning Data Science and Machine Learning. Exploring NLP, statistical modeling, and building ML systems with Python, TensorFlow, and PyTorch.',
+    title: 'Ikrar Gempur Tirani | AI Engineer & Data Scientist',
+    description: 'Informatics Engineering student at Hasanuddin University (GPA 3.92/4.00) with hands-on experience in RAG systems, NLP, and production ML. Building AI products with Python, vLLM, TensorFlow, and PyTorch.',
     metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'),
     icons: {
       icon: '/icon.ico',
@@ -39,8 +39,8 @@ export async function generateMetadata(): Promise<Metadata> {
       locale: 'id_ID',
       url: process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000',
       siteName: 'Ikrar Gempur Tirani Portfolio',
-      title: 'Ikrar Gempur Tirani | Student Portfolio',
-      description: 'Informatics student learning Data Science and ML at Hasanuddin University',
+      title: 'Ikrar Gempur Tirani | AI Engineer & Data Scientist',
+      description: 'Informatics student at Hasanuddin University building RAG systems and production ML',
       images: [
         {
           url: '/images/foto-ikrar.jpg',
@@ -52,8 +52,8 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Ikrar Gempur Tirani | Student Portfolio',
-      description: 'Informatics student learning Data Science and ML',
+      title: 'Ikrar Gempur Tirani | AI Engineer & Data Scientist',
+      description: 'Informatics student building RAG systems and production ML',
       images: ['/images/foto-ikrar.jpg'],
     },
   }

@@ -6,25 +6,25 @@ import type { Skill } from '@/components/skills/skills-list'
 
 export const metadata: Metadata = {
   title: 'About',
-  description: 'Informatics Engineering student at Hasanuddin University (GPA 3.92/4.00) learning Data Science and Machine Learning. Passionate about exploring statistical analysis, NLP, and building ML systems while developing full-stack skills and leadership experience.',
+  description: 'Informatics Engineering student at Hasanuddin University (GPA 3.92/4.00) with hands-on experience in AI/ML engineering, RAG systems, and full-stack development. Building LLM-powered products and leading creative teams.',
   keywords: [
     'about Ikrar Gempur Tirani',
-    'Informatics Student',
-    'Data Science Student',
-    'Machine Learning Student',
+    'AI Engineer',
+    'Data Scientist',
+    'Machine Learning Engineer',
+    'RAG',
     'NLP',
     'Statistical Analysis',
     'Hasanuddin University',
     'PyTorch',
     'TensorFlow',
-    'Python Student',
-    'Student Portfolio',
-    'Learning AI',
-    'Indonesia Student'
+    'vLLM',
+    'Full-Stack Developer',
+    'Indonesia'
   ],
   openGraph: {
     title: 'About — Ikrar Gempur Tirani',
-    description: 'Informatics student at Hasanuddin University (GPA 3.92/4.00) learning Data Science and ML. Exploring statistical analysis, NLP, and building ML systems through hands-on projects.',
+    description: 'Informatics student at Hasanuddin University (GPA 3.92/4.00) building production RAG and ML systems. Hands-on experience in statistical analysis, NLP, and full-stack development.',
     images: [
       {
         url: '/images/foto-ikrar.jpg',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     title: 'About — Ikrar Gempur Tirani',
-    description: 'Informatics student learning Data Science and ML. Passionate about building AI projects and exploring machine learning.',
+    description: 'Informatics student building AI products with RAG, LLM serving, and full-stack development.',
   },
 }
 

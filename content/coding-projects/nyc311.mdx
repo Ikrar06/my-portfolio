@@ -1,0 +1,139 @@
+---
+title: "Urban Complaint Pattern Mining on NYC 311 Data (21M+ Records)"
+slug: "nyc-311-data-mining"
+year: 2026
+month: 6
+role: "Data Scientist & Data Mining Engineer"
+tools: ["Python", "Polars", "mlxtend (FP-Growth)", "Scikit-learn", "SciPy", "Pandas", "Matplotlib", "Jupyter Notebook", "Git"]
+skills: ["Association Rule Mining", "Clustering", "Big Data Processing", "Statistical Validation", "Exploratory Data Analysis", "Confounder Control"]
+tags: ["data-mining", "big-data", "urban-analytics"]
+category: "Big Data & Data Mining"
+duration: "3 months"
+team: "Solo Project"
+client: "Academic Project - Big Data and Data Mining Course"
+summary: "End-to-end data mining of 21.3M NYC 311 service requests, discovering a six-complaint 'interior maintenance syndrome' validated against 11M independent housing inspection records. Buildings with the full syndrome show 12-44x higher verified violation rates, holding across building-size strata and a prior time window designed to rule out administrative circularity."
+cover: "/images/nyc311/cover1.png"
+final: []
+liveUrl: ""
+githubUrl: "https://github.com/Ikrar06/nyc-311-data-mining"
+metrics:
+  - "21.3M raw records processed into 764,114 building-level transaction baskets"
+  - "95,902 frequent itemsets mined via FP-Growth (min_support 0.005)"
+  - "Six-item syndrome with mean pairwise lift 8.48 (bootstrap 95% CI [7.44, 9.55])"
+  - "12-44x higher verified violation rates for full-syndrome buildings (prior window)"
+  - "3 neighborhood typologies with 84.2% temporal stability over 6 years"
+  - "1 spurious finding deliberately rejected after failing independent-window testing"
+credits:
+  - "NYC Open Data for 311 Service Requests, PLUTO, and HPD violation datasets"
+  - "U.S. Census Bureau for American Community Survey (ACS) data"
+  - "mlxtend library for the FP-Growth implementation"
+  - "Polars for high-performance dataframe processing"
+challenges: "Mining building-level patterns from 21.3M noisy civic records where the data records what residents report, not what actually exists. Validating discovered patterns against inspection records that are themselves partially caused by the complaints (administrative circularity: 311 complaints trigger HPD inspections). Controlling for building size as a confounder without regression, since the course scope was restricted to descriptive data mining."
+solutions: "Designed a dual-window validation strategy: patterns were tested against violations from a prior period (2015-2019) that predates the complaints and therefore cannot be caused by them. Controlled building size through stratification into size bands with per-unit pooled rates instead of raw counts. Used a deviation-space feature layer (ZIP composition minus citywide mean) so clustering captures neighborhood character rather than volume. Pre-registered success criteria before analysis and deliberately rejected a severity-specificity finding that only appeared in the circularity-prone window."
+impact: "Demonstrated that civic complaint data contains verified signal about chronic building neglect: the six-complaint syndrome predicts 12-44x higher independently-inspected violation rates per housing unit. Findings suggest 311 data could serve as a diagnostic instrument for housing inspection prioritization, covering 41,530 buildings in the highest-risk group. The project's methodological core - discovery-not-confirmation framing, dual-window circularity control, and honest rejection of a spurious finding - shows how exploratory mining can be made rigorous without predictive modeling."
+featured: true
+---
+
+## Project Overview
+
+**Urban Complaint Pattern Mining** is a full-cycle data mining project on the **NYC 311 Service Requests** dataset (21.3 million records). Built for a Big Data and Data Mining course, it combines **FP-Growth association rule mining** and **K-means clustering** to answer two open research questions: do complaint types co-occur on individual buildings beyond chance, and do neighborhoods form stable complaint typologies? Every discovered pattern was validated against an independent source — 11 million official housing inspection violations — through a dual-window design built to separate real signal from administrative echo.
+
+## The Problem: Data That Records Reports, Not Reality
+
+311 data has a fundamental epistemic limitation: it records what residents *report*, not what actually *exists*. Reporting behavior varies systematically across neighborhoods and socio-economic lines. Worse, in New York, housing complaints are forwarded to the HPD agency for inspection — so the violation records that would naturally serve as ground truth are themselves partially *caused by* the complaints. Naive validation would be circular. The entire project was designed around this problem.
+
+## Technical Architecture
+
+A two-phase pipeline separating exploration from confirmation:
+
+- **Phase 1 — Pure discovery (311 only)** — Polars pipeline cleans 21.3M records to 18.85M, aggregates them into 764,114 building-level "baskets" (one basket = unique complaint types per building), then mines frequent itemsets with FP-Growth.
+- **Phase 2 — External validation** — Discovered patterns are enriched with PLUTO property attributes (size, ownership), validated against HPD violations through two time windows, and contextualized with ACS census data.
+- **Compute** — Python 3.12.8, Polars 1.41.2 as the main engine (pandas only for mlxtend interop), mlxtend 0.24.0 FP-Growth, scikit-learn 1.9.0, fixed seed 42 for all stochastic steps.
+
+## Data Quality Archaeology
+
+Three silent data bugs were caught by inspecting raw values before type conversion — each would have corrupted results:
+
+- **PLUTO building areas used periods as thousands separators**, so "1.683" (1,683 sq ft) parsed as roughly a thousand times too small.
+- **15 complaint-type pairs differed only in letter casing**, creating fake co-occurrences.
+- **Affordable-housing owner names contained stray whitespace**, breaking ownership matching.
+
+Missing data was handled by mechanism, not reflex: the building-ID field (BBL, 11.66% missing) is MNAR/MAR — street complaints structurally lack a building — and since it identifies the analysis unit, listwise deletion was correct where imputation would be meaningless.
+
+## Finding 1: The Interior Maintenance Syndrome
+
+Six complaint types — **Heat/Hot Water, Unsanitary Condition, Plumbing, Paint/Plaster, Water Leak, Door/Window** — consistently dominate the most frequent combinations. The distribution has a striking tail: **more buildings have all six complaints (19,624) than have four (11,267) or five (10,639)**. Neglect arrives as a package, not one problem at a time.
+
+The fifteen pairs among these six items average a **lift of 8.48** (bootstrap 95% CI [7.44, 9.55], 10,000 resamples), with the strongest pair (Paint/Plaster - Door/Window) at 12.40.
+
+An honesty note that survived into the final report: the *highest-lift* rules in the entire dataset are not the syndrome — they're a commercial food-service cluster (Food Establishment / Food Poisoning, lift 22-33). The syndrome is distinguished by frequency and verified validation, not by maximal lift. Reporting this distinction accurately mattered more than a cleaner story.
+
+## Finding 2: Validation That Survives Circularity
+
+The core validation uses a **dose-response design across two time windows**:
+
+<div className="overflow-x-auto my-6">
+  <table className="min-w-full border-collapse">
+    <thead>
+      <tr className="bg-gradient-to-r from-framer-blue/20 to-framer-blue-light/20 border-b border-white/20">
+        <th className="px-6 py-3 text-left text-sm font-semibold text-white">Building Size Band</th>
+        <th className="px-6 py-3 text-left text-sm font-semibold text-white">Concurrent Window</th>
+        <th className="px-6 py-3 text-left text-sm font-semibold text-white">Prior Window (2015-2019)</th>
+      </tr>
+    </thead>
+    <tbody className="divide-y divide-white/10">
+      <tr className="hover:bg-white/5 transition-colors">
+        <td className="px-6 py-4 text-sm text-text-secondary">2-4 units</td>
+        <td className="px-6 py-4 text-sm text-text-secondary">46x</td>
+        <td className="px-6 py-4 text-sm text-text-secondary">22x</td>
+      </tr>
+      <tr className="hover:bg-white/5 transition-colors">
+        <td className="px-6 py-4 text-sm text-text-secondary">5-10 units</td>
+        <td className="px-6 py-4 text-sm text-text-secondary">19x</td>
+        <td className="px-6 py-4 text-sm text-text-secondary">12x</td>
+      </tr>
+      <tr className="hover:bg-white/5 transition-colors">
+        <td className="px-6 py-4 text-sm text-text-secondary">11-25 units</td>
+        <td className="px-6 py-4 text-sm text-text-secondary">28x</td>
+        <td className="px-6 py-4 text-sm text-text-secondary">18x</td>
+      </tr>
+      <tr className="hover:bg-white/5 transition-colors">
+        <td className="px-6 py-4 text-sm text-text-secondary">26+ units</td>
+        <td className="px-6 py-4 text-sm text-text-secondary">82x</td>
+        <td className="px-6 py-4 text-sm text-text-secondary">44x</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+Violation rates per housing unit rise **monotonically** with syndrome completeness *within every size band* — so building size can't explain it — and the pattern **holds in the prior window**, where violations predate the complaints and cannot be their administrative echo. The syndrome marks real, chronic neglect.
+
+## The Finding I Killed
+
+In the concurrent window, hazardous violation classes appeared to rise dramatically (over 200x) with syndrome completeness — a headline-worthy "severity specificity" claim. But in the independent prior window, all severity classes rose equally (~14-17x). The specificity existed only where circularity could manufacture it, so **the claim was rejected and documented as a rejected finding**. This deliberate kill is the part of the project I'm proudest of.
+
+## Finding 3: Who Owns Neglect
+
+Ownership concentration curves for syndrome buildings nearly overlap the general ownership baseline (top-5% gap: +0.85pp) — neglect is **structurally dispersed**, not the work of a few slumlords, though 85 owners neglect their entire portfolios. However, the burden **pools in affordable housing stock (HDFC)**: 16-27 percentage points more syndrome prevalence than private ownership at equal building sizes, surviving size control and the prior window. Direction remains honestly unresolved — underfunding vs. distressed buildings being converted to HDFC — so the claim stays at "burden locus," not causation.
+
+## Finding 4: Three Sticky Neighborhood Typologies
+
+K-means on deviation-space ZIP compositions yields three gradated types: **mixed-commercial (Manhattan)**, **interior-residential (Bronx)** — the spatial face of the syndrome, with 20.3% median syndrome concentration vs 1.5-6.7% elsewhere — and **vehicle/outdoor (Queens & Staten Island)**. Character is remarkably sticky: **84.2% of ZIPs never change type across six years**. Complaint-composition shifts show **no significant correlation with socio-economic change** (all Spearman |ρ| < 0.18 across 12 tests) — a defensible null result that closes off the easy "gentrification signal" interpretation.
+
+Model selection was honest: k=2 actually maximizes silhouette (0.2661 vs 0.2167), but merges domain-distinct types; k=3 was chosen for interpretability and documented as such, with stability verified over 20 seeds (silhouette std 0.0001).
+
+## Temporal Anatomy
+
+Complaint timestamps reveal two accumulation modes: **43% of syndrome buildings report 2+ complaint types on the same day** (silent decay, then a trigger releases everything), while others accumulate over years (20.8% reach four items within a month; 47.6% take over a year; median 332 days). Water-related complaints tend to be reported first; Paint/Plaster is a lagging indicator (first-report ratio 0.33-0.44) — reporting order, not physical causation.
+
+## Key Takeaways
+
+- **Dual-window validation is a general pattern** for any dataset where the outcome variable is administratively downstream of the input signal.
+- **Stratification + per-unit pooled rates** can control confounders credibly when regression is out of scope.
+- **Rejecting your best-looking finding** when it fails independent testing is worth more than the finding itself — it makes every surviving claim credible.
+- **Polars over pandas** made 21M-row iteration interactive instead of painful; the whole pipeline runs on a laptop.
+- **Null results are results**: the ACS zero-correlation finding is one of the report's most defensible claims.
+
+---
+
+**Course**: Big Data and Data Mining, Hasanuddin University, 2026 · **Report**: 47-page academic report (FTUH 2023 format) with pre-registered success criteria, confounder audit, and rejected-experiments log

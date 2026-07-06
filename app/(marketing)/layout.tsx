@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     url: process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000',
     siteName: 'Ikrar Gempur Tirani Portfolio',
     title: 'Ikrar Gempur Tirani | Data Scientist & ML Engineer',
-    description: 'Learning to transform data into insights through statistical analysis and building production ML systems. Focusing on NLP, deep learning, and AI product development.',
+    description: 'Transforming data into insights through statistical analysis and building production ML systems. Focused on NLP, RAG engineering, and AI product development.',
     images: [{
       url: '/images/foto-ikrar.jpg',
       width: 1200,

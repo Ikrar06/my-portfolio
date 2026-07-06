@@ -24,12 +24,30 @@ export default function AboutClient({ skills }: AboutClientProps) {
   // =========================
   const experiences = [
     {
+      org: 'Universitas Hasanuddin (DSITD)',
+      title: 'AI Engineer Intern — RAG Core (UniAI Team)',
+      type: 'Technical Role',
+      dates: 'Feb 2026 – Present',
+      location: 'Makassar, South Sulawesi',
+      desc: `Building the data and RAG core of UniAI, an institutional academic chatbot for Hasanuddin University, as part of Team 2 (Data & RAG Core). Developed an end-to-end retrieval pipeline using Qwen3-Embedding for dense retrieval, a BGE-Reranker, a Qdrant vector database, and Redis semantic caching to cut latency and inference cost. Designed a 6-layer safety and routing pipeline (keyword filter, Llama Guard, IndoBERT intent classifier, private API handler, RAG pipeline, output filter) and a three-tier OCR ingestion strategy (PyMuPDF, Tesseract, Qwen3-VL). Deployed and served Qwen3-VL-8B-Instruct via vLLM behind FastAPI and Nginx on an NVIDIA L40S GPU, load-testing toward 500 concurrent users.`,
+      skills: ['RAG', 'LLM', 'vLLM', 'Qdrant', 'FastAPI', 'Python', 'Embeddings', 'Redis', 'Docker']
+    },
+    {
+      org: 'PLN Icon Plus (Iconnet)',
+      title: 'Full Stack Developer Intern',
+      type: 'Technical Role',
+      dates: 'Feb 2026 – Apr 2026',
+      location: 'Makassar, South Sulawesi',
+      desc: `Designed and built an internal OPEX monitoring dashboard end-to-end using Next.js (TypeScript) and PostgreSQL to streamline budget tracking and realization reporting. Performed data reconciliation across financial and operational records, automating previously manual reporting workflows and improving data consistency for management reporting. Deployed the application to a Linux VPS and hardened it through a full penetration testing cycle, remediating all identified security vulnerabilities.`,
+      skills: ['Next.js', 'TypeScript', 'PostgreSQL', 'Full-Stack Development', 'Penetration Testing', 'Data Reconciliation']
+    },
+    {
       org: 'Cirebon Kuring Cafe',
       title: 'Fullstack Developer',
       type: 'Technical Role',
-      dates: 'June 2025 – Present',
+      dates: 'June 2025 – Mar 2026',
       location: 'Remote',
-      desc: `Developing web and mobile application using TypeScript (Next.js) and Flutter with PostgreSQL database architecture currently in pre-launch phase. Designing database schema and data models to manage cafe operations, inventory tracking, and customer order systems. Collaborating with stakeholders to gather requirements and translate business needs into technical specifications.`,
+      desc: `Developed web and mobile application using TypeScript (Next.js) and Flutter with PostgreSQL database architecture through the pre-launch phase. Designed database schema and data models to manage cafe operations, inventory tracking, and customer order systems. Collaborated with stakeholders to gather requirements and translate business needs into technical specifications.`,
       skills: ['TypeScript', 'Next.js', 'Flutter', 'PostgreSQL', 'Database Design', 'Requirements Gathering']
     },
     {
@@ -79,7 +97,7 @@ export default function AboutClient({ skills }: AboutClientProps) {
           <div className="mb-6 sm:mb-8">
             <TextType
               key={`about-tagline-${pageKey}`}
-              text="Informatics Engineering Student • Artificial Intelligence Enthusiast"
+              text="Informatics Engineering Student • AI / Machine Learning Engineer"
               className="text-xs sm:text-sm md:text-base text-white/60 font-medium tracking-wider uppercase"
               typingSpeed={80}
               showCursor={false}
@@ -120,20 +138,20 @@ export default function AboutClient({ skills }: AboutClientProps) {
               <div className="mt-6 md:mt-0">
                 <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/70 leading-relaxed font-light mb-3 sm:mb-4 text-justify">
                   Hi, I'm <span className="font-semibold text-white">Ikrar Gempur Tirani</span>, an{' '}
-                  <span className="text-white">Informatics Engineering student</span> at Hasanuddin University (GPA 3.92/4.00) focusing on <span className="text-white">Artificial Intelligence</span> with growing experience in machine learning, natural language processing, and statistical modeling.
+                  <span className="text-white">Informatics Engineering student</span> at Hasanuddin University (GPA 3.92/4.00) focusing on <span className="text-white">Artificial Intelligence</span> with hands-on experience in machine learning, natural language processing, and statistical modeling.
                 </p>
                 <p className="text-xs sm:text-sm md:text-base lg:text-lg text-white/60 leading-relaxed font-light mb-3 sm:mb-4 text-justify">
-                  Working with <span className="text-white">Python, TensorFlow, and PyTorch</span> to build end-to-end ML systems from data preprocessing to deployment. I work on projects ranging from agent-based market simulations to fine-tuning deep learning models for NLP tasks, learning to apply rigorous methodology with production engineering practices.
+                  Currently an <span className="text-white">AI Engineer intern</span> building the data and RAG core of <span className="text-white">UniAI</span>, an institutional academic chatbot for Hasanuddin University — working across the full ML lifecycle, from document ingestion and embeddings to retrieval, model serving with <span className="text-white">vLLM</span>, and deployment. Beyond that, my projects range from agent-based market simulations to fine-tuning transformer models for NLP tasks.
                 </p>
                 <p className="text-xs sm:text-sm md:text-base lg:text-lg text-white/60 leading-relaxed font-light text-justify">
-                  Currently leading Creative Media Division at <span className="text-white">Google Developer Groups on Campus</span>, developing technical expertise alongside communication and leadership skills. With full-stack development capabilities and design experience, I'm learning to build AI products that are both technically sound and user-friendly.
+                  I also lead the Creative Media Division at <span className="text-white">Google Developer Groups on Campus</span>, pairing technical work with communication and leadership. With full-stack development capabilities and five years of design experience, I build AI products that are both technically sound and user-friendly.
                 </p>
 
                 <div className="mt-4 sm:mt-6 grid gap-2 sm:gap-3 text-xs sm:text-sm text-white/60">
                   <div className="flex items-center"><div className="w-1.5 h-1.5 bg-white/40 rounded-full mr-3" /> Born and raised in Gorontalo, January 6, 2005</div>
                   <div className="flex items-center"><div className="w-1.5 h-1.5 bg-white/40 rounded-full mr-3" /> Currently living in Makassar, South Sulawesi</div>
-                  <div className="flex items-center"><div className="w-1.5 h-1.5 bg-white/40 rounded-full mr-3" /> Sixth semester Informatics student at Hasanuddin University (GPA 3.92)</div>
-                  <div className="flex items-center"><div className="w-1.5 h-1.5 bg-white/40 rounded-full mr-3" /> Pursuing Machine Learning Engineer and Data Science roles</div>
+                  <div className="flex items-center"><div className="w-1.5 h-1.5 bg-white/40 rounded-full mr-3" /> Final-year Informatics Engineering student at Hasanuddin University (GPA 3.92)</div>
+                  <div className="flex items-center"><div className="w-1.5 h-1.5 bg-white/40 rounded-full mr-3" /> Pursuing AI/Machine Learning Engineer and Data Science roles</div>
                 </div>
               </div>
             </FadeIn>
@@ -178,21 +196,21 @@ export default function AboutClient({ skills }: AboutClientProps) {
                 specialties: []
               },
               {
+                title: 'LLM & RAG Engineering',
+                desc: 'Building production LLM systems: retrieval-augmented generation, vector search, model serving with vLLM, and safety pipelines for real institutional use.',
+                // specialties: ['RAG Pipelines', 'Vector Databases (Qdrant)', 'vLLM Serving', 'LLM Safety & Routing']
+                specialties: []
+              },
+              {
                 title: 'Machine Learning & NLP',
-                desc: 'Developing machine learning systems with focus on NLP. Learning deep learning with PyTorch and TensorFlow through academic and personal projects.',
+                desc: 'Developing machine learning systems with a focus on NLP. Fine-tuning deep learning models with PyTorch and TensorFlow across academic and personal projects.',
                 // specialties: ['Deep Learning (PyTorch)', 'Natural Language Processing', 'Model Training & Optimization', 'Production ML Systems']
                 specialties: []
               },
               {
                 title: 'Full-Stack Development',
-                desc: 'Building web and mobile applications to bring ML models to users. Learning modern frameworks, APIs, and deployment practices.',
-                // specialties: ['React & Next.js', 'Flutter Mobile Apps', 'Flask APIs', 'Database Design']
-                specialties: []
-              },
-              {
-                title: 'Design Leadership',
-                desc: 'Leading creative teams with data-driven strategy. 5 years experience with proven metrics: 1M+ content views, 46% follower growth.',
-                // specialties: ['Team Management (6+ members)', 'Brand Strategy', 'UI/UX for AI Products', 'Growth Metrics']
+                desc: 'Building web and mobile applications to bring ML models to users. Working with modern frameworks, APIs, deployment, and security hardening.',
+                // specialties: ['React & Next.js', 'Flutter Mobile Apps', 'FastAPI & Flask', 'Database Design']
                 specialties: []
               }
             ].map((service, i) => (
@@ -279,7 +297,7 @@ export default function AboutClient({ skills }: AboutClientProps) {
             </FadeIn>
             <FadeIn key={`exp-desc-${pageKey}`} delay={0.2}>
               <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/60 max-w-3xl mx-auto font-light leading-relaxed px-4">
-                Full-stack development and creative leadership positions that combine technical implementation with data-driven strategy and team management.
+                AI engineering, full-stack development, and creative leadership positions that combine technical implementation with data-driven strategy and team management.
               </p>
             </FadeIn>
           </div>

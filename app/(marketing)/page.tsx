@@ -5,11 +5,11 @@ import HomeClient from './home-client'
 
 export const metadata: Metadata = {
   title: 'Home',
-  description: 'Ikrar Gempur Tirani - Informatics Engineering student at Hasanuddin University (GPA 3.92/4.00) learning Data Science and Machine Learning. Exploring Natural Language Processing, statistical modeling, and building ML systems while developing full-stack skills.',
-  keywords: ['Ikrar Gempur Tirani', 'Data Science Student', 'Machine Learning Student', 'NLP', 'Python', 'TensorFlow', 'PyTorch', 'Hasanuddin University', 'Student Portfolio', 'Learning AI'],
+  description: 'Ikrar Gempur Tirani - Informatics Engineering student at Hasanuddin University (GPA 3.92/4.00) building production RAG and ML systems. Hands-on experience in NLP, statistical modeling, and full-stack development.',
+  keywords: ['Ikrar Gempur Tirani', 'AI Engineer', 'Data Scientist', 'Machine Learning Engineer', 'RAG', 'NLP', 'Python', 'TensorFlow', 'PyTorch', 'vLLM', 'Hasanuddin University', 'Student Portfolio'],
   openGraph: {
     title: 'Ikrar Gempur Tirani — Student Portfolio',
-    description: 'Informatics student learning Data Science and ML at Hasanuddin University. Exploring machine learning, NLP, and statistical modeling through hands-on projects.',
+    description: 'Informatics student at Hasanuddin University building AI products: RAG systems, ML pipelines, and full-stack applications.',
     images: [
       {
         url: '/images/foto-ikrar.jpg',
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     title: 'Ikrar Gempur Tirani — Student Portfolio',
-    description: 'Informatics student learning Data Science and ML. Portfolio of learning projects and technical explorations.',
+    description: 'Informatics student building AI products with RAG, LLM serving, and full-stack development.',
   },
 }
 

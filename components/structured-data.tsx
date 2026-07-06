@@ -9,8 +9,8 @@ export default function StructuredData() {
     name: 'Ikrar Gempur Tirani',
     url: siteUrl,
     image: `${siteUrl}/images/foto-ikrar.jpg`,
-    jobTitle: 'Informatics Engineering Student',
-    description: 'Informatics Engineering student at Hasanuddin University (GPA 3.92/4.00) learning Data Science and Machine Learning. Passionate about NLP, statistical modeling, and building ML systems.',
+    jobTitle: 'AI Engineer & Data Scientist',
+    description: 'Informatics Engineering student at Hasanuddin University (GPA 3.92/4.00) with hands-on experience in RAG systems, NLP, and production ML. Building AI products with full-stack development skills.',
     alumniOf: {
       '@type': 'EducationalOrganization',
       name: 'Hasanuddin University',
@@ -19,12 +19,14 @@ export default function StructuredData() {
     knowsAbout: [
       'Machine Learning',
       'Natural Language Processing',
+      'Retrieval-Augmented Generation',
       'Data Science',
       'Statistical Analysis',
       'Python Programming',
       'Deep Learning',
       'TensorFlow',
       'PyTorch',
+      'vLLM',
     ],
     sameAs: [
       'https://github.com/Ikrar06',
@@ -37,7 +39,7 @@ export default function StructuredData() {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'Ikrar Gempur Tirani - Portfolio',
-    description: 'Personal portfolio of Ikrar Gempur Tirani, an Informatics Engineering student learning Data Science and Machine Learning at Hasanuddin University.',
+    description: 'Personal portfolio of Ikrar Gempur Tirani, an Informatics Engineering student at Hasanuddin University building RAG systems and production ML.',
     url: siteUrl,
     author: {
       '@type': 'Person',
@@ -98,7 +100,7 @@ export default function StructuredData() {
     mainEntity: {
       '@type': 'Person',
       name: 'Ikrar Gempur Tirani',
-      description: 'Informatics Engineering student learning Data Science and Machine Learning',
+      description: 'Informatics Engineering student building RAG systems and production ML',
       image: `${siteUrl}/images/foto-ikrar.jpg`,
     },
   }

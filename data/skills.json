@@ -12,6 +12,10 @@
     "skills": ["Jupyter Notebook", "Matplotlib", "Seaborn", "Statistical Modeling"]
   },
   {
+    "category": "LLM & RAG Engineering",
+    "skills": ["RAG", "vLLM", "Qdrant", "LlamaIndex", "Reranking", "Embeddings", "FastAPI", "Redis", "Docker"]
+  },
+  {
     "category": "Databases",
     "skills": ["MySQL", "PostgreSQL", "Supabase", "Firebase"]
   },
