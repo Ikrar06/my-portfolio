@@ -35,19 +35,12 @@ featured: true
 
 ## Project Overview
 
-This agent-based modeling (ABM) research project simulates an e-commerce marketplace with **7,580 autonomous agents** to quantify how coordinated fake review campaigns manipulate consumer trust and purchasing behavior. Using the **MESA framework** and local **Llama 3.1 8B** inference via Ollama, the simulation generates realistic review behavior and purchasing decisions to provide statistical evidence of market manipulation patterns.
-
-Developed as the final project for **Simulation and Modeling Course** at Hasanuddin University, this work combines agent-based modeling, large language models, and rigorous statistical analysis to answer critical research questions about e-commerce fraud.
+An agent-based modeling (ABM) study simulating an e-commerce marketplace with **7,580 autonomous agents** to quantify how coordinated fake-review campaigns manipulate consumer trust and conversion. Built with the **MESA framework** and local **Llama 3.1 8B** (via Ollama) for realistic review and purchase behavior, this was the final project for the Simulation and Modeling course at Hasanuddin University.
 
 ### Research Questions
 
-**RQ1: Fake Review Impact on Conversion Rates**
-
-How much does conversion rate increase for low-quality products targeted by fake review campaigns?
-
-**RQ2: Consumer Persona Vulnerability**
-
-Which consumer persona is most vulnerable to fake reviews? (Impulsive vs Careful vs Skeptical)
+- **RQ1** — How much does a fake-review campaign raise conversion for low-quality products?
+- **RQ2** — Which consumer persona (Impulsive, Careful, Skeptical) is most vulnerable?
 
 ### Key Findings
 
@@ -82,133 +75,24 @@ Which consumer persona is most vulnerable to fake reviews? (Impulsive vs Careful
 
 ## Simulation Architecture
 
-### MESA Framework Design
+Built on MESA with 5 headphone products (quality tiers from 4.25 to 9.25 out of 10), a random-activation scheduler, and per-iteration data collection. Two low-quality products — BudgetBeats (4.25/10) and ClearSound (5.25/10) — were targeted by fake reviews; three higher-quality products acted as controls.
 
-Multi-agent system built on **MESA (Modular Entity Scheduling Architecture)** with Products (5 headphone models with quality attributes), Agent Scheduler (RandomActivation), Data Collector (metrics tracking), and Phase Execution (Review Phase for genuine + fake review generation, Shopping Phase for purchase decisions).
+**Agent population (7,580):**
+- **1,200 genuine reviewers** — critical, balanced, and lenient personalities
+- **530 fake reviewers** — coordinated burst (80 reviews) then maintenance (450 reviews)
+- **6,000 shoppers** — Impulsive (reads 3 reviews), Careful (10), Skeptical (15)
 
-### Agent Population Breakdown (7,580 Total)
+## LLM Integration
 
-**Reviewer Agents (1,730 total)**
-- **Genuine Reviewers (1,200)**: 20 iterations x 5 products x 12 reviews
-  - 4 Critical personality (harsh ratings)
-  - 4 Balanced personality (objective ratings)
-  - 4 Lenient personality (generous ratings)
-- **Fake Reviewers (530)**: Coordinated campaign
-  - Burst phase: 80 reviews (iterations 4-5)
-  - Maintenance: 450 reviews (iterations 6-20)
-
-**Shopper Agents (6,000 total)**
-- 20 iterations x 5 products x 3 personas x 20 shoppers per group
-- **Impulsive (33%)**: Reads 3 reviews, fast decisions
-- **Careful (33%)**: Reads 10 reviews, balanced analysis
-- **Skeptical (33%)**: Reads 15 reviews, pattern detection
-
-### Product Configuration
-
-Five headphone products with realistic quality attributes:
-
-<div className="overflow-x-auto my-6">
-  <table className="min-w-full border-collapse">
-    <thead>
-      <tr className="bg-gradient-to-r from-framer-blue/20 to-framer-blue-light/20 border-b border-white/20">
-        <th className="px-6 py-3 text-left text-sm font-semibold text-white">ID</th>
-        <th className="px-6 py-3 text-left text-sm font-semibold text-white">Product</th>
-        <th className="px-6 py-3 text-left text-sm font-semibold text-white">Quality Tier</th>
-        <th className="px-6 py-3 text-left text-sm font-semibold text-white">Price (IDR)</th>
-        <th className="px-6 py-3 text-left text-sm font-semibold text-white">Avg Quality</th>
-        <th className="px-6 py-3 text-left text-sm font-semibold text-white">Targeted?</th>
-      </tr>
-    </thead>
-    <tbody className="divide-y divide-white/10">
-      <tr className="hover:bg-white/5 transition-colors">
-        <td className="px-6 py-4 text-sm text-text-secondary">1</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">SoundMax Pro</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">High</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">450,000</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">8.5/10</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">No</td>
-      </tr>
-      <tr className="hover:bg-white/5 transition-colors">
-        <td className="px-6 py-4 text-sm text-text-secondary">2</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">AudioBlast Wireless</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">Med-High</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">350,000</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">7.5/10</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">No</td>
-      </tr>
-      <tr className="hover:bg-white/5 transition-colors bg-red-500/10">
-        <td className="px-6 py-4 text-sm font-bold text-white">3</td>
-        <td className="px-6 py-4 text-sm font-bold text-white">BudgetBeats</td>
-        <td className="px-6 py-4 text-sm font-bold text-white">Low</td>
-        <td className="px-6 py-4 text-sm font-bold text-white">150,000</td>
-        <td className="px-6 py-4 text-sm font-bold text-white">4.25/10</td>
-        <td className="px-6 py-4 text-sm font-bold text-red-400">YES</td>
-      </tr>
-      <tr className="hover:bg-white/5 transition-colors">
-        <td className="px-6 py-4 text-sm text-text-secondary">4</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">TechWave Elite</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">Premium</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">650,000</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">9.25/10</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">No</td>
-      </tr>
-      <tr className="hover:bg-white/5 transition-colors bg-red-500/10">
-        <td className="px-6 py-4 text-sm font-bold text-white">5</td>
-        <td className="px-6 py-4 text-sm font-bold text-white">ClearSound Basic</td>
-        <td className="px-6 py-4 text-sm font-bold text-white">Low-Med</td>
-        <td className="px-6 py-4 text-sm font-bold text-white">250,000</td>
-        <td className="px-6 py-4 text-sm font-bold text-white">5.25/10</td>
-        <td className="px-6 py-4 text-sm font-bold text-red-400">YES</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-## LLM Integration Architecture
-
-### Local Inference System
-
-**Deployment Configuration**:
-- Model: Llama 3.1 8B
-- Platform: Ollama (local inference)
-- Context Windows: 2048-8192 tokens (dynamic)
-- Temperature: 0.6 (reviewers), 0.3 (shoppers), 0.7 (fake reviewers)
-- **Cost**: $0 (100% API cost elimination)
-
-### Prompt Engineering Strategy
-
-**Genuine Reviewer Prompts**: Quality-aware rating system with personality-based guidance. Example: Critical personality reviewing BudgetBeats (4.25/10 quality) generates 1-2 star reviews with specific feature mentions (sound, build, battery, comfort) using natural language without templates.
-
-**Fake Reviewer Prompts**: Variation strategy avoiding detection patterns with ALWAYS 5 stars, varied openings (direct opinion, time context, comparison, situation), natural language, specific details, and 1-4 sentences.
-
-**Shopper Decision Prompts**: Persona-specific logic - Impulsive (rating above 3.8 leads to BUY, HIGH vulnerability), Careful (10 reviews analysis, MEDIUM vulnerability), Skeptical (burst/pattern detection, LOW vulnerability).
+Llama 3.1 8B runs locally via Ollama with dynamic context windows (2,048–8,192 tokens) and role-specific temperature (0.3 shoppers, 0.6 genuine reviewers, 0.7 fake reviewers) — at **zero API cost**. Genuine-reviewer prompts are quality-aware and personality-driven; fake-reviewer prompts always give 5 stars with varied openings to avoid detection patterns; shopper prompts encode persona-specific decision logic.
 
 ## Experimental Design
 
-### Attack Timeline
+Attacks follow a **burst + maintenance** timeline: baseline (iterations 1–3, genuine reviews only), burst (4–5, 160 fake reviews), then adaptive maintenance (6–20) that scales fake volume to defend the rating (aggressive / moderate / normal). Reviews, transactions, and per-product metrics are exported to CSV each iteration for independent analysis.
 
-**Baseline (iterations 1-3)**: Only 180 genuine reviews (3 x 60)
+## RQ1: Fake-Review Impact
 
-**Burst (iterations 4-5)**: 40 fake reviews per target per iteration = 160 total fake
-
-**Maintenance (iterations 6-20)**: Adaptive volume based on rating - AGGRESSIVE (15 reviews if rating below 4.0), MODERATE (11 if rating below 4.3), NORMAL (7 if rating 4.3 or above)
-
-### Data Collection Pipeline
-
-**Per-Iteration Metrics**:
-- Reviews CSV: product_id, rating, text, is_fake, iteration, personality
-- Transactions CSV: product_id, persona, decision, reasoning, iteration
-- Model Metrics CSV: ratings, review counts, fake counts per product
-
-## Statistical Analysis Methodology
-
-### RQ1: Chi-Square Test for Fake Review Impact
-
-**Hypothesis**:
-- H0: Fake reviews have no effect on conversion rates
-- H1: Fake reviews significantly increase conversion rates
-
-**Results for Targeted Products**:
+Chi-Square tests on the two targeted products:
 
 <div className="overflow-x-auto my-6">
   <table className="min-w-full border-collapse">
@@ -246,18 +130,9 @@ Five headphone products with realistic quality attributes:
   </table>
 </div>
 
-**Interpretation**:
-- **p &lt; 0.0001**: Extremely strong statistical significance (reject H0)
-- **Cramér's V &gt; 0.6**: Large effect size (strong association)
-- **Practical significance**: 54-72pp increase is massive in real-world context
+Both results are extremely significant (p under 0.0001) with large effect sizes (Cramér's V above 0.6). Control products moved only +3–4pp from natural variation, confirming the jumps are caused by the campaign rather than noise.
 
-### RQ2: ANOVA for Persona Vulnerability
-
-**Hypothesis**:
-- H0: All personas equally vulnerable to manipulation
-- H1: Significant differences exist between personas
-
-**Vulnerability Ranking** (during attack on targeted products):
+## RQ2: Persona Vulnerability
 
 <div className="overflow-x-auto my-6">
   <table className="min-w-full border-collapse">
@@ -296,306 +171,23 @@ Five headphone products with realistic quality attributes:
   </table>
 </div>
 
-**ANOVA Test Results**:
-- F-statistic = **540.28**
-- p-value < **0.0001** (***)
-- Sample sizes: 680 per persona
+ANOVA confirms significant differences between personas (F = 540.28, p under 0.0001). Counterintuitively, the **Careful** persona is most vulnerable (+95pp): reading more reviews backfires when fake reviews dominate the sample. The **Skeptical** persona — which checks 15 reviews and watches for burst patterns — is **2.3x more resistant** (+40pp).
 
-**Key Finding**: Skeptical persona **2.3x less vulnerable** (40pp vs 92-95pp for others)
+## Key Contributions
 
-## Experimental Results
+- First simulation to quantify fake-review conversion lift (+54–72pp) with publication-grade statistical rigor.
+- Novel vulnerability finding: deeper-but-naive analysis (Careful) is riskier than skeptical pattern-checking.
+- Demonstrates local-LLM agent-based modeling for realistic natural-language behavior at zero API cost.
 
-### RQ1 Detailed Results
+## Practical Implications
 
-**BudgetBeats (Low Quality, ID = 3)**
+- **Platforms** — flag sudden rating jumps and review bursts; educate the most-vulnerable user segments.
+- **Consumers** — a skeptical mindset and attention to review timing offer 2.3x more protection than trusting star ratings alone.
 
-<div className="overflow-x-auto my-6">
-  <table className="min-w-full border-collapse">
-    <thead>
-      <tr className="bg-gradient-to-r from-framer-blue/20 to-framer-blue-light/20 border-b border-white/20">
-        <th className="px-6 py-3 text-left text-sm font-semibold text-white">Phase</th>
-        <th className="px-6 py-3 text-left text-sm font-semibold text-white">Iterations</th>
-        <th className="px-6 py-3 text-left text-sm font-semibold text-white">Avg Rating</th>
-        <th className="px-6 py-3 text-left text-sm font-semibold text-white">Conversion</th>
-        <th className="px-6 py-3 text-left text-sm font-semibold text-white">Change</th>
-      </tr>
-    </thead>
-    <tbody className="divide-y divide-white/10">
-      <tr className="hover:bg-white/5 transition-colors">
-        <td className="px-6 py-4 text-sm text-text-secondary">Baseline</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">1-3</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">2.1 stars</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">0.00%</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">-</td>
-      </tr>
-      <tr className="hover:bg-white/5 transition-colors">
-        <td className="px-6 py-4 text-sm text-text-secondary">Burst</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">4-5</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">3.8 stars</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">54.17%</td>
-        <td className="px-6 py-4 text-sm font-bold text-emerald-400">+54.17pp</td>
-      </tr>
-      <tr className="hover:bg-white/5 transition-colors">
-        <td className="px-6 py-4 text-sm text-text-secondary">Post-Burst</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">6-20</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">4.2 stars</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">79.22%</td>
-        <td className="px-6 py-4 text-sm font-bold text-emerald-400">+79.22pp</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+## Performance & Reproducibility
 
-**ClearSound Basic (Low-Medium, ID = 5)**
-
-<div className="overflow-x-auto my-6">
-  <table className="min-w-full border-collapse">
-    <thead>
-      <tr className="bg-gradient-to-r from-framer-blue/20 to-framer-blue-light/20 border-b border-white/20">
-        <th className="px-6 py-3 text-left text-sm font-semibold text-white">Phase</th>
-        <th className="px-6 py-3 text-left text-sm font-semibold text-white">Iterations</th>
-        <th className="px-6 py-3 text-left text-sm font-semibold text-white">Avg Rating</th>
-        <th className="px-6 py-3 text-left text-sm font-semibold text-white">Conversion</th>
-        <th className="px-6 py-3 text-left text-sm font-semibold text-white">Change</th>
-      </tr>
-    </thead>
-    <tbody className="divide-y divide-white/10">
-      <tr className="hover:bg-white/5 transition-colors">
-        <td className="px-6 py-4 text-sm text-text-secondary">Baseline</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">1-3</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">2.3 stars</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">0.00%</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">-</td>
-      </tr>
-      <tr className="hover:bg-white/5 transition-colors">
-        <td className="px-6 py-4 text-sm text-text-secondary">Burst</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">4-5</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">4.1 stars</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">71.67%</td>
-        <td className="px-6 py-4 text-sm font-bold text-emerald-400">+71.67pp</td>
-      </tr>
-      <tr className="hover:bg-white/5 transition-colors">
-        <td className="px-6 py-4 text-sm text-text-secondary">Post-Burst</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">6-20</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">4.4 stars</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">76.22%</td>
-        <td className="px-6 py-4 text-sm font-bold text-emerald-400">+76.22pp</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-**Control Products (Non-Targeted)**:
-
-<div className="overflow-x-auto my-6">
-  <table className="min-w-full border-collapse">
-    <thead>
-      <tr className="bg-gradient-to-r from-framer-blue/20 to-framer-blue-light/20 border-b border-white/20">
-        <th className="px-6 py-3 text-left text-sm font-semibold text-white">Product</th>
-        <th className="px-6 py-3 text-left text-sm font-semibold text-white">Quality</th>
-        <th className="px-6 py-3 text-left text-sm font-semibold text-white">Baseline Conv</th>
-        <th className="px-6 py-3 text-left text-sm font-semibold text-white">Final Conv</th>
-        <th className="px-6 py-3 text-left text-sm font-semibold text-white">Change</th>
-      </tr>
-    </thead>
-    <tbody className="divide-y divide-white/10">
-      <tr className="hover:bg-white/5 transition-colors">
-        <td className="px-6 py-4 text-sm text-text-secondary">SoundMax Pro</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">High</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">75%</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">78%</td>
-        <td className="px-6 py-4 text-sm text-emerald-400">+3pp (natural)</td>
-      </tr>
-      <tr className="hover:bg-white/5 transition-colors">
-        <td className="px-6 py-4 text-sm text-text-secondary">AudioBlast</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">Med-High</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">58%</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">62%</td>
-        <td className="px-6 py-4 text-sm text-emerald-400">+4pp (natural)</td>
-      </tr>
-      <tr className="hover:bg-white/5 transition-colors">
-        <td className="px-6 py-4 text-sm text-text-secondary">TechWave Elite</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">Premium</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">82%</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">85%</td>
-        <td className="px-6 py-4 text-sm text-emerald-400">+3pp (natural)</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-**Key Insight**: Only targeted products show massive jumps; control products show natural small fluctuations.
-
-### RQ2 Detailed Results
-
-**Persona Vulnerability on Targeted Products**:
-
-<div className="overflow-x-auto my-6">
-  <table className="min-w-full border-collapse">
-    <thead>
-      <tr className="bg-gradient-to-r from-framer-blue/20 to-framer-blue-light/20 border-b border-white/20">
-        <th className="px-6 py-3 text-left text-sm font-semibold text-white">Persona</th>
-        <th className="px-6 py-3 text-left text-sm font-semibold text-white">Baseline</th>
-        <th className="px-6 py-3 text-left text-sm font-semibold text-white">Attack</th>
-        <th className="px-6 py-3 text-left text-sm font-semibold text-white">Impact</th>
-        <th className="px-6 py-3 text-left text-sm font-semibold text-white">Rank</th>
-      </tr>
-    </thead>
-    <tbody className="divide-y divide-white/10">
-      <tr className="hover:bg-white/5 transition-colors">
-        <td className="px-6 py-4 text-sm font-semibold text-white">Careful</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">0.0%</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">95.0%</td>
-        <td className="px-6 py-4 text-sm font-bold text-red-400">+95.0pp</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">#1</td>
-      </tr>
-      <tr className="hover:bg-white/5 transition-colors">
-        <td className="px-6 py-4 text-sm font-semibold text-white">Impulsive</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">0.0%</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">92.5%</td>
-        <td className="px-6 py-4 text-sm font-bold text-red-400">+92.5pp</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">#2</td>
-      </tr>
-      <tr className="hover:bg-white/5 transition-colors">
-        <td className="px-6 py-4 text-sm font-semibold text-white">Skeptical</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">0.0%</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">40.4%</td>
-        <td className="px-6 py-4 text-sm font-bold text-emerald-400">+40.4pp</td>
-        <td className="px-6 py-4 text-sm text-text-secondary">#3</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-**Key Findings**:
-
-1. **Careful Persona Most Vulnerable**: Paradoxically, deeper analysis (10 reviews) increases susceptibility when fake reviews dominate the sample.
-
-2. **Skeptical Persona 2.3x More Resistant**: Pattern detection and burst ratio analysis provide some protection.
-
-3. **Impulsive Nearly As Vulnerable**: Despite reading only 3 reviews, high trust in star ratings makes them susceptible.
-
-## Key Insights and Contributions
-
-### Scientific Contributions
-
-**Quantitative Evidence of Manipulation Effectiveness**
-
-First simulation study to demonstrate **+54-72pp conversion increase** with publication-grade statistical rigor (p < 0.0001).
-
-**Persona-Specific Vulnerability Profiles**
-
-Novel finding: **Careful persona MOST vulnerable** (95pp impact) despite deeper review analysis. Challenges assumption that more information = better decisions when information is manipulated.
-
-**LLM-Powered Agent-Based Modeling Methodology**
-
-Demonstrates feasibility of local LLM inference (Llama 3.1 8B) for realistic natural language generation in ABM research with **zero API costs**.
-
-**Temporal Dynamics of Trust Manipulation**
-
-Quantifies **burst + maintenance** attack strategy effectiveness, showing sustained elevation of ratings and conversion even as genuine reviews accumulate.
-
-**Detection-Resistant Campaign Design**
-
-Adaptive maintenance strategy (AGGRESSIVE/MODERATE/NORMAL) maintains ratings without obvious spikes that detection algorithms might flag.
-
-### Practical Implications
-
-**For E-Commerce Platforms**:
-- **Burst Detection**: Monitor for sudden rating jumps &gt; 1.0 stars
-- **Temporal Analysis**: Flag products with 60%+ positive reviews in short timespan
-- **Reviewer Patterns**: Detect coordinated timing of 5-star reviews
-- **Consumer Education**: Warn Careful/Impulsive users they're most vulnerable
-
-**For Consumers**:
-- **Skeptical Mindset**: 2.3x more protective than trusting approach
-- **Pattern Recognition**: Look for rating jumps and review bursts
-- **Quality Signals**: Focus on specific product details vs generic praise
-- **Baseline Comparison**: Check pre-campaign ratings if available
-
-**For Researchers**:
-- **ABM + LLM Synergy**: Realistic behavior simulation without manual scripting
-- **Cost-Effective Research**: Local inference enables large-scale experiments
-- **Reproducible Methodology**: Open-source framework for replication
-- **Statistical Rigor**: Publication-ready analysis pipeline
-
-## Technical Implementation Highlights
-
-### Performance Metrics
-
-**LLM Inference**:
-- Average: 1.8 seconds per review generation
-- Throughput: approximately 1,730 reviews in approximately 52 minutes
-- Memory: approximately 8 GB (Ollama server)
-
-**Simulation Runtime**:
-- 20 iterations: approximately 4-6 hours on consumer hardware
-- Bottleneck: LLM inference
-
-**Reproducibility**:
-- Fixed random seed: 42
-- Version control: ollama==0.1.0, mesa less than 3.0
-- CSV exports for independent analysis
-
-## Lessons Learned
-
-### Key Insights
-
-**LLM Integration**:
-- Local inference viable for research (zero cost)
-- Dynamic context windows prevent overflow
-- Quality-speed tradeoff acceptable (1.8s per review)
-
-**Prompt Engineering**:
-- Quality-aware prompts generate realistic genuine reviews
-- Variation templates prevent fake review uniformity
-- Persona-specific rules create emergent behavior
-
-**Statistical Rigor**:
-- Multiple tests (Chi-Square, ANOVA) strengthen claims
-- Effect sizes (Cramér's V) show practical significance
-- Clear baseline/attack comparison isolates causality
-
-**Consumer Behavior**:
-- **Surprising**: Careful persona MOST vulnerable (not least)
-- **Intuitive**: Skeptical pattern detection provides 2.3x protection
-- **Actionable**: Reading 15 reviews (Skeptical) much better than 10 reviews (Careful)
-
-## Future Work
-
-### Model Extensions
-
-**Network Effects**:
-- Social influence between consumers
-- Viral review sharing
-- Influencer-driven campaigns
-
-**Platform Interventions**:
-- Detection algorithm simulation
-- Reviewer reputation scores
-- Verified purchase badges
-
-**Statistical Rigor**:
-- Monte Carlo simulation (100+ runs)
-- Sensitivity analysis on all parameters
-- Bayesian inference for uncertainty quantification
-
-## Conclusion
-
-This agent-based modeling study provides **empirical evidence** that coordinated fake review campaigns are **highly effective** at manipulating consumer trust, increasing conversion rates by **+54-72 percentage points** for low-quality products with **p < 0.0001 statistical significance**.
-
-**Key Achievements**:
-- Publication-grade statistical evidence (Chi-Square = 121-177, p less than 0.0001)
-- Novel vulnerability findings (Careful persona MOST vulnerable, +95pp impact)
-- Technical innovation (Local Llama 3.1 8B, 100% cost elimination)
-- Methodological contribution (LLM-powered ABM for realistic simulation)
-
-**Impact**: Demonstrates that fake reviews work (72%+ conversion for low-quality products), consumers are vulnerable (even "Careful" shoppers), detection is possible (burst patterns provide signals), and skepticism helps (2.3x more resistant).
-
-**Future work** should focus on real-world validation with platform data, detection algorithm evaluation, and long-term temporal dynamics.
+LLM inference averages 1.8s per review (roughly 1,730 reviews in ~52 minutes, ~8 GB RAM); a full 20-iteration run takes ~4–6 hours on consumer hardware, with a fixed random seed (42) and CSV exports for reproducibility.
 
 ---
 
-**Project Repository**: [GitHub - fake-review-abm-llm](https://github.com/Ikrar06/fake-review-abm-llm)
-
-**Course**: Simulation and Modeling, Hasanuddin University, 2025
+**Repository**: [fake-review-abm-llm](https://github.com/Ikrar06/fake-review-abm-llm) · **Course**: Simulation and Modeling, Hasanuddin University, 2025

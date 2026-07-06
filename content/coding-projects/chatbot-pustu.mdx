@@ -36,175 +36,37 @@ featured: true
 
 ## Project Overview
 
-**Chatbot PUSTU** is a full-stack medical anamnesis chatbot designed for Indonesian **Puskesmas** (community health centers) healthcare workers. Built as a Natural Language Processing course project, this production-ready system uses **Multinomial Naive Bayes with TF-IDF vectorization** to achieve **92.61% intent classification accuracy** across 14 medical intent classes for Indonesian language patient interviews.
+**Chatbot PUSTU** is a full-stack medical anamnesis chatbot for Indonesian **Puskesmas** (community health centers). Built for a Natural Language Processing course, it uses **Multinomial Naive Bayes with TF-IDF vectorization** to reach **92.61% intent classification accuracy** across 14 Indonesian medical intent classes — covering the full pipeline from LLM-powered data generation to a custom NER system, stateful dialog management, and 24/7 cloud deployment.
 
-The system demonstrates end-to-end NLP engineering: from **LLM-powered training data generation** (Gemini Flash 2.0 API) to **custom preprocessing pipeline built from scratch**, **dictionary-based NER system**, **stateful dialog management**, and **full-stack deployment** on Railway (Flask backend) and Vercel (Next.js frontend) with **24/7 availability**.
+## Healthcare Problem
 
-### Healthcare Problem Statement
-
-Indonesian Puskesmas face significant workflow inefficiencies in patient anamnesis:
-
-- **Manual Data Collection**: Time-consuming patient history documentation (15+ minutes per patient)
-- **Inconsistent Forms**: Non-standardized anamnesis records across healthcare workers
-- **Language Barriers**: Indonesian medical terminology lacks robust NLP tools and libraries
-- **Limited Resources**: Small health centers cannot afford expensive EMR systems
-- **Workflow Bottleneck**: Doctor time consumed by administrative data entry instead of diagnosis
+Indonesian Puskesmas struggle with slow, inconsistent patient anamnesis: 15+ minutes of manual history-taking per patient, non-standardized records, and a lack of robust Indonesian medical NLP tooling — all while small clinics cannot afford commercial EMR systems.
 
 ## Technical Architecture
 
-### System Overview
+Three-tier system with an ML-powered backend:
 
-Three-tier architecture with ML-powered backend:
+- **Frontend (Vercel)** — Next.js 16 + TypeScript chat UI with conversation history, dark/light mode, and client-side PDF export.
+- **Backend (Railway)** — Flask + Gunicorn serving intent classification, entity extraction, dialog state, and smart prefilling.
+- **ML pipeline** — Multinomial Naive Bayes (alpha=0.1) over TF-IDF features (5,000 features, 1–2 n-grams), custom preprocessing, and dictionary-based NER (97 symptoms, 23 body locations) with hybrid keyword boosting.
 
-**Frontend (Vercel)**
-- Next.js 16 + TypeScript
-- Chat UI with conversation history
-- Dark/Light mode toggle
-- PDF export (client-side jsPDF)
-- Session state management
+## Training Data Generation (Gemini Flash 2.0)
 
-**Backend (Railway)**
-- Flask + Gunicorn
-- Intent classification endpoint
-- Entity extraction (NER)
-- Dialog state management
-- Smart prefilling algorithm
-- Session persistence (in-memory)
+With no existing Indonesian medical anamnesis dataset, I generated **14,000 balanced samples** (1,000 each across 14 intents) using Gemini Flash 2.0 with prompt engineering tuned for colloquial Indonesian medical language — total cost roughly $3.50 on the free tier.
 
-**ML Pipeline**
-- Multinomial Naive Bayes (alpha=0.1)
-- TF-IDF Vectorizer (5000 features, n-grams 1-2)
-- Custom preprocessing (slang + stopwords)
-- Dictionary-based NER (97 symptoms, 23 locations)
-- Hybrid prediction (ML + keyword boosting)
+The 14 intents span the full interview: chief complaint, accompanying symptoms, duration, location, severity, medical history, medications, allergies, and risk factors, plus conversational intents (greeting, thanks, confirmation, denial, unclear).
 
-### Technology Stack
+## NLP Preprocessing (Built From Scratch)
 
-**Machine Learning Pipeline**
-- Algorithm: Multinomial Naive Bayes (sklearn)
-- Vectorization: TF-IDF (5000 max features, n-grams 1-2)
-- Hyperparameters: Laplace smoothing alpha=0.1
-- Custom NLP: Regex-based preprocessing, dictionary-based NER
+Because Indonesian NLP libraries lack medical vocabulary and slang handling, I built a custom pipeline: lowercasing, punctuation removal, tokenization, slang normalization (94 mappings, e.g. *gak → tidak*, *udah → sudah*), and stopword filtering (93 words).
 
-**Training Data Generation**
-- LLM API: Gemini Flash 2.0 (Google AI Studio)
-- Prompt Engineering: Custom prompts for Indonesian medical terminology
-- Dataset Size: 14,000 samples (1,000 per intent x 14 classes)
-- Generation Cost: ~$3.50 total (FREE tier)
+Example: "Dok saya batuk gak sembuh-sembuh udah 3 hari" becomes "batuk tidak sembuh sudah 3 hari".
 
-## Training Data Generation with Gemini Flash 2.0
+## Custom Named Entity Recognition
 
-### LLM-Powered Dataset Creation
+With no pre-trained Indonesian medical NER available, entities are extracted via dictionary and regex matching: a 97-type symptom dictionary (with synonyms), 23 body locations, and 3 severity levels. Duration extraction uses context keywords (*sudah, sejak, selama, sekitar*) to avoid false positives — "batuk sudah 3 hari" is captured while "umur saya 28 tahun" is correctly rejected.
 
-**Challenge**: No existing Indonesian medical anamnesis dataset available for training.
-
-**Solution**: Automated generation using Gemini Flash 2.0 API with custom prompt engineering.
-
-### Intent Definitions
-
-14 medical conversation intent classes:
-
-- **keluhan_utama**: Patient's chief complaint with symptoms
-- **jawab_gejala_penyerta**: Additional accompanying symptoms
-- **jawab_durasi**: Duration of symptoms (days/weeks/months)
-- **jawab_lokasi**: Body location of complaint
-- **jawab_severity**: Severity level (mild/moderate/severe)
-- **jawab_riwayat_penyakit**: Previous medical history
-- **jawab_riwayat_obat**: Current medications
-- **jawab_alergi**: Drug/food allergies
-- **jawab_faktor_risiko**: Lifestyle risk factors
-- **sapaan**: Greeting from patient
-- **ucapan_terima_kasih**: Thank you from patient
-- **konfirmasi**: Yes/confirmation response
-- **penyangkalan**: No/denial response
-- **tidak_jelas**: Unclear/confused response
-
-### Prompt Engineering Strategy
-
-Key prompt design decisions:
-- **Patient persona**: "Puskesmas patient" for realistic Indonesian medical language
-- **Medical context**: Reference common conditions (ISPA, Gastritis) for relevant terminology
-- **Natural language**: Explicit instruction for colloquial Indonesian, not formal medical jargon
-- **Variability**: Encourage sentence diversity to prevent model overfitting
-- **Format constraints**: Prevent numbering/bullets that complicate parsing
-
-### Final Dataset Statistics
-
-- **Total samples**: 14,000 (balanced)
-- **Intent classes**: 14 (1,000 samples each)
-- **Average sentence length**: 51.3 characters raw, 38.7 processed
-- **Language**: Indonesian (Bahasa Indonesia)
-- **Domain**: Medical anamnesis (Puskesmas context)
-- **Generation time**: ~4 hours (with FREE tier rate limits)
-
-## NLP Preprocessing Pipeline (From Scratch)
-
-### Why Build From Scratch?
-
-**Challenge**: Existing Indonesian NLP libraries (NLTK, spaCy) lack medical domain vocabulary and Indonesian slang normalization for patient speech.
-
-**Solution**: Custom preprocessing pipeline with domain-specific dictionaries.
-
-### Text Preprocessing Pipeline
-
-Custom preprocessing pipeline combining lowercase normalization, punctuation removal, tokenization, slang normalization (94 mappings), and stopword filtering (93 words).
-
-**Example transformation:**
-- Input: "Dok saya batuk gak sembuh-sembuh udah 3 hari"
-- Output: "batuk tidak sembuh sudah 3 hari"
-
-### Slang Normalization
-
-**Dictionary**: 94 Indonesian slang mappings
-
-Key mappings (medical context):
-- gak to tidak
-- udah to sudah
-- gimana to bagaimana
-- kenapa to mengapa
-
-**Rationale**: Indonesian patients use colloquial speech. Normalization improves TF-IDF feature consistency.
-
-### Stopword Filtering
-
-**Dictionary**: 93 Indonesian stopwords
-
-Custom medical stopwords: Removed common but uninformative words ("dok", "bu", "pak") while preserving medical terms.
-
-## Custom Named Entity Recognition (NER)
-
-### Dictionary-Based NER System
-
-**Why not spaCy/Stanza**: No pre-trained Indonesian medical NER models available.
-
-**Solution**: Dictionary-based keyword matching with regex patterns.
-
-### Entity Dictionaries
-
-**Symptom Dictionary** (97 symptom types)
-- demam: systemic (synonyms: panas, meriang, demam tinggi)
-- batuk: respiratory (synonyms: batuk kering, batuk berdahak)
-- nyeri: pain (synonyms: sakit, perih, nyeri hebat)
-
-**Body Location Dictionary** (23 body locations)
-- kepala, dada, perut, tenggorokan, etc.
-
-**Severity Keywords** (3 levels)
-- ringan: ringan, sedikit, agak, lumayan
-- sedang: sedang, biasa, normal
-- berat: berat, parah, sangat, sekali, hebat
-
-### Context-Aware Duration Extraction
-
-Critical feature: Context-aware extraction using keywords like 'sudah', 'sejak', 'selama', 'sekitar' to prevent false positives.
-
-**Examples:**
-- "Batuk sudah 3 hari" -&gt; Extracts 'sudah 3 hari' (correct)
-- "Umur saya 28 tahun" -&gt; Correctly rejects (not duration)
-
-### NER Performance
-
-Validation (500-sample manual test):
+**NER validation** (500-sample manual test):
 
 <div className="overflow-x-auto my-6">
   <table className="min-w-full border-collapse">
@@ -245,175 +107,29 @@ Validation (500-sample manual test):
   </table>
 </div>
 
-## Intent Classification Model
+## Intent Classification
 
-### Multinomial Naive Bayes Architecture
+Naive Bayes was chosen for sub-10ms inference, roughly 2s training on 14K samples, native handling of sparse TF-IDF features, and interpretable probabilistic outputs for confidence thresholding.
 
-**Why Naive Bayes?**
+**Test set (2,800 samples):** 92.61% accuracy with 93% macro precision, recall, and F1. Strongest intents reach 98% F1 (greeting, medication history, unclear); weakest are chief complaint (84%, confused with accompanying symptoms) and severity (89%, ambiguous keywords).
 
-1. **Fast inference**: Less than 10ms prediction latency (critical for real-time chat)
-2. **Low training time**: ~2 seconds for 14,000 samples
-3. **Handles sparse TF-IDF**: Designed for high-dimensional text features
-4. **Probabilistic outputs**: Enables confidence thresholding
-5. **Interpretable**: Can inspect feature importance
+A **hybrid layer** boosts ML predictions with keyword evidence (0.90–0.95 confidence thresholds), lifting effective accuracy to roughly 94%.
 
-### TF-IDF Vectorization
+## Dialog Management
 
-Configuration: 5000 max features, unigrams + bigrams (1-2), min document frequency = 2, sublinear term frequency scaling.
+A 14-stage stateful interview runs from greeting and demographics through complaint, symptoms, duration, location, severity, history, medications, allergies, and risk factors to a final summary. A **smart prefilling** algorithm auto-fills later stages when a user volunteers information early — "sakit kepala parah sudah 3 hari di bagian kanan" fills symptom, severity, duration, and location at once, cutting average interview time by roughly 30%.
 
-**Feature examples:**
-- Unigrams: batuk, demam, pusing, sakit, sudah, hari
-- Bigrams: batuk kering, demam tinggi, sakit kepala, sudah hari
+## Deployment
 
-### Model Evaluation
+The backend runs on Railway (Python 3.10, Gunicorn, models loaded in memory); the frontend on Vercel (global CDN, Next.js 16 / React 19). Both use automatic HTTPS with 24/7 availability.
 
-Test set performance (2,800 samples):
+## Key Takeaways
 
-**Overall Metrics**
-- **Accuracy**: 92.61%
-- **Precision (macro-avg)**: 93%
-- **Recall (macro-avg)**: 93%
-- **F1-Score (macro-avg)**: 93%
-
-**Top-performing intents** (F1-score):
-- sapaan: 98%
-- jawab_riwayat_obat: 98%
-- tidak_jelas: 97%
-- penyangkalan: 96%
-- ucapan_terima_kasih: 96%
-
-**Challenging intents**:
-- keluhan_utama: 84% (often confused with jawab_gejala_penyerta)
-- jawab_riwayat_penyakit: 88% (overlaps with medical history intents)
-- jawab_severity: 89% (severity keywords ambiguous)
-
-### Hybrid Prediction System
-
-**Challenge**: ML model alone sometimes overconfident on ambiguous inputs.
-
-**Solution**: Combine ML predictions with keyword-based confidence boosting.
-
-Confidence thresholds:
-- **0.95**: Strong keyword evidence (duration with context)
-- **0.90**: Moderate keyword evidence (location, severity, allergy)
-- **Less than 0.70**: ML uncertain, prefer keyword-based prediction
-
-**Result**: Improved accuracy from 92.61% to ~94% on validation set.
-
-## Dialog State Management
-
-### 14-Stage Conversation Flow
-
-Stateful anamnesis interview:
-
-1. Greeting, 2. Nama, 3. Nama Panggilan, 4. Umur, 5. Jenis Kelamin, 6. Keluhan Utama, 7. Gejala, 8. Durasi, 9. Lokasi, 10. Severity, 11. Riwayat Penyakit, 12. Riwayat Obat, 13. Alergi, 14. Faktor Risiko, 15. Summary
-
-### Smart Prefilling Algorithm
-
-**Purpose**: Auto-fill future stages if user provides information early.
-
-**Example:** User says "Saya sakit kepala parah sudah 3 hari di bagian kanan" at initial stage. System extracts symptom (sakit kepala), severity (parah), duration (3 hari), and location (kepala), then auto-fills stages 8-10 and skips those questions.
-
-**Impact**: Reduces average anamnesis time by ~30% (tested with healthcare workers).
-
-## Full-Stack Implementation
-
-### Backend API (Flask)
-
-**Core Endpoints**:
-
-**POST /chat** - Main conversation endpoint
-- Intent classification
-- Entity extraction
-- Dialog state update
-- Smart prefilling
-- Response generation
-
-**POST /reset** - Reset conversation
-**GET /health** - Health check
-
-**Session Management**: In-memory storage with UUID session IDs
-
-### Frontend (Next.js)
-
-**Tech stack**:
-- Next.js 16.0.6 with App Router
-- TypeScript 5.x
-- Tailwind CSS v4
-- Axios for HTTP requests
-- jsPDF for PDF export
-
-**Key features**:
-- Message history display
-- User input field
-- Loading indicator
-- PDF export button
-- Dark/Light mode toggle
-
-### Cloud Deployment
-
-**Backend (Railway)**
-- Python 3.10+ environment
-- Gunicorn WSGI server
-- Automatic HTTPS
-- Models loaded at startup (in-memory)
-
-**Frontend (Vercel)**
-- Global CDN distribution
-- Automatic HTTPS
-- Next.js 16 (React 19)
-- Static + SSR pages
-
-**Uptime**: 24/7 availability with automatic health checks.
-
-## Key Insights and Lessons Learned
-
-### NLP for Low-Resource Languages
-
-1. **LLM-Powered Data Generation Works**: Gemini Flash 2.0 produces high-quality Indonesian medical data with proper prompt engineering. Cost-effective ($3.50 vs ~$1,000+ manual annotation).
-
-2. **Domain-Specific Dictionaries Critical**: Custom dictionaries outperform generic Indonesian NLP libraries for medical domain. Dictionary-based NER achieves 90%+ F1-score without expensive training.
-
-3. **Slang Normalization Essential**: Real patient speech uses colloquial Indonesian ("gak", "udah"). Custom normalization significantly improves feature consistency.
-
-4. **Context-Aware Extraction Needed**: Naive regex patterns fail. Context keywords ("sudah", "sejak") prevent false positives.
-
-5. **Classical ML Still Effective**: Naive Bayes achieves 92.61% accuracy with 100x faster inference than BERT and zero GPU cost.
-
-### Production ML System Design
-
-1. **Hybrid Prediction Improves Reliability**: Combining ML with keyword-based rules reduces error rate from ~7% to ~4%.
-
-2. **Confidence Thresholding Crucial**: Setting thresholds enables "ask clarification" fallback instead of wrong predictions.
-
-3. **Smart Prefilling Significantly Improves UX**: Auto-filling future stages speeds workflow by ~30%.
-
-4. **Session Persistence Matters**: In-memory acceptable for demo, but production requires Redis/database.
-
-## Conclusion
-
-**Chatbot PUSTU** demonstrates that **production-grade healthcare NLP systems can be built for low-resource languages** (Indonesian medical terminology) using:
-
-- LLM-powered data generation (Gemini Flash 2.0)
-- Custom NLP preprocessing built from scratch
-- Dictionary-based NER without external libraries
-- Classical ML techniques (Naive Bayes + TF-IDF)
-- Stateful dialog management with smart prefilling
-- Full-stack deployment on free-tier cloud platforms
-
-**Achieved metrics**:
-- 92.61% intent classification accuracy
-- 14,000 balanced training samples (automated via LLM)
-- 90%+ NER F1-scores
-- 30% workflow time reduction
-- 24/7 cloud deployment (zero cost)
-
-**Impact**: Streamlined patient anamnesis workflow for Indonesian Puskesmas healthcare workers, demonstrating feasibility of domain-specific NLP for low-resource languages at minimal cost.
+- LLM-generated data is a cost-effective substitute for manual annotation in low-resource domains (roughly $3.50 vs $1,000+).
+- Domain-specific dictionaries beat generic Indonesian NLP libraries for medical NER (90%+ F1, no training).
+- Classical ML (Naive Bayes + TF-IDF) still delivers production accuracy with roughly 100x faster inference than BERT and zero GPU cost.
+- Hybrid prediction and confidence thresholding reduce error rate and enable graceful "ask for clarification" fallbacks.
 
 ---
 
-**Live Demo**: [https://pustu-anamnesis-chatbot.vercel.app/](https://pustu-anamnesis-chatbot.vercel.app/)
-
-**Source Code**: [GitHub Repository](https://github.com/Ikrar06/pustu-anamnesis-chatbot)
-
-**Course**: Natural Language Processing, Hasanuddin University, 2025
+**Live Demo**: [pustu-anamnesis-chatbot.vercel.app](https://pustu-anamnesis-chatbot.vercel.app/) · **Source**: [GitHub Repository](https://github.com/Ikrar06/pustu-anamnesis-chatbot) · **Course**: Natural Language Processing, Hasanuddin University, 2025
