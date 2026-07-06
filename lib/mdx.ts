@@ -65,6 +65,7 @@ export type ProjectFrontmatter = {
   }
   liveUrl?: string
   githubUrl?: string
+  reportUrl?: string
   behanceUrl?: string
   dribbbleUrl?: string
   instagramUrl?: string
@@ -135,6 +136,7 @@ export type ProjectMeta = {
   }
   liveUrl: string
   githubUrl: string
+  reportUrl: string
   behanceUrl: string
   dribbbleUrl: string
   instagramUrl: string
@@ -259,6 +261,7 @@ async function processProjectFiles(files: string[], directory: string, projectTy
         testimonial: fm.testimonial,
         liveUrl: ensureString(fm.liveUrl),
         githubUrl: ensureString(fm.githubUrl),
+        reportUrl: ensureString(fm.reportUrl),
         behanceUrl: ensureString(fm.behanceUrl),
         dribbbleUrl: ensureString(fm.dribbbleUrl),
         instagramUrl: ensureString(fm.instagramUrl),
@@ -533,6 +536,7 @@ export async function getProjectBySlug(
     testimonial: frontmatter.testimonial,
     liveUrl: ensureString(frontmatter.liveUrl),
     githubUrl: ensureString(frontmatter.githubUrl),
+    reportUrl: ensureString(frontmatter.reportUrl),
     behanceUrl: ensureString(frontmatter.behanceUrl),
     dribbbleUrl: ensureString(frontmatter.dribbbleUrl),
     instagramUrl: ensureString(frontmatter.instagramUrl),

@@ -16,7 +16,8 @@ export default function DownloadCVButton() {
   return (
     <a
       href="/cv/Ikrar-Gempur-Tirani-CV.pdf"
-      download="Ikrar-Gempur-Tirani-CV.pdf"
+      target="_blank"
+      rel="noopener noreferrer"
       onClick={handleClick}
       className="group flex items-center justify-center gap-2 sm:gap-3 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl bg-white/10 border border-white/20 text-white text-sm sm:text-base font-medium hover:bg-white/20 hover:border-white/30 transition-all duration-300 backdrop-blur-sm w-full"
       aria-label="Download CV (PDF)"
