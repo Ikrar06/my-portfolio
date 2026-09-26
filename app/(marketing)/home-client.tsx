@@ -24,8 +24,8 @@ const experiences = [
     title: 'Full Stack Developer Intern',
     org: 'PLN Icon Plus (Iconnet)',
     highlight:
-      'Built an internal OPEX monitoring dashboard end to end, automated manual budget reporting through data reconciliation, and remediated every finding from a full penetration test before deployment.',
-    stack: ['Next.js', 'TypeScript', 'PostgreSQL', 'Linux'],
+      'Built an internal finance dashboard in a 4-person team (OPEX, cash advance, contract budget and vehicle monitoring), replaced manual spreadsheet reconciliation with reviewed imports, and deployed it to a Hetzner VPS after remediating every penetration-test finding.',
+    stack: ['Next.js', 'Express', 'PostgreSQL', 'Redis', 'Linux'],
   },
   {
     dates: 'Jun 2025 – Mar 2026',
