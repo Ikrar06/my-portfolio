@@ -48,73 +48,79 @@ export default function ContactFormLite() {
 
   const projectTypes: ProjectType[] = [
     {
-      value: 'brand-identity',
-      label: 'Brand Identity',
-      description: 'Logo, brand guidelines, visual identity',
+      value: 'job',
+      label: 'Full-time Role',
+      description: 'AI / ML engineering or full-stack position',
       icon: ''
     },
     {
-      value: 'social-media',
-      label: 'Social Media',
-      description: 'Graphics, templates, content strategy',
+      value: 'internship',
+      label: 'Internship',
+      description: 'Internship or research assistant position',
       icon: ''
     },
     {
-      value: 'publication',
-      label: 'Publication Design',
-      description: 'Magazines, reports, presentations',
+      value: 'ai-integration',
+      label: 'AI / LLM Project',
+      description: 'RAG, chatbots, NLP or model integration',
       icon: ''
     },
     {
-      value: 'web-design',
-      label: 'Web Design',
-      description: 'Website design, UI/UX, landing pages',
+      value: 'web-app',
+      label: 'Web App or Dashboard',
+      description: 'Full-stack web apps, internal tools, dashboards',
       icon: ''
     },
     {
-      value: 'creative-direction',
-      label: 'Creative Direction',
-      description: 'Ongoing creative strategy and coordination',
+      value: 'data',
+      label: 'Data & ML Analysis',
+      description: 'Data analysis, modeling, experiments',
+      icon: ''
+    },
+    {
+      value: 'design',
+      label: 'Design',
+      description: 'UI/UX or graphic design',
       icon: ''
     },
     {
       value: 'other',
-      label: 'Other',
-      description: 'Custom project or consultation',
+      label: 'Something Else',
+      description: 'Research collaboration or a question',
       icon: ''
     }
   ]
 
   const budgetRanges: BudgetRange[] = [
     {
+      value: 'not-applicable',
+      label: 'Not applicable',
+      description: 'Job, internship or collaboration'
+    },
+    {
       value: 'under-500',
       label: 'Under $500',
-      description: 'Small projects, social media graphics'
+      description: 'Small feature or fix'
     },
     {
       value: '500-1500',
       label: '$500 - $1,500',
-      description: 'Logo design, brand identity basics'
+      description: 'Small app, integration or prototype'
     },
     {
       value: '1500-5000',
       label: '$1,500 - $5,000',
-      description: 'Complete brand packages, publications'
+      description: 'Complete app or AI system'
     },
     {
-      value: '5000-10000',
-      label: '$5,000 - $10,000',
-      description: 'Comprehensive projects, ongoing work'
-    },
-    {
-      value: 'above-10000',
-      label: 'Above $10,000',
-      description: 'Large scale projects, retainer agreements'
+      value: 'above-5000',
+      label: 'Above $5,000',
+      description: 'Larger or ongoing work'
     },
     {
       value: 'discuss',
       label: 'Let\'s Discuss',
-      description: 'I\'m flexible based on project scope'
+      description: 'Depends on scope'
     }
   ]
 
@@ -134,10 +140,10 @@ export default function ContactFormLite() {
       errs.push('Please enter a valid email address.')
     }
     if (!state.projectType) {
-      errs.push('Please select a project type.')
+      errs.push('Please choose what you would like to discuss.')
     }
     if (!state.message || state.message.trim().length < 20) {
-      errs.push('Please provide more details about your project (minimum 20 characters).')
+      errs.push('Please add a few more details (minimum 20 characters).')
     }
     return errs
   }
@@ -168,8 +174,8 @@ export default function ContactFormLite() {
     e.preventDefault()
     
     const email = 'ikrargempurtrn@gmail.com'
-    const subject = encodeURIComponent('Project Inquiry - Portfolio Contact')
-    const body = encodeURIComponent('Hi Ikrar,\n\nI found your portfolio and would like to discuss a potential design project.\n\nProject details:\n- Type: \n- Timeline: \n- Budget: \n\nLooking forward to hearing from you!\n\nBest regards,')
+    const subject = encodeURIComponent('Hello from your portfolio')
+    const body = encodeURIComponent('Hi Ikrar,\n\nI found your portfolio and would like to talk about:\n\n\nBest regards,')
     const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&subject=${subject}&body=${body}`
     
     // Open Gmail compose in new tab
@@ -218,7 +224,7 @@ export default function ContactFormLite() {
         }) 
       } catch {}
 
-      setSuccess('Message sent successfully! Thank you for reaching out. I\'ll respond within 4-6 hours with next steps and scheduling options for our consultation call.')
+      setSuccess('Message sent. Thank you for reaching out, I will get back to you by email soon.')
       setState({ 
         name: '', 
         email: '', 
@@ -254,8 +260,8 @@ export default function ContactFormLite() {
           </h3>
           <span className="text-xs sm:text-sm text-white/60">
             {currentStep === 1 && "Basic Information"}
-            {currentStep === 2 && "Project Details"}
-            {currentStep === 3 && "Tell Me More"}
+            {currentStep === 2 && "Topic"}
+            {currentStep === 3 && "Details"}
           </span>
         </div>
         <div className="w-full bg-white/10 rounded-full h-1.5 sm:h-2">
@@ -296,7 +302,7 @@ export default function ContactFormLite() {
           <div className="space-y-4 sm:space-y-6 animate-in slide-in-from-right-5 duration-300">
             <div className="text-center mb-6 sm:mb-8">
               <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2">Nice to meet you!</h3>
-              <p className="text-sm sm:text-base text-white/60">Let's start with some basic information about you</p>
+              <p className="text-sm sm:text-base text-white/60">Let's start with who you are</p>
             </div>
 
             <div className="grid gap-4 sm:gap-6">
@@ -363,15 +369,15 @@ export default function ContactFormLite() {
         {currentStep === 2 && (
           <div className="space-y-4 sm:space-y-6 animate-in slide-in-from-right-5 duration-300">
             <div className="text-center mb-6 sm:mb-8">
-              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2">Tell me about your project</h3>
-              <p className="text-sm sm:text-base text-white/60">This helps me understand your needs and provide accurate estimates</p>
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2">What would you like to discuss?</h3>
+              <p className="text-sm sm:text-base text-white/60">Job opportunity, freelance project, or collaboration</p>
             </div>
 
             <div className="grid gap-4 sm:gap-6">
               {/* Project Type */}
               <div className="grid gap-2 sm:gap-3">
                 <Label className="text-sm sm:text-base text-white font-medium">
-                  What type of project do you need? *
+                  Topic *
                 </Label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
                   {projectTypes.map((type) => (
@@ -379,7 +385,7 @@ export default function ContactFormLite() {
                       key={type.value}
                       type="button"
                       onClick={() => setSelectField('projectType')(type.value)}
-                      className={`p-3 sm:p-4 rounded-xl sm:rounded-xl border text-left transition-all duration-200 ${
+                      className={`p-3 sm:p-4 rounded-xl sm:rounded-xl border text-left transition-all duration-200 ${type.value === 'other' ? 'sm:col-span-2' : ''} ${
                         state.projectType === type.value
                           ? 'border-blue-500/50 bg-blue-500/10 text-blue-300'
                           : 'border-white/20 bg-white/5 text-white hover:border-white/30 hover:bg-white/10'
@@ -400,7 +406,7 @@ export default function ContactFormLite() {
               {/* Budget Range */}
               <div className="grid gap-2 sm:gap-3">
                 <Label className="text-sm sm:text-base text-white font-medium">
-                  What's your budget range? <span className="text-white/60">(optional but helpful)</span>
+                  Budget <span className="text-white/60">(freelance only, optional)</span>
                 </Label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
                   {budgetRanges.map((budget) => (
@@ -424,12 +430,12 @@ export default function ContactFormLite() {
               {/* Timeline */}
               <div className="grid gap-2">
                 <Label htmlFor="timeline" className="text-sm sm:text-base text-white font-medium">
-                  When do you need this completed? <span className="text-white/60">(optional)</span>
+                  Timeline or start date <span className="text-white/60">(optional)</span>
                 </Label>
                 <Input
                   id="timeline"
                   name="timeline"
-                  placeholder="e.g., 'By end of November' or 'ASAP' or 'Flexible'"
+                  placeholder="e.g. 'Start in January', 'Within 2 months', or 'Flexible'"
                   value={state.timeline}
                   onChange={setField('timeline')}
                   className="bg-white/5 border-white/20 text-white placeholder:text-white/40 focus:border-blue-500/50 focus:ring-blue-500/25 rounded-xl sm:rounded-xl h-10 sm:h-11 text-sm sm:text-base"
@@ -462,28 +468,21 @@ export default function ContactFormLite() {
         {currentStep === 3 && (
           <div className="space-y-4 sm:space-y-6 animate-in slide-in-from-right-5 duration-300">
             <div className="text-center mb-6 sm:mb-8">
-              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2">Almost done! 📝</h3>
-              <p className="text-sm sm:text-base text-white/60">Tell me more about your vision and goals</p>
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2">Almost done</h3>
+              <p className="text-sm sm:text-base text-white/60">A few details help me reply with something useful</p>
             </div>
 
             <div className="grid gap-4 sm:gap-6">
               <div className="grid gap-2">
                 <Label htmlFor="message" className="text-sm sm:text-base text-white font-medium">
-                  Project Details *
+                  Message *
                 </Label>
                 <Textarea
                   id="message"
                   name="message"
                   rows={8}
-                  placeholder="Please describe your project in detail. Include:
-
-• What you're looking to achieve
-• Your target audience
-• Any specific requirements or preferences
-• Examples or references you like
-• Any additional context that would be helpful
-
-The more details you provide, the better I can understand your vision and provide an accurate proposal."
+                  placeholder="For a role: the position, team, and where you found my profile.
+For a project: what you want to build, who will use it, and any existing systems or data."
                   value={state.message}
                   onChange={setField('message')}
                   required
@@ -536,7 +535,7 @@ The more details you provide, the better I can understand your vision and provid
             {' or '}
             <a
               className="text-blue-400 hover:text-blue-300 underline transition-colors"
-              href={`https://wa.me/6281214590205?text=${encodeURIComponent('Hi Ikrar! I\'d like to discuss a design project.')}`}
+              href={`https://wa.me/6281214590205?text=${encodeURIComponent('Hi Ikrar! I found your portfolio and would like to talk.')}`}
               target="_blank"
               rel="noopener noreferrer"
             >

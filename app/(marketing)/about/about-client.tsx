@@ -43,7 +43,7 @@ export default function AboutClient({ skills }: AboutClientProps) {
     },
     {
       org: 'Cirebon Kuring Cafe',
-      title: 'Fullstack Developer',
+      title: 'Full Stack Developer',
       type: 'Technical Role',
       dates: 'June 2025 – Mar 2026',
       location: 'Remote',
@@ -151,7 +151,7 @@ export default function AboutClient({ skills }: AboutClientProps) {
                   <div className="flex items-center"><div className="w-1.5 h-1.5 bg-white/40 rounded-full mr-3" /> Born and raised in Gorontalo, January 6, 2005</div>
                   <div className="flex items-center"><div className="w-1.5 h-1.5 bg-white/40 rounded-full mr-3" /> Currently living in Makassar, South Sulawesi</div>
                   <div className="flex items-center"><div className="w-1.5 h-1.5 bg-white/40 rounded-full mr-3" /> Final-year Informatics Engineering student at Hasanuddin University (GPA 3.92)</div>
-                  <div className="flex items-center"><div className="w-1.5 h-1.5 bg-white/40 rounded-full mr-3" /> Pursuing AI/Machine Learning Engineer and Data Science roles</div>
+                  <div className="flex items-center"><div className="w-1.5 h-1.5 bg-white/40 rounded-full mr-3" /> Open to AI engineering roles, internships, and freelance projects</div>
                 </div>
               </div>
             </FadeIn>
@@ -389,7 +389,7 @@ export default function AboutClient({ skills }: AboutClientProps) {
                 Ready to Work Together?
               </h2>
               <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/60 mb-8 sm:mb-10 leading-relaxed px-4">
-                I'd love to hear about your project and explore how we can create something amazing together.
+                Hiring for an AI engineering role, or need an AI or full-stack system built? I'd be glad to hear about it.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4">
                 <Link

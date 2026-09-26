@@ -247,7 +247,7 @@ export default function HomeClient({ featuredProjects }: HomeClientProps) {
             Let's Work Together
           </h2>
           <p className="text-sm sm:text-base md:text-lg text-text-secondary max-w-2xl mx-auto px-4">
-            Open to AI engineering roles, internships, and research collaborations.
+            Open to AI engineering roles, internships, research collaborations, and freelance projects.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center pt-2 sm:pt-4 px-4">
             <Link

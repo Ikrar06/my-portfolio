@@ -93,7 +93,7 @@ export default function ContactLinks({
     {
       id: 'linkedin',
       label: 'LinkedIn',
-      value: 'Professional network',
+      value: 'Ikrar Gempur Tirani',
       icon: '',
       href: linkedinUrl,
       description: 'Connect professionally',
