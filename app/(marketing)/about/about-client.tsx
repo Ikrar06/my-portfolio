@@ -123,7 +123,7 @@ export default function AboutClient({ skills }: AboutClientProps) {
           <div className="mb-6 sm:mb-8">
             <TextType
               key={`about-tagline-${pageKey}`}
-              text="Informatics Engineering Student • AI Engineer"
+              text="AI Engineer • Informatics Engineering Student"
               className="text-xs sm:text-sm md:text-base text-white/60 font-medium tracking-wider uppercase"
               typingSpeed={80}
               showCursor={false}
@@ -134,51 +134,70 @@ export default function AboutClient({ skills }: AboutClientProps) {
           </div>
 
           {/* Main Content Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-[auto,1fr] gap-6 md:gap-8 lg:gap-12 items-start">
-            {/* FOTO HD WITH BACKDROP BOX */}
-            <div className="relative w-[240px] sm:w-[280px] md:w-[380px] lg:w-[440px] mx-auto md:mx-0 space-y-3 sm:space-y-4">
-              {/* Photo Box */}
-              <div className="relative w-full h-[240px] sm:h-[280px] md:h-[380px] lg:h-[440px]">
-                {/* Backdrop box */}
-                <div className="backdrop-blur-sm bg-white/[0.02] border border-white/10 rounded-2xl sm:rounded-3xl p-2 sm:p-3 hover:bg-white/[0.05] transition-all duration-700 hover:border-white/20 h-full flex flex-col items-center justify-center group">
-                  {/* Photo container with pixelation effect */}
-                  <div className="relative w-[210px] h-[210px] sm:w-[240px] sm:h-[240px] md:w-[330px] md:h-[330px] lg:w-[380px] lg:h-[380px]">
-                    <PixelatedImage
-                      src="/images/foto-ikrar.jpg"
-                      pixelatedSrc="/images/foto-ikrar-pixelated.PNG"
-                      alt="Foto Ikrar Gempur Tirani"
-                      className="w-full h-full"
-                    />
-                  </div>
-                </div>
+          <div className="grid grid-cols-1 md:grid-cols-[auto,1fr] gap-8 lg:gap-14 items-start">
+            {/* Photo + actions */}
+            <div className="w-[240px] sm:w-[280px] md:w-[320px] lg:w-[380px] mx-auto md:mx-0 space-y-3">
+              <div className="relative aspect-square rounded-2xl sm:rounded-3xl overflow-hidden border border-white/10">
+                <PixelatedImage
+                  src="/images/foto-ikrar.jpg"
+                  pixelatedSrc="/images/foto-ikrar-pixelated.PNG"
+                  alt="Foto Ikrar Gempur Tirani"
+                  className="w-full h-full"
+                />
               </div>
-
-              {/* Download CV Button */}
-              <div className="w-full">
-                <DownloadCVButton />
+              <DownloadCVButton />
+              <div className="grid grid-cols-2 gap-3">
+                <a
+                  href="https://github.com/Ikrar06"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-center text-sm py-2.5 rounded-xl border border-white/10 text-white/70 hover:text-white hover:border-white/25 transition-colors"
+                >
+                  GitHub ↗
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/ikrargempurtirani/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-center text-sm py-2.5 rounded-xl border border-white/10 text-white/70 hover:text-white hover:border-white/25 transition-colors"
+                >
+                  LinkedIn ↗
+                </a>
               </div>
             </div>
 
-            {/* Bio singkat */}
+            {/* Bio */}
             <FadeIn key={`about-bio-${pageKey}`} delay={0.1}>
-              <div className="mt-6 md:mt-0">
-                <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/70 leading-relaxed font-light mb-3 sm:mb-4">
-                  Hi, I'm <span className="font-semibold text-white">Ikrar Gempur Tirani</span>, an{' '}
-                  <span className="text-white">Informatics Engineering student</span> at Hasanuddin University (GPA 3.92/4.00) focusing on <span className="text-white">Artificial Intelligence</span> with hands-on experience in machine learning, natural language processing, and statistical modeling.
+              <div className="mt-6 md:mt-0 max-w-2xl">
+                <p className="text-lg sm:text-xl md:text-2xl text-white/80 leading-snug font-medium mb-5 sm:mb-6">
+                  Hi, I&apos;m <span className="text-white font-semibold">Ikrar Gempur Tirani</span>, an AI Engineer and Informatics Engineering student at Hasanuddin University.
                 </p>
-                <p className="text-xs sm:text-sm md:text-base lg:text-lg text-white/60 leading-relaxed font-light mb-3 sm:mb-4">
-                  Currently an <span className="text-white">AI Engineer intern</span> building the data and RAG core of <span className="text-white">UniAI</span>, an institutional academic chatbot for Hasanuddin University — working across the full ML lifecycle, from document ingestion and embeddings to retrieval, model serving with <span className="text-white">vLLM</span>, and deployment. Beyond that, my projects range from agent-based market simulations to fine-tuning transformer models for NLP tasks.
-                </p>
-                <p className="text-xs sm:text-sm md:text-base lg:text-lg text-white/60 leading-relaxed font-light">
-                  I also led the Creative Media Division at <span className="text-white">Google Developer Groups on Campus</span> (2025–2026), pairing technical work with communication and leadership. With full-stack development capabilities and five years of design experience, I build AI products that are both technically sound and user-friendly.
-                </p>
-
-                <div className="mt-4 sm:mt-6 grid gap-2 sm:gap-3 text-xs sm:text-sm text-white/60">
-                  <div className="flex items-center"><div className="w-1.5 h-1.5 bg-white/40 rounded-full mr-3" /> Born and raised in Gorontalo, January 6, 2005</div>
-                  <div className="flex items-center"><div className="w-1.5 h-1.5 bg-white/40 rounded-full mr-3" /> Currently living in Makassar, South Sulawesi</div>
-                  <div className="flex items-center"><div className="w-1.5 h-1.5 bg-white/40 rounded-full mr-3" /> Final-year Informatics Engineering student at Hasanuddin University (GPA 3.92)</div>
-                  <div className="flex items-center"><div className="w-1.5 h-1.5 bg-white/40 rounded-full mr-3" /> Open to AI engineering roles, internships, and freelance projects</div>
+                <div className="space-y-4 text-sm sm:text-base text-white/60 leading-relaxed">
+                  <p>
+                    I&apos;m currently an <span className="text-white">AI Engineer intern</span> building the data and RAG core of{' '}
+                    <span className="text-white">UniAI</span>, the university&apos;s academic assistant, working across document ingestion,
+                    embeddings, retrieval, and model serving with <span className="text-white">vLLM</span>. My other work ranges from
+                    fine-tuned transformers for NLP to agent-based simulations driven by LLMs.
+                  </p>
+                  <p>
+                    I also build the full-stack products around these models, and I have led creative media teams at Google Developer
+                    Groups on Campus and Coder Institute, so I care about how a product communicates, not only how it works.
+                  </p>
                 </div>
+
+                <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-5 border-t border-white/10 pt-6">
+                  {[
+                    { label: 'Currently', value: 'AI Engineer Intern, UniAI' },
+                    { label: 'Education', value: 'Informatics, Hasanuddin University · GPA 3.92' },
+                    { label: 'Based in', value: 'Makassar, Indonesia' },
+                    { label: 'Open to', value: 'AI roles, internships, freelance' },
+                  ].map((f) => (
+                    <div key={f.label}>
+                      <dt className="text-[11px] uppercase tracking-wider text-white/40">{f.label}</dt>
+                      <dd className="text-sm text-white/80 mt-1">{f.value}</dd>
+                    </div>
+                  ))}
+                </dl>
               </div>
             </FadeIn>
           </div>
@@ -213,50 +232,56 @@ export default function AboutClient({ skills }: AboutClientProps) {
             </FadeIn>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 max-w-4xl mx-auto">
             {[
               {
                 title: 'LLM & RAG Engineering',
                 desc: 'Retrieval pipelines, vector search, reranking and model serving with vLLM, plus the safety and routing layers that make LLMs usable for real institutions.',
-                specialties: []
+                tags: ['vLLM', 'Qdrant', 'Reranking', 'Llama Guard'],
+                highlight: true,
               },
               {
                 title: 'Machine Learning & NLP',
                 desc: 'Fine-tuning transformers and building NLP pipelines in PyTorch, from dataset construction and leakage-free evaluation to deployed models.',
-                specialties: []
+                tags: ['PyTorch', 'Hugging Face', 'RoBERTa', 'Scikit-learn'],
               },
               {
                 title: 'Data Science & Analytics',
                 desc: 'Large-scale data mining and statistical validation: frequent-pattern mining on 21M+ records, hypothesis testing, and simulations with LLM-driven agents.',
-                specialties: []
+                tags: ['Polars', 'FP-Growth', 'SciPy', 'MESA'],
               },
               {
                 title: 'Full-Stack Development',
                 desc: 'Next.js, Flutter and API backends that put models in front of users, with deployment and security hardening handled end to end.',
-                // specialties: ['React & Next.js', 'Flutter Mobile Apps', 'FastAPI & Flask', 'Database Design']
-                specialties: []
-              }
+                tags: ['Next.js', 'Flutter', 'FastAPI', 'Supabase'],
+              },
             ].map((service, i) => (
-              <FadeIn key={`service-${i}-${pageKey}`} delay={0.1 * i}>
-                <div className="group h-full">
-                  <div className="backdrop-blur-sm bg-white/[0.02] border border-white/10 rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-8 hover:bg-white/[0.05] transition-all duration-700 hover:border-white/20 h-full flex flex-col">
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-br from-framer-blue/20 to-framer-blue/5 rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-5 md:mb-6 group-hover:from-framer-blue/30 group-hover:to-framer-blue/10 transition-all duration-500">
-                      <span className="text-lg sm:text-xl font-bold text-framer-blue">0{i + 1}</span>
-                    </div>
-                    <h3 className="text-base sm:text-lg md:text-xl font-bold text-white mb-3 sm:mb-4 group-hover:text-white/90 transition-colors duration-300">
-                      {service.title}
-                    </h3>
-                    <p className="text-xs sm:text-sm md:text-base text-white/60 leading-relaxed mb-4 sm:mb-5 md:mb-6 group-hover:text-white/70 transition-colors duration-300 flex-1">
-                      {service.desc}
-                    </p>
-                    <div className="space-y-2">
-                      {service.specialties.map((specialty, idx) => (
-                        <div key={idx} className="flex items-center text-sm text-white/50 group-hover:text-white/60 transition-colors duration-300">
-                          <div className="w-1.5 h-1.5 bg-white/40 rounded-full mr-3" />
-                          {specialty}
-                        </div>
-                      ))}
-                    </div>
+              <FadeIn key={`service-${i}-${pageKey}`} delay={0.08 * i}>
+                <div
+                  className={`h-full flex flex-col rounded-2xl sm:rounded-3xl border p-6 sm:p-7 transition-colors duration-300 ${
+                    service.highlight
+                      ? 'border-framer-blue/25 bg-framer-blue/[0.05] hover:border-framer-blue/40'
+                      : 'border-white/10 bg-white/[0.02] hover:border-white/20'
+                  }`}
+                >
+                  <div className="flex items-baseline gap-3 mb-3">
+                    <span className="text-xs sm:text-sm font-semibold tabular-nums text-framer-blue">0{i + 1}</span>
+                    <h3 className="text-base sm:text-lg font-semibold text-white">{service.title}</h3>
+                  </div>
+                  <p className="text-sm text-white/60 leading-relaxed flex-1">{service.desc}</p>
+                  <div className="flex flex-wrap gap-2 mt-5">
+                    {service.tags.map((t) => (
+                      <span
+                        key={t}
+                        className={`text-[11px] sm:text-xs px-2.5 py-1 rounded-full border ${
+                          service.highlight
+                            ? 'border-framer-blue/30 bg-framer-blue/10 text-blue-100'
+                            : 'border-white/10 bg-white/[0.03] text-white/60'
+                        }`}
+                      >
+                        {t}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </FadeIn>

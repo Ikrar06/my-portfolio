@@ -34,7 +34,7 @@ export default function ContactPage() {
   const CONTACT_INFO = {
     EMAIL: 'ikrargempurtrn@gmail.com',
     WHATSAPP: '+6281214590205',
-    LINKEDIN: 'https://www.linkedin.com/in/ikrar-gempur-tirani-867537283/',
+    LINKEDIN: 'https://www.linkedin.com/in/ikrargempurtirani/',
     LOCATION: 'Makassar, South Sulawesi, Indonesia',
     TIMEZONE: 'UTC+8 (WITA)'
   }
