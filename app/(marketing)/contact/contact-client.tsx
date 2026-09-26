@@ -4,7 +4,6 @@
 import { useMemo } from 'react'
 import { usePathname } from 'next/navigation'
 import SplitText from '@/components/animated/reactbits/SplitText'
-import TextType from '@/components/animated/reactbits/TextType'
 import FadeIn from '@/components/motion/fade-in'
 import ContactFormLite from '@/components/contact-form'
 import ContactLinks from '@/components/contact-links'
@@ -31,33 +30,15 @@ export default function ContactClient({ contactInfo }: ContactClientProps) {
       <section className="relative flex flex-col justify-start px-4 sm:px-6 pt-12 sm:pt-16 pb-16 sm:pb-20 w-full overflow-hidden">
         {/* Background Elements removed to avoid visual artifacts */}
 
-        <div className="relative max-w-6xl mx-auto z-10 w-full">
-          {/* Status Indicator */}
-          <div className="mb-6 sm:mb-8 w-full">
-            <FadeIn delay={0}>
-              <div className="inline-flex items-center gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-framer-blue/10 border border-framer-blue/20 text-framer-blue text-xs sm:text-sm font-medium max-w-full">
-                <div className="w-2 h-2 bg-framer-blue rounded-full animate-pulse flex-shrink-0" />
-                <span className="truncate">Open to AI engineering opportunities</span>
-              </div>
-            </FadeIn>
-          </div>
+        <div className="relative max-w-5xl mx-auto z-10 w-full text-center">
+          <FadeIn delay={0}>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-framer-blue/10 border border-framer-blue/20 text-framer-blue text-xs sm:text-sm font-medium mb-6 sm:mb-8">
+              <div className="w-2 h-2 bg-framer-blue rounded-full animate-pulse flex-shrink-0" />
+              <span>Open to AI engineering opportunities</span>
+            </div>
+          </FadeIn>
 
-          {/* Tagline */}
-          <div className="mb-6 sm:mb-8 w-full">
-            <TextType
-              key={`contact-tagline-${pageKey}`}
-              text="Get in Touch"
-              className="text-xs sm:text-sm md:text-base text-white/60 font-medium tracking-[0.1em] sm:tracking-[0.2em] uppercase break-words"
-              typingSpeed={100}
-              showCursor={false}
-              initialDelay={200}
-              startOnVisible={false}
-              as="p"
-            />
-          </div>
-
-          {/* Main Title */}
-          <div className="mb-6 sm:mb-8 py-2 w-full">
+          <div className="mb-5 sm:mb-6 py-2">
             <SplitText
               key={`contact-title-${pageKey}`}
               text="Let's Work Together"
@@ -69,23 +50,15 @@ export default function ContactClient({ contactInfo }: ContactClientProps) {
               from={{ opacity: 0, y: 100, rotationX: -45, scale: 0.8 }}
               to={{ opacity: 1, y: 0, rotationX: 0, scale: 1 }}
               startOnVisible={false}
-              textAlign="left"
             />
           </div>
 
-          {/* Enhanced Description */}
-          <div className="mb-10 sm:mb-12 max-w-4xl w-full">
-            <FadeIn key={`contact-desc-${pageKey}`} delay={0.3}>
-              <div className="space-y-4 sm:space-y-6">
-                <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/80 leading-relaxed font-light break-words">
-                  Open to AI engineering roles, internships, research collaborations, and freelance projects.
-                </p>
-                <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/60 leading-relaxed font-light break-words">
-                  Whether it is a RAG system, an NLP model, or a full-stack product around it, I am happy to talk it through.
-                </p>
-              </div>
-            </FadeIn>
-          </div>
+          <FadeIn key={`contact-desc-${pageKey}`} delay={0.3}>
+            <p className="text-base sm:text-lg md:text-xl text-white/60 leading-relaxed max-w-3xl mx-auto">
+              Full-time roles, internships, research collaborations, or freelance work. Whether it is a RAG system, an NLP
+              model, or the full-stack product around it, I am happy to talk it through.
+            </p>
+          </FadeIn>
         </div>
       </section>
 

@@ -15,20 +15,16 @@ interface FloatingElement {
 export function InteractiveHeroText() {
   const [hoverState, setHoverState] = useState<'code' | 'design' | null>(null)
 
-  // Icon elements untuk code (tensorflow, python, pytorch, react)
+  // Icons shown when hovering "Models"
   const codeElements: FloatingElement[] = [
-    { id: 'code-1', icon: '/images/tensorflow.svg', x: '-13%', y: '-15%', rotate: -8 },
-    { id: 'code-2', icon: '/images/python.svg', x: '104%', y: '-10%', rotate: 12 },
-    { id: 'code-3', icon: '/images/pytorch.svg', x: '-14%', y: '105%', rotate: 5 },
-    { id: 'code-4', icon: '/images/react.svg', x: '103%', y: '108%', rotate: -15 },
+    { id: 'code-1', icon: '/images/pytorch.svg', x: '-13%', y: '-15%', rotate: -8 },
+    { id: 'code-2', icon: '/images/tensorflow.svg', x: '-14%', y: '105%', rotate: 5 },
   ]
 
-  // Icon elements untuk design (photoshop, illustrator, figma, premiere pro)
+  // Icons shown when hovering "Products"
   const designElements: FloatingElement[] = [
-    { id: 'design-1', icon: '/images/adobe-photoshop.svg', x: '-10%', y: '-18%', rotate: 10 },
-    { id: 'design-2', icon: '/images/adobe-illustrator.svg', x: '103%', y: '-8%', rotate: -6 },
-    { id: 'design-3', icon: '/images/figma.svg', x: '-15%', y: '110%', rotate: -12 },
-    { id: 'design-4', icon: '/images/adobe-premiere.svg', x: '106%', y: '112%', rotate: 8 },
+    { id: 'design-1', icon: '/images/react.svg', x: '104%', y: '-10%', rotate: 12 },
+    { id: 'design-2', icon: '/images/python.svg', x: '103%', y: '108%', rotate: -15 },
   ]
 
   return (
@@ -46,14 +42,14 @@ export function InteractiveHeroText() {
       </div>
 
       {/* Main heading */}
-      <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight relative z-10 px-2" style={{ lineHeight: '1.15' }}>
+      <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight relative z-10 px-2" style={{ lineHeight: '1.15' }}>
         <span
           className="block pb-1 bg-gradient-to-t from-neutral-500 to-neutral-300 bg-clip-text text-transparent overflow-visible"
           style={{ lineHeight: '1.15' }}
         >
-          Building with
+          Turning
         </span>
-        <span className="block">
+        <span className="block md:whitespace-nowrap">
           <span
             className="cursor-pointer transition-all duration-300 inline-block relative z-20 hover:scale-105 text-white"
             onMouseEnter={() => setHoverState('code')}
@@ -64,10 +60,10 @@ export function InteractiveHeroText() {
                 : '0 0 15px rgba(255, 255, 255, 0.2), 0 0 30px rgba(255, 255, 255, 0.1)',
             }}
           >
-            Code
+            Models
           </span>
           <span className="bg-gradient-to-t from-neutral-500 to-neutral-300 bg-clip-text text-transparent">
-            {' and '}
+            {' into '}
           </span>
           <span
             className="cursor-pointer transition-all duration-300 inline-block relative z-20 hover:scale-105 text-white"
@@ -79,7 +75,7 @@ export function InteractiveHeroText() {
                 : '0 0 15px rgba(255, 255, 255, 0.2), 0 0 30px rgba(255, 255, 255, 0.1)',
             }}
           >
-            Design
+            Products
           </span>
         </span>
       </h1>
