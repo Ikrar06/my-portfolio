@@ -91,11 +91,11 @@ export default function AboutClient({ skills }: AboutClientProps) {
     {
       org: 'Coder Institute Hasanuddin University',
       title: 'Head of Creative Media',
-      dates: 'Feb 2025 – Present',
+      dates: 'Feb 2025 – Feb 2026',
       location: 'Makassar',
       highlights: [
-        'Lead the team producing visual content, event documentation, and promotional materials for the campus coding community.',
-        'Coordinate with technical and organizing teams to support community programs.',
+        'Led the team producing visual content, event documentation, and promotional materials for the campus coding community.',
+        'Coordinated with technical and organizing teams to support community programs.',
       ],
       skills: ['Team Coordination', 'Brand Identity'],
       links: [{ label: '@coderinstitute', href: 'https://instagram.com/coderinstitute' }],
