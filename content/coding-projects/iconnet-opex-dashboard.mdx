@@ -5,16 +5,16 @@ year: 2026
 month: 2
 role: "Full Stack Developer Intern"
 tools: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS", "Express.js", "PostgreSQL", "Redis", "Docker", "PM2", "ECharts", "ExcelJS", "PapaParse", "jsPDF", "react-grid-layout"]
-skills: ["Full-Stack Development", "Database Design", "Data Reconciliation", "Financial Reporting", "Role-Based Access Control", "Application Security", "On-Premise Deployment"]
+skills: ["Full-Stack Development", "Database Design", "Data Reconciliation", "Financial Reporting", "Role-Based Access Control", "Application Security", "Linux Deployment", "Team Collaboration"]
 tags: ["nextjs", "express", "postgresql", "internship"]
 category: "Internal Business Dashboard"
 duration: "3 months"
-team: "Intern Team"
+team: "4-person Intern Team"
 client: "PLN Icon Plus (ICONNET) - SBU Sulawesi & IBT I"
 summary: "Internal finance dashboard for PLN Icon Plus that replaced spreadsheet-based reporting with four modules (OPEX monitoring, cash-advance tracking, outsourced-staff contract budgets, and vehicle monitoring) on a Next.js + Express + PostgreSQL stack, hardened after a full penetration test."
 challenges: "Budget realization, cash advances and outsourced-staff costs were tracked in separate Excel files that finance staff reconciled by hand, which made reporting slow and figures inconsistent between regions."
 solutions: "Built a monorepo with a Next.js dashboard and an Express API on PostgreSQL: file uploads with a pending-to-confirmed review step, relational models that reconcile transactions against budget references, draggable chart widgets, and CSV / Excel / PDF exports."
-impact: "Four reporting workflows moved into one role-based dashboard on the office network, with manual reconciliation replaced by automated imports and every finding from the penetration test remediated before rollout."
+impact: "Four reporting workflows moved into one role-based dashboard, deployed on a Hetzner Linux VPS, with manual reconciliation replaced by automated imports and every finding from the penetration test remediated before rollout."
 # ─────────────────────────────────────────────────────────────
 # IMAGE PLACEHOLDERS — uncomment each line once the file exists
 # in /public/images/iconnet/ (see PLACEHOLDERS.md there).
@@ -40,14 +40,14 @@ metrics:
   - "Security hardening: JWT blacklist on logout, file magic-byte validation, login rate limiting (5 attempts / 15 min), bcrypt hashing"
   - "CSV, Excel and PDF exports with configurable column ordering"
   - "Draggable, resizable dashboard widgets built with react-grid-layout and ECharts"
-  - "On-premise deployment: Dockerized PostgreSQL and PM2 auto-start on the office LAN"
+  - "Piloted on the office LAN, then deployed to a Hetzner Linux VPS (Dockerized PostgreSQL, PM2)"
 # Set to true once cover.png is added so the homepage card has an image
 featured: false
 ---
 
 ## Project Overview
 
-During my internship at **PLN Icon Plus (ICONNET)**, SBU Sulawesi & IBT I, I worked on an internal dashboard that moves the unit's financial monitoring out of scattered spreadsheets and into a single web application. The system is used on the office network and covers four areas of operational spending.
+During my internship at **PLN Icon Plus (ICONNET)**, SBU Sulawesi & IBT I, I worked in a **4-person intern team** on an internal dashboard that moves the unit's financial monitoring out of scattered spreadsheets and into a single web application. It covers four areas of operational spending.
 
 {/* IMAGE: dashboard overview — /images/iconnet/opex-overview.png */}
 
@@ -124,13 +124,16 @@ The application went through a full penetration-testing cycle before rollout. Th
 
 ## Deployment
 
-The dashboard is intended for the office network only. PostgreSQL runs in Docker, the API and web app run under PM2 with auto-start on boot, and a start script detects the machine's current LAN IP and rebuilds the frontend when it changes, so non-technical staff can keep it running without touching configuration.
+The first version ran on an office PC for the local network: PostgreSQL in Docker, the API and web app under PM2 with auto-start on boot, and a start script that detects the machine's LAN IP and rebuilds the frontend when it changes, so non-technical staff could keep it running.
+
+It was then moved to a **Hetzner Linux VPS** behind Nginx, which is where the penetration test and security hardening took place.
 
 ## Key Takeaways
 
 - Treating every import as a reviewable batch made the dashboard trustworthy for finance users.
 - Security has to be designed in for internal tools too; the pentest findings shaped the auth and upload code.
-- Deployment instructions written for non-developers matter as much as the code when the app lives on an office PC.
+- Piloting on the office LAN first let finance staff validate the workflows before the move to a hardened cloud server.
+- Splitting modules across a 4-person team worked because the upload, auth and reference-data patterns were shared.
 
 ---
 

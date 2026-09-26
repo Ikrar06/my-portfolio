@@ -38,7 +38,7 @@ export default function AboutClient({ skills }: AboutClientProps) {
       type: 'Technical Role',
       dates: 'Feb 2026 – Apr 2026',
       location: 'Makassar, South Sulawesi',
-      desc: `Designed and built an internal OPEX monitoring dashboard end-to-end using Next.js (TypeScript) and PostgreSQL to streamline budget tracking and realization reporting. Performed data reconciliation across financial and operational records, automating previously manual reporting workflows and improving data consistency for management reporting. Deployed the application to a Linux VPS and hardened it through a full penetration testing cycle, remediating all identified security vulnerabilities.`,
+      desc: `Built an internal finance dashboard in a 4-person intern team using Next.js (TypeScript), Express and PostgreSQL, covering OPEX, cash advance, contract budget and vehicle monitoring to streamline budget tracking and realization reporting. Performed data reconciliation across financial and operational records, automating previously manual reporting workflows and improving data consistency for management reporting. Piloted it on the office LAN, then deployed it to a Hetzner Linux VPS and hardened it through a full penetration testing cycle, remediating all identified security vulnerabilities.`,
       skills: ['Next.js', 'TypeScript', 'PostgreSQL', 'Full-Stack Development', 'Penetration Testing', 'Data Reconciliation']
     },
     {
