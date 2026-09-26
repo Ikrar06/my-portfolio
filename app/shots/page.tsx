@@ -3,23 +3,21 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import { getAllShots } from '@/lib/shots'
 import FadeIn from '@/components/motion/fade-in'
+import { OG_IMAGE } from '@/lib/seo'
 
 export const metadata: Metadata = {
   title: 'Shots',
   description: 'A curated collection of visual experiments, design explorations, and creative shots by Ikrar Gempur Tirani. Quick glimpses of the creative process and artistic vision.',
   keywords: ['design shots', 'visual experiments', 'creative work', 'design inspiration', 'portfolio gallery', 'design exploration', 'Ikrar Gempur Tirani'],
   openGraph: {
+    images: [OG_IMAGE],
     title: 'Shots — Ikrar Gempur Tirani',
     description: 'A curated collection of visual experiments, design explorations, and creative shots that showcase artistic vision and technical skills.',
     url: (process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000') + '/shots',
-    images: [{
-      url: '/images/foto-ikrar.jpg',
-      width: 1200,
-      height: 630,
-      alt: 'Creative Shots by Ikrar Gempur Tirani'
-    }],
   },
   twitter: {
+    card: 'summary_large_image',
+    images: [OG_IMAGE.url],
     title: 'Shots — Ikrar Gempur Tirani',
     description: 'A curated collection of visual experiments, design explorations, and creative shots.',
   },

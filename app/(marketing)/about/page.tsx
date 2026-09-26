@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import AboutClient from './about-client'
 import skillsData from '@/data/skills.json'
 import type { Skill } from '@/components/skills/skills-list'
+import { OG_IMAGE } from '@/lib/seo'
 
 export const metadata: Metadata = {
   title: 'About',
@@ -23,18 +24,13 @@ export const metadata: Metadata = {
     'Indonesia'
   ],
   openGraph: {
+    images: [OG_IMAGE],
     title: 'About — Ikrar Gempur Tirani',
     description: 'Informatics student at Hasanuddin University (GPA 3.92/4.00) building production RAG and ML systems. Hands-on experience in statistical analysis, NLP, and full-stack development.',
-    images: [
-      {
-        url: '/images/foto-ikrar.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Ikrar Gempur Tirani - Student Portfolio',
-      },
-    ],
   },
   twitter: {
+    card: 'summary_large_image',
+    images: [OG_IMAGE.url],
     title: 'About — Ikrar Gempur Tirani',
     description: 'Informatics student building AI products with RAG, LLM serving, and full-stack development.',
   },

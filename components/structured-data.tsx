@@ -9,7 +9,7 @@ export default function StructuredData() {
     name: 'Ikrar Gempur Tirani',
     url: siteUrl,
     image: `${siteUrl}/images/foto-ikrar.jpg`,
-    jobTitle: 'AI Engineer & Data Scientist',
+    jobTitle: 'AI Engineer',
     description: 'Informatics Engineering student at Hasanuddin University (GPA 3.92/4.00) with hands-on experience in RAG systems, NLP, and production ML. Building AI products with full-stack development skills.',
     alumniOf: {
       '@type': 'EducationalOrganization',

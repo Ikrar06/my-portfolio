@@ -6,6 +6,7 @@ import { getProjectBySlug, getProjectSlugs } from '@/lib/mdx'
 import { getRelatedProjects } from '@/lib/projects-helpers'
 import ProjectCard from '@/components/cards/project-card'
 import { AdvancedFinalResults, AdvancedExploration } from '@/components/project/SmartFinalResult'
+import { OG_IMAGE } from '@/lib/seo'
 
 // ====== SSG params ======
 export async function generateStaticParams() {
@@ -69,13 +70,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
           width: 1200, 
           height: 630,
           alt: `${title} ${pageType.toLowerCase()} cover image`
-        }] : undefined,
+        }] : [OG_IMAGE],
       },
       twitter: {
         card: 'summary_large_image',
         title: `${title} — ${pageType}`,
         description: summary,
-        images: cover ? [cover] : undefined,
+        images: cover ? [cover] : [OG_IMAGE.url],
       },
     }
   } catch (error) {
@@ -533,6 +534,53 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           )}
         </header>
 
+        {/* Project Story - Challenges, Solutions, Impact */}
+        {(challenges || solutions || impact) && (
+          <section className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+            {challenges && (
+              <div className="space-y-3 sm:space-y-4">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 bg-red-100 dark:bg-red-900/30 rounded-xl sm:rounded-xl flex items-center justify-center">
+                    <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold">Problem</h3>
+                </div>
+                <p className="text-xs sm:text-sm md:text-base text-neutral-700 dark:text-neutral-300 leading-relaxed text-justify">{challenges}</p>
+              </div>
+            )}
+
+            {solutions && (
+              <div className="space-y-3 sm:space-y-4">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 bg-emerald-100 dark:bg-emerald-900/30 rounded-xl sm:rounded-xl flex items-center justify-center">
+                    <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold">Solution</h3>
+                </div>
+                <p className="text-xs sm:text-sm md:text-base text-neutral-700 dark:text-neutral-300 leading-relaxed text-justify">{solutions}</p>
+              </div>
+            )}
+
+            {impact && (
+              <div className="space-y-3 sm:space-y-4">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 bg-purple-100 dark:bg-purple-900/30 rounded-xl sm:rounded-xl flex items-center justify-center">
+                    <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                    </svg>
+                  </div>
+                  <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold">Impact</h3>
+                </div>
+                <p className="text-xs sm:text-sm md:text-base text-neutral-700 dark:text-neutral-300 leading-relaxed text-justify">{impact}</p>
+              </div>
+            )}
+          </section>
+        )}
+
         {/* Skills & Tools */}
         {(skills.length > 0 || tools.length > 0) && (
           <section className="space-y-4 sm:space-y-6">
@@ -847,55 +895,8 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           )}
         </section>
 
-        {/* Project Story - Challenges, Solutions, Impact */}
-        {(challenges || solutions || impact) && (
-          <section className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-            {challenges && (
-              <div className="space-y-3 sm:space-y-4">
-                <div className="flex items-center gap-2 sm:gap-3">
-                  <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 bg-red-100 dark:bg-red-900/30 rounded-xl sm:rounded-xl flex items-center justify-center">
-                    <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
-                    </svg>
-                  </div>
-                  <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold">Challenges</h3>
-                </div>
-                <p className="text-xs sm:text-sm md:text-base text-neutral-700 dark:text-neutral-300 leading-relaxed text-justify">{challenges}</p>
-              </div>
-            )}
-
-            {solutions && (
-              <div className="space-y-3 sm:space-y-4">
-                <div className="flex items-center gap-2 sm:gap-3">
-                  <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 bg-emerald-100 dark:bg-emerald-900/30 rounded-xl sm:rounded-xl flex items-center justify-center">
-                    <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                    </svg>
-                  </div>
-                  <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold">Solutions</h3>
-                </div>
-                <p className="text-xs sm:text-sm md:text-base text-neutral-700 dark:text-neutral-300 leading-relaxed text-justify">{solutions}</p>
-              </div>
-            )}
-
-            {impact && (
-              <div className="space-y-3 sm:space-y-4">
-                <div className="flex items-center gap-2 sm:gap-3">
-                  <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 bg-purple-100 dark:bg-purple-900/30 rounded-xl sm:rounded-xl flex items-center justify-center">
-                    <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                    </svg>
-                  </div>
-                  <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold">Impact</h3>
-                </div>
-                <p className="text-xs sm:text-sm md:text-base text-neutral-700 dark:text-neutral-300 leading-relaxed text-justify">{impact}</p>
-              </div>
-            )}
-          </section>
-        )}
-
         {/* Main Content - MDX Content */}
-        <section className="prose prose-sm sm:prose-base prose-neutral dark:prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-h2:text-lg prose-h2:mt-8 prose-h2:mb-4 sm:prose-h2:text-xl sm:prose-h2:mt-10 sm:prose-h2:mb-5 md:prose-h2:text-2xl md:prose-h2:mt-12 md:prose-h2:mb-6 prose-h3:text-base prose-h3:mt-6 prose-h3:mb-3 sm:prose-h3:text-lg sm:prose-h3:mt-7 sm:prose-h3:mb-3.5 md:prose-h3:text-xl md:prose-h3:mt-8 md:prose-h3:mb-4 prose-p:leading-relaxed prose-p:text-justify prose-p:text-neutral-700 dark:prose-p:text-neutral-300 prose-ul:list-disc prose-ol:list-decimal prose-li:text-neutral-700 dark:prose-li:text-neutral-300 prose-blockquote:border-l-4 prose-blockquote:border-emerald-500 prose-blockquote:pl-4 sm:prose-blockquote:pl-6 prose-blockquote:italic prose-blockquote:text-neutral-600 dark:prose-blockquote:text-neutral-400 prose-code:bg-neutral-100 dark:prose-code:bg-neutral-800 prose-code:px-1.5 prose-code:py-0.5 sm:prose-code:px-2 sm:prose-code:py-1 prose-code:rounded prose-code:text-xs sm:prose-code:text-sm prose-strong:text-neutral-900 dark:prose-strong:text-neutral-100 prose-a:text-emerald-600 dark:prose-a:text-emerald-400 prose-a:no-underline hover:prose-a:underline">
+        <section className="prose prose-sm sm:prose-base prose-neutral dark:prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-h2:text-lg prose-h2:mt-8 prose-h2:mb-4 sm:prose-h2:text-xl sm:prose-h2:mt-10 sm:prose-h2:mb-5 md:prose-h2:text-2xl md:prose-h2:mt-12 md:prose-h2:mb-6 prose-h3:text-base prose-h3:mt-6 prose-h3:mb-3 sm:prose-h3:text-lg sm:prose-h3:mt-7 sm:prose-h3:mb-3.5 md:prose-h3:text-xl md:prose-h3:mt-8 md:prose-h3:mb-4 prose-p:leading-relaxed prose-p:text-justify prose-p:text-neutral-700 dark:prose-p:text-neutral-300 prose-ul:list-disc prose-ol:list-decimal prose-li:text-neutral-700 dark:prose-li:text-neutral-300 prose-blockquote:border-l-4 prose-blockquote:border-emerald-500 prose-blockquote:pl-4 sm:prose-blockquote:pl-6 prose-blockquote:italic prose-blockquote:text-neutral-600 dark:prose-blockquote:text-neutral-400 prose-code:bg-neutral-100 dark:prose-code:bg-neutral-800 prose-code:px-1.5 prose-code:py-0.5 sm:prose-code:px-2 sm:prose-code:py-1 prose-code:rounded prose-code:font-normal prose-code:before:content-none prose-code:after:content-none prose-pre:bg-neutral-900 [&_pre_code]:!bg-transparent [&_pre_code]:!p-0 prose-code:text-xs sm:prose-code:text-sm prose-strong:text-neutral-900 dark:prose-strong:text-neutral-100 prose-a:text-emerald-600 dark:prose-a:text-emerald-400 prose-a:no-underline hover:prose-a:underline">
           {content}
         </section>
 

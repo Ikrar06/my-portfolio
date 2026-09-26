@@ -7,6 +7,7 @@ import { getDesignProjects } from '@/lib/projects'
 import { getRelatedProjects, type ExtendedProjectMeta } from '@/lib/projects-helpers'
 import ProjectCard from '@/components/cards/project-card'
 import { AdvancedFinalResults, AdvancedExploration } from '@/components/project/SmartFinalResult'
+import { OG_IMAGE } from '@/lib/seo'
 
 // ====== SSG params ======
 export async function generateStaticParams() {
@@ -70,13 +71,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
           width: 1200,
           height: 630,
           alt: `${title} ${pageType.toLowerCase()} cover image`
-        }] : undefined,
+        }] : [OG_IMAGE],
       },
       twitter: {
         card: 'summary_large_image',
         title: `${title} — ${pageType}`,
         description: summary,
-        images: cover ? [cover] : undefined,
+        images: cover ? [cover] : [OG_IMAGE.url],
       },
     }
   } catch (error) {
@@ -879,7 +880,7 @@ export default async function DesignDetailPage({ params }: PageProps) {
         )}
 
         {/* Main Content - MDX Content */}
-        <section className="prose prose-sm sm:prose-base prose-neutral dark:prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-h2:text-lg prose-h2:mt-8 prose-h2:mb-4 sm:prose-h2:text-xl sm:prose-h2:mt-10 sm:prose-h2:mb-5 md:prose-h2:text-2xl md:prose-h2:mt-12 md:prose-h2:mb-6 prose-h3:text-base prose-h3:mt-6 prose-h3:mb-3 sm:prose-h3:text-lg sm:prose-h3:mt-7 sm:prose-h3:mb-3.5 md:prose-h3:text-xl md:prose-h3:mt-8 md:prose-h3:mb-4 prose-p:leading-relaxed prose-p:text-justify prose-p:text-neutral-700 dark:prose-p:text-neutral-300 prose-ul:list-disc prose-ol:list-decimal prose-li:text-neutral-700 dark:prose-li:text-neutral-300 prose-blockquote:border-l-4 prose-blockquote:border-emerald-500 prose-blockquote:pl-4 sm:prose-blockquote:pl-6 prose-blockquote:italic prose-blockquote:text-neutral-600 dark:prose-blockquote:text-neutral-400 prose-code:bg-neutral-100 dark:prose-code:bg-neutral-800 prose-code:px-1.5 prose-code:py-0.5 sm:prose-code:px-2 sm:prose-code:py-1 prose-code:rounded prose-code:text-xs sm:prose-code:text-sm prose-strong:text-neutral-900 dark:prose-strong:text-neutral-100 prose-a:text-emerald-600 dark:prose-a:text-emerald-400 prose-a:no-underline hover:prose-a:underline">
+        <section className="prose prose-sm sm:prose-base prose-neutral dark:prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-h2:text-lg prose-h2:mt-8 prose-h2:mb-4 sm:prose-h2:text-xl sm:prose-h2:mt-10 sm:prose-h2:mb-5 md:prose-h2:text-2xl md:prose-h2:mt-12 md:prose-h2:mb-6 prose-h3:text-base prose-h3:mt-6 prose-h3:mb-3 sm:prose-h3:text-lg sm:prose-h3:mt-7 sm:prose-h3:mb-3.5 md:prose-h3:text-xl md:prose-h3:mt-8 md:prose-h3:mb-4 prose-p:leading-relaxed prose-p:text-justify prose-p:text-neutral-700 dark:prose-p:text-neutral-300 prose-ul:list-disc prose-ol:list-decimal prose-li:text-neutral-700 dark:prose-li:text-neutral-300 prose-blockquote:border-l-4 prose-blockquote:border-emerald-500 prose-blockquote:pl-4 sm:prose-blockquote:pl-6 prose-blockquote:italic prose-blockquote:text-neutral-600 dark:prose-blockquote:text-neutral-400 prose-code:bg-neutral-100 dark:prose-code:bg-neutral-800 prose-code:px-1.5 prose-code:py-0.5 sm:prose-code:px-2 sm:prose-code:py-1 prose-code:rounded prose-code:font-normal prose-code:before:content-none prose-code:after:content-none prose-pre:bg-neutral-900 [&_pre_code]:!bg-transparent [&_pre_code]:!p-0 prose-code:text-xs sm:prose-code:text-sm prose-strong:text-neutral-900 dark:prose-strong:text-neutral-100 prose-a:text-emerald-600 dark:prose-a:text-emerald-400 prose-a:no-underline hover:prose-a:underline">
           {content}
         </section>
 

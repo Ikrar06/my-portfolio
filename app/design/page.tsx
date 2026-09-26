@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { getDesignProjects } from '@/lib/projects'
 import { getAllShots } from '@/lib/shots'
 import DesignClient from './design-client'
+import { OG_IMAGE } from '@/lib/seo'
 
 export const metadata: Metadata = {
   title: 'Design',
@@ -20,17 +21,14 @@ export const metadata: Metadata = {
     'Ikrar Gempur Tirani design work'
   ],
   openGraph: {
+    images: [OG_IMAGE],
     title: 'Design — Ikrar Gempur Tirani',
     description: 'UI/UX design, graphic design, branding, and creative explorations. A collection of comprehensive design projects and visual experiments.',
     url: (process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000') + '/design',
-    images: [{
-      url: '/images/foto-ikrar.jpg',
-      width: 1200,
-      height: 630,
-      alt: 'Design Portfolio by Ikrar Gempur Tirani'
-    }],
   },
   twitter: {
+    card: 'summary_large_image',
+    images: [OG_IMAGE.url],
     title: 'Design — Ikrar Gempur Tirani',
     description: 'UI/UX design, graphic design, branding, and creative explorations.',
   },

@@ -11,7 +11,10 @@ category: "Data Science"
 duration: "3 weeks"
 team: "Solo Project"
 client: "Academic Project - Data Science Course"
-summary: "End-to-end data mining of 21.3M NYC 311 service requests, discovering a six-complaint 'interior maintenance syndrome' validated against 11M independent housing inspection records. Buildings with the full syndrome show 12-44x higher verified violation rates, holding across building-size strata and a prior time window designed to rule out administrative circularity."
+summary: "Data mining of 21.3M NYC 311 requests that found a six-complaint building 'syndrome' (mean lift 8.48) and validated it against 11M inspection records: 12-44x higher violation rates."
+challenges: "311 data records what residents report, not what exists, and the inspection records that could serve as ground truth are partly triggered by those same complaints."
+solutions: "Mined 764,114 building baskets with FP-Growth in Polars, then validated the patterns with a dose-response design in a prior time window, stratified by building size."
+impact: "Full-syndrome buildings showed 12-44x more verified violations even before the complaints were filed. Three neighborhood typologies held 84.2% stable over six years, and one spurious finding was deliberately rejected."
 cover: "/images/nyc311/cover1.png"
 final: []
 liveUrl: ""
@@ -29,9 +32,6 @@ credits:
   - "U.S. Census Bureau for American Community Survey (ACS) data"
   - "mlxtend library for the FP-Growth implementation"
   - "Polars for high-performance dataframe processing"
-challenges: "Mining building-level patterns from 21.3M noisy civic records where the data records what residents report, not what actually exists. Validating discovered patterns against inspection records that are themselves partially caused by the complaints (administrative circularity: 311 complaints trigger HPD inspections). Controlling for building size as a confounder without regression, since the course scope was restricted to descriptive data mining."
-solutions: "Designed a dual-window validation strategy: patterns were tested against violations from a prior period (2015-2019) that predates the complaints and therefore cannot be caused by them. Controlled building size through stratification into size bands with per-unit pooled rates instead of raw counts. Used a deviation-space feature layer (ZIP composition minus citywide mean) so clustering captures neighborhood character rather than volume. Pre-registered success criteria before analysis and deliberately rejected a severity-specificity finding that only appeared in the circularity-prone window."
-impact: "Demonstrated that civic complaint data contains verified signal about chronic building neglect: the six-complaint syndrome predicts 12-44x higher independently-inspected violation rates per housing unit. Findings suggest 311 data could serve as a diagnostic instrument for housing inspection prioritization, covering 41,530 buildings in the highest-risk group. The project's methodological core - discovery-not-confirmation framing, dual-window circularity control, and honest rejection of a spurious finding - shows how exploratory mining can be made rigorous without predictive modeling."
 featured: true
 ---
 
