@@ -11,7 +11,10 @@ category: "Healthcare NLP Application"
 duration: "5 month"
 team: "2-person Team"
 client: "Academic Project - Natural Language Processing Course"
-summary: "Production-ready medical chatbot achieving 92.61% intent classification accuracy using Multinomial Naive Bayes for Indonesian Puskesmas healthcare anamnesis workflow. Automated training data generation via Gemini Flash 2.0 API with custom NLP preprocessing pipeline built from scratch."
+summary: "Indonesian medical anamnesis chatbot for Puskesmas reaching 92.61% intent accuracy across 14 classes, trained on 14,000 samples generated with Gemini 2.0 Flash and a custom preprocessing and NER pipeline built from scratch."
+challenges: "Puskesmas staff spend 15+ minutes per patient on manual history-taking, records are not standardized, and there is no Indonesian medical NLP dataset or NER model to build on."
+solutions: "Generated a balanced 14,000-sample dataset with Gemini 2.0 Flash, built slang normalization and dictionary-based NER for 97 symptoms and 23 body locations, and paired a TF-IDF + Multinomial Naive Bayes classifier with 14-stage dialog management."
+impact: "92.61% intent accuracy on 2,800 held-out samples and a structured anamnesis summary exportable as PDF, deployed end to end on Railway and Vercel."
 cover: "/images/chatbotpustu/cover1.png"
 final: []
 liveUrl: "https://pustu-anamnesis-chatbot.vercel.app/"
@@ -28,9 +31,6 @@ credits:
   - "Scikit-learn library for Multinomial Naive Bayes classifier"
   - "Flask web framework for REST API backend"
   - "Next.js 16 with TypeScript for modern frontend"
-challenges: "Building production NLP system for Indonesian medical terminology without external Indonesian NLP libraries. Generating high-quality balanced training data across 14 intent classes with medical domain vocabulary. Implementing stateful 14-stage dialog management with context-aware entity extraction and smart prefilling algorithm."
-solutions: "Automated training data generation using Gemini Flash 2.0 with custom prompt engineering for Indonesian medical context (14,000 samples). Built NLP preprocessing pipeline from scratch with custom slang normalization (94 mappings) and stopword filtering (93 words). Implemented dictionary-based NER system using regex patterns and context-aware extraction without external NLP libraries. Hybrid prediction combining ML model outputs with keyword boosting (0.90-0.95 confidence thresholds)."
-impact: "Successfully streamlined patient anamnesis workflow for Indonesian Puskesmas healthcare workers. Achieved production-grade 92.61% accuracy on medical intent classification. 24/7 cloud deployment enables immediate adoption without infrastructure requirements. Demonstrates feasibility of building domain-specific NLP systems for low-resource languages using LLM-powered data generation and classical ML techniques."
 featured: true
 ---
 

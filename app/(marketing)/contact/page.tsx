@@ -1,10 +1,11 @@
 // app/(marketing)/contact/page.tsx
 import type { Metadata } from 'next'
 import ContactClient from './contact-client'
+import { OG_IMAGE } from '@/lib/seo'
 
 export const metadata: Metadata = {
   title: 'Contact',
-  description: 'Get in touch with Ikrar Gempur Tirani, an AI Engineer and Data Scientist building RAG systems and production ML. Open to internships, research collaborations, and project discussions.',
+  description: 'Get in touch with Ikrar Gempur Tirani, an AI Engineer building RAG systems and production ML. Open to internships, research collaborations, and project discussions.',
   keywords: [
     'contact Ikrar Gempur Tirani',
     'AI Engineer contact',
@@ -17,20 +18,15 @@ export const metadata: Metadata = {
     'Hasanuddin University'
   ],
   openGraph: {
+    images: [OG_IMAGE],
     title: 'Contact — Ikrar Gempur Tirani',
-    description: 'AI Engineer and Data Scientist open to internships, research collaborations, and project discussions. Let\'s connect.',
-    images: [
-      {
-        url: '/images/foto-ikrar.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Contact Ikrar Gempur Tirani - Student Portfolio',
-      },
-    ],
+    description: 'AI Engineer open to internships, research collaborations, and project discussions. Let\'s connect.',
   },
   twitter: {
+    card: 'summary_large_image',
+    images: [OG_IMAGE.url],
     title: 'Contact — Ikrar Gempur Tirani',
-    description: 'AI Engineer and Data Scientist open to internships and research collaborations.',
+    description: 'AI Engineer open to internships and research collaborations.',
   },
 }
 

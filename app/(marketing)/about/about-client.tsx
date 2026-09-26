@@ -97,7 +97,7 @@ export default function AboutClient({ skills }: AboutClientProps) {
           <div className="mb-6 sm:mb-8">
             <TextType
               key={`about-tagline-${pageKey}`}
-              text="Informatics Engineering Student • AI / Machine Learning Engineer"
+              text="Informatics Engineering Student • AI Engineer"
               className="text-xs sm:text-sm md:text-base text-white/60 font-medium tracking-wider uppercase"
               typingSpeed={80}
               showCursor={false}

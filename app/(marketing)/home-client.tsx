@@ -1,7 +1,7 @@
 // app/(marketing)/home-client.tsx
 'use client'
 
-import { useMemo, useState, useEffect, useRef } from 'react'
+import { useMemo } from 'react'
 import { usePathname } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -10,6 +10,33 @@ import FadeIn from '@/components/motion/fade-in'
 import { InteractiveHeroText } from '@/components/animated/interactive-hero-text'
 import type { ProjectMeta } from '@/lib/mdx'
 
+const experiences = [
+  {
+    dates: 'Feb 2026 – Present',
+    title: 'AI Engineer Intern',
+    org: 'Universitas Hasanuddin (UniAI)',
+    highlight:
+      'Building the retrieval core of the university’s academic assistant: Qwen3 embeddings, BGE reranker, Qdrant and Redis caching, a 6-layer safety pipeline, and Qwen3-VL-8B served with vLLM on an NVIDIA L40S, load-tested toward 500 concurrent users.',
+    stack: ['RAG', 'vLLM', 'Qdrant', 'FastAPI', 'Redis'],
+  },
+  {
+    dates: 'Feb 2026 – Apr 2026',
+    title: 'Full Stack Developer Intern',
+    org: 'PLN Icon Plus (Iconnet)',
+    highlight:
+      'Built an internal OPEX monitoring dashboard end to end, automated manual budget reporting through data reconciliation, and remediated every finding from a full penetration test before deployment.',
+    stack: ['Next.js', 'TypeScript', 'PostgreSQL', 'Linux'],
+  },
+  {
+    dates: 'Jun 2025 – Mar 2026',
+    title: 'Full Stack Developer',
+    org: 'Cirebon Kuring Cafe',
+    highlight:
+      'Designed and built the cafe’s operating system solo: QR ordering, a Flutter staff tablet, an employee portal, and an owner dashboard on one Supabase backend.',
+    stack: ['Next.js', 'Flutter', 'Supabase', 'PostgreSQL'],
+  },
+]
+
 interface HomeClientProps {
   featuredProjects: ProjectMeta[]
 }
@@ -17,37 +44,6 @@ interface HomeClientProps {
 export default function HomeClient({ featuredProjects }: HomeClientProps) {
   const pathname = usePathname()
   const pageKey = useMemo(() => (pathname || 'home') + '-v1', [pathname])
-  const [scrollProgress, setScrollProgress] = useState(0)
-  const sectionRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!sectionRef.current) return
-
-      const section = sectionRef.current
-      const rect = section.getBoundingClientRect()
-      const windowHeight = window.innerHeight
-
-      // Calculate how centered the section is (0 to 1)
-      // 1 = perfectly centered, 0 = out of view
-      const sectionCenter = rect.top + rect.height / 2
-      const windowCenter = windowHeight / 2
-      const distanceFromCenter = Math.abs(sectionCenter - windowCenter)
-      const maxDistance = windowHeight / 2 + rect.height / 2
-
-      // Calculate progress: 1 when centered, 0 when far
-      const progress = Math.max(0, Math.min(1, 1 - distanceFromCenter / maxDistance))
-
-      setScrollProgress(progress)
-    }
-
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    handleScroll() // Initial calculation
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
 
   return (
     <>
@@ -76,7 +72,7 @@ export default function HomeClient({ featuredProjects }: HomeClientProps) {
         <div className="relative text-center max-w-5xl mx-auto z-10 space-y-4 sm:space-y-6">
           {/* Tagline */}
           <p className="text-xs sm:text-sm md:text-base text-text-tertiary font-medium tracking-wider uppercase px-2">
-            Informatics Engineering Student • Artificial Intelligence Enthusiast
+            AI Engineer • Informatics Engineering Student
           </p>
 
           {/* Main Hero Heading - Interactive */}
@@ -84,8 +80,8 @@ export default function HomeClient({ featuredProjects }: HomeClientProps) {
 
           {/* Hero Description */}
           <p className="text-sm sm:text-base md:text-lg lg:text-xl text-text-secondary leading-relaxed max-w-3xl mx-auto pt-2 px-2">
-            Informatics student at Hasanuddin University focusing on artificial intelligence with hands-on experience in machine learning and NLP.
-            Building end-to-end ML and RAG systems with Python, vLLM, TensorFlow, and PyTorch.
+            Informatics student at Hasanuddin University, currently building the RAG core of UniAI, the university&apos;s academic assistant.
+            I work across the ML lifecycle: data, retrieval, fine-tuning, model serving with vLLM, and the product around it.
           </p>
 
           {/* Action Buttons */}
@@ -115,7 +111,7 @@ export default function HomeClient({ featuredProjects }: HomeClientProps) {
               Featured Work
             </h2>
             <p className="text-sm sm:text-base md:text-lg text-text-secondary max-w-2xl mx-auto px-4">
-              Selected projects in data science, ML engineering, and full-stack development.
+              Selected work in LLM systems, NLP, data science, and full-stack development.
             </p>
             <Link
               href="/project"
@@ -193,139 +189,54 @@ export default function HomeClient({ featuredProjects }: HomeClientProps) {
         </div>
       </section>
 
-      {/* Process Section */}
-      <section ref={sectionRef} className="relative py-8 sm:py-12 md:py-16 border-t border-white/5">
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="text-center mb-4 sm:mb-6 md:mb-4 space-y-3 sm:space-y-4">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white">
-              How I Work
-            </h2>
-            <p className="text-sm sm:text-base md:text-lg text-text-secondary max-w-2xl mx-auto px-4">
-              My approach to tackling projects, from understanding the problem to delivering solutions.
-            </p>
+      {/* Experience Section */}
+      <section className="relative py-16 sm:py-20 md:py-24 border-t border-white/5">
+        <div className="container mx-auto px-4 sm:px-6 max-w-4xl">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-8 sm:mb-12">
+            <div className="space-y-2 sm:space-y-3">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white">
+                Experience
+              </h2>
+              <p className="text-sm sm:text-base md:text-lg text-text-secondary">
+                Where I have been applying this work.
+              </p>
+            </div>
+            <Link
+              href="/about"
+              className="inline-flex items-center text-text-secondary hover:text-framer-blue transition-colors font-medium group"
+            >
+              <span>Full background</span>
+              <span className="ml-2 group-hover:translate-x-1 transition-transform duration-200">→</span>
+            </Link>
           </div>
 
-          {/* Process Cards - Mobile/Tablet: Vertical Stack, Desktop: Stacked with Scroll */}
-          {/* Mobile & Tablet Version - Vertical */}
-          <div className="flex flex-col gap-6 max-w-md mx-auto lg:hidden">
-            {[
-              {
-                phase: '01',
-                title: 'Understand',
-                description:
-                  'Start by understanding the requirements, exploring available resources, and defining what success looks like. Learning to ask the right questions before diving into implementation.',
-                keywords: [],
-              },
-              {
-                phase: '02',
-                title: 'Build',
-                description:
-                  'Develop and iterate on solutions while learning best practices in code organization and design. Focus on creating clean, maintainable, and well-documented work.',
-                keywords: [],
-              },
-              {
-                phase: '03',
-                title: 'Deliver',
-                description:
-                  'Work towards creating polished solutions with proper documentation. Learning to present work effectively and gather feedback for continuous improvement.',
-                keywords: [],
-              },
-            ].map((step, i) => (
-              <FadeIn key={`process-mobile-${i}-${pageKey}`} delay={0.15 * i}>
-                <div className="w-full">
-                  <div className="backdrop-blur-sm bg-neutral-900/95 border border-white/10 rounded-2xl p-5 shadow-2xl">
-                    {/* Phase Number */}
-                    <div className="flex items-center mb-4">
-                      <div className="w-10 h-10 bg-gradient-to-br from-framer-blue/20 to-framer-blue/5 rounded-xl flex items-center justify-center mr-3">
-                        <span className="text-lg font-bold text-framer-blue">{step.phase}</span>
-                      </div>
-                      <span className="text-[10px] font-bold text-white/40 tracking-widest">STEP {step.phase}</span>
-                    </div>
-
-                    {/* Content */}
-                    <h3 className="text-base font-bold text-white mb-3">
-                      {step.title}
-                    </h3>
-
-                    <p className="text-[11px] text-white/50 leading-relaxed text-justify">
-                      {step.description}
-                    </p>
+          <ol className="divide-y divide-white/10 border-y border-white/10">
+            {experiences.map((exp, i) => (
+              <FadeIn key={`exp-${i}-${pageKey}`} delay={0.08 * i}>
+                <li className="grid grid-cols-1 sm:grid-cols-[180px_1fr] gap-2 sm:gap-8 py-6 sm:py-8">
+                  <div className="text-xs sm:text-sm text-white/40 font-medium tabular-nums pt-1">
+                    {exp.dates}
                   </div>
-                </div>
+                  <div className="space-y-2">
+                    <h3 className="text-base sm:text-lg font-semibold text-white">
+                      {exp.title} <span className="text-white/40 font-normal">· {exp.org}</span>
+                    </h3>
+                    <p className="text-sm text-white/55 leading-relaxed">{exp.highlight}</p>
+                    <div className="flex flex-wrap gap-2 pt-1">
+                      {exp.stack.map((t) => (
+                        <span
+                          key={t}
+                          className="text-[11px] sm:text-xs text-white/50 border border-white/10 rounded-full px-2.5 py-0.5"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </li>
               </FadeIn>
             ))}
-          </div>
-
-          {/* Desktop Version - Stacked with Scroll Animation */}
-          <div className="hidden lg:block relative max-w-2xl mx-auto h-[500px] lg:h-[540px]">
-            {[
-              {
-                phase: '01',
-                title: 'Understand',
-                description:
-                  'Start by understanding the requirements, exploring available resources, and defining what success looks like. Learning to ask the right questions before diving into implementation.',
-                keywords: [],
-              },
-              {
-                phase: '02',
-                title: 'Build',
-                description:
-                  'Develop and iterate on solutions while learning best practices in code organization and design. Focus on creating clean, maintainable, and well-documented work.',
-                keywords: [],
-              },
-              {
-                phase: '03',
-                title: 'Deliver',
-                description:
-                  'Work towards creating polished solutions with proper documentation. Learning to present work effectively and gather feedback for continuous improvement.',
-                keywords: [],
-              },
-            ].map((step, i) => {
-              // Interpolate values based on scroll progress
-              const startRotation = i === 0 ? -6 : i === 2 ? 6 : 0
-              const endRotation = i === 0 ? -8 : i === 2 ? 8 : 0
-              const startX = i === 0 ? -40 : i === 2 ? 40 : 0
-              const endX = i === 0 ? -420 : i === 2 ? 420 : 0
-              const startScale = 1
-              const endScale = 0.95
-
-              const rotation = startRotation + (endRotation - startRotation) * scrollProgress
-              const translateX = startX + (endX - startX) * scrollProgress
-              const scale = startScale + (endScale - startScale) * scrollProgress
-
-              return (
-                <div
-                  key={`process-desktop-${i}-${pageKey}`}
-                  className={`process-card-${i} absolute top-1/2 left-1/2 w-full max-w-md transition-all duration-300 ease-out`}
-                  style={{
-                    transform: `translate(-50%, -50%) rotate(${rotation}deg) translateX(${translateX}px) scale(${scale})`,
-                    zIndex: i === 1 ? 30 : i === 0 ? 10 : 20,
-                  }}
-                >
-                  <div className="transition-transform duration-500">
-                    <div className="backdrop-blur-sm bg-neutral-900/95 border border-white/10 rounded-3xl p-6 md:p-8 shadow-2xl">
-                      {/* Phase Number */}
-                      <div className="flex items-center mb-6">
-                        <div className="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-framer-blue/20 to-framer-blue/5 rounded-xl md:rounded-2xl flex items-center justify-center mr-4 md:mr-5 transition-all duration-500">
-                          <span className="text-xl md:text-2xl font-bold text-framer-blue">{step.phase}</span>
-                        </div>
-                        <span className="text-xs font-bold text-white/40 tracking-widest">STEP {step.phase}</span>
-                      </div>
-
-                      {/* Content */}
-                      <h3 className="text-lg md:text-xl font-bold text-white mb-4 md:mb-5 transition-colors duration-300">
-                        {step.title}
-                      </h3>
-
-                      <p className="text-xs md:text-sm text-white/50 leading-relaxed transition-colors duration-300 text-justify">
-                        {step.description}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              )
-            })}
-          </div>
+          </ol>
         </div>
       </section>
 
@@ -336,7 +247,7 @@ export default function HomeClient({ featuredProjects }: HomeClientProps) {
             Let's Work Together
           </h2>
           <p className="text-sm sm:text-base md:text-lg text-text-secondary max-w-2xl mx-auto px-4">
-            Open to data science roles, ML engineering positions, and research collaborations.
+            Open to AI engineering roles, internships, and research collaborations.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center pt-2 sm:pt-4 px-4">
             <Link

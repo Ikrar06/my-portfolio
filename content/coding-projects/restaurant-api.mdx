@@ -11,7 +11,10 @@ category: "Backend API & Cloud Infrastructure"
 duration: "1 week"
 team: "Solo Developer"
 client: "Academic Project - Web Programming Course"
-summary: "Production-ready RESTful API for restaurant management with comprehensive RBAC, JWT authentication (access + refresh tokens), advanced filtering & pagination, order workflow state machine, and real-time table status management. Deployed on AWS EC2 with Elastic IP for stable endpoint."
+summary: "REST API for restaurant operations with 30+ endpoints, three-role RBAC, dual-token JWT, and a six-state order workflow, deployed on AWS EC2 behind Nginx."
+challenges: "Restaurant data mixes customers, staff and admins with very different permissions, while orders and prices must stay historically accurate as the menu changes."
+solutions: "Designed seven normalized Prisma models with price snapshots, composable auth and ownership middleware, Zod validation on every input, and a server-enforced order state machine."
+impact: "30+ secured endpoints with indexed queries under 50 ms, rate limiting on sensitive routes, and a stable public deployment on AWS EC2."
 cover: "/images/restaurant-api/cover1.png"
 githubUrl: "https://github.com/Ikrar06/restaurant-api"
 liveUrl: "http://44.216.9.251/"
@@ -29,7 +32,7 @@ featured: true
 
 ## Project Overview
 
-A production-ready RESTful backend for restaurant operations — authentication, menu browsing, order processing, table management, and reviews — with granular role-based access control across 3 roles and 30+ endpoints. Deployed on **AWS EC2** with an Elastic IP for a stable endpoint.
+A RESTful backend for restaurant operations — authentication, menu browsing, order processing, table management, and reviews — with granular role-based access control across 3 roles and 30+ endpoints. Deployed on **AWS EC2** with an Elastic IP for a stable endpoint.
 
 ## Stack
 

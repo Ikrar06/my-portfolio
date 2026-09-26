@@ -11,7 +11,10 @@ category: "Natural Language Processing"
 duration: "2 months"
 team: "3-person Team"
 client: "Academic Project - Natural Language Processing Course"
-summary: "Fine-tuned RoBERTa-base model for aspect-based sentiment analysis on 10,686 financial news headlines achieving 86.67% accuracy on entity-level sentiment classification with comprehensive handling of severe class imbalance through weighted loss and regularization techniques."
+summary: "Fine-tuned RoBERTa-base for entity-level sentiment on 10,686 financial headlines, reaching 86.67% accuracy and 100% recall on negative sentiment with leakage-free, title-based splits."
+challenges: "One headline often carries opposite sentiment toward different companies, the labels are heavily skewed toward neutral, and naive row-based splits leak headlines between train and test."
+solutions: "Framed the task as entity-conditioned classification, split on unique titles to prevent leakage, and fine-tuned RoBERTa-base with weighted loss, label smoothing and early stopping on F1-macro."
+impact: "86.67% accuracy and 93% F1-macro at 96.25% mean confidence, with every negative headline caught and inference under 50 ms on GPU."
 cover: "/images/absa/cover.png"
 final: []
 metrics:
@@ -25,9 +28,6 @@ credits:
   - "Hugging Face Transformers library"
   - "PyTorch deep learning framework"
   - "NVIDIA CUDA for GPU acceleration"
-challenges: "The dataset exhibited severe class imbalance with neutral sentiment dominating the distribution, and required entity-level sentiment classification (ABSA) rather than document-level analysis. Preventing overfitting while achieving strong performance across all sentiment classes demanded sophisticated regularization strategies including weighted loss, label smoothing, and dropout."
-solutions: "Implemented comprehensive regularization pipeline combining weighted cross-entropy loss (weights: negative=1.26, neutral=0.87, positive=0.95), label smoothing (0.05), dropout (0.3), L2 regularization (weight_decay=0.01), and gradient clipping. Applied anti-leakage data splitting based on unique titles, and used early stopping with patience=5 monitoring validation F1-macro to prevent overfitting."
-impact: "Successfully demonstrated that fine-tuned transformer models can achieve high accuracy on aspect-based sentiment analysis for financial news despite severe class imbalance. The model achieved perfect 100% accuracy on negative sentiment detection and 96.25% average confidence, making it suitable for production deployment in financial sentiment tracking systems."
 githubUrl: "https://github.com/Ikrar06/aspect-based-financial-sentiment"
 featured: true
 ---

@@ -8,11 +8,12 @@ import Nav from '@/components/nav'
 import Footer from '@/components/footer'
 import StructuredData from '@/components/structured-data'
 import ConsoleEasterEgg from '@/components/console-easter-egg'
+import { OG_IMAGE } from '@/lib/seo'
 
 // Base metadata akan di-override oleh metadata di (marketing)/layout.tsx
 export async function generateMetadata(): Promise<Metadata> {
   const baseMetadata: Metadata = {
-    title: 'Ikrar Gempur Tirani | AI Engineer & Data Scientist',
+    title: 'Ikrar Gempur Tirani | AI Engineer',
     description: 'Informatics Engineering student at Hasanuddin University (GPA 3.92/4.00) with hands-on experience in RAG systems, NLP, and production ML. Building AI products with Python, vLLM, TensorFlow, and PyTorch.',
     metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'),
     icons: {
@@ -35,26 +36,19 @@ export async function generateMetadata(): Promise<Metadata> {
     authors: [{ name: 'Ikrar Gempur Tirani' }],
     creator: 'Ikrar Gempur Tirani',
     openGraph: {
+      images: [OG_IMAGE],
       type: 'website',
-      locale: 'id_ID',
+      locale: 'en_US',
       url: process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000',
       siteName: 'Ikrar Gempur Tirani Portfolio',
-      title: 'Ikrar Gempur Tirani | AI Engineer & Data Scientist',
+      title: 'Ikrar Gempur Tirani | AI Engineer',
       description: 'Informatics student at Hasanuddin University building RAG systems and production ML',
-      images: [
-        {
-          url: '/images/foto-ikrar.jpg',
-          width: 1200,
-          height: 630,
-          alt: 'Ikrar Gempur Tirani',
-        },
-      ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Ikrar Gempur Tirani | AI Engineer & Data Scientist',
+      images: [OG_IMAGE.url],
+      title: 'Ikrar Gempur Tirani | AI Engineer',
       description: 'Informatics student building RAG systems and production ML',
-      images: ['/images/foto-ikrar.jpg'],
     },
   }
 
@@ -63,7 +57,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="id" className="dark scroll-smooth">
+    <html lang="en" className="dark scroll-smooth">
       <head>
         {/* Google Search Console Verification */}
         <meta name="google-site-verification" content="YMGy-xLqu4sGFHbgPyxg3CJAN1bpomnZX0X4wCUAWT8" />

@@ -3,23 +3,21 @@ import { getCodingProjects } from '@/lib/projects'
 import ProjectCardEnhanced from '@/components/cards/project-card-enhanced'
 import FadeIn from '@/components/motion/fade-in'
 import type { Metadata } from 'next'
+import { OG_IMAGE } from '@/lib/seo'
 
 export const metadata: Metadata = {
   title: 'Projects',
-  description: 'Data Science, ML Engineering, and Full-Stack development projects by Ikrar Gempur Tirani. From statistical analysis with 7,500-agent simulations to fine-tuning transformers with 90%+ accuracy. Real-world ML systems and production applications.',
+  description: 'AI engineering, NLP, data science, and full-stack projects by Ikrar Gempur Tirani — from LLM-powered simulations with 7,580 agents to fine-tuned transformers and end-to-end products.',
   keywords: ['Data Science projects', 'Machine Learning portfolio', 'NLP projects', 'Deep Learning', 'Statistical Analysis', 'Production ML systems', 'PyTorch', 'Full-Stack development', 'AI products', 'Web Development', 'Mobile Apps', 'Ikrar Gempur Tirani'],
   openGraph: {
+    images: [OG_IMAGE],
     title: 'Projects — Ikrar Gempur Tirani',
     description: 'Data Science, ML Engineering, and Full-Stack development projects. From agent-based simulations to production NLP systems and web applications.',
     url: (process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000') + '/project',
-    images: [{
-      url: '/images/foto-ikrar.jpg',
-      width: 1200,
-      height: 630,
-      alt: 'Data Science & Development Projects by Ikrar Gempur Tirani'
-    }],
   },
   twitter: {
+    card: 'summary_large_image',
+    images: [OG_IMAGE.url],
     title: 'Projects — Ikrar Gempur Tirani',
     description: 'Data Science, ML Engineering, and Full-Stack development projects. Real-world ML systems and applications in production.',
   },
