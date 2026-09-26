@@ -60,7 +60,7 @@ export default function ContactClient({ contactInfo }: ContactClientProps) {
           <div className="mb-6 sm:mb-8 py-2 w-full">
             <SplitText
               key={`contact-title-${pageKey}`}
-              text="Got a Project in Mind?"
+              text="Let's Work Together"
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-[1.05] tracking-tight break-words"
               splitType="words, chars"
               delay={30}
