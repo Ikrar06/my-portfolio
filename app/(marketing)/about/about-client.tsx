@@ -90,7 +90,7 @@ export default function AboutClient({ skills }: AboutClientProps) {
     },
     {
       org: 'Coder Institute Hasanuddin University',
-      title: 'Head of Creative Media',
+      title: 'Publication, Design & Documentation Coordinator',
       dates: 'Feb 2025 – Feb 2026',
       location: 'Makassar',
       highlights: [
