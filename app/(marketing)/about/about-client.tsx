@@ -22,70 +22,96 @@ export default function AboutClient({ skills }: AboutClientProps) {
   // =========================
   // DATA PENGALAMAN (sorted by timeline - descending, sesuai CV)
   // =========================
-  const experiences = [
+  type Experience = {
+    org: string
+    title: string
+    dates: string
+    location: string
+    highlights: string[]
+    skills: string[]
+    links?: { label: string; href: string }[]
+  }
+
+  const engineering: Experience[] = [
     {
-      org: 'Universitas Hasanuddin (DSITD)',
-      title: 'AI Engineer Intern — RAG Core (UniAI Team)',
-      type: 'Technical Role',
+      org: 'Universitas Hasanuddin (DSITD) · UniAI',
+      title: 'AI Engineer Intern — RAG Core',
       dates: 'Feb 2026 – Present',
-      location: 'Makassar, South Sulawesi',
-      desc: `Building the data and RAG core of UniAI, an institutional academic chatbot for Hasanuddin University, as part of Team 2 (Data & RAG Core). Developed an end-to-end retrieval pipeline using Qwen3-Embedding for dense retrieval, a BGE-Reranker, a Qdrant vector database, and Redis semantic caching to cut latency and inference cost. Designed a 6-layer safety and routing pipeline (keyword filter, Llama Guard, IndoBERT intent classifier, private API handler, RAG pipeline, output filter) and a three-tier OCR ingestion strategy (PyMuPDF, Tesseract, Qwen3-VL). Deployed and served Qwen3-VL-8B-Instruct via vLLM behind FastAPI and Nginx on an NVIDIA L40S GPU, load-testing toward 500 concurrent users.`,
-      skills: ['RAG', 'LLM', 'vLLM', 'Qdrant', 'FastAPI', 'Python', 'Embeddings', 'Redis', 'Docker']
+      location: 'Makassar',
+      highlights: [
+        'Building the retrieval core of UniAI, the university’s academic assistant: Qwen3 embeddings, BGE reranker, Qdrant, and Redis semantic caching to cut latency and inference cost.',
+        'Designed a 6-layer safety and routing pipeline: keyword filter, Llama Guard, IndoBERT intent classifier, private API handler, RAG, and output filter.',
+        'Built a three-tier OCR ingestion strategy (PyMuPDF, Tesseract, Qwen3-VL) for university documents.',
+        'Serving Qwen3-VL-8B-Instruct with vLLM behind FastAPI and Nginx on an NVIDIA L40S, load-testing toward 500 concurrent users.',
+      ],
+      skills: ['RAG', 'vLLM', 'Qdrant', 'FastAPI', 'Redis', 'Docker'],
     },
     {
-      org: 'PLN Icon Plus (Iconnet)',
+      org: 'PLN Icon Plus (ICONNET)',
       title: 'Full Stack Developer Intern',
-      type: 'Technical Role',
       dates: 'Feb 2026 – Apr 2026',
-      location: 'Makassar, South Sulawesi',
-      desc: `Built an internal finance dashboard in a 4-person intern team using Next.js (TypeScript), Express and PostgreSQL, covering OPEX, cash advance, contract budget and vehicle monitoring to streamline budget tracking and realization reporting. Performed data reconciliation across financial and operational records, automating previously manual reporting workflows and improving data consistency for management reporting. Piloted it on the office LAN, then deployed it to a Hetzner Linux VPS and hardened it through a full penetration testing cycle, remediating all identified security vulnerabilities.`,
-      skills: ['Next.js', 'TypeScript', 'PostgreSQL', 'Full-Stack Development', 'Penetration Testing', 'Data Reconciliation']
+      location: 'Makassar',
+      highlights: [
+        'Built an internal finance dashboard in a 4-person intern team covering OPEX, cash advance, contract budget, and vehicle monitoring.',
+        'Replaced manual spreadsheet reconciliation with reviewed Excel/CSV imports matched against budget references.',
+        'Piloted on the office LAN, then deployed to a Hetzner Linux VPS and remediated every finding from a full penetration test.',
+      ],
+      skills: ['Next.js', 'Express', 'PostgreSQL', 'Redis', 'Linux'],
+      links: [{ label: 'Case study', href: '/project/iconnet-opex-dashboard' }],
     },
     {
       org: 'Cirebon Kuring Cafe',
       title: 'Full Stack Developer',
-      type: 'Technical Role',
-      dates: 'June 2025 – Mar 2026',
+      dates: 'Jun 2025 – Mar 2026',
       location: 'Remote',
-      desc: `Developed web and mobile application using TypeScript (Next.js) and Flutter with PostgreSQL database architecture through the pre-launch phase. Designed database schema and data models to manage cafe operations, inventory tracking, and customer order systems. Collaborated with stakeholders to gather requirements and translate business needs into technical specifications.`,
-      skills: ['TypeScript', 'Next.js', 'Flutter', 'PostgreSQL', 'Database Design', 'Requirements Gathering']
-    },
-    {
-      org: 'Google Developer Group on Campus - Hasanuddin University',
-      title: 'Head of Creative Media Division',
-      type: 'Leadership Role',
-      dates: 'Aug 2025 – Present',
-      location: 'Makassar, South Sulawesi',
-      desc: `Lead team of 6 members, growing Instagram community by 46% (2,800 to 4,100 followers) and generating 1M+ total content views since August 2025. Achieved record monthly performance of 515K views in October 2025, representing 25x improvement from pre-leadership baseline through strategic content optimization and audience targeting. Analyze social media engagement metrics using Instagram Insights to inform data-driven decisions on content format, posting schedules, and creative direction.`,
-      extras: [
-        { label: 'Instagram', value: '@gdgocunhas', href: 'https://instagram.com/gdgocunhas' }
+      highlights: [
+        'Designed and built the cafe’s operating system solo: QR table ordering, a Flutter staff tablet, an employee portal, and an owner dashboard.',
+        'Modeled orders, inventory with moving-average costing, attendance, and payroll in PostgreSQL on Supabase.',
+        'Gathered requirements with the owner and translated operational needs into technical specifications.',
       ],
-      skills: ['Team Leadership', 'Data-Driven Strategy', 'Social Media Analytics', 'Content Strategy', 'Brand Management']
+      skills: ['Next.js', 'Flutter', 'Supabase', 'PostgreSQL'],
+      links: [{ label: 'Case study', href: '/project/cirebon-kuring-cafe' }],
+    },
+  ]
+
+  const leadership: Experience[] = [
+    {
+      org: 'Google Developer Group on Campus — Hasanuddin University',
+      title: 'Head of Creative Media',
+      dates: 'Aug 2025 – Aug 2026',
+      location: 'Makassar',
+      highlights: [
+        'Led a 6-person creative media team for one term.',
+        'Grew Instagram by 46% (2,800 → 4,100 followers) and generated 1M+ total content views.',
+        'Reached a record 515K views in October 2025, 25x the pre-leadership baseline, guided by engagement analytics.',
+      ],
+      skills: ['Team Leadership', 'Content Strategy', 'Analytics'],
+      links: [{ label: '@gdgocunhas', href: 'https://instagram.com/gdgocunhas' }],
     },
     {
       org: 'Coder Institute Hasanuddin University',
-      title: 'Head of Creative Media Division',
-      type: 'Leadership Role',
+      title: 'Head of Creative Media',
       dates: 'Feb 2025 – Present',
-      location: 'Makassar, South Sulawesi',
-      desc: `Lead creative team to produce visual content, event documentation, and promotional materials for university coding community. Coordinate with technical and organizational teams to support community initiatives and educational programs. Manage content production workflow ensuring consistent brand identity across social media platforms.`,
-      extras: [
-        { label: 'Instagram', value: '@coderinstitute', href: 'https://instagram.com/coderinstitute' }
+      location: 'Makassar',
+      highlights: [
+        'Lead the team producing visual content, event documentation, and promotional materials for the campus coding community.',
+        'Coordinate with technical and organizing teams to support community programs.',
       ],
-      skills: ['Content Strategy', 'Team Coordination', 'Brand Identity', 'Graphic Design', 'Figma']
+      skills: ['Team Coordination', 'Brand Identity'],
+      links: [{ label: '@coderinstitute', href: 'https://instagram.com/coderinstitute' }],
     },
     {
       org: 'Recursion UH',
-      title: 'Publication, Design, and Documentation Coordinator',
-      type: 'Leadership Role',
+      title: 'Publication, Design & Documentation Coordinator',
       dates: 'Sep 2024 – Apr 2025',
-      location: 'Makassar, South Sulawesi',
-      desc: `Coordinated publication and creative strategy for inaugural national-level informatics competition organized by Hasanuddin University, featuring CTF, UX Design, ICT Business Plan, and Competitive Programming tracks. Built social media presence from ground up, achieving 894 followers and 96+ published content pieces across Instagram platform within 8-month period. Designed promotional materials, infographics, and technical documentation to support competition promotion and participant communication across multiple university campuses.`,
-      extras: [
-        { label: 'Instagram', value: '@recursion.uh', href: 'https://instagram.com/recursion.uh' }
+      location: 'Makassar',
+      highlights: [
+        'Led publication for the university’s first national-level informatics competition (CTF, UX Design, ICT Business Plan, Competitive Programming).',
+        'Built its social presence from zero to 894 followers and 96+ posts in eight months.',
       ],
-      skills: ['Social Media Growth', 'Content Management', 'Visual Design', 'Adobe Creative Suite', 'Figma']
-    }
+      skills: ['Publication', 'Social Media Growth'],
+      links: [{ label: '@recursion.uh', href: 'https://instagram.com/recursion.uh' }],
+    },
   ]
 
   return (
@@ -144,7 +170,7 @@ export default function AboutClient({ skills }: AboutClientProps) {
                   Currently an <span className="text-white">AI Engineer intern</span> building the data and RAG core of <span className="text-white">UniAI</span>, an institutional academic chatbot for Hasanuddin University — working across the full ML lifecycle, from document ingestion and embeddings to retrieval, model serving with <span className="text-white">vLLM</span>, and deployment. Beyond that, my projects range from agent-based market simulations to fine-tuning transformer models for NLP tasks.
                 </p>
                 <p className="text-xs sm:text-sm md:text-base lg:text-lg text-white/60 leading-relaxed font-light">
-                  I also lead the Creative Media Division at <span className="text-white">Google Developer Groups on Campus</span>, pairing technical work with communication and leadership. With full-stack development capabilities and five years of design experience, I build AI products that are both technically sound and user-friendly.
+                  I also led the Creative Media Division at <span className="text-white">Google Developer Groups on Campus</span> (2025–2026), pairing technical work with communication and leadership. With full-stack development capabilities and five years of design experience, I build AI products that are both technically sound and user-friendly.
                 </p>
 
                 <div className="mt-4 sm:mt-6 grid gap-2 sm:gap-3 text-xs sm:text-sm text-white/60">
@@ -261,7 +287,7 @@ export default function AboutClient({ skills }: AboutClientProps) {
             </div>
             <FadeIn key={`skills-desc-${pageKey}`} delay={0.2}>
               <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/60 max-w-3xl mx-auto font-light leading-relaxed px-4">
-                Tools and technologies for data analysis, machine learning, and production software development.
+                The stack I use most, from LLM serving and model training to the applications built around them.
               </p>
             </FadeIn>
           </div>
@@ -276,8 +302,8 @@ export default function AboutClient({ skills }: AboutClientProps) {
 
       {/* Pengalaman */}
       <section className="relative py-16 sm:py-20 md:py-24 border-t border-white/5">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-10 sm:mb-12 md:mb-16">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-12 sm:mb-16">
             <FadeIn key={`exp-title-${pageKey}`}>
               <SplitText
                 key={`exp-split-${pageKey}`}
@@ -294,88 +320,99 @@ export default function AboutClient({ skills }: AboutClientProps) {
             </FadeIn>
             <FadeIn key={`exp-desc-${pageKey}`} delay={0.2}>
               <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/60 max-w-3xl mx-auto font-light leading-relaxed px-4">
-                AI engineering, full-stack development, and creative leadership positions that combine technical implementation with data-driven strategy and team management.
+                Engineering roles first, followed by the community work where I lead creative teams.
               </p>
             </FadeIn>
           </div>
 
-          {/* Timeline Layout */}
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-white/40 via-white/30 to-white/10 transform -translate-x-0.5"></div>
+          <div className="space-y-14 sm:space-y-16">
+            {[
+              { label: 'Engineering', items: engineering },
+              { label: 'Leadership & Community', items: leadership },
+            ].map((group) => (
+              <div key={group.label}>
+                <h3 className="text-xs sm:text-sm font-semibold uppercase tracking-[0.18em] text-white/40 mb-6 sm:mb-8 md:pl-[220px]">
+                  {group.label}
+                </h3>
 
-            <div className="space-y-8 sm:space-y-10 md:space-y-12 lg:space-y-16">
-              {experiences.map((exp, i) => (
-                <FadeIn key={`exp-${i}-${pageKey}`} delay={0.12 * i}>
-                  <div className="relative flex items-center">
-                    {/* Timeline dot */}
-                    <div className="hidden md:block absolute left-1/2 top-8 w-6 h-6 bg-white/30 rounded-full border-4 border-black shadow-lg transform -translate-x-1/2 z-10">
-                      <div className="w-2 h-2 bg-white rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
-                    </div>
+                <div>
+                  {group.items.map((exp, i) => {
+                    const current = exp.dates.includes('Present')
+                    return (
+                      <FadeIn key={`exp-${group.label}-${i}-${pageKey}`} delay={0.08 * i}>
+                        <div className="relative md:grid md:grid-cols-[180px_1fr] md:gap-10 pl-6 md:pl-0 border-l md:border-l-0 border-white/10 pb-10 md:pb-0">
+                          {/* Dot (mobile) */}
+                          <span
+                            className={`md:hidden absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full ring-4 ring-[#0A0A0A] ${current ? 'bg-framer-blue' : 'bg-white/30'}`}
+                            aria-hidden
+                          />
 
-                    {/* Content */}
-                    <div className={`w-full md:w-[calc(50%-3rem)] ${i % 2 === 0 ? 'md:pr-8' : 'md:pl-8 md:ml-auto'}`}>
-                      <article className="backdrop-blur-sm bg-white/[0.02] border border-white/10 rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-8 hover:bg-white/[0.04] hover:border-white/20 transition-all duration-700 group relative">
-                        {/* Timeline dot for mobile */}
-                        <div className="md:hidden w-4 h-4 sm:w-5 sm:h-5 bg-white/30 rounded-full absolute -left-2 sm:-left-2.5 top-6 sm:top-8 border-2 border-black shadow-lg z-10">
-                          <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
+                          {/* Meta */}
+                          <div className="md:text-right md:pt-0.5 mb-2 md:mb-0">
+                            <p className={`text-xs sm:text-sm font-medium tabular-nums ${current ? 'text-framer-blue' : 'text-white/70'}`}>
+                              {exp.dates}
+                            </p>
+                            <p className="text-[11px] sm:text-xs text-white/35 mt-0.5">{exp.location}</p>
+                          </div>
+
+                          {/* Content */}
+                          <div className="relative md:pl-10 md:border-l md:border-white/10 md:pb-12">
+                            <span
+                              className={`hidden md:block absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full ring-4 ring-[#0A0A0A] ${current ? 'bg-framer-blue' : 'bg-white/30'}`}
+                              aria-hidden
+                            />
+
+                            <h4 className="text-base sm:text-lg font-semibold text-white leading-snug">{exp.title}</h4>
+                            <p className="text-sm text-white/55 mt-0.5">{exp.org}</p>
+
+                            <ul className="mt-4 space-y-2">
+                              {exp.highlights.map((h, idx) => (
+                                <li key={idx} className="relative pl-4 text-sm text-white/65 leading-relaxed">
+                                  <span className="absolute left-0 top-[0.6em] w-1 h-1 rounded-full bg-white/35" aria-hidden />
+                                  {h}
+                                </li>
+                              ))}
+                            </ul>
+
+                            <div className="flex flex-wrap items-center gap-2 mt-4">
+                              {exp.skills.map((sk) => (
+                                <span
+                                  key={sk}
+                                  className="text-[11px] sm:text-xs px-2.5 py-1 rounded-full bg-white/[0.04] border border-white/10 text-white/60"
+                                >
+                                  {sk}
+                                </span>
+                              ))}
+                              {exp.links?.map((l) =>
+                                l.href.startsWith('/') ? (
+                                  <Link
+                                    key={l.href}
+                                    href={l.href}
+                                    className="text-[11px] sm:text-xs px-2.5 py-1 rounded-full text-framer-blue hover:text-framer-blue-hover transition-colors"
+                                  >
+                                    {l.label} →
+                                  </Link>
+                                ) : (
+                                  <a
+                                    key={l.href}
+                                    href={l.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-[11px] sm:text-xs px-2.5 py-1 rounded-full text-white/50 hover:text-white transition-colors"
+                                  >
+                                    {l.label} ↗
+                                  </a>
+                                )
+                              )}
+                            </div>
+                          </div>
                         </div>
-
-                        <header className="mb-4 sm:mb-5 md:mb-6">
-                          <h3 className="text-base sm:text-lg font-bold text-white">{exp.title}</h3>
-                          <p className="text-sm sm:text-base text-white/80 font-medium">{exp.org}</p>
-                          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mt-1 text-xs sm:text-sm">
-                            <span className="px-2 py-0.5 sm:py-1 rounded-full bg-white/10 text-white/70 text-[10px] sm:text-xs">
-                              {exp.type}
-                            </span>
-                            <span className="text-white/60">•</span>
-                            <span className="text-white/60">{exp.dates}</span>
-                          </div>
-                          {exp.location && exp.location !== 'Remote' && (
-                            <p className="text-white/40 text-[10px] sm:text-xs mt-1">{exp.location}</p>
-                          )}
-                        </header>
-
-                        <p className="text-xs sm:text-sm text-white/70 leading-relaxed mb-4 sm:mb-5">{exp.desc}</p>
-
-                        {/* Extras (link IG, dsb) */}
-                        {exp.extras?.length ? (
-                          <div className="flex flex-wrap gap-2 sm:gap-3 mb-4 sm:mb-5">
-                            {exp.extras.map((ex, idx) => (
-                              <a
-                                key={idx}
-                                href={ex.href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-[10px] sm:text-xs px-2.5 sm:px-3 py-1 rounded-full border border-white/15 text-white/80 hover:text-white hover:border-white/30 transition-colors"
-                                aria-label={`${ex.label}: ${ex.value}`}
-                                title={`${ex.label}: ${ex.value}`}
-                              >
-                                {ex.label}: {ex.value}
-                              </a>
-                            ))}
-                          </div>
-                        ) : null}
-
-                        {/* Skills chips */}
-                        {exp.skills?.length ? (
-                          <ul className="flex flex-wrap gap-1.5 sm:gap-2">
-                            {exp.skills.map((s, idx) => (
-                              <li
-                                key={idx}
-                                className="text-[10px] sm:text-[11px] leading-5 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full bg-white/[0.04] border border-white/10 text-white/70"
-                              >
-                                {s}
-                              </li>
-                            ))}
-                          </ul>
-                        ) : null}
-                      </article>
-                    </div>
-                  </div>
-                </FadeIn>
-              ))}
-            </div>
+                      </FadeIn>
+                    )
+                  })}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

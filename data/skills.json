@@ -1,34 +1,35 @@
 [
   {
-    "category": "Programming Languages",
-    "skills": ["Python", "SQL", "JavaScript", "TypeScript", "Java", "C++", "Dart"]
-  },
-  {
-    "category": "Data Science & Machine Learning",
-    "skills": ["TensorFlow", "PyTorch", "Scikit-learn", "Pandas", "NumPy", "NLTK", "Hugging Face"]
-  },
-  {
-    "category": "Data Analysis & Visualization",
-    "skills": ["Jupyter Notebook", "Matplotlib", "Seaborn", "Statistical Modeling"]
-  },
-  {
     "category": "LLM & RAG Engineering",
-    "skills": ["RAG", "vLLM", "Qdrant", "LlamaIndex", "Reranking", "Embeddings", "FastAPI", "Redis", "Docker"]
+    "highlight": true,
+    "skills": ["RAG", "vLLM", "Qdrant", "LlamaIndex", "Embeddings", "Reranking", "FastAPI", "Redis", "Docker"]
   },
   {
-    "category": "Databases",
-    "skills": ["MySQL", "PostgreSQL", "Supabase", "Firebase"]
+    "category": "Machine Learning & NLP",
+    "skills": ["PyTorch", "TensorFlow", "Hugging Face", "Scikit-learn", "NLTK", "Pandas", "NumPy"]
   },
   {
-    "category": "Tools & Platforms",
-    "skills": ["Git", "GitHub", "Google Colab", "VS Code", "Railway", "Vercel"]
+    "category": "Languages",
+    "skills": ["Python", "TypeScript", "JavaScript", "SQL", "Dart", "Java", "C++"]
+  },
+  {
+    "category": "Data Analysis",
+    "skills": ["Jupyter", "Statistical Modeling", "Matplotlib", "Seaborn"]
   },
   {
     "category": "Web & App Development",
     "skills": ["Next.js", "React", "Node.js", "Express.js", "Flask", "Flutter", "HTML/CSS"]
   },
   {
-    "category": "Design & Creative Tools",
-    "skills": ["Adobe Illustrator", "Adobe Photoshop", "Figma", "Adobe After Effects", "Adobe Premiere Pro", "Canva"]
+    "category": "Databases",
+    "skills": ["PostgreSQL", "MySQL", "Supabase", "Firebase"]
+  },
+  {
+    "category": "Tools & Platforms",
+    "skills": ["Git", "GitHub", "Linux", "Vercel", "Railway", "Google Colab", "VS Code"]
+  },
+  {
+    "category": "Design",
+    "skills": ["Figma", "Adobe Illustrator", "Adobe Photoshop", "Adobe After Effects", "Adobe Premiere Pro"]
   }
 ]

@@ -3,6 +3,7 @@
 export type Skill = {
   category: string
   skills: string[]
+  highlight?: boolean
 }
 
 type SkillsListProps = {
@@ -11,30 +12,33 @@ type SkillsListProps = {
 
 export default function SkillsList({ skills }: SkillsListProps) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 md:gap-8">
-      {skills.map((category, categoryIndex) => (
+    <div className="rounded-2xl sm:rounded-3xl border border-white/10 bg-white/[0.02] divide-y divide-white/[0.07] overflow-hidden">
+      {skills.map((category) => (
         <div
           key={category.category}
-          className="group backdrop-blur-sm bg-white/[0.02] border border-white/10 rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 hover:bg-white/[0.05] hover:border-white/20 transition-all duration-500"
-          style={{ animationDelay: `${categoryIndex * 0.1}s` }}
+          className={`grid grid-cols-1 md:grid-cols-[220px_1fr] gap-3 md:gap-8 px-5 sm:px-8 py-5 sm:py-6 ${
+            category.highlight ? 'bg-framer-blue/[0.04]' : ''
+          }`}
         >
-          {/* Category Header */}
-          <h3 className="text-base sm:text-lg md:text-xl font-bold text-white mb-4 sm:mb-5 md:mb-6 group-hover:text-white/90 transition-colors">
-            {category.category}
-          </h3>
+          <div className="flex items-center gap-2 self-start md:pt-1.5">
+            {category.highlight && <span className="w-1.5 h-1.5 rounded-full bg-framer-blue" aria-hidden />}
+            <h3 className="text-sm sm:text-[15px] font-semibold text-white">{category.category}</h3>
+          </div>
 
-          {/* Skills Grid */}
-          <div className="flex flex-wrap gap-2 sm:gap-2.5">
-            {category.skills.map((skill, skillIndex) => (
-              <span
+          <ul className="flex flex-wrap gap-2">
+            {category.skills.map((skill) => (
+              <li
                 key={skill}
-                className="inline-flex items-center px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl sm:rounded-xl bg-white/[0.04] border border-white/10 text-white/80 text-xs sm:text-sm font-medium hover:bg-white/[0.08] hover:border-white/20 hover:text-white transition-all duration-300"
-                style={{ animationDelay: `${categoryIndex * 0.1 + skillIndex * 0.05}s` }}
+                className={`px-3 py-1.5 rounded-full border text-xs sm:text-sm transition-colors duration-200 ${
+                  category.highlight
+                    ? 'border-framer-blue/30 bg-framer-blue/10 text-blue-100 hover:border-framer-blue/50'
+                    : 'border-white/10 bg-white/[0.03] text-white/75 hover:border-white/20 hover:text-white'
+                }`}
               >
                 {skill}
-              </span>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       ))}
     </div>
