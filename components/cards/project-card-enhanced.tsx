@@ -5,6 +5,7 @@ import { useRef, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import type { ProjectMeta } from '@/lib/projects'
+import CoverFallback from '@/components/cards/cover-fallback'
 
 type ProjectCardProps = {
   project: ProjectMeta
@@ -101,28 +102,7 @@ export default function ProjectCardEnhanced({ project }: ProjectCardProps) {
               />
             </div>
           ) : (
-            // Fallback placeholder
-            <div className="w-full h-full bg-gradient-to-br from-slate-700 via-slate-600 to-slate-800 flex items-center justify-center">
-              <div className="text-center space-y-3">
-                <div className="w-12 h-12 mx-auto bg-slate-500/30 rounded-2xl flex items-center justify-center">
-                  <svg
-                    className="w-6 h-6 text-slate-300"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={1.5}
-                      d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
-                    />
-                  </svg>
-                </div>
-                <p className="text-xs text-slate-400 font-medium">Project Preview</p>
-              </div>
-            </div>
+            <CoverFallback title={title} tools={project.tools} />
           )}
 
           {/* Overlay gradient */}
