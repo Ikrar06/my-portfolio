@@ -36,8 +36,8 @@ export default async function ProjectsPage() {
             Technical Projects
           </h1>
           <p className="text-sm sm:text-base md:text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl">
-            Data Science, Machine Learning, and Full-Stack development projects. From statistical analysis
-            and deep learning models to production web and mobile applications.
+            AI engineering, NLP, data science, and full-stack projects, from LLM-powered simulations
+            and fine-tuned transformers to web and mobile applications in real use.
           </p>
         </div>
       </header>

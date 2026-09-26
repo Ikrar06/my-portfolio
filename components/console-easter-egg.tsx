@@ -52,7 +52,7 @@ export default function ConsoleEasterEgg() {
             '╔═══════════════════════════════════════════════════╗\n' +
             '║  Name: Ikrar Gempur Tirani                        ║\n' +
             '║  Role: Informatics Student                        ║\n' +
-            '║  Focus: Data Science & Machine Learning           ║\n' +
+            '║  Focus: AI Engineering (RAG, NLP, ML)             ║\n' +
             '║  University: Hasanuddin University                ║\n' +
             '║  Email: ikrargempurtrn@gmail.com                  ║\n' +
             '╚═══════════════════════════════════════════════════╝',
