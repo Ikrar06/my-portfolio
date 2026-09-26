@@ -51,7 +51,7 @@ export default function Footer() {
                 AI Engineer and Informatics student at Hasanuddin University, building RAG systems, NLP models, and the full-stack products around them.
               </p>
               <p className="text-xs sm:text-sm text-text-tertiary">
-                Open to AI engineering roles, internships, and research collaborations.
+                Open to AI engineering roles, internships, research collaborations, and freelance projects.
               </p>
             </div>
 

@@ -159,7 +159,7 @@ export default function ContactClient({ contactInfo }: ContactClientProps) {
             </FadeIn>
             <FadeIn key={`form-section-desc-${pageKey}`} delay={0.2}>
               <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/60 max-w-3xl mx-auto leading-relaxed break-words px-4">
-                Got a design project in mind? Share the details and I'll get back to you with creative ideas and next steps.
+                Prefer a form? Tell me about the role or project and I'll reply by email.
               </p>
             </FadeIn>
           </div>
