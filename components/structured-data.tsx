@@ -30,7 +30,7 @@ export default function StructuredData() {
     ],
     sameAs: [
       'https://github.com/Ikrar06',
-      'https://www.linkedin.com/in/ikrar-gempur-tirani',
+      'https://www.linkedin.com/in/ikrargempurtirani/',
     ],
   }
 

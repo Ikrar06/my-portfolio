@@ -71,7 +71,7 @@ export default function ConsoleEasterEgg() {
       contact: () => {
         console.log(
           '%c\nEmail: ikrargempurtrn@gmail.com\n' +
-          'LinkedIn: linkedin.com/in/ikrar-gempur-tirani\n' +
+          'LinkedIn: linkedin.com/in/ikrargempurtirani\n' +
           'GitHub: github.com/Ikrar06',
           'color: #0099FF; font-size: 12px;'
         )

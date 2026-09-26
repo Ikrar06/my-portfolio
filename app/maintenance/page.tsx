@@ -74,7 +74,7 @@ export default function MaintenancePage() {
               Email Me
             </a>
             <a
-              href="https://www.linkedin.com/in/ikrar-gempur-tirani-867537283/"
+              href="https://www.linkedin.com/in/ikrargempurtirani/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 border border-border text-text-primary rounded-full hover:bg-bg-secondary hover:border-border-hover transition-colors font-medium"
