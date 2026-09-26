@@ -79,9 +79,9 @@ export default function HomeClient({ featuredProjects }: HomeClientProps) {
           <InteractiveHeroText />
 
           {/* Hero Description */}
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-text-secondary leading-relaxed max-w-3xl mx-auto pt-2 px-2">
-            Informatics student at Hasanuddin University, currently building the RAG core of UniAI, the university&apos;s academic assistant.
-            I work across the ML lifecycle: data, retrieval, fine-tuning, model serving with vLLM, and the product around it.
+          <p className="text-sm sm:text-base md:text-lg text-text-secondary leading-relaxed max-w-2xl mx-auto pt-2 px-2 text-balance">
+            I build retrieval systems, fine-tune models, and ship the products around them. Currently building the RAG core of UniAI at
+            Hasanuddin University.
           </p>
 
           {/* Action Buttons */}

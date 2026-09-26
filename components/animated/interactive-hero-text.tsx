@@ -3,146 +3,113 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
 
-interface FloatingElement {
+type Side = 'left' | 'right'
+
+type FloatingIcon = {
   id: string
-  text?: string
-  icon?: string
-  x: string
-  y: string
+  icon: string
+  top: string
   rotate: number
 }
 
+// Icons shown when hovering "Models" (placed to its left)
+const modelIcons: FloatingIcon[] = [
+  { id: 'pytorch', icon: '/images/pytorch.svg', top: '-85%', rotate: -8 },
+  { id: 'tensorflow', icon: '/images/tensorflow.svg', top: '75%', rotate: 6 },
+]
+
+// Icons shown when hovering "Products" (placed to its right)
+const productIcons: FloatingIcon[] = [
+  { id: 'react', icon: '/images/react.svg', top: '-85%', rotate: 10 },
+  { id: 'python', icon: '/images/python.svg', top: '75%', rotate: -8 },
+]
+
+const glow = (active: boolean) =>
+  active
+    ? '0 0 15px rgba(255, 255, 255, 0.3), 0 0 30px rgba(255, 255, 255, 0.15)'
+    : '0 0 15px rgba(255, 255, 255, 0.2), 0 0 30px rgba(255, 255, 255, 0.1)'
+
+const muted = 'bg-gradient-to-t from-neutral-500 to-neutral-300 bg-clip-text text-transparent'
+
 export function InteractiveHeroText() {
-  const [hoverState, setHoverState] = useState<'code' | 'design' | null>(null)
-
-  // Icons shown when hovering "Models"
-  const codeElements: FloatingElement[] = [
-    { id: 'code-1', icon: '/images/pytorch.svg', x: '-13%', y: '-15%', rotate: -8 },
-    { id: 'code-2', icon: '/images/tensorflow.svg', x: '-14%', y: '105%', rotate: 5 },
-  ]
-
-  // Icons shown when hovering "Products"
-  const designElements: FloatingElement[] = [
-    { id: 'design-1', icon: '/images/react.svg', x: '104%', y: '-10%', rotate: 12 },
-    { id: 'design-2', icon: '/images/python.svg', x: '103%', y: '108%', rotate: -15 },
-  ]
+  const [hover, setHover] = useState<'models' | 'products' | null>(null)
 
   return (
-    <div className="relative">
-      {/* Floating elements container - Hidden on mobile */}
-      <div className="hidden md:block absolute inset-0 pointer-events-none z-0">
-        <FloatingElements
-          elements={codeElements}
-          show={hoverState === 'code'}
-        />
-        <FloatingElements
-          elements={designElements}
-          show={hoverState === 'design'}
-        />
-      </div>
-
-      {/* Main heading */}
-      <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight relative z-10 px-2" style={{ lineHeight: '1.15' }}>
-        <span
-          className="block pb-1 bg-gradient-to-t from-neutral-500 to-neutral-300 bg-clip-text text-transparent overflow-visible"
-          style={{ lineHeight: '1.15' }}
+    <h1
+      className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5rem] font-bold tracking-tight relative z-10 px-2"
+      style={{ lineHeight: '1.12' }}
+    >
+      <span className={`block pb-1 ${muted}`}>Turning</span>
+      <span className="block md:whitespace-nowrap">
+        <HoverWord
+          active={hover === 'models'}
+          onEnter={() => setHover('models')}
+          onLeave={() => setHover(null)}
+          icons={modelIcons}
+          side="left"
         >
-          Turning
-        </span>
-        <span className="block md:whitespace-nowrap">
-          <span
-            className="cursor-pointer transition-all duration-300 inline-block relative z-20 hover:scale-105 text-white"
-            onMouseEnter={() => setHoverState('code')}
-            onMouseLeave={() => setHoverState(null)}
-            style={{
-              textShadow: hoverState === 'code'
-                ? '0 0 15px rgba(255, 255, 255, 0.3), 0 0 30px rgba(255, 255, 255, 0.15)'
-                : '0 0 15px rgba(255, 255, 255, 0.2), 0 0 30px rgba(255, 255, 255, 0.1)',
-            }}
-          >
-            Models
-          </span>
-          <span className="bg-gradient-to-t from-neutral-500 to-neutral-300 bg-clip-text text-transparent">
-            {' into '}
-          </span>
-          <span
-            className="cursor-pointer transition-all duration-300 inline-block relative z-20 hover:scale-105 text-white"
-            onMouseEnter={() => setHoverState('design')}
-            onMouseLeave={() => setHoverState(null)}
-            style={{
-              textShadow: hoverState === 'design'
-                ? '0 0 15px rgba(255, 255, 255, 0.3), 0 0 30px rgba(255, 255, 255, 0.15)'
-                : '0 0 15px rgba(255, 255, 255, 0.2), 0 0 30px rgba(255, 255, 255, 0.1)',
-            }}
-          >
-            Products
-          </span>
-        </span>
-      </h1>
-    </div>
+          Models
+        </HoverWord>
+        <span className={muted}> into </span>
+        <HoverWord
+          active={hover === 'products'}
+          onEnter={() => setHover('products')}
+          onLeave={() => setHover(null)}
+          icons={productIcons}
+          side="right"
+        >
+          Products
+        </HoverWord>
+      </span>
+    </h1>
   )
 }
 
-function FloatingElements({
-  elements,
-  show
+function HoverWord({
+  children,
+  active,
+  onEnter,
+  onLeave,
+  icons,
+  side,
 }: {
-  elements: FloatingElement[]
-  show: boolean
+  children: React.ReactNode
+  active: boolean
+  onEnter: () => void
+  onLeave: () => void
+  icons: FloatingIcon[]
+  side: Side
 }) {
-  const uniformSize = 120 // Ukuran sama untuk semua icon
-
   return (
-    <AnimatePresence>
-      {show && (
-        <>
-          {elements.map((el, index) => (
-            <motion.div
-              key={el.id}
-              initial={{ opacity: 0, scale: 0.5, y: 20, rotate: 0 }}
-              animate={{
-                opacity: 0.7,
-                scale: 1,
-                y: 0,
-                rotate: el.rotate,
-              }}
-              exit={{ opacity: 0, scale: 0.5, y: 20, rotate: 0 }}
-              transition={{
-                duration: 0.6,
-                delay: index * 0.1,
-                ease: [0.22, 1, 0.36, 1]
-              }}
-              className="absolute select-none"
-              style={{
-                left: el.x,
-                top: el.y,
-              }}
-            >
-              {el.icon ? (
-                <div
-                  style={{
-                    width: `${uniformSize}px`,
-                    height: `${uniformSize}px`
-                  }}
-                >
-                  <img
-                    src={el.icon}
-                    alt=""
-                    width={uniformSize}
-                    height={uniformSize}
-                    className="w-full h-full object-contain"
-                    draggable={false}
-                  />
-                </div>
-              ) : (
-                <span className="text-2xl md:text-4xl lg:text-5xl text-white/30 font-bold whitespace-nowrap">
-                  {el.text}
-                </span>
-              )}
-            </motion.div>
-          ))}
-        </>
-      )}
-    </AnimatePresence>
+    <span
+      className="relative inline-block cursor-default text-white transition-[text-shadow] duration-300"
+      onMouseEnter={onEnter}
+      onMouseLeave={onLeave}
+      style={{ textShadow: glow(active) }}
+    >
+      {children}
+      <span className="hidden md:block pointer-events-none" aria-hidden>
+        <AnimatePresence>
+          {active &&
+            icons.map((el, index) => (
+              <motion.img
+                key={el.id}
+                src={el.icon}
+                alt=""
+                draggable={false}
+                className="absolute w-20 h-20 lg:w-24 lg:h-24 object-contain select-none"
+                style={{
+                  top: el.top,
+                  ...(side === 'left' ? { right: 'calc(100% + 2rem)' } : { left: 'calc(100% + 2rem)' }),
+                }}
+                initial={{ opacity: 0, scale: 0.5, y: 20, rotate: 0 }}
+                animate={{ opacity: 0.8, scale: 1, y: 0, rotate: el.rotate }}
+                exit={{ opacity: 0, scale: 0.5, y: 20, rotate: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              />
+            ))}
+        </AnimatePresence>
+      </span>
+    </span>
   )
 }
