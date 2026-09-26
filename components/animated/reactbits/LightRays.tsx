@@ -228,6 +228,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
   
   fragColor.rgb *= raysColor;
   fragColor.a *= 0.6; // More transparent for subtle effect
+  fragColor.rgb *= 0.8; // Rays use premultiplied blending, so dim rgb too
 }
 
 void main() {
@@ -401,7 +402,10 @@ void main() {
         left: '50%',
         top: '0',
         transform: 'translateX(-50%)',
-        zIndex: 1
+        zIndex: 1,
+        // Fade the rays out toward the bottom so the canvas never ends in a hard edge on scroll
+        maskImage: 'linear-gradient(to bottom, #000 0%, #000 35%, transparent 90%)',
+        WebkitMaskImage: 'linear-gradient(to bottom, #000 0%, #000 35%, transparent 90%)',
       }}
     />
   )

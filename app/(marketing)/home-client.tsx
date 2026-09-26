@@ -58,10 +58,10 @@ export default function HomeClient({ featuredProjects }: HomeClientProps) {
           raysOrigin="top-center"
           raysColor="#ffffff"
           raysSpeed={0.3}
-          lightSpread={0.5}
-          rayLength={1.6}
+          lightSpread={0.4}
+          rayLength={1.3}
           pulsating
-          fadeDistance={1.2}
+          fadeDistance={1.0}
           saturation={1}
           followMouse
           mouseInfluence={0.08}

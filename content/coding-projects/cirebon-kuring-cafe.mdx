@@ -1,0 +1,148 @@
+---
+title: "Cirebon Kuring Cafe - Cafe Management System"
+slug: "cirebon-kuring-cafe"
+year: 2025
+month: 9
+role: "Full Stack Developer"
+tools: ["Next.js 15", "React 19", "TypeScript", "Flutter", "Supabase", "PostgreSQL", "Deno Edge Functions", "Tailwind CSS", "Zustand", "BLoC", "Turborepo", "pnpm", "Vercel", "Telegram Bot API"]
+skills: ["System Architecture", "Monorepo Management", "Database Design", "Row-Level Security", "Realtime Systems", "Mobile Development", "Inventory Costing", "Payroll & Attendance Logic"]
+tags: ["nextjs", "flutter", "supabase", "monorepo", "full-stack"]
+category: "Full-Stack Business System"
+duration: "6 months"
+team: "Solo Developer"
+client: "Cirebon Kuring Cafe"
+summary: "End-to-end operating system for a cafe: QR table ordering for customers, a Flutter tablet app for cashier, kitchen, waiter and stock roles, an employee self-service portal, and an owner dashboard for menu, inventory, payroll and analytics — all on one Supabase backend inside a Turborepo monorepo."
+githubUrl: "https://github.com/Ikrar06/CirebonKuringCafeApp"
+# ─────────────────────────────────────────────────────────────
+# IMAGE PLACEHOLDERS — uncomment each line once the file exists
+# in /public/images/cirebon-kuring/ (see PLACEHOLDERS.md there).
+# ─────────────────────────────────────────────────────────────
+# cover: "/images/cirebon-kuring/cover.png"
+# liveUrl: "https://..."
+# final:
+#   - "/images/cirebon-kuring/cover.png"
+#   - "/images/cirebon-kuring/customer-menu.png"
+#   - "/images/cirebon-kuring/customer-checkout.png"
+#   - "/images/cirebon-kuring/customer-order-status.png"
+#   - "/images/cirebon-kuring/owner-dashboard.png"
+#   - "/images/cirebon-kuring/owner-analytics.png"
+#   - "/images/cirebon-kuring/owner-inventory.png"
+#   - "/images/cirebon-kuring/tablet-kasir.png"
+#   - "/images/cirebon-kuring/tablet-kitchen.png"
+#   - "/images/cirebon-kuring/employee-attendance.png"
+# applications:
+#   - "/images/cirebon-kuring/table-qr.jpg"
+#   - "/images/cirebon-kuring/in-use.jpg"
+metrics:
+  - "4 applications in one Turborepo monorepo sharing types, utils and UI packages"
+  - "3 Next.js apps (customer, employee, owner) + 1 Flutter tablet app with 4 staff roles"
+  - "69 versioned SQL migrations with Row-Level Security policies per role"
+  - "15+ Supabase Edge Functions for orders, payments, stock, attendance and reports"
+  - "Automatic ingredient deduction on order completion using moving-average cost"
+  - "Geofenced attendance, shift scheduling, overtime, leave and payslip generation"
+  - "Bluetooth thermal receipt printing and Telegram notifications for staff and owner"
+  - "200+ commits over 6 months, built and maintained solo"
+# Set to true once cover.png is added so the homepage card has an image
+featured: false
+---
+
+## Project Overview
+
+A complete operating system for Cirebon Kuring Cafe — covering everything from the moment a customer scans the QR code on their table to the owner closing the month's payroll. Instead of stitching together separate POS, inventory and HR tools, everything lives on **one Supabase (PostgreSQL) backend** and is served through four purpose-built applications.
+
+{/* IMAGE: architecture diagram (optional) — /images/cirebon-kuring/architecture.png */}
+
+## The Four Applications
+
+<div className="overflow-x-auto my-6">
+  <table className="min-w-full border-collapse">
+    <thead>
+      <tr className="bg-gradient-to-r from-framer-blue/20 to-framer-blue-light/20 border-b border-white/20">
+        <th className="px-6 py-3 text-left text-sm font-semibold text-white">App</th>
+        <th className="px-6 py-3 text-left text-sm font-semibold text-white">Stack</th>
+        <th className="px-6 py-3 text-left text-sm font-semibold text-white">Used by</th>
+        <th className="px-6 py-3 text-left text-sm font-semibold text-white">Main responsibilities</th>
+      </tr>
+    </thead>
+    <tbody className="divide-y divide-white/10">
+      <tr className="hover:bg-white/5 transition-colors">
+        <td className="px-6 py-4 text-sm font-semibold text-blue-400">Customer Web</td>
+        <td className="px-6 py-4 text-sm text-text-secondary">Next.js, Zustand</td>
+        <td className="px-6 py-4 text-sm text-text-secondary">Guests</td>
+        <td className="px-6 py-4 text-sm text-text-secondary">QR table ordering, menu customization, checkout (cash, QRIS, transfer), live order status, rating</td>
+      </tr>
+      <tr className="hover:bg-white/5 transition-colors">
+        <td className="px-6 py-4 text-sm font-semibold text-emerald-400">Staff Tablet</td>
+        <td className="px-6 py-4 text-sm text-text-secondary">Flutter, BLoC, get_it</td>
+        <td className="px-6 py-4 text-sm text-text-secondary">Cashier, kitchen, waiter, stock</td>
+        <td className="px-6 py-4 text-sm text-text-secondary">Payment verification, kitchen display, order hand-off, stock intake, thermal receipt printing</td>
+      </tr>
+      <tr className="hover:bg-white/5 transition-colors">
+        <td className="px-6 py-4 text-sm font-semibold text-amber-400">Employee Portal</td>
+        <td className="px-6 py-4 text-sm text-text-secondary">Next.js</td>
+        <td className="px-6 py-4 text-sm text-text-secondary">All employees</td>
+        <td className="px-6 py-4 text-sm text-text-secondary">Geofenced clock-in/out, schedule, leave and overtime requests, monthly payslips</td>
+      </tr>
+      <tr className="hover:bg-white/5 transition-colors">
+        <td className="px-6 py-4 text-sm font-semibold text-purple-400">Owner Dashboard</td>
+        <td className="px-6 py-4 text-sm text-text-secondary">Next.js, Recharts, jsPDF</td>
+        <td className="px-6 py-4 text-sm text-text-secondary">Owner</td>
+        <td className="px-6 py-4 text-sm text-text-secondary">Menu & recipes, inventory & suppliers, promos, shifts & payroll, cash reconciliation, sales / finance / staff analytics</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+## Architecture
+
+The repository is a **Turborepo + pnpm monorepo**. Shared packages keep the four apps consistent:
+
+- `shared-types` — one source of truth for orders, menu, payments, inventory and employees
+- `utils` — currency, tax, discount and payroll calculations plus Indonesian-specific validators
+- `ui-components` — shared React components
+- `database` — typed query helpers
+
+Business rules that must not be bypassed by any client — order validation, payment verification, stock deduction, attendance validation and report generation — run as **Deno Edge Functions** on Supabase, while **Row-Level Security** policies make sure each role can only read and write what it should.
+
+{/* IMAGE: owner dashboard overview — /images/cirebon-kuring/owner-dashboard.png */}
+
+## Order Flow
+
+```
+Scan table QR → Browse & customize menu → Checkout
+      ↓
+Payment (cash / QRIS / transfer with proof upload)
+      ↓
+Cashier verifies → Kitchen display → Waiter serves → Completed
+      ↓
+Ingredients auto-deducted · Receipt printed · Customer can rate
+```
+
+Every status change is pushed in realtime, so the customer's order-status page, the kitchen tablet and the owner's live orders view always show the same state.
+
+{/* IMAGE: customer flow (menu → checkout → status) — /images/cirebon-kuring/customer-*.png */}
+
+## Inventory That Costs Itself
+
+Menu items are linked to their ingredients, so completing an order **automatically deducts stock** at the database level. Purchases are recorded as batches with expiry dates, and the unit cost of each ingredient is recalculated with a **moving-average cost** method (including delivery-fee allocation). That means gross margin per menu item is based on what the cafe actually paid, not a fixed estimate. Expired batches are written off automatically and low-stock alerts are sent to the owner.
+
+{/* IMAGE: inventory / stock movements page — /images/cirebon-kuring/owner-inventory.png */}
+
+## People Operations
+
+- **Attendance** — clock-in is validated against the cafe's configured location radius, with rules for lateness and early leave set by the owner.
+- **Scheduling** — shift templates and a weekly schedule builder.
+- **Requests** — leave and overtime requests flow from the employee portal to the owner for approval.
+- **Payroll** — monthly payroll computed from attendance and overtime, exported as PDF payslips.
+
+{/* IMAGE: employee portal attendance — /images/cirebon-kuring/employee-attendance.png */}
+
+## Key Takeaways
+
+- Putting critical rules in the database and edge functions, not the UI, kept four different clients consistent.
+- A monorepo with shared types caught breaking changes across apps at compile time.
+- Real operational data (stock, cash, attendance) forced careful handling of edge cases that tutorials rarely cover — partial payments, expired batches, missed clock-outs.
+
+---
+
+**Repository**: [CirebonKuringCafeApp](https://github.com/Ikrar06/CirebonKuringCafeApp) · **Period**: September 2025 – March 2026
