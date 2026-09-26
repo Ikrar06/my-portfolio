@@ -1,0 +1,137 @@
+---
+title: "ICONNET Finance Dashboard - OPEX, Cash Advance & Contract Monitoring"
+slug: "iconnet-opex-dashboard"
+year: 2026
+month: 2
+role: "Full Stack Developer Intern"
+tools: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS", "Express.js", "PostgreSQL", "Redis", "Docker", "PM2", "ECharts", "ExcelJS", "PapaParse", "jsPDF", "react-grid-layout"]
+skills: ["Full-Stack Development", "Database Design", "Data Reconciliation", "Financial Reporting", "Role-Based Access Control", "Application Security", "On-Premise Deployment"]
+tags: ["nextjs", "express", "postgresql", "internship"]
+category: "Internal Business Dashboard"
+duration: "3 months"
+team: "Intern Team"
+client: "PLN Icon Plus (ICONNET) - SBU Sulawesi & IBT I"
+summary: "Internal finance dashboard for PLN Icon Plus that replaced spreadsheet-based reporting with four modules (OPEX monitoring, cash-advance tracking, outsourced-staff contract budgets, and vehicle monitoring) on a Next.js + Express + PostgreSQL stack, hardened after a full penetration test."
+challenges: "Budget realization, cash advances and outsourced-staff costs were tracked in separate Excel files that finance staff reconciled by hand, which made reporting slow and figures inconsistent between regions."
+solutions: "Built a monorepo with a Next.js dashboard and an Express API on PostgreSQL: file uploads with a pending-to-confirmed review step, relational models that reconcile transactions against budget references, draggable chart widgets, and CSV / Excel / PDF exports."
+impact: "Four reporting workflows moved into one role-based dashboard on the office network, with manual reconciliation replaced by automated imports and every finding from the penetration test remediated before rollout."
+# ─────────────────────────────────────────────────────────────
+# IMAGE PLACEHOLDERS — uncomment each line once the file exists
+# in /public/images/iconnet/ (see PLACEHOLDERS.md there).
+# Use dummy data only; do not publish real financial figures.
+# ─────────────────────────────────────────────────────────────
+# cover: "/images/iconnet/cover.png"
+# final:
+#   - "/images/iconnet/cover.png"
+#   - "/images/iconnet/login.png"
+#   - "/images/iconnet/opex-overview.png"
+#   - "/images/iconnet/opex-upload.png"
+#   - "/images/iconnet/persekot-list.png"
+#   - "/images/iconnet/persekot-detail.png"
+#   - "/images/iconnet/pagu-overview.png"
+#   - "/images/iconnet/pagu-varcost.png"
+#   - "/images/iconnet/vehicle-monitoring.png"
+#   - "/images/iconnet/dark-mode.png"
+metrics:
+  - "4 modules: OPEX monitoring, cash advance (persekot), outsourced-staff contract budget, vehicle monitoring"
+  - "Next.js 16 + Express monorepo on PostgreSQL with Redis server-side caching"
+  - "Excel / CSV uploads with a pending → confirmed review step before data reaches the charts"
+  - "4 access levels (superadmin, admin, staff, viewer) enforced on both web and API"
+  - "Security hardening: JWT blacklist on logout, file magic-byte validation, login rate limiting (5 attempts / 15 min), bcrypt hashing"
+  - "CSV, Excel and PDF exports with configurable column ordering"
+  - "Draggable, resizable dashboard widgets built with react-grid-layout and ECharts"
+  - "On-premise deployment: Dockerized PostgreSQL and PM2 auto-start on the office LAN"
+# Set to true once cover.png is added so the homepage card has an image
+featured: false
+---
+
+## Project Overview
+
+During my internship at **PLN Icon Plus (ICONNET)**, SBU Sulawesi & IBT I, I worked on an internal dashboard that moves the unit's financial monitoring out of scattered spreadsheets and into a single web application. The system is used on the office network and covers four areas of operational spending.
+
+{/* IMAGE: dashboard overview — /images/iconnet/opex-overview.png */}
+
+## Modules
+
+<div className="overflow-x-auto my-6">
+  <table className="min-w-full border-collapse">
+    <thead>
+      <tr className="bg-gradient-to-r from-framer-blue/20 to-framer-blue-light/20 border-b border-white/20">
+        <th className="px-6 py-3 text-left text-sm font-semibold text-white">Module</th>
+        <th className="px-6 py-3 text-left text-sm font-semibold text-white">What it tracks</th>
+        <th className="px-6 py-3 text-left text-sm font-semibold text-white">Key features</th>
+      </tr>
+    </thead>
+    <tbody className="divide-y divide-white/10">
+      <tr className="hover:bg-white/5 transition-colors">
+        <td className="px-6 py-4 text-sm font-semibold text-blue-400">OPEX Monitoring</td>
+        <td className="px-6 py-4 text-sm text-text-secondary">Operational budget vs. realization</td>
+        <td className="px-6 py-4 text-sm text-text-secondary">Daily CSV imports, snapshots, budget-reference mapping, trend charts</td>
+      </tr>
+      <tr className="hover:bg-white/5 transition-colors">
+        <td className="px-6 py-4 text-sm font-semibold text-emerald-400">Persekot (Cash Advance)</td>
+        <td className="px-6 py-4 text-sm text-text-secondary">Cash advances and their settlement per region</td>
+        <td className="px-6 py-4 text-sm text-text-secondary">Cascading input forms, receipt attachments, admin validation, CSV / Excel export</td>
+      </tr>
+      <tr className="hover:bg-white/5 transition-colors">
+        <td className="px-6 py-4 text-sm font-semibold text-amber-400">PAGU Non-PO</td>
+        <td className="px-6 py-4 text-sm text-text-secondary">Outsourced-staff contract budget</td>
+        <td className="px-6 py-4 text-sm text-text-secondary">Excel upload for overtime, travel and shift allowances; variable cost per section; top-up and relocation log; training and assignment records</td>
+      </tr>
+      <tr className="hover:bg-white/5 transition-colors">
+        <td className="px-6 py-4 text-sm font-semibold text-purple-400">Vehicle Monitoring</td>
+        <td className="px-6 py-4 text-sm text-text-secondary">Operational vehicle rentals</td>
+        <td className="px-6 py-4 text-sm text-text-secondary">CRUD, analytics endpoints, summary charts</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+## Architecture
+
+A single npm-workspaces monorepo with two apps:
+
+- **`apps/web`** — Next.js 16 (App Router, TypeScript, Tailwind CSS 4). Charts use ECharts; dashboard widgets can be dragged and resized with react-grid-layout; exports use ExcelJS, PapaParse and jsPDF.
+- **`apps/api`** — Express REST API on PostgreSQL, with Redis for server-side caching of heavy summary queries and a client-side page cache on top.
+
+## Upload & Reconciliation Flow
+
+Most data arrives as Excel or CSV exports from other systems, so imports were designed to be reviewed before they affect any figure:
+
+```
+Upload .xlsx / .csv (superadmin)
+      ↓
+Parse headers → create upload batch (status: pending)
+      ↓
+Bulk insert rows, enrich each row from master data (e.g. employee ID → section)
+      ↓
+Review → confirm (status: confirmed) → data appears in charts and exports
+```
+
+Rows are joined to reference tables (budget codes, products, staff master data), so each transaction is reconciled against the budget line it belongs to instead of being matched by hand.
+
+{/* IMAGE: upload & confirm screen — /images/iconnet/opex-upload.png */}
+
+## Security
+
+The application went through a full penetration-testing cycle before rollout. The fixes included:
+
+- **Authentication** — JWT with a 24-hour expiry and a server-side blacklist so tokens are revoked on logout; passwords hashed with bcrypt.
+- **Brute-force protection** — login limited to 5 attempts per IP every 15 minutes.
+- **File uploads** — type checked by magic bytes, not just the file extension.
+- **Input & headers** — input sanitization in middleware and security headers handled at the Nginx layer.
+- **Authorization** — four roles (superadmin, admin, staff, viewer) checked on both the web middleware and the API, e.g. only admins validate cash-advance transactions and only superadmins confirm uploads.
+
+## Deployment
+
+The dashboard is intended for the office network only. PostgreSQL runs in Docker, the API and web app run under PM2 with auto-start on boot, and a start script detects the machine's current LAN IP and rebuilds the frontend when it changes, so non-technical staff can keep it running without touching configuration.
+
+## Key Takeaways
+
+- Treating every import as a reviewable batch made the dashboard trustworthy for finance users.
+- Security has to be designed in for internal tools too; the pentest findings shaped the auth and upload code.
+- Deployment instructions written for non-developers matter as much as the code when the app lives on an office PC.
+
+---
+
+**Company**: PLN Icon Plus (ICONNET), SBU Sulawesi & IBT I · **Period**: February – April 2026 · Source code is private.
