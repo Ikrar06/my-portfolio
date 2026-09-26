@@ -136,14 +136,14 @@ export default function AboutClient({ skills }: AboutClientProps) {
             {/* Bio singkat */}
             <FadeIn key={`about-bio-${pageKey}`} delay={0.1}>
               <div className="mt-6 md:mt-0">
-                <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/70 leading-relaxed font-light mb-3 sm:mb-4 text-justify">
+                <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/70 leading-relaxed font-light mb-3 sm:mb-4">
                   Hi, I'm <span className="font-semibold text-white">Ikrar Gempur Tirani</span>, an{' '}
                   <span className="text-white">Informatics Engineering student</span> at Hasanuddin University (GPA 3.92/4.00) focusing on <span className="text-white">Artificial Intelligence</span> with hands-on experience in machine learning, natural language processing, and statistical modeling.
                 </p>
-                <p className="text-xs sm:text-sm md:text-base lg:text-lg text-white/60 leading-relaxed font-light mb-3 sm:mb-4 text-justify">
+                <p className="text-xs sm:text-sm md:text-base lg:text-lg text-white/60 leading-relaxed font-light mb-3 sm:mb-4">
                   Currently an <span className="text-white">AI Engineer intern</span> building the data and RAG core of <span className="text-white">UniAI</span>, an institutional academic chatbot for Hasanuddin University — working across the full ML lifecycle, from document ingestion and embeddings to retrieval, model serving with <span className="text-white">vLLM</span>, and deployment. Beyond that, my projects range from agent-based market simulations to fine-tuning transformer models for NLP tasks.
                 </p>
-                <p className="text-xs sm:text-sm md:text-base lg:text-lg text-white/60 leading-relaxed font-light text-justify">
+                <p className="text-xs sm:text-sm md:text-base lg:text-lg text-white/60 leading-relaxed font-light">
                   I also lead the Creative Media Division at <span className="text-white">Google Developer Groups on Campus</span>, pairing technical work with communication and leadership. With full-stack development capabilities and five years of design experience, I build AI products that are both technically sound and user-friendly.
                 </p>
 
@@ -182,7 +182,7 @@ export default function AboutClient({ skills }: AboutClientProps) {
             </div>
             <FadeIn key={`services-desc-${pageKey}`} delay={0.2}>
               <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/60 max-w-3xl mx-auto font-light leading-relaxed px-4">
-                Data science, machine learning engineering, and full-stack development. Building AI products that are technically sound and user-friendly.
+                LLM systems, machine learning, and the full-stack work that turns them into products people can use.
               </p>
             </FadeIn>
           </div>
@@ -190,26 +190,23 @@ export default function AboutClient({ skills }: AboutClientProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {[
               {
-                title: 'Data Science & Analytics',
-                desc: 'Learning statistical analysis and hypothesis testing to extract insights from data. Developing skills in exploratory analysis, data visualization, and validation.',
-                // specialties: ['Exploratory Data Analysis', 'Statistical Modeling', 'Hypothesis Testing', 'Data Visualization']
-                specialties: []
-              },
-              {
                 title: 'LLM & RAG Engineering',
-                desc: 'Building production LLM systems: retrieval-augmented generation, vector search, model serving with vLLM, and safety pipelines for real institutional use.',
-                // specialties: ['RAG Pipelines', 'Vector Databases (Qdrant)', 'vLLM Serving', 'LLM Safety & Routing']
+                desc: 'Retrieval pipelines, vector search, reranking and model serving with vLLM, plus the safety and routing layers that make LLMs usable for real institutions.',
                 specialties: []
               },
               {
                 title: 'Machine Learning & NLP',
-                desc: 'Developing machine learning systems with a focus on NLP. Fine-tuning deep learning models with PyTorch and TensorFlow across academic and personal projects.',
-                // specialties: ['Deep Learning (PyTorch)', 'Natural Language Processing', 'Model Training & Optimization', 'Production ML Systems']
+                desc: 'Fine-tuning transformers and building NLP pipelines in PyTorch, from dataset construction and leakage-free evaluation to deployed models.',
+                specialties: []
+              },
+              {
+                title: 'Data Science & Analytics',
+                desc: 'Large-scale data mining and statistical validation: frequent-pattern mining on 21M+ records, hypothesis testing, and simulations with LLM-driven agents.',
                 specialties: []
               },
               {
                 title: 'Full-Stack Development',
-                desc: 'Building web and mobile applications to bring ML models to users. Working with modern frameworks, APIs, deployment, and security hardening.',
+                desc: 'Next.js, Flutter and API backends that put models in front of users, with deployment and security hardening handled end to end.',
                 // specialties: ['React & Next.js', 'Flutter Mobile Apps', 'FastAPI & Flask', 'Database Design']
                 specialties: []
               }
@@ -223,7 +220,7 @@ export default function AboutClient({ skills }: AboutClientProps) {
                     <h3 className="text-base sm:text-lg md:text-xl font-bold text-white mb-3 sm:mb-4 group-hover:text-white/90 transition-colors duration-300">
                       {service.title}
                     </h3>
-                    <p className="text-xs sm:text-sm md:text-base text-white/60 leading-relaxed mb-4 sm:mb-5 md:mb-6 group-hover:text-white/70 transition-colors duration-300 flex-1 text-justify">
+                    <p className="text-xs sm:text-sm md:text-base text-white/60 leading-relaxed mb-4 sm:mb-5 md:mb-6 group-hover:text-white/70 transition-colors duration-300 flex-1">
                       {service.desc}
                     </p>
                     <div className="space-y-2">
@@ -339,7 +336,7 @@ export default function AboutClient({ skills }: AboutClientProps) {
                           )}
                         </header>
 
-                        <p className="text-xs sm:text-sm text-white/70 leading-relaxed mb-4 sm:mb-5 text-justify">{exp.desc}</p>
+                        <p className="text-xs sm:text-sm text-white/70 leading-relaxed mb-4 sm:mb-5">{exp.desc}</p>
 
                         {/* Extras (link IG, dsb) */}
                         {exp.extras?.length ? (

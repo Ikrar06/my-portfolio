@@ -128,7 +128,7 @@ export default function HomeClient({ featuredProjects }: HomeClientProps) {
               <FadeIn key={`project-${project.slug}-${pageKey}`} delay={0.05 * i}>
                 <Link href={`/${project.projectType === 'coding' ? 'project' : 'design'}/${project.slug}`}>
                   <article className="group cursor-pointer h-full" role="article" aria-label={project.title}>
-                    <div className="relative backdrop-blur-sm bg-white/[0.02] border border-white/10 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 hover:bg-white/[0.05] transition-all duration-700 hover:scale-105 hover:shadow-2xl hover:border-white/20 h-full flex flex-col">
+                    <div className="relative backdrop-blur-sm bg-white/[0.02] border border-white/10 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 hover:bg-white/[0.04] transition-all duration-300 hover:-translate-y-1 hover:border-white/20 h-full flex flex-col">
                       {/* Project Image */}
                       <div className="aspect-[4/3] mb-4 sm:mb-6 md:mb-8 rounded-xl sm:rounded-2xl overflow-hidden relative bg-neutral-900">
                         {project.cover ? (
@@ -136,7 +136,7 @@ export default function HomeClient({ featuredProjects }: HomeClientProps) {
                             src={project.cover}
                             alt={project.title}
                             fill
-                            className="object-cover transition-transform duration-700 group-hover:scale-110"
+                            className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                           />
                         ) : (

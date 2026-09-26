@@ -28,7 +28,7 @@ export default function ContactClient({ contactInfo }: ContactClientProps) {
   return (
     <div className="w-full overflow-x-hidden">
       {/* Hero Section with Clean Design */}
-      <section className="relative min-h-screen flex flex-col justify-start px-4 sm:px-6 pt-16 pb-12 w-full overflow-hidden">
+      <section className="relative flex flex-col justify-start px-4 sm:px-6 pt-12 sm:pt-16 pb-16 sm:pb-20 w-full overflow-hidden">
         {/* Background Elements removed to avoid visual artifacts */}
 
         <div className="relative max-w-6xl mx-auto z-10 w-full">
@@ -37,7 +37,7 @@ export default function ContactClient({ contactInfo }: ContactClientProps) {
             <FadeIn delay={0}>
               <div className="inline-flex items-center gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-framer-blue/10 border border-framer-blue/20 text-framer-blue text-xs sm:text-sm font-medium max-w-full">
                 <div className="w-2 h-2 bg-framer-blue rounded-full animate-pulse flex-shrink-0" />
-                <span className="truncate">Open to Data Science & ML opportunities</span>
+                <span className="truncate">Open to AI engineering opportunities</span>
               </div>
             </FadeIn>
           </div>
@@ -46,7 +46,7 @@ export default function ContactClient({ contactInfo }: ContactClientProps) {
           <div className="mb-6 sm:mb-8 w-full">
             <TextType
               key={`contact-tagline-${pageKey}`}
-              text="Let's Make Something Amazing"
+              text="Get in Touch"
               className="text-xs sm:text-sm md:text-base text-white/60 font-medium tracking-[0.1em] sm:tracking-[0.2em] uppercase break-words"
               typingSpeed={100}
               showCursor={false}
@@ -57,11 +57,11 @@ export default function ContactClient({ contactInfo }: ContactClientProps) {
           </div>
 
           {/* Main Title */}
-          <div className="mb-10 sm:mb-12 md:mb-16 py-3 sm:py-4 w-full">
+          <div className="mb-6 sm:mb-8 py-2 w-full">
             <SplitText
               key={`contact-title-${pageKey}`}
               text="Got a Project in Mind?"
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-[0.85] tracking-tight mb-6 sm:mb-8 break-words"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-[1.05] tracking-tight break-words"
               splitType="words, chars"
               delay={30}
               duration={0.8}
@@ -69,6 +69,7 @@ export default function ContactClient({ contactInfo }: ContactClientProps) {
               from={{ opacity: 0, y: 100, rotationX: -45, scale: 0.8 }}
               to={{ opacity: 1, y: 0, rotationX: 0, scale: 1 }}
               startOnVisible={false}
+              textAlign="left"
             />
           </div>
 
@@ -77,10 +78,10 @@ export default function ContactClient({ contactInfo }: ContactClientProps) {
             <FadeIn key={`contact-desc-${pageKey}`} delay={0.3}>
               <div className="space-y-4 sm:space-y-6">
                 <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/80 leading-relaxed font-light break-words">
-                  Open to full-time Data Science/ML roles, internships, research collaborations, and freelance projects.
+                  Open to AI engineering roles, internships, research collaborations, and freelance projects.
                 </p>
                 <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/60 leading-relaxed font-light break-words">
-                  Let's build production ML systems and AI products that make an impact.
+                  Whether it is a RAG system, an NLP model, or a full-stack product around it, I am happy to talk it through.
                 </p>
               </div>
             </FadeIn>
@@ -97,7 +98,7 @@ export default function ContactClient({ contactInfo }: ContactClientProps) {
                 Let's Connect
               </h2>
               <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/60 max-w-3xl mx-auto leading-relaxed break-words px-4">
-                Available for Data Science roles, ML projects, and collaboration opportunities.
+                Pick whichever channel suits you best.
               </p>
             </FadeIn>
           </div>
@@ -109,7 +110,7 @@ export default function ContactClient({ contactInfo }: ContactClientProps) {
                 email={contactInfo.EMAIL}
                 linkedinUrl={contactInfo.LINKEDIN}
                 whatsappNumber={contactInfo.WHATSAPP}
-                defaultMessage="Hi Ikrar! I saw your portfolio and would love to discuss a Data Science/ML opportunity or collaboration. Are you available for a quick chat?"
+                defaultMessage="Hi Ikrar! I saw your portfolio and would love to discuss an AI engineering opportunity or collaboration. Are you available for a quick chat?"
                 variant="cards"
                 className="mb-16"
               />

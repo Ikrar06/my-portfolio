@@ -47,11 +47,11 @@ export default function Footer() {
                   Ikrar Gempur Tirani
                 </span>
               </div>
-              <p className="text-xs sm:text-sm text-text-secondary leading-relaxed text-justify">
-                Informatics engineering student focusing on AI/ML engineering. Building intelligent systems with RAG, statistical analysis, NLP, and full-stack development.
+              <p className="text-xs sm:text-sm text-text-secondary leading-relaxed">
+                AI Engineer and Informatics student at Hasanuddin University, building RAG systems, NLP models, and the full-stack products around them.
               </p>
               <p className="text-xs sm:text-sm text-text-tertiary">
-                Available for Data Science/ML roles and research collaborations.
+                Open to AI engineering roles, internships, and research collaborations.
               </p>
             </div>
 
